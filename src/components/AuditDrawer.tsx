@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import type { ClauseAudit, AuditSession } from "@/lib/types";
@@ -27,7 +27,7 @@ export default function AuditDrawer({ clauseId, audit, onClose }: AuditDrawerPro
       <div className="audit-drawer-overlay" onClick={onClose}>
         <div className="audit-drawer" onClick={(e) => e.stopPropagation()}>
           <div className="p-4 text-center text-ios-secondary">
-            Dados de auditoria não disponíveis para esta cláusula.
+            Dados de auditoria nÃ£o disponÃ­veis para esta clÃ¡usula.
           </div>
         </div>
       </div>
@@ -35,10 +35,10 @@ export default function AuditDrawer({ clauseId, audit, onClose }: AuditDrawerPro
   }
 
   const tabs = [
-    { key: "overview" as const, label: "Visão Geral", icon: "bi-list-check" },
-    { key: "classification" as const, label: "Classificação", icon: "bi-tags" },
-    { key: "lexicon" as const, label: "Léxico", icon: "bi-book" },
-    { key: "semiotic" as const, label: "Semiótica", icon: "bi-palette" },
+    { key: "overview" as const, label: "VisÃ£o Geral", icon: "bi-list-check" },
+    { key: "classification" as const, label: "ClassificaÃ§Ã£o", icon: "bi-tags" },
+    { key: "lexicon" as const, label: "LÃ©xico", icon: "bi-book" },
+    { key: "semiotic" as const, label: "SemiÃ³tica", icon: "bi-palette" },
   ];
 
   return (
@@ -52,7 +52,7 @@ export default function AuditDrawer({ clauseId, audit, onClose }: AuditDrawerPro
               Auditoria
             </h3>
             <span className="text-ios-secondary" style={{ fontSize: "0.75rem" }}>
-              {clauseId} · {audit.session_id}
+              {clauseId} Â· {audit.session_id}
             </span>
           </div>
           <button onClick={onClose} className="btn btn-sm p-0 text-ios-secondary border-0" style={{ fontSize: "1.25rem" }}>
@@ -95,7 +95,7 @@ export default function AuditDrawer({ clauseId, audit, onClose }: AuditDrawerPro
   );
 }
 
-/* ── Tab: Visão Geral (Stepper) ──────────────────────── */
+/* â”€â”€ Tab: VisÃ£o Geral (Stepper) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function OverviewTab({ audit, clauseAudit }: { audit: AuditSession; clauseAudit: ClauseAudit }) {
   return (
     <div className="d-flex flex-column gap-3">
@@ -124,7 +124,7 @@ function OverviewTab({ audit, clauseAudit }: { audit: AuditSession; clauseAudit:
               <div className="audit-evidence mt-2">
                 <span className="audit-label">Regra:</span> {clauseAudit.segment.rule}
                 <br />
-                <span className="audit-label">Evidência:</span> {clauseAudit.segment.evidence}
+                <span className="audit-label">EvidÃªncia:</span> {clauseAudit.segment.evidence}
               </div>
             )}
             {idx === 1 && (
@@ -139,7 +139,7 @@ function OverviewTab({ audit, clauseAudit }: { audit: AuditSession; clauseAudit:
               <div className="audit-evidence mt-2">
                 <span className="audit-label">Categoria:</span> {CATEGORY_LABELS[clauseAudit.classification.category]}
                 <br />
-                <span className="audit-label">Método:</span> {clauseAudit.classification.method}
+                <span className="audit-label">MÃ©todo:</span> {clauseAudit.classification.method}
                 <br />
                 <span className="audit-label">Regras disparadas:</span> {clauseAudit.classification.rules_fired.length}
               </div>
@@ -156,7 +156,7 @@ function OverviewTab({ audit, clauseAudit }: { audit: AuditSession; clauseAudit:
   );
 }
 
-/* ── Tab: Classificação ──────────────────────────────── */
+/* â”€â”€ Tab: ClassificaÃ§Ã£o â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function ClassificationTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   const { classification } = clauseAudit;
   const sortedScores = Object.entries(classification.scores)
@@ -165,7 +165,7 @@ function ClassificationTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   return (
     <div className="d-flex flex-column gap-3">
       <div>
-        <div className="audit-section-title">Categoria Atribuída</div>
+        <div className="audit-section-title">Categoria AtribuÃ­da</div>
         <div className="d-flex align-items-center gap-2 mt-1">
           <span className={`badge-ios badge-${classification.category}`}>
             {CATEGORY_LABELS[classification.category]}
@@ -233,7 +233,7 @@ function ClassificationTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   );
 }
 
-/* ── Tab: Léxico ─────────────────────────────────────── */
+/* â”€â”€ Tab: LÃ©xico â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function LexiconTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   return (
     <div className="d-flex flex-column gap-3">
@@ -242,7 +242,7 @@ function LexiconTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
       </div>
       {clauseAudit.highlights.length === 0 ? (
         <div className="text-ios-secondary" style={{ fontSize: "0.8125rem" }}>
-          Nenhum termo do léxico foi encontrado nesta cláusula.
+          Nenhum termo do lÃ©xico foi encontrado nesta clÃ¡usula.
         </div>
       ) : (
         clauseAudit.highlights.map((h, idx) => (
@@ -256,7 +256,7 @@ function LexiconTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
             <div className="mt-1" style={{ fontSize: "0.8125rem" }}>
               <span className="audit-label">Offsets:</span> [{h.start}, {h.end}]
               <br />
-              <span className="audit-label">Campo do léxico:</span> {h.lookup.lexicon_field_used}
+              <span className="audit-label">Campo do lÃ©xico:</span> {h.lookup.lexicon_field_used}
               <br />
               <span className="audit-label">Variante que bateu:</span> {h.lookup.matched_variant}
             </div>
@@ -267,12 +267,12 @@ function LexiconTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   );
 }
 
-/* ── Tab: Semiótica ──────────────────────────────────── */
+/* â”€â”€ Tab: SemiÃ³tica â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function SemioticTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
   const cat = clauseAudit.classification.category;
   return (
     <div className="d-flex flex-column gap-3">
-      <div className="audit-section-title">Mapeamento Semiótico da Cláusula</div>
+      <div className="audit-section-title">Mapeamento SemiÃ³tico da ClÃ¡usula</div>
       <div className="audit-evidence">
         <div className="d-flex align-items-center gap-2 mb-2">
           <span className={`badge-ios badge-${cat}`}>
@@ -283,16 +283,17 @@ function SemioticTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
           <span className="audit-label">Significante:</span> Badge de categoria + cor associada
           <br />
           <span className="audit-label">Significado:</span> A categoria &ldquo;{CATEGORY_LABELS[cat]}&rdquo; foi
-          atribuída por correspondência heurística de palavras-chave no texto normalizado.
+          atribuÃ­da por correspondÃªncia heurÃ­stica de palavras-chave no texto normalizado.
           <br />
-          <span className="audit-label">Regra:</span> Categoria {cat} → badge visual com cor e ícone padronizado
-          conforme mapa semiótico do projeto.
+          <span className="audit-label">Regra:</span> Categoria {cat} â†’ badge visual com cor e Ã­cone padronizado
+          conforme mapa semiÃ³tico do projeto.
         </div>
       </div>
       <div className="text-ios-secondary" style={{ fontSize: "0.8125rem" }}>
         <i className="bi bi-info-circle me-1"></i>
-        Para o mapa semiótico completo com justificativas, use o botão &ldquo;Mapa Semiótico&rdquo; na barra do Modo Acadêmico.
+        Para o mapa semiotico completo com justificativas, use o botao “Mapa Semiotico” no cabecalho do Reader.
       </div>
     </div>
   );
 }
+

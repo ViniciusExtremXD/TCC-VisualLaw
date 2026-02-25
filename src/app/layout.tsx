@@ -7,9 +7,9 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Visual Law - Termos Acessiveis",
+  title: "Visual Law TCC - Modo Academico",
   description:
-    "Democratizacao da compreensao de Termos de Servico e Politicas de Privacidade usando Visual Law. TCC - IHC / Mackenzie.",
+    "Ambiente academico para auditoria de Termos de Servico e Politicas de Privacidade com semiótica explicita e rastreabilidade.",
 };
 
 export default function RootLayout({
@@ -49,7 +49,7 @@ export default function RootLayout({
           </main>
 
           <footer className="text-center py-4 mt-5">
-            Visual Law MVP - Entrada por texto - Sem IA - Dicionario Lexico
+            Visual Law TCC - Modo Academico - Entrada por texto - Dicionario Lexico + Auditoria
           </footer>
         </SessionProvider>
       </body>

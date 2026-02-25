@@ -351,4 +351,43 @@ footer {
   border-radius: 6px;
 }
 
+.report-section,
+.report-block {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+@media print {
+  nav,
+  footer,
+  .print-hidden,
+  .modal-overlay,
+  .audit-drawer-overlay {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  main.container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .ios-card,
+  .ios-card-inset {
+    box-shadow: none !important;
+    border: 1px solid #d1d5db !important;
+  }
+
+  .term-highlight {
+    color: #111827 !important;
+    border: 1px solid #f59e0b !important;
+    background: #fef3c7 !important;
+  }
+}
+
 

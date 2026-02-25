@@ -1,179 +1,218 @@
-"use client";
+﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/store/SessionContext";
-import { processText, loadMockSession, SAMPLE_TEXT, getLexicon } from "@/lib/processor";
-import AcademicToggle from "@/components/AcademicToggle";
+import {
+  processText,
+  loadMockSession,
+  SAMPLE_TEXT,
+  getLexicon,
+} from "@/lib/processor";
+import type { DocumentRecord } from "@/lib/types";
+import {
+  activateDocument,
+  getActiveDocument,
+  loadDocRegistry,
+  removeDocument,
+  saveDocRegistry,
+  toggleDocumentStatus,
+  upsertDocument,
+} from "@/lib/docRegistry";
+import DocumentManager from "@/components/DocumentManager";
+import ProcessMap from "@/components/ProcessMap";
 
 export default function HomePage() {
   const [text, setText] = useState("");
-  const [docId, setDocId] = useState("X_PRIVACY");
   const [loading, setLoading] = useState(false);
+  const [documents, setDocuments] = useState<DocumentRecord[]>([]);
   const router = useRouter();
   const { setResults } = useSession();
 
-  const DOC_OPTIONS = [
-    { value: "X_PRIVACY", label: "X (Twitter) — Política de Privacidade" },
-    { value: "X_TERMS", label: "X (Twitter) — Termos de Serviço" },
-    { value: "META_PRIVACY", label: "Meta — Política de Privacidade" },
-    { value: "WA_PRIVACY", label: "WhatsApp — Política de Privacidade" },
-    { value: "IG_TERMS", label: "Instagram — Termos de Uso" },
-    { value: "FB_TERMS", label: "Facebook — Termos de Serviço" },
-    { value: "CUSTOM", label: "Outro documento" },
-  ];
+  useEffect(() => {
+    const loaded = loadDocRegistry();
+    setDocuments(loaded);
+  }, []);
 
-  const handleProcess = () => {
-    if (text.trim().length < 20) return;
-    setLoading(true);
-    setTimeout(() => {
-      try {
-        const result = processText(text.trim(), docId);
-        setResults({ ...result, lexicon: getLexicon() });
-        router.push("/reader");
-      } catch (err) {
-        console.error("Erro ao processar:", err);
-        alert("Erro ao processar o texto. Verifique o conteúdo e tente novamente.");
-      } finally {
-        setLoading(false);
-      }
-    }, 50);
+  const activeDocument = useMemo(
+    () => getActiveDocument(documents),
+    [documents]
+  );
+
+  const persistDocuments = (next: DocumentRecord[]) => {
+    setDocuments(next);
+    saveDocRegistry(next);
   };
 
-  const handleLoadMock = () => {
+  const handleSaveDocument = (document: DocumentRecord) => {
+    const next = upsertDocument(documents, document);
+    persistDocuments(next);
+  };
+
+  const handleRemoveDocument = (docId: string) => {
+    const next = removeDocument(documents, docId);
+    persistDocuments(next);
+  };
+
+  const handleActivateDocument = (docId: string) => {
+    const next = activateDocument(documents, docId);
+    persistDocuments(next);
+  };
+
+  const handleToggleStatus = (docId: string) => {
+    const next = toggleDocumentStatus(documents, docId);
+    persistDocuments(next);
+  };
+
+  const handleProcess = () => {
+    if (text.trim().length < 20 || !activeDocument) {
+      return;
+    }
+
     setLoading(true);
+
     setTimeout(() => {
       try {
-        const result = loadMockSession();
-        setResults({ ...result, lexicon: getLexicon() });
+        const result = processText(text.trim(), activeDocument.doc_id);
+        setResults({
+          ...result,
+          lexicon: getLexicon(),
+          selectedDocument: activeDocument,
+        });
         router.push("/reader");
-      } catch (err) {
-        console.error("Erro ao carregar mock:", err);
+      } catch (error) {
+        console.error("Erro ao processar texto:", error);
+        alert("Falha no processamento. Revise o texto e tente novamente.");
       } finally {
         setLoading(false);
       }
-    }, 50);
+    }, 60);
+  };
+
+  const handleDemo = () => {
+    if (!activeDocument) {
+      return;
+    }
+
+    setLoading(true);
+    setTimeout(() => {
+      try {
+        const result = loadMockSession(activeDocument.doc_id);
+        setResults({
+          ...result,
+          lexicon: getLexicon(),
+          selectedDocument: activeDocument,
+        });
+        router.push("/reader");
+      } catch (error) {
+        console.error("Erro ao carregar demo:", error);
+      } finally {
+        setLoading(false);
+      }
+    }, 60);
   };
 
   return (
-    <div className="d-flex flex-column gap-4 md:gap-5">
-      {/* ── Hero ───────────────────────────────────── */}
-      <div className="text-center py-3">
-        <div className="d-flex justify-content-end mb-2">
-          <AcademicToggle />
-        </div>
+    <div className="d-flex flex-column gap-4">
+      <section className="text-center py-2">
         <div className="mb-3" style={{ fontSize: "3rem" }}>
-          <i className="bi bi-shield-lock text-ios-accent"></i>
+          <i className="bi bi-mortarboard text-ios-accent"></i>
         </div>
-        <h1 className="fw-bold mb-2" style={{ fontSize: "1.75rem", letterSpacing: "-0.02em" }}>
-          Entenda seus Termos de Serviço
+        <h1 className="fw-bold mb-2" style={{ fontSize: "1.8rem" }}>
+          Analise Academica de Termos e Politicas
         </h1>
-        <p className="text-ios-secondary mx-auto" style={{ maxWidth: 480, fontSize: "0.9375rem", lineHeight: 1.5 }}>
-          Cole o texto de uma Política de Privacidade ou Termos de Serviço e
-          visualize cláusula por cláusula, com termos jurídicos explicados em
-          linguagem simples usando <strong>Visual Law</strong>.
+        <p className="text-ios-secondary mx-auto" style={{ maxWidth: 640, fontSize: "0.92rem", lineHeight: 1.5 }}>
+          Ambiente unico em modo academico: processamento explicavel, rastreabilidade por etapa,
+          mapeamento semiotico explicito e relatorio final em PDF.
         </p>
-      </div>
+      </section>
 
-      {/* ── Form Card ──────────────────────────────── */}
-      <div className="ios-card p-4 d-flex flex-column gap-3">
-        {/* Selector */}
+      <DocumentManager
+        documents={documents}
+        onSave={handleSaveDocument}
+        onRemove={handleRemoveDocument}
+        onActivate={handleActivateDocument}
+        onToggleStatus={handleToggleStatus}
+      />
+
+      <ProcessMap />
+
+      <section className="ios-card p-4 d-flex flex-column gap-3">
         <div>
-          <label htmlFor="doc-select" className="form-label fw-semibold" style={{ fontSize: "0.875rem" }}>
-            <i className="bi bi-file-earmark-text me-1"></i>
-            Documento de origem
-          </label>
-          <select
-            id="doc-select"
-            value={docId}
-            onChange={(e) => setDocId(e.target.value)}
-            className="form-select form-select-ios"
-          >
-            {DOC_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
+          <div className="fw-semibold" style={{ fontSize: "0.9rem" }}>
+            Documento ativo para a sessao
+          </div>
+          {activeDocument ? (
+            <div className="text-ios-secondary" style={{ fontSize: "0.84rem" }} data-testid="active-document-label">
+              {activeDocument.name} | {activeDocument.platform} | {activeDocument.type} | {activeDocument.language}
+            </div>
+          ) : (
+            <div className="text-danger" style={{ fontSize: "0.84rem" }}>
+              Nenhum documento ativo. Ative um documento no gerenciador acima.
+            </div>
+          )}
         </div>
 
-        {/* Textarea */}
         <div>
-          <label htmlFor="text-input" className="form-label fw-semibold" style={{ fontSize: "0.875rem" }}>
-            <i className="bi bi-textarea-t me-1"></i>
-            Cole o texto do Termo / Política de Privacidade
+          <label htmlFor="text-input" className="form-label fw-semibold" style={{ fontSize: "0.88rem" }}>
+            Texto de entrada (sem PDF)
           </label>
           <textarea
             id="text-input"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="Cole aqui o texto completo da política de privacidade ou termos de serviço..."
-            rows={10}
             className="form-control form-control-ios"
-          />
-          <div className="text-ios-secondary mt-1" style={{ fontSize: "0.8125rem" }}>
+            rows={11}
+            placeholder="Cole o texto integral para gerar segmentacao, classificacao, lexico, semiotica e auditoria."
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+          ></textarea>
+          <div className="text-ios-secondary mt-1" style={{ fontSize: "0.8rem" }}>
             {text.length > 0
-              ? `${text.length} caracteres · Entrada por texto (sem PDF)`
-              : "Mínimo 20 caracteres · Entrada por texto (sem PDF)"}
+              ? `${text.length} caracteres | minimo recomendado: 20`
+              : "Minimo 20 caracteres para processar"}
           </div>
         </div>
 
-        {/* Buttons */}
         <div className="d-flex flex-column flex-sm-row gap-2">
           <button
-            onClick={handleProcess}
-            disabled={text.trim().length < 20 || loading}
+            type="button"
             className="btn btn-ios btn-ios-primary flex-fill"
+            onClick={handleProcess}
+            disabled={loading || !activeDocument || text.trim().length < 20}
           >
             {loading ? (
               <>
                 <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                Processando...
+                Processando trilha academica...
               </>
             ) : (
               <>
                 <i className="bi bi-lightning-charge-fill me-1"></i>
-                Processar
+                Processar texto
               </>
             )}
           </button>
 
           <button
+            type="button"
+            className="btn btn-ios btn-ios-secondary"
             onClick={() => setText(SAMPLE_TEXT)}
             disabled={loading}
-            className="btn btn-ios btn-ios-secondary"
           >
             <i className="bi bi-clipboard me-1"></i>
             Colar exemplo
           </button>
 
           <button
-            onClick={handleLoadMock}
-            disabled={loading}
+            type="button"
             className="btn btn-ios btn-ios-tertiary"
+            onClick={handleDemo}
+            disabled={loading || !activeDocument}
           >
             <i className="bi bi-play-circle me-1"></i>
-            Demo
+            Demo academica
           </button>
         </div>
-      </div>
-
-      {/* ── How it works ───────────────────────────── */}
-      <div className="row g-3 mt-1">
-        {[
-          { icon: "bi-scissors", title: "Segmentação", desc: "Quebra o texto em cláusulas individuais" },
-          { icon: "bi-search", title: "Destaque", desc: "Identifica termos jurídicos do dicionário léxico" },
-          { icon: "bi-eye", title: "Visual Law", desc: "Cards visuais com explicação acessível dos termos" },
-        ].map((item) => (
-          <div className="col-12 col-sm-4" key={item.title}>
-            <div className="ios-card p-3 text-center h-100">
-              <i className={`bi ${item.icon} text-ios-accent d-block mb-2`} style={{ fontSize: "1.75rem" }}></i>
-              <h3 className="fw-semibold mb-1" style={{ fontSize: "0.9375rem" }}>{item.title}</h3>
-              <p className="text-ios-secondary mb-0" style={{ fontSize: "0.8125rem" }}>{item.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      </section>
     </div>
   );
 }

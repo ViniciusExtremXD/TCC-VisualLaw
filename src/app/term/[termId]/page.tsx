@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import type { LexiconEntry } from "@/lib/types";
 import TermCard from "@/components/TermCard";
 
 // ── importa léxico como módulo TS (dentro de src/) ──────

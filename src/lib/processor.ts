@@ -140,7 +140,7 @@ export function processText(
 
 /* ── Carrega dados mock (clauses pré-prontas) ────────── */
 
-export function loadMockSession(): PipelineResult {
+export function loadMockSession(docId: string = "MOCK_DOC"): PipelineResult {
   const clauses = mockClauses;
   const clausesAudit: Record<string, ClauseAudit> = {};
 
@@ -167,7 +167,7 @@ export function loadMockSession(): PipelineResult {
   const audit: AuditSession = {
     session_id: `SESSION_MOCK_${Date.now()}`,
     created_at: new Date().toISOString(),
-    source: { mode: "mock_data", doc_hint: "MOCK_DOC" },
+    source: { mode: "mock_data", doc_hint: docId },
     pipeline: PIPELINE_STEPS,
     clauses_audit: clausesAudit,
   };

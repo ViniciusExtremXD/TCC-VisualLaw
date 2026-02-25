@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   createContext,
@@ -14,18 +14,18 @@ import type {
   ExplanationsMap,
   LexiconEntry,
   AuditSession,
+  DocumentRecord,
 } from "@/lib/types";
 
-/* ── Shape ──────────────────────────────────────────── */
 interface SessionState {
   clauses: Clause[];
   highlights: HighlightsMap;
   explanations: ExplanationsMap;
   lexicon: LexiconEntry[];
   audit: AuditSession | null;
+  selectedDocument: DocumentRecord | null;
   currentIndex: number;
   isProcessed: boolean;
-  academicMode: boolean;
 }
 
 interface SessionActions {
@@ -35,16 +35,15 @@ interface SessionActions {
     explanations: ExplanationsMap;
     lexicon?: LexiconEntry[];
     audit?: AuditSession;
+    selectedDocument?: DocumentRecord | null;
   }) => void;
   setCurrentIndex: (index: number) => void;
-  setAcademicMode: (mode: boolean) => void;
   reset: () => void;
 }
 
 type SessionContextType = SessionState & SessionActions;
 
-const STORAGE_KEY = "vlaw_session";
-const MODE_KEY = "vlaw_academic_mode";
+const STORAGE_KEY = "vlaw_session_v2";
 
 const INITIAL: SessionState = {
   clauses: [],
@@ -52,73 +51,67 @@ const INITIAL: SessionState = {
   explanations: {},
   lexicon: [],
   audit: null,
+  selectedDocument: null,
   currentIndex: 0,
   isProcessed: false,
-  academicMode: false,
 };
 
-/* ── localStorage helpers ───────────────────────────── */
-
 function saveToStorage(state: SessionState): void {
+  if (typeof window === "undefined") {
+    return;
+  }
+
   try {
-    const { lexicon: _lex, ...rest } = state;
-    sessionStorage.setItem(STORAGE_KEY, JSON.stringify(rest));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
-    // sessionStorage cheio ou indisponível — ignora
+    // Ignore localStorage write failures.
   }
 }
 
 function loadFromStorage(): Partial<SessionState> | null {
+  if (typeof window === "undefined") {
+    return null;
+  }
+
   try {
-    const raw = sessionStorage.getItem(STORAGE_KEY);
-    if (!raw) return null;
-    return JSON.parse(raw);
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      return null;
+    }
+    return JSON.parse(raw) as Partial<SessionState>;
   } catch {
     return null;
   }
 }
 
-function loadAcademicMode(): boolean {
-  try {
-    return localStorage.getItem(MODE_KEY) === "true";
-  } catch {
-    return false;
-  }
-}
-
-function saveAcademicMode(mode: boolean): void {
-  try {
-    localStorage.setItem(MODE_KEY, String(mode));
-  } catch { /* ignore */ }
-}
-
-/* ── Context ────────────────────────────────────────── */
 const SessionContext = createContext<SessionContextType | null>(null);
 
 export function SessionProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<SessionState>(INITIAL);
   const [hydrated, setHydrated] = useState(false);
 
-  // Restaura sessão do sessionStorage na montagem
   useEffect(() => {
     const saved = loadFromStorage();
-    const savedMode = loadAcademicMode();
-    if (saved && saved.isProcessed && saved.clauses && saved.clauses.length > 0) {
-      setState((prev) => ({
-        ...prev,
-        ...saved,
-        lexicon: prev.lexicon,
-        academicMode: savedMode,
-      }));
-    } else {
-      setState((prev) => ({ ...prev, academicMode: savedMode }));
+    if (saved && saved.isProcessed && Array.isArray(saved.clauses) && saved.clauses.length > 0) {
+      setState({
+        clauses: saved.clauses ?? [],
+        highlights: saved.highlights ?? {},
+        explanations: saved.explanations ?? {},
+        lexicon: saved.lexicon ?? [],
+        audit: saved.audit ?? null,
+        selectedDocument: saved.selectedDocument ?? null,
+        currentIndex: typeof saved.currentIndex === "number" ? saved.currentIndex : 0,
+        isProcessed: true,
+      });
     }
     setHydrated(true);
   }, []);
 
-  // Persiste mudanças no sessionStorage
   useEffect(() => {
-    if (hydrated && state.isProcessed) {
+    if (!hydrated) {
+      return;
+    }
+    if (state.isProcessed) {
       saveToStorage(state);
     }
   }, [state, hydrated]);
@@ -130,14 +123,16 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       explanations: ExplanationsMap;
       lexicon?: LexiconEntry[];
       audit?: AuditSession;
+      selectedDocument?: DocumentRecord | null;
     }) => {
       setState((prev) => ({
         ...prev,
         clauses: data.clauses,
         highlights: data.highlights,
         explanations: data.explanations,
-        lexicon: data.lexicon ?? [],
+        lexicon: data.lexicon ?? prev.lexicon,
         audit: data.audit ?? null,
+        selectedDocument: data.selectedDocument ?? prev.selectedDocument,
         currentIndex: 0,
         isProcessed: true,
       }));
@@ -149,22 +144,20 @@ export function SessionProvider({ children }: { children: ReactNode }) {
     setState((prev) => ({ ...prev, currentIndex: index }));
   }, []);
 
-  const setAcademicMode = useCallback((mode: boolean) => {
-    saveAcademicMode(mode);
-    setState((prev) => ({ ...prev, academicMode: mode }));
-  }, []);
-
   const reset = useCallback(() => {
-    try {
-      sessionStorage.removeItem(STORAGE_KEY);
-    } catch { /* ignore */ }
-    setState((prev) => ({ ...INITIAL, academicMode: prev.academicMode }));
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
+    }
+
+    setState(INITIAL);
   }, []);
 
   return (
-    <SessionContext.Provider
-      value={{ ...state, setResults, setCurrentIndex, setAcademicMode, reset }}
-    >
+    <SessionContext.Provider value={{ ...state, setResults, setCurrentIndex, reset }}>
       {children}
     </SessionContext.Provider>
   );
@@ -172,7 +165,8 @@ export function SessionProvider({ children }: { children: ReactNode }) {
 
 export function useSession(): SessionContextType {
   const ctx = useContext(SessionContext);
-  if (!ctx)
+  if (!ctx) {
     throw new Error("useSession must be used within <SessionProvider>");
+  }
   return ctx;
 }

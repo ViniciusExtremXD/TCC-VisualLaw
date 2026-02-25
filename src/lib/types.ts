@@ -1,8 +1,5 @@
-/* ========================================================
- * types.ts — Tipos centrais do projeto Visual Law TCC
- * ======================================================== */
+﻿/* Core domain types for Visual Law TCC (academic mode only). */
 
-// ── Categorias de cláusula ──────────────────────────────
 export const CATEGORIES = [
   "data_collection",
   "purpose_use",
@@ -16,11 +13,11 @@ export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   data_collection: "Coleta de Dados",
-  purpose_use: "Finalidade / Uso",
-  sharing_third_parties: "Compartilhamento / Terceiros",
-  retention_storage: "Retenção / Armazenamento",
-  user_rights: "Direitos do Usuário (LGPD)",
-  security_incidents: "Segurança / Incidentes",
+  purpose_use: "Finalidade e Uso",
+  sharing_third_parties: "Compartilhamento com Terceiros",
+  retention_storage: "Retencao e Armazenamento",
+  user_rights: "Direitos do Titular (LGPD)",
+  security_incidents: "Seguranca e Incidentes",
 };
 
 export const CATEGORY_COLORS: Record<Category, string> = {
@@ -32,10 +29,8 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   security_incidents: "#DC2626",
 };
 
-// ── Impacto ─────────────────────────────────────────────
 export type Impact = "low" | "medium" | "high";
 
-// ── Cláusula ────────────────────────────────────────────
 export interface Clause {
   clause_id: string;
   doc_id: string;
@@ -46,17 +41,21 @@ export interface Clause {
   impact: Impact;
 }
 
-// ── Highlight (match de termo dentro de cláusula) ───────
 export interface TermMatch {
   term_id: string;
-  match: string;      // texto encontrado
-  start: number;      // offset no texto da cláusula
+  match: string;
+  start: number;
   end: number;
 }
 
-export type HighlightsMap = Record<string, TermMatch[]>; // clause_id → matches
+export type HighlightsMap = Record<string, TermMatch[]>;
 
-// ── Explanation (card Visual Law) ───────────────────────
+export interface FAQItem {
+  q: string;
+  a: string;
+  source: "lexicon" | "heuristic";
+}
+
 export interface Explanation {
   meaning: string;
   why_it_matters: string;
@@ -67,9 +66,8 @@ export interface Explanation {
   lgpd_refs: string[];
 }
 
-export type ExplanationsMap = Record<string, Explanation>; // term_id → explanation
+export type ExplanationsMap = Record<string, Explanation>;
 
-// ── Léxico (entrada do dicionário) ──────────────────────
 export interface LexiconEntry {
   term_id: string;
   term: string;
@@ -81,9 +79,9 @@ export interface LexiconEntry {
   impact: Impact;
   icon_id: string;
   lgpd_refs: string[];
+  faqs?: FAQItem[];
 }
 
-// ── Icon Map ────────────────────────────────────────────
 export interface IconEntry {
   label: string;
   lucide_name: string;
@@ -92,8 +90,6 @@ export interface IconEntry {
 }
 
 export type IconMap = Record<string, IconEntry>;
-
-// ── Audit types ─────────────────────────────────────────
 
 export interface RuleFired {
   rule_id: string;
@@ -145,8 +141,6 @@ export interface AuditSession {
   clauses_audit: Record<string, ClauseAudit>;
 }
 
-// ── Semiotic map ────────────────────────────────────────
-
 export interface SemioticEntry {
   category: Category;
   icon_id: string;
@@ -156,12 +150,64 @@ export interface SemioticEntry {
   impact_interpretation: string;
 }
 
+export interface ImpactSemioticEntry {
+  impact: Impact;
+  label: string;
+  icon: string;
+  color: string;
+  interpretation: string;
+}
+
 export type SemioticMapType = SemioticEntry[];
 
-// ── Pipeline result ─────────────────────────────────────
 export interface PipelineResult {
   clauses: Clause[];
   highlights: HighlightsMap;
   explanations: ExplanationsMap;
   audit: AuditSession;
+}
+
+export type DocumentType = "privacy" | "terms" | "cookies" | "other";
+export type DocumentStatus = "active" | "inactive";
+
+export interface DocumentRecord {
+  doc_id: string;
+  name: string;
+  type: DocumentType;
+  platform: string;
+  language: string;
+  url?: string;
+  last_updated?: string;
+  status: DocumentStatus;
+}
+
+export interface ProcessStepDefinition {
+  id: string;
+  title: string;
+  objective: string;
+  input: string;
+  output: string;
+  evidence: string;
+}
+
+export interface DocumentSemanticProfile {
+  doc_type: DocumentType;
+  label: string;
+  primary_icon: string;
+  icon_justification: string;
+  target_categories: Category[];
+  rule_summary: string;
+}
+
+export interface TermEvidence {
+  term_id: string;
+  clause_id: string;
+  match: string;
+  start: number;
+  end: number;
+  context: string;
+  lexicon_field_used: string;
+  matched_variant: string;
+  lgpd_refs: string[];
+  semiotic_rule: string;
 }

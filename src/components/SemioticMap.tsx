@@ -1,38 +1,27 @@
-"use client";
+﻿"use client";
 
-import type { SemioticEntry } from "@/lib/types";
 import { CATEGORY_LABELS } from "@/lib/types";
-import { SEMIOTIC_MAP } from "@/lib/semiotic-data";
-
-const semioticMap = SEMIOTIC_MAP;
-
-const IMPACT_ROWS = [
-  { level: "high", label: "Alto", badge: "bi-exclamation-triangle-fill", color: "#cc0000", interpretation: "Risco significativo à privacidade. Requer atenção imediata do titular." },
-  { level: "medium", label: "Médio", badge: "bi-dash-circle-fill", color: "#997a00", interpretation: "Impacto moderado. Merece revisão cuidadosa dos termos." },
-  { level: "low", label: "Baixo", badge: "bi-check-circle-fill", color: "#1a7a32", interpretation: "Impacto reduzido. Práticas geralmente aceitas." },
-];
+import { IMPACT_SEMIOTIC_MAP, SEMIOTIC_MAP } from "@/lib/semiotic-data";
 
 export default function SemioticMap() {
   return (
     <div className="d-flex flex-column gap-4">
-      {/* Categorias */}
       <div>
-        <h2 className="fw-semibold mb-3" style={{ fontSize: "1.0625rem" }}>
-          <i className="bi bi-palette me-2 text-ios-accent"></i>
-          Mapeamento: Categoria → Signo Visual
+        <h2 className="fw-semibold mb-3" style={{ fontSize: "1.05rem" }}>
+          Mapeamento categoria para signo
         </h2>
         <div className="d-flex flex-column gap-2">
-          {semioticMap.map((entry) => (
+          {SEMIOTIC_MAP.map((entry) => (
             <div key={entry.category} className="ios-card p-3">
               <div className="d-flex align-items-start gap-3">
                 <div
                   className="d-flex align-items-center justify-content-center flex-shrink-0"
                   style={{
-                    width: 40, height: 40,
+                    width: 42,
+                    height: 42,
                     borderRadius: 10,
-                    background: `${entry.color}15`,
+                    background: `${entry.color}20`,
                     color: entry.color,
-                    fontSize: "1.125rem",
                   }}
                 >
                   <i className="bi bi-circle-fill"></i>
@@ -42,17 +31,17 @@ export default function SemioticMap() {
                     <span className={`badge-ios badge-${entry.category}`}>
                       {CATEGORY_LABELS[entry.category]}
                     </span>
-                    <code className="text-ios-secondary" style={{ fontSize: "0.6875rem" }}>
-                      {entry.icon_id}
-                    </code>
+                    <code style={{ fontSize: "0.72rem" }}>{entry.icon_id}</code>
                   </div>
-                  <div style={{ fontSize: "0.8125rem" }}>
-                    <div className="mb-1">
-                      <span className="fw-semibold text-ios-accent">Significante:</span>{" "}
-                      Ícone &ldquo;{entry.icon_label}&rdquo; + cor {entry.color}
+                  <div style={{ fontSize: "0.83rem" }}>
+                    <div>
+                      <span className="fw-semibold text-ios-accent">Significante:</span> icone
+                      "{entry.icon_label}" + cor {entry.color}
                     </div>
                     <div>
-                      <span className="fw-semibold" style={{ color: "#cc7700" }}>Significado:</span>{" "}
+                      <span className="fw-semibold" style={{ color: "#6b21a8" }}>
+                        Significado:
+                      </span>{" "}
                       {entry.significance}
                     </div>
                   </div>
@@ -63,37 +52,29 @@ export default function SemioticMap() {
         </div>
       </div>
 
-      {/* Impacto */}
       <div>
-        <h2 className="fw-semibold mb-3" style={{ fontSize: "1.0625rem" }}>
-          <i className="bi bi-speedometer2 me-2 text-ios-accent"></i>
-          Mapeamento: Impacto → Signo Visual
+        <h2 className="fw-semibold mb-3" style={{ fontSize: "1.05rem" }}>
+          Mapeamento impacto para interpretacao
         </h2>
         <div className="ios-card overflow-hidden">
-          <table className="table table-borderless mb-0" style={{ fontSize: "0.875rem" }}>
+          <table className="table table-borderless mb-0" style={{ fontSize: "0.85rem" }}>
             <thead>
-              <tr style={{ borderBottom: "1px solid var(--vl-border)", background: "rgba(0,0,0,0.02)" }}>
-                <th className="py-2 px-3 fw-semibold text-ios-secondary" style={{ fontSize: "0.75rem" }}>Nível</th>
-                <th className="py-2 px-3 fw-semibold text-ios-secondary" style={{ fontSize: "0.75rem" }}>Signo</th>
-                <th className="py-2 px-3 fw-semibold text-ios-secondary" style={{ fontSize: "0.75rem" }}>Interpretação</th>
+              <tr style={{ borderBottom: "1px solid var(--vl-border)" }}>
+                <th className="py-2 px-3">Impacto</th>
+                <th className="py-2 px-3">Signo</th>
+                <th className="py-2 px-3">Interpretacao</th>
               </tr>
             </thead>
             <tbody>
-              {IMPACT_ROWS.map((row) => (
-                <tr key={row.level} style={{ borderBottom: "0.5px solid var(--vl-border)" }}>
+              {IMPACT_SEMIOTIC_MAP.map((row) => (
+                <tr key={row.impact} style={{ borderBottom: "0.5px solid var(--vl-border)" }}>
                   <td className="py-2 px-3">
-                    <span className={`badge-ios badge-impact-${row.level}`}>
-                      <i className={`bi ${row.badge}`}></i>
-                      {row.label}
-                    </span>
+                    <span className={`badge-ios badge-impact-${row.impact}`}>{row.label}</span>
                   </td>
                   <td className="py-2 px-3">
-                    <i className={`bi ${row.badge}`} style={{ color: row.color }}></i>
-                    <span className="ms-1" style={{ fontSize: "0.8125rem" }}>{row.badge}</span>
+                    <i className={`bi ${row.icon}`} style={{ color: row.color }}></i>
                   </td>
-                  <td className="py-2 px-3" style={{ fontSize: "0.8125rem" }}>
-                    {row.interpretation}
-                  </td>
+                  <td className="py-2 px-3">{row.interpretation}</td>
                 </tr>
               ))}
             </tbody>

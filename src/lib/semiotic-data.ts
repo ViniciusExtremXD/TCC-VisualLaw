@@ -1,5 +1,4 @@
-/* Mapa semiótico — módulo TS dentro de src/ para evitar chunks webpack quebrados */
-import type { SemioticEntry } from "./types";
+﻿import type { ImpactSemioticEntry, SemioticEntry } from "./types";
 
 export const SEMIOTIC_MAP: SemioticEntry[] = [
   {
@@ -7,47 +6,86 @@ export const SEMIOTIC_MAP: SemioticEntry[] = [
     icon_id: "user-circle",
     icon_label: "Dados Pessoais",
     color: "#3B82F6",
-    significance: "O ícone de pessoa em círculo representa a identidade digital do usuário — os dados pessoais são a projeção do indivíduo no meio digital, e o círculo delimita a esfera de proteção da privacidade.",
-    impact_interpretation: "Impacto alto quando envolve dados sensíveis ou identificadores diretos (CPF, biometria). Médio para dados comportamentais (cookies, navegação). Baixo para dados agregados.",
+    significance:
+      "O icone de pessoa representa a identidade digital do titular e a esfera de protecao dos seus dados.",
+    impact_interpretation:
+      "Impacto alto quando envolve identificadores diretos ou dados sensiveis; medio em dados comportamentais; baixo em dados agregados.",
   },
   {
     category: "purpose_use",
     icon_id: "target",
-    icon_label: "Finalidade do Tratamento",
+    icon_label: "Finalidade",
     color: "#0EA5E9",
-    significance: "O alvo (target) simboliza a intencionalidade e precisão que a LGPD exige para o tratamento de dados — toda coleta deve ter propósito definido, assim como uma flecha deve ter destino certo.",
-    impact_interpretation: "Impacto alto quando finalidades são vagas ou excessivamente amplas. Médio quando bem definidas mas abrangentes. Baixo quando específicas e limitadas.",
+    significance:
+      "O alvo representa a exigencia de finalidade especifica: dados devem ser tratados para um objetivo claro e verificavel.",
+    impact_interpretation:
+      "Impacto alto para finalidades vagas; medio para finalidades amplas; baixo para finalidades objetivas e limitadas.",
   },
   {
     category: "sharing_third_parties",
     icon_id: "share-2",
     icon_label: "Compartilhamento",
     color: "#EF4444",
-    significance: "O ícone de compartilhamento (setas divergentes) representa a dispersão de dados para fora do controle direto do titular — a cor vermelha sinaliza risco, pois dados compartilhados multiplicam pontos de vulnerabilidade.",
-    impact_interpretation: "Impacto alto quando dados são cedidos a terceiros sem consentimento granular. Médio quando há justificativa contratual. Baixo quando restrito a obrigações legais.",
+    significance:
+      "As setas de compartilhamento indicam saida de dados para terceiros e aumento do risco de perda de controle.",
+    impact_interpretation:
+      "Impacto alto sem transparencia ou base legal clara; medio quando ha base contratual; baixo em obrigacao legal explicita.",
   },
   {
     category: "retention_storage",
     icon_id: "clock",
-    icon_label: "Retenção / Armazenamento",
+    icon_label: "Retencao",
     color: "#64748B",
-    significance: "O relógio representa a dimensão temporal do tratamento de dados — quanto mais tempo os dados são retidos, maior a janela de exposição a riscos. A cor neutra (cinza) indica que retenção não é intrinsecamente boa ou má, mas depende do prazo.",
-    impact_interpretation: "Impacto alto quando não há prazo definido ou retenção excede a finalidade. Médio quando há prazo razoável. Baixo quando há política clara de eliminação.",
+    significance:
+      "O relogio simboliza o tempo de exposicao dos dados e a necessidade de prazo definido para eliminacao.",
+    impact_interpretation:
+      "Impacto alto sem prazo definido; medio com prazo generico; baixo quando ha politica de descarte clara.",
   },
   {
     category: "user_rights",
     icon_id: "check-circle",
     icon_label: "Direitos do Titular",
     color: "#22C55E",
-    significance: "O check em círculo verde representa a validação e o empoderamento do titular — a confirmação de que o usuário possui agência sobre seus dados. Verde sinaliza aspecto positivo: são garantias a favor do cidadão.",
-    impact_interpretation: "Impacto alto quando direitos são mencionados explicitamente (acesso, exclusão, portabilidade). Médio quando mencionados genericamente. Baixo quando se referem a direitos básicos já implícitos.",
+    significance:
+      "O check simboliza agencia do titular para acessar, corrigir, excluir e portar seus dados.",
+    impact_interpretation:
+      "Impacto alto quando o texto facilita exercicio de direitos; medio para mencao generica; baixo quando omite procedimentos.",
   },
   {
     category: "security_incidents",
     icon_id: "alert-triangle",
-    icon_label: "Segurança / Incidentes",
+    icon_label: "Incidentes de Seguranca",
     color: "#DC2626",
-    significance: "O triângulo de alerta é um signo universal de perigo e atenção — aplicado à segurança de dados, representa a vulnerabilidade e a necessidade de vigilância constante. A cor vermelha reforça a urgência.",
-    impact_interpretation: "Impacto alto quando há menção a incidentes, vazamentos ou ausência de medidas de segurança. Médio quando descreve medidas genéricas. Baixo quando detalha medidas técnicas específicas.",
+    significance:
+      "O triangulo de alerta indica risco concreto a confidencialidade, integridade e disponibilidade dos dados.",
+    impact_interpretation:
+      "Impacto alto em mencao a incidentes ou ausencia de medidas; medio com medidas genericas; baixo com controles tecnicos objetivos.",
+  },
+];
+
+export const IMPACT_SEMIOTIC_MAP: ImpactSemioticEntry[] = [
+  {
+    impact: "high",
+    label: "Alto",
+    icon: "bi-exclamation-triangle-fill",
+    color: "#DC2626",
+    interpretation:
+      "Risco significativo para privacidade e autodeterminacao informativa. Requer leitura critica imediata.",
+  },
+  {
+    impact: "medium",
+    label: "Medio",
+    icon: "bi-dash-circle-fill",
+    color: "#D97706",
+    interpretation:
+      "Risco moderado. Exige avaliacao de contexto, base legal e possibilidade de opt-out.",
+  },
+  {
+    impact: "low",
+    label: "Baixo",
+    icon: "bi-check-circle-fill",
+    color: "#16A34A",
+    interpretation:
+      "Risco reduzido no texto analisado, sem eliminar necessidade de monitoramento.",
   },
 ];
