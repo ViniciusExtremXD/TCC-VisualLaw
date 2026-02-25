@@ -2,7 +2,7 @@
   "name": "visual-law-tcc",
   "version": "0.1.0",
   "private": true,
-  "description": "Democratização da compreensão de Termos de Serviço usando Visual Law — TCC IHC/Visual Law",
+  "description": "Democratização da compreensão de Termos de Serviço usando Visual Law - TCC IHC/Visual Law",
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/prepare-gh-pages-out.mjs",
@@ -17,6 +17,7 @@
     "bootstrap-icons": "^1.13.1",
     "lucide-react": "^0.468.0",
     "next": "^15.1.0",
+    "pdf-lib": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

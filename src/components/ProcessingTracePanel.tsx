@@ -30,6 +30,8 @@ function renderHighlightLine(match: TermMatch, audit?: HighlightAudit) {
 
 export default function ProcessingTracePanel({ clause, audit, highlights }: ProcessingTracePanelProps) {
   const semiotic = SEMIOTIC_MAP.find((item) => item.category === clause.category);
+  const impactLabel =
+    clause.impact === "high" ? "Alto" : clause.impact === "medium" ? "Médio" : "Baixo";
   const sortedScores = audit
     ? Object.entries(audit.classification.scores).sort(([, a], [, b]) => b - a)
     : [];
@@ -37,34 +39,37 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
   return (
     <section className="ios-card p-3" data-testid="processing-trace">
       <h3 className="fw-bold mb-2" style={{ fontSize: "1rem" }}>
-        Rastreamento do Processamento
+        Rastreamento do processamento
       </h3>
       <div className="text-ios-secondary mb-3" style={{ fontSize: "0.8rem" }}>
-        Conversao textual, regras disparadas, matching lexico e mapeamento semiotico da clausula atual.
+        Conversão textual, regras disparadas, matching léxico e mapeamento semiótico da cláusula atual.
       </div>
 
       <div className="d-flex flex-column gap-3">
         <div>
           <div className="audit-section-title">Texto original (trecho)</div>
-          <div className="audit-evidence">{clause.text.slice(0, 280)}{clause.text.length > 280 ? "..." : ""}</div>
-        </div>
-
-        <div>
-          <div className="audit-section-title">Texto normalizado (preview)</div>
-          <div className="audit-evidence">{audit?.normalized_preview ?? "Nao disponivel"}</div>
-        </div>
-
-        <div>
-          <div className="audit-section-title">Segmentacao</div>
           <div className="audit-evidence">
-            regra: {audit?.segment.rule ?? "n/a"} | evidencia: {audit?.segment.evidence ?? "n/a"}
+            {clause.text.slice(0, 280)}
+            {clause.text.length > 280 ? "..." : ""}
           </div>
         </div>
 
         <div>
-          <div className="audit-section-title">Classificacao</div>
+          <div className="audit-section-title">Texto normalizado (preview)</div>
+          <div className="audit-evidence">{audit?.normalized_preview ?? "Não disponível"}</div>
+        </div>
+
+        <div>
+          <div className="audit-section-title">Segmentação</div>
+          <div className="audit-evidence">
+            regra: {audit?.segment.rule ?? "n/a"} | evidência: {audit?.segment.evidence ?? "n/a"}
+          </div>
+        </div>
+
+        <div>
+          <div className="audit-section-title">Classificação</div>
           <div className="audit-evidence mb-2">
-            categoria: {CATEGORY_LABELS[clause.category]} | impacto: {clause.impact}
+            categoria: {CATEGORY_LABELS[clause.category]} | impacto: {impactLabel}
           </div>
           {sortedScores.length > 0 && (
             <div className="ios-card-inset p-2">
@@ -87,7 +92,7 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
         </div>
 
         <div>
-          <div className="audit-section-title">Lexico (matches e offsets)</div>
+          <div className="audit-section-title">Léxico (matches e offsets)</div>
           {highlights.length > 0 ? (
             <div className="d-flex flex-column gap-1">
               {highlights.map((highlight) =>
@@ -98,18 +103,18 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
               )}
             </div>
           ) : (
-            <div className="audit-evidence">Nenhum termo do lexico encontrado nesta clausula.</div>
+            <div className="audit-evidence">Nenhum termo do léxico encontrado nesta cláusula.</div>
           )}
         </div>
 
         <div>
-          <div className="audit-section-title">Semiotica aplicada</div>
+          <div className="audit-section-title">Semiótica aplicada</div>
           <div className="audit-evidence" style={{ fontSize: "0.78rem" }}>
-            categoria {"->"} icone: {clause.category} {"->"} {semiotic?.icon_id ?? "n/a"}
+            categoria {"->"} ícone: {clause.category} {"->"} {semiotic?.icon_id ?? "n/a"}
             <br />
             impacto {"->"} badge: {clause.impact}
             <br />
-            justificativa: {semiotic?.significance ?? "Mapeamento padrao do projeto."}
+            justificativa: {semiotic?.significance ?? "Mapeamento padrão do projeto."}
           </div>
         </div>
       </div>

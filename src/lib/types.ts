@@ -12,12 +12,12 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_LABELS: Record<Category, string> = {
-  data_collection: "Coleta de Dados",
-  purpose_use: "Finalidade e Uso",
-  sharing_third_parties: "Compartilhamento com Terceiros",
-  retention_storage: "Retencao e Armazenamento",
-  user_rights: "Direitos do Titular (LGPD)",
-  security_incidents: "Seguranca e Incidentes",
+  data_collection: "Coleta de dados",
+  purpose_use: "Finalidade e uso",
+  sharing_third_parties: "Compartilhamento com terceiros",
+  retention_storage: "Retenção e armazenamento",
+  user_rights: "Direitos do titular (LGPD)",
+  security_incidents: "Segurança e incidentes",
 };
 
 export const CATEGORY_COLORS: Record<Category, string> = {

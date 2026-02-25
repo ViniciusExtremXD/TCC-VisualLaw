@@ -3,7 +3,7 @@
 export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   {
     doc_id: "X_PRIVACY",
-    name: "X (Twitter) - Politica de Privacidade",
+    name: "X (Twitter) - Política de privacidade",
     type: "privacy",
     platform: "X",
     language: "pt-BR",
@@ -13,7 +13,7 @@ export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   },
   {
     doc_id: "X_TERMS",
-    name: "X (Twitter) - Termos de Servico",
+    name: "X (Twitter) - Termos de serviço",
     type: "terms",
     platform: "X",
     language: "pt-BR",
@@ -23,7 +23,7 @@ export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   },
   {
     doc_id: "META_PRIVACY",
-    name: "Meta - Politica de Privacidade",
+    name: "Meta - Política de privacidade",
     type: "privacy",
     platform: "Meta",
     language: "pt-BR",
@@ -32,7 +32,7 @@ export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   },
   {
     doc_id: "WA_PRIVACY",
-    name: "WhatsApp - Politica de Privacidade",
+    name: "WhatsApp - Política de privacidade",
     type: "privacy",
     platform: "WhatsApp",
     language: "pt-BR",
@@ -41,7 +41,7 @@ export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   },
   {
     doc_id: "IG_TERMS",
-    name: "Instagram - Termos de Uso",
+    name: "Instagram - Termos de uso",
     type: "terms",
     platform: "Instagram",
     language: "pt-BR",
@@ -50,7 +50,7 @@ export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
   },
   {
     doc_id: "FB_TERMS",
-    name: "Facebook - Termos de Servico",
+    name: "Facebook - Termos de serviço",
     type: "terms",
     platform: "Facebook",
     language: "pt-BR",

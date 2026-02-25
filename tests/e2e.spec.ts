@@ -1,4 +1,4 @@
-﻿import { expect, test } from "@playwright/test";
+﻿import { expect, test, type Locator } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -8,6 +8,7 @@ const basePath = `/${repo}`;
 const artifactsRoot = path.resolve("artifacts");
 const screenshotsDir = path.join(artifactsRoot, "screenshots");
 const logsDir = path.join(artifactsRoot, "logs");
+const downloadsDir = path.join(artifactsRoot, "downloads");
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
@@ -20,13 +21,22 @@ function cleanDir(dir: string) {
   }
 }
 
+async function getTop(locator: Locator) {
+  const box = await locator.boundingBox();
+  if (!box) {
+    throw new Error("Elemento não visível para cálculo de ordem na Home.");
+  }
+  return box.y;
+}
+
 test.describe("Visual Law academic static export", () => {
   test.beforeAll(() => {
     cleanDir(screenshotsDir);
     cleanDir(logsDir);
+    cleanDir(downloadsDir);
   });
 
-  test("home academic map + doc CRUD + reader + term card direto + report PDF", async ({ page }) => {
+  test("home limpa + accordions + swagger + fluxo reader + download PDF", async ({ page }) => {
     const staticAssetFailures: string[] = [];
     const staticAssetSuccesses: string[] = [];
 
@@ -42,18 +52,44 @@ test.describe("Visual Law academic static export", () => {
 
     await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
 
-    await expect(page.getByText(/Mapa do Processo/i)).toBeVisible();
+    const entryBlock = page.getByTestId("home-entry-block");
+    const cardsBlock = page.getByTestId("home-flow-cards");
+    const processBlock = page.getByTestId("home-process-block");
+
+    await expect(entryBlock).toBeVisible();
+    await expect(cardsBlock).toBeVisible();
+    await expect(processBlock).toBeVisible();
+
+    const entryTop = await getTop(entryBlock);
+    const cardsTop = await getTop(cardsBlock);
+    const processTop = await getTop(processBlock);
+
+    expect(entryTop).toBeLessThan(cardsTop);
+    expect(cardsTop).toBeLessThan(processTop);
+
+    await expect(page.getByTestId("process-map")).toHaveCount(0);
+
+    await page.getByTestId("process-map-accordion").getByRole("button").click();
     await expect(page.getByTestId("process-map")).toBeVisible();
 
-    // CRUD documents + persistence
+    const swaggerAccordion = page.getByTestId("swagger-accordion");
+    await swaggerAccordion.getByRole("button").click();
+    const swaggerLink = page.getByTestId("swagger-link");
+    await expect(swaggerLink).toHaveAttribute("target", "_blank");
+    await expect(swaggerLink).toHaveAttribute("rel", /noopener/);
+
+    const docAccordion = page.getByTestId("doc-manager-accordion");
+    await docAccordion.getByRole("button").click();
+
     await page.getByTestId("doc-add-button").click();
     await page.getByTestId("doc-name-input").fill("Documento Teste E2E");
     await page.getByTestId("doc-platform-input").fill("Plataforma Teste");
     await page.getByTestId("doc-save-button").click();
-
     await expect(page.getByText("Documento Teste E2E")).toBeVisible();
 
     await page.reload();
+
+    await page.getByTestId("doc-manager-accordion").getByRole("button").click();
     await expect(page.getByText("Documento Teste E2E")).toBeVisible();
 
     const testDocCard = page.locator('[data-testid="doc-item"]', {
@@ -63,25 +99,23 @@ test.describe("Visual Law academic static export", () => {
     await expect(page.getByText("Documento Teste E2E")).toHaveCount(0);
 
     await page.screenshot({
-      path: path.join(screenshotsDir, "HOME_ACADEMIC_DOC_MANAGER.png"),
+      path: path.join(screenshotsDir, "HOME_LIMPA_ACCORDIONS.png"),
       fullPage: true,
     });
 
-    // Process text -> reader
     await page.getByRole("button", { name: /Colar exemplo/i }).click();
     await page.getByRole("button", { name: /Processar texto/i }).click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
 
     await expect(page.getByTestId("processing-trace")).toBeVisible();
-    await expect(page.getByText(/Rastreamento do Processamento/i)).toBeVisible();
+    await expect(page.getByText(/Rastreamento do processamento/i)).toBeVisible();
 
-    // Term card opens directly (no highlight proof modal)
     const firstHighlight = page.locator("mark.term-highlight").first();
     await expect(firstHighlight).toBeVisible();
     await firstHighlight.click();
 
-    await expect(page.getByText(/Evidencia \/ Auditoria do Termo/i)).toBeVisible();
-    await expect(page.getByText(/Principais duvidas/i)).toBeVisible();
+    await expect(page.getByText(/Evidência \/ auditoria do termo/i)).toBeVisible();
+    await expect(page.getByText(/Principais dúvidas/i)).toBeVisible();
     await expect(page.getByText(/Prova do Highlight/i)).toHaveCount(0);
 
     await page.screenshot({
@@ -91,17 +125,61 @@ test.describe("Visual Law academic static export", () => {
 
     await page.getByRole("button", { name: /Fechar card do termo/i }).click();
 
-    // Report/PDF route
-    await page.getByRole("link", { name: /Gerar Relatorio PDF/i }).click();
-    await expect(page).toHaveURL(new RegExp(`${basePath}/report/?$`));
-
+    const downloadPromise = page.waitForEvent("download", { timeout: 30_000 }).catch(() => null);
+    await page.getByTestId("generate-pdf-button").click();
+    await expect(page).toHaveURL(new RegExp(`${basePath}/report/?$`), { timeout: 90_000 });
     await expect(page.getByTestId("report-page")).toBeVisible();
-    await expect(page.getByText(/Relatorio Academico Visual Law/i)).toBeVisible();
-    await expect(page.getByText(/Analise por clausula/i)).toBeVisible();
-    await expect(page.getByTestId("print-report-button")).toBeVisible();
+    await expect(page.getByText(/Relatório acadêmico Visual Law/i)).toBeVisible();
+    const download = await downloadPromise;
+
+    let pdfDownloadInfo:
+      | {
+          filename: string;
+          bytes: number;
+          signature: string;
+          intercepted: boolean;
+        }
+      | undefined;
+
+    if (download) {
+      const downloadPath = path.join(downloadsDir, download.suggestedFilename());
+      await download.saveAs(downloadPath);
+
+      const pdfBytes = fs.readFileSync(downloadPath);
+      expect(pdfBytes.length).toBeGreaterThan(1024);
+      expect(pdfBytes.subarray(0, 5).toString("utf8")).toBe("%PDF-");
+
+      pdfDownloadInfo = {
+        filename: download.suggestedFilename(),
+        bytes: pdfBytes.length,
+        signature: pdfBytes.subarray(0, 5).toString("utf8"),
+        intercepted: true,
+      };
+    } else {
+      const sessionPdfMeta = await page.evaluate(() => sessionStorage.getItem("last_pdf_meta"));
+      expect(sessionPdfMeta).toBeTruthy();
+
+      const parsedMeta = JSON.parse(sessionPdfMeta ?? "{}") as {
+        filename?: string;
+        type?: string;
+        size?: number;
+        signature?: string;
+      };
+
+      expect(parsedMeta.type).toBe("application/pdf");
+      expect(parsedMeta.size ?? 0).toBeGreaterThan(1024);
+      expect(parsedMeta.signature).toBe("%PDF-");
+
+      pdfDownloadInfo = {
+        filename: parsedMeta.filename ?? "unknown.pdf",
+        bytes: parsedMeta.size ?? 0,
+        signature: parsedMeta.signature ?? "n/a",
+        intercepted: false,
+      };
+    }
 
     await page.screenshot({
-      path: path.join(screenshotsDir, "REPORT_READY_FOR_PDF.png"),
+      path: path.join(screenshotsDir, "REPORT_PAGE.png"),
       fullPage: true,
     });
 
@@ -112,6 +190,7 @@ test.describe("Visual Law academic static export", () => {
           repo,
           ok_count: staticAssetSuccesses.length,
           failures: staticAssetFailures,
+          pdf_download: pdfDownloadInfo,
         },
         null,
         2

@@ -3,8 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { CATEGORY_LABELS, type TermEvidence } from "@/lib/types";
-import { useSession } from "@/store/SessionContext";
 import Badge from "@/components/Badge";
 import ProgressBar from "@/components/ProgressBar";
 import HighlightedText from "@/components/HighlightedText";
@@ -12,10 +10,15 @@ import AuditDrawer from "@/components/AuditDrawer";
 import SemioticMap from "@/components/SemioticMap";
 import ProcessingTracePanel from "@/components/ProcessingTracePanel";
 import TermCardModal from "@/components/TermCardModal";
+import { strings } from "@/i18n/ptBR";
+import { CATEGORY_LABELS, type TermEvidence } from "@/lib/types";
+import { useSession } from "@/store/SessionContext";
+import { loadDocRegistry } from "@/lib/docRegistry";
+import { buildReportPdf } from "@/lib/pdf/reportPdf";
 
 function buildContext(text: string, start: number, end: number): string {
-  const contextStart = Math.max(0, start - 38);
-  const contextEnd = Math.min(text.length, end + 38);
+  const contextStart = Math.max(0, start - 40);
+  const contextEnd = Math.min(text.length, end + 40);
   const prefix = contextStart > 0 ? "..." : "";
   const suffix = contextEnd < text.length ? "..." : "";
   return `${prefix}${text.slice(contextStart, contextEnd)}${suffix}`;
@@ -28,6 +31,7 @@ export default function ReaderPage() {
     highlights,
     lexicon,
     audit,
+    selectedDocument,
     currentIndex,
     isProcessed,
     setCurrentIndex,
@@ -37,19 +41,20 @@ export default function ReaderPage() {
   const [auditDrawerClauseId, setAuditDrawerClauseId] = useState<string | null>(null);
   const [showSemioticMap, setShowSemioticMap] = useState(false);
   const [selectedTermEvidence, setSelectedTermEvidence] = useState<TermEvidence | null>(null);
+  const [generatingPdf, setGeneratingPdf] = useState(false);
 
   if (!isProcessed || clauses.length === 0) {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center py-5 text-center">
         <i className="bi bi-inbox text-ios-secondary mb-3" style={{ fontSize: "3.5rem" }}></i>
         <h2 className="fw-semibold mb-2" style={{ fontSize: "1.25rem" }}>
-          Nenhum documento processado
+          {strings.reader.noSessionTitle}
         </h2>
         <p className="text-ios-secondary mb-4" style={{ maxWidth: 420, fontSize: "0.93rem" }}>
-          Retorne para a Home e execute o pipeline academico para gerar trilha auditavel.
+          {strings.reader.noSessionText}
         </p>
         <Link href="/" className="btn btn-ios btn-ios-primary">
-          Voltar para Home
+          {strings.reader.backHome}
         </Link>
       </div>
     );
@@ -88,7 +93,7 @@ export default function ReaderPage() {
       (item) => item.term_id === termId && item.start === highlight.start
     );
 
-    const evidence: TermEvidence = {
+    setSelectedTermEvidence({
       term_id: termId,
       clause_id: clause.clause_id,
       match: highlight.match,
@@ -99,9 +104,46 @@ export default function ReaderPage() {
       matched_variant: auditHighlight?.lookup.matched_variant ?? highlight.match,
       lgpd_refs: lexiconEntry.lgpd_refs,
       semiotic_rule: `${CATEGORY_LABELS[lexiconEntry.category]} -> ${lexiconEntry.icon_id}`,
-    };
+    });
+  };
 
-    setSelectedTermEvidence(evidence);
+  const handleGeneratePdf = async () => {
+    setGeneratingPdf(true);
+    try {
+      const blob = await buildReportPdf({
+        generatedAt: new Date().toLocaleString("pt-BR"),
+        version: "0.2.0",
+        selectedDocument,
+        docRegistry: loadDocRegistry(),
+        clauses,
+        highlights,
+        lexicon,
+        audit,
+      });
+
+      const filenameDate = new Date().toISOString().replace(/[:.]/g, "-");
+      const filename = `visual-law-relatorio-${filenameDate}.pdf`;
+      const pdfBytes = new Uint8Array(await blob.arrayBuffer());
+      const pdfMeta = {
+        filename,
+        type: blob.type,
+        size: blob.size,
+        signature: String.fromCharCode(...pdfBytes.slice(0, 5)),
+      };
+      sessionStorage.setItem("last_pdf_meta", JSON.stringify(pdfMeta));
+
+      const url = URL.createObjectURL(blob);
+      const anchor = document.createElement("a");
+      anchor.href = url;
+      anchor.download = filename;
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      window.setTimeout(() => URL.revokeObjectURL(url), 2_000);
+      router.push("/report");
+    } finally {
+      setGeneratingPdf(false);
+    }
   };
 
   const selectedEntry = selectedTermEvidence
@@ -113,21 +155,32 @@ export default function ReaderPage() {
       <div className="d-flex align-items-center justify-content-between flex-wrap gap-2">
         <h1 className="fw-bold mb-0" style={{ fontSize: "1.35rem" }}>
           <i className="bi bi-journal-check me-2 text-ios-accent"></i>
-          Leitura Guiada Academica
+          {strings.reader.title}
         </h1>
         <div className="d-flex gap-2 flex-wrap">
-          <Link href="/report" className="btn btn-ios btn-ios-primary" style={{ fontSize: "0.86rem", padding: "0.5rem 0.95rem" }}>
+          <button
+            type="button"
+            className="btn btn-ios btn-ios-primary"
+            style={{ fontSize: "0.86rem", padding: "0.5rem 0.95rem" }}
+            onClick={handleGeneratePdf}
+            disabled={generatingPdf}
+            data-testid="generate-pdf-button"
+          >
             <i className="bi bi-filetype-pdf me-1"></i>
-            Gerar Relatorio PDF
+            {generatingPdf ? strings.reader.generatingPdf : strings.reader.generatePdf}
+          </button>
+          <Link href="/report" className="btn btn-ios btn-ios-secondary" style={{ fontSize: "0.86rem", padding: "0.5rem 0.95rem" }}>
+            <i className="bi bi-journal-text me-1"></i>
+            {strings.reader.reportPreview}
           </Link>
           <button
             type="button"
-            className="btn btn-ios btn-ios-secondary"
+            className="btn btn-ios btn-ios-tertiary"
             style={{ fontSize: "0.86rem", padding: "0.5rem 0.95rem" }}
             onClick={() => setShowSemioticMap(true)}
           >
             <i className="bi bi-palette me-1"></i>
-            Mapa Semiotico
+            {strings.reader.mapButton}
           </button>
           <button
             type="button"
@@ -136,7 +189,7 @@ export default function ReaderPage() {
             onClick={handleNewDocument}
           >
             <i className="bi bi-plus-circle me-1"></i>
-            Novo documento
+            {strings.reader.newDoc}
           </button>
         </div>
       </div>
@@ -147,11 +200,9 @@ export default function ReaderPage() {
       >
         <i className="bi bi-mortarboard-fill" style={{ color: "#4338ca" }}></i>
         <span className="fw-semibold" style={{ color: "#4338ca" }}>
-          Modo academico permanente
+          {strings.reader.permanentMode}
         </span>
-        <span className="text-ios-secondary">
-          sem etapa intermediaria: clique no highlight para abrir o card completo com evidencia embutida.
-        </span>
+        <span className="text-ios-secondary">{strings.reader.permanentModeText}</span>
       </div>
 
       <ProgressBar current={currentIndex + 1} total={clauses.length} />
@@ -161,7 +212,7 @@ export default function ReaderPage() {
           <div className="d-flex align-items-start justify-content-between flex-wrap gap-2">
             <div>
               <h2 className="fw-semibold mb-0" style={{ fontSize: "1.05rem" }}>
-                {clause.title || `Clausula ${currentIndex + 1}`}
+                {clause.title || `Cláusula ${currentIndex + 1}`}
               </h2>
               <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>{clause.clause_id}</span>
             </div>
@@ -178,7 +229,7 @@ export default function ReaderPage() {
           {clause.lgpd_refs.length > 0 && (
             <div className="mt-3 pt-3" style={{ borderTop: "0.5px solid var(--vl-border)", fontSize: "0.82rem" }}>
               <i className="bi bi-bookmark me-1"></i>
-              LGPD: {clause.lgpd_refs.join(", ")}
+              {strings.reader.referencesLgpd}: {clause.lgpd_refs.join(", ")}
             </div>
           )}
         </div>
@@ -186,7 +237,7 @@ export default function ReaderPage() {
         <div className="px-4 pb-3">
           <div className="d-flex align-items-center gap-2 text-ios-secondary" style={{ fontSize: "0.81rem" }}>
             <i className="bi bi-lightbulb"></i>
-            Clique em qualquer termo destacado para abrir diretamente o card academico completo.
+            {strings.reader.termHint}
           </div>
         </div>
 
@@ -206,7 +257,7 @@ export default function ReaderPage() {
               onClick={() => setAuditDrawerClauseId(clause.clause_id)}
             >
               <i className="bi bi-clipboard-data me-1"></i>
-              Abrir auditoria detalhada desta clausula
+              {strings.reader.openAudit}
             </button>
           </div>
         )}
@@ -223,7 +274,7 @@ export default function ReaderPage() {
           style={{ fontSize: "0.86rem", padding: "0.62rem 1.2rem" }}
         >
           <i className="bi bi-chevron-left me-1"></i>
-          Anterior
+          {strings.reader.prev}
         </button>
 
         <span className="text-ios-secondary fw-semibold" style={{ fontSize: "0.86rem" }}>
@@ -237,7 +288,7 @@ export default function ReaderPage() {
           className="btn btn-ios btn-ios-primary"
           style={{ fontSize: "0.86rem", padding: "0.62rem 1.2rem" }}
         >
-          Proxima
+          {strings.reader.next}
           <i className="bi bi-chevron-right ms-1"></i>
         </button>
       </div>
@@ -267,7 +318,7 @@ export default function ReaderPage() {
           >
             <div className="d-flex align-items-center justify-content-between mb-3">
               <h3 className="fw-bold mb-0" style={{ fontSize: "1.1rem" }}>
-                Mapa Semiotico
+                Mapa semiótico
               </h3>
               <button
                 type="button"

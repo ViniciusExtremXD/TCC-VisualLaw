@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { SessionProvider } from "@/store/SessionContext";
+import { strings } from "@/i18n/ptBR";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Visual Law TCC - Modo Academico",
+  title: "Visual Law TCC - Modo acadêmico",
   description:
-    "Ambiente academico para auditoria de Termos de Servico e Politicas de Privacidade com semiótica explicita e rastreabilidade.",
+    "Ambiente acadêmico para auditoria de Termos de Serviço e Políticas de Privacidade com semiótica explícita e rastreabilidade.",
 };
 
 export default function RootLayout({
@@ -19,28 +20,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body className="min-h-screen bg-slate-100 text-slate-900 antialiased">
         <SessionProvider>
           <nav className="navbar ios-navbar sticky-top">
             <div className="container" style={{ maxWidth: 720 }}>
               <Link href="/" className="navbar-brand d-flex align-items-center gap-2 fw-bold text-ios-accent">
                 <i className="bi bi-shield-check fs-4"></i>
-                Visual Law
+                {strings.app.title}
               </Link>
 
-              <div className="d-flex align-items-center gap-2">
-                <Link
-                  href="/swagger/"
-                  className="btn btn-ios btn-ios-tertiary"
-                  style={{ fontSize: "0.75rem", padding: "0.35rem 0.65rem" }}
-                >
-                  <i className="bi bi-diagram-3 me-1"></i>
-                  Swagger
-                </Link>
-                <span className="d-none d-sm-inline text-ios-secondary" style={{ fontSize: "0.8125rem" }}>
-                  TCC - IHC / Mackenzie
-                </span>
-              </div>
+              <span className="d-none d-sm-inline text-ios-secondary" style={{ fontSize: "0.8125rem" }}>
+                {strings.app.subtitle}
+              </span>
             </div>
           </nav>
 
@@ -48,9 +42,7 @@ export default function RootLayout({
             {children}
           </main>
 
-          <footer className="text-center py-4 mt-5">
-            Visual Law TCC - Modo Academico - Entrada por texto - Dicionario Lexico + Auditoria
-          </footer>
+          <footer className="text-center py-4 mt-5">{strings.app.footer}</footer>
         </SessionProvider>
       </body>
     </html>

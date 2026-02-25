@@ -4,12 +4,12 @@ export const SEMIOTIC_MAP: SemioticEntry[] = [
   {
     category: "data_collection",
     icon_id: "user-circle",
-    icon_label: "Dados Pessoais",
+    icon_label: "Dados pessoais",
     color: "#3B82F6",
     significance:
-      "O icone de pessoa representa a identidade digital do titular e a esfera de protecao dos seus dados.",
+      "O ícone de pessoa representa a identidade digital do titular e a esfera de proteção dos seus dados.",
     impact_interpretation:
-      "Impacto alto quando envolve identificadores diretos ou dados sensiveis; medio em dados comportamentais; baixo em dados agregados.",
+      "Impacto alto quando envolve identificadores diretos ou dados sensíveis; médio em dados comportamentais; baixo em dados agregados.",
   },
   {
     category: "purpose_use",
@@ -17,9 +17,9 @@ export const SEMIOTIC_MAP: SemioticEntry[] = [
     icon_label: "Finalidade",
     color: "#0EA5E9",
     significance:
-      "O alvo representa a exigencia de finalidade especifica: dados devem ser tratados para um objetivo claro e verificavel.",
+      "O alvo representa a exigência de finalidade específica: dados devem ser tratados para um objetivo claro e verificável.",
     impact_interpretation:
-      "Impacto alto para finalidades vagas; medio para finalidades amplas; baixo para finalidades objetivas e limitadas.",
+      "Impacto alto para finalidades vagas; médio para finalidades amplas; baixo para finalidades objetivas e limitadas.",
   },
   {
     category: "sharing_third_parties",
@@ -27,39 +27,39 @@ export const SEMIOTIC_MAP: SemioticEntry[] = [
     icon_label: "Compartilhamento",
     color: "#EF4444",
     significance:
-      "As setas de compartilhamento indicam saida de dados para terceiros e aumento do risco de perda de controle.",
+      "As setas de compartilhamento indicam saída de dados para terceiros e aumento do risco de perda de controle.",
     impact_interpretation:
-      "Impacto alto sem transparencia ou base legal clara; medio quando ha base contratual; baixo em obrigacao legal explicita.",
+      "Impacto alto sem transparência ou base legal clara; médio quando há base contratual; baixo em obrigação legal explícita.",
   },
   {
     category: "retention_storage",
     icon_id: "clock",
-    icon_label: "Retencao",
+    icon_label: "Retenção",
     color: "#64748B",
     significance:
-      "O relogio simboliza o tempo de exposicao dos dados e a necessidade de prazo definido para eliminacao.",
+      "O relógio simboliza o tempo de exposição dos dados e a necessidade de prazo definido para eliminação.",
     impact_interpretation:
-      "Impacto alto sem prazo definido; medio com prazo generico; baixo quando ha politica de descarte clara.",
+      "Impacto alto sem prazo definido; médio com prazo genérico; baixo quando há política de descarte clara.",
   },
   {
     category: "user_rights",
     icon_id: "check-circle",
-    icon_label: "Direitos do Titular",
+    icon_label: "Direitos do titular",
     color: "#22C55E",
     significance:
-      "O check simboliza agencia do titular para acessar, corrigir, excluir e portar seus dados.",
+      "O check simboliza agência do titular para acessar, corrigir, excluir e portar seus dados.",
     impact_interpretation:
-      "Impacto alto quando o texto facilita exercicio de direitos; medio para mencao generica; baixo quando omite procedimentos.",
+      "Impacto alto quando o texto facilita exercício de direitos; médio para menção genérica; baixo quando omite procedimentos.",
   },
   {
     category: "security_incidents",
     icon_id: "alert-triangle",
-    icon_label: "Incidentes de Seguranca",
+    icon_label: "Incidentes de segurança",
     color: "#DC2626",
     significance:
-      "O triangulo de alerta indica risco concreto a confidencialidade, integridade e disponibilidade dos dados.",
+      "O triângulo de alerta indica risco concreto à confidencialidade, integridade e disponibilidade dos dados.",
     impact_interpretation:
-      "Impacto alto em mencao a incidentes ou ausencia de medidas; medio com medidas genericas; baixo com controles tecnicos objetivos.",
+      "Impacto alto em menção a incidentes ou ausência de medidas; médio com medidas genéricas; baixo com controles técnicos objetivos.",
   },
 ];
 
@@ -70,15 +70,15 @@ export const IMPACT_SEMIOTIC_MAP: ImpactSemioticEntry[] = [
     icon: "bi-exclamation-triangle-fill",
     color: "#DC2626",
     interpretation:
-      "Risco significativo para privacidade e autodeterminacao informativa. Requer leitura critica imediata.",
+      "Risco significativo para privacidade e autodeterminação informativa. Requer leitura crítica imediata.",
   },
   {
     impact: "medium",
-    label: "Medio",
+    label: "Médio",
     icon: "bi-dash-circle-fill",
     color: "#D97706",
     interpretation:
-      "Risco moderado. Exige avaliacao de contexto, base legal e possibilidade de opt-out.",
+      "Risco moderado. Exige avaliação de contexto, base legal e possibilidade de opt-out.",
   },
   {
     impact: "low",

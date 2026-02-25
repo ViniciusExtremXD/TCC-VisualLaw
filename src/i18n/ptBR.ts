@@ -1,0 +1,98 @@
+﻿export const strings = {
+  app: {
+    title: "Visual Law TCC",
+    subtitle: "TCC - IHC / Mackenzie",
+    footer:
+      "Visual Law TCC - Modo acadêmico - Entrada por texto - Dicionário léxico + auditoria",
+    swaggerLabel: "Swagger",
+  },
+  common: {
+    category: "Categoria",
+    impact: "Impacto",
+    lgpdRefs: "Referências LGPD",
+    active: "Ativo",
+    inactive: "Inativo",
+  },
+  home: {
+    heroTitle: "Análise acadêmica de termos e políticas",
+    heroText:
+      "Ambiente em modo acadêmico com rastreabilidade por etapa, mapeamento semiótico explícito e relatório técnico em PDF.",
+    entryTitle: "Entrada",
+    activeDocument: "Documento ativo para a sessão",
+    noActiveDocument:
+      "Nenhum documento ativo. Abra “Gerenciar documentos” e ative um documento.",
+    textInputLabel: "Texto de entrada (sem PDF)",
+    textInputPlaceholder:
+      "Cole o texto integral para gerar segmentação, classificação, léxico, semiótica e auditoria.",
+    minChars: "Mínimo 20 caracteres para processar",
+    process: "Processar texto",
+    processing: "Processando trilha acadêmica...",
+    pasteExample: "Colar exemplo",
+    demo: "Demo",
+    cardsTitle: "Fluxo de análise",
+    segmentation: "Segmentação",
+    highlight: "Destaque",
+    visualLaw: "Visual Law",
+    segmentationDesc: "Quebra do texto em cláusulas auditáveis.",
+    highlightDesc: "Correspondência léxica com offsets e proveniência.",
+    visualLawDesc: "Card explicativo com ação orientada ao titular.",
+    processMapTitle: "Mapa do processo (semiótica + auditoria)",
+    processMapSummary:
+      "Trilha fixa do pipeline acadêmico com entradas, saídas e evidências.",
+    processMapDetails: "Ver detalhes do processo",
+    docManagerTitle: "Gerenciador de documentos",
+    docManagerSummary:
+      "Lista completa de documentos, status e mapeamento semântico.",
+    docManagerDetails: "Gerenciar documentos",
+    contractTitle: "Contrato técnico (planejado)",
+    contractSummary:
+      "MVP front-end only (static export). Este contrato descreve a evolução futura.",
+    contractLink: "Abrir Swagger em nova guia",
+  },
+  reader: {
+    title: "Leitura guiada acadêmica",
+    permanentMode: "Modo acadêmico permanente",
+    permanentModeText:
+      "Clique no highlight para abrir o card completo com evidência embutida.",
+    noSessionTitle: "Nenhum documento processado",
+    noSessionText:
+      "Volte para a Home e execute o pipeline para gerar a trilha auditável.",
+    backHome: "Voltar para Home",
+    mapButton: "Mapa semiótico",
+    newDoc: "Novo documento",
+    openAudit: "Abrir auditoria detalhada desta cláusula",
+    termHint:
+      "Clique em qualquer termo destacado para abrir diretamente o card completo.",
+    generatePdf: "Gerar PDF",
+    generatingPdf: "Gerando PDF...",
+    reportPreview: "Visualizar relatório",
+    prev: "Anterior",
+    next: "Próxima",
+    referencesLgpd: "Referências LGPD",
+  },
+  report: {
+    pageTitle: "Relatório acadêmico Visual Law",
+    unavailableTitle: "Relatório indisponível",
+    unavailableText:
+      "Execute o processamento no Reader antes de gerar o relatório.",
+    printButton: "Imprimir / Salvar PDF",
+    coverTitle: "Visual Law TCC - Relatório de auditoria",
+    generatedAt: "Data/hora",
+    version: "Versão MVP",
+    selectedDocument: "Documento selecionado",
+    metadata: "Metadados",
+    summary: "Sumário de cláusulas",
+    clauseAnalysis: "Análise por cláusula",
+    termsSection: "Termos encontrados e cards completos",
+    appendix: "Apêndice semântico e semiótico",
+    backToReader: "Voltar ao Reader",
+    reportNotice:
+      "Visualização acadêmica da sessão atual. O download em PDF é gerado no Reader.",
+    noData: "Não informado",
+    documentMapping: "Mapeamento do documento",
+    viewRawMap: "Ver matriz completa doc_type_semantics",
+    clauseText: "Texto original da cláusula",
+    highlightedExcerpt: "Trecho com destaques",
+    classificationEvidence: "Evidência de classificação",
+  },
+} as const;

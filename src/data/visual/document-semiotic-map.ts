@@ -17,10 +17,10 @@ const DOC_TYPE_SEMANTICS: Record<
 > = {
   privacy: {
     doc_type: "privacy",
-    label: "Politica de Privacidade",
+    label: "Política de privacidade",
     primary_icon: "bi-shield-lock",
     icon_justification:
-      "O escudo representa protecao e governanca de dados pessoais ao longo de todo o ciclo de tratamento.",
+      "O escudo representa proteção e governança de dados pessoais ao longo de todo o ciclo de tratamento.",
     target_categories: [
       "data_collection",
       "purpose_use",
@@ -30,14 +30,14 @@ const DOC_TYPE_SEMANTICS: Record<
       "security_incidents",
     ],
     rule_summary:
-      "Politica de Privacidade prioriza Coleta, Finalidade, Compartilhamento, Retencao, Direitos e Seguranca.",
+      "Política de privacidade prioriza coleta, finalidade, compartilhamento, retenção, direitos e segurança.",
   },
   terms: {
     doc_type: "terms",
-    label: "Termos de Servico",
+    label: "Termos de serviço",
     primary_icon: "bi-journal-text",
     icon_justification:
-      "O simbolo de documento representa regras contratuais, obrigacoes e limites de uso da plataforma.",
+      "O símbolo de documento representa regras contratuais, obrigações e limites de uso da plataforma.",
     target_categories: [
       "purpose_use",
       "sharing_third_parties",
@@ -45,21 +45,21 @@ const DOC_TYPE_SEMANTICS: Record<
       "user_rights",
     ],
     rule_summary:
-      "Termos de Servico priorizam Finalidade de uso, condicoes de compartilhamento, retencao contratual e direitos.",
+      "Termos de serviço priorizam finalidade de uso, condições de compartilhamento, retenção contratual e direitos.",
   },
   cookies: {
     doc_type: "cookies",
-    label: "Politica de Cookies",
+    label: "Política de cookies",
     primary_icon: "bi-cookie",
     icon_justification:
-      "O icone de cookie sinaliza rastreamento de navegacao e configuracoes de publicidade comportamental.",
+      "O ícone de cookie sinaliza rastreamento de navegação e configurações de publicidade comportamental.",
     target_categories: ["data_collection", "purpose_use", "sharing_third_parties"],
     rule_summary:
-      "Politica de Cookies prioriza rastreadores, finalidades de personalizacao e compartilhamento com parceiros de ads.",
+      "Política de cookies prioriza rastreadores, finalidades de personalização e compartilhamento com parceiros de ads.",
   },
   other: {
     doc_type: "other",
-    label: "Documento Geral",
+    label: "Documento geral",
     primary_icon: "bi-files",
     icon_justification:
       "O conjunto de arquivos representa um documento sem tipologia fechada, exigindo leitura categoria por categoria.",
@@ -72,7 +72,7 @@ const DOC_TYPE_SEMANTICS: Record<
       "security_incidents",
     ],
     rule_summary:
-      "Documento geral usa mapeamento completo para nao perder evidencias de classificacao e highlights.",
+      "Documento geral usa mapeamento completo para não perder evidências de classificação e highlights.",
   },
 };
 
@@ -80,86 +80,86 @@ const PLATFORM_RULES: PlatformRule[] = [
   {
     platform: "X",
     extra_categories: ["sharing_third_parties"],
-    note: "Plataformas de ads e recomendacao elevam foco em compartilhamento e finalidade publicitaria.",
+    note: "Plataformas de ads e recomendação elevam foco em compartilhamento e finalidade publicitária.",
   },
   {
     platform: "Meta",
     extra_categories: ["sharing_third_parties", "security_incidents"],
-    note: "Ecossistema multi-produto requer rastreabilidade de integracoes e controles de seguranca.",
+    note: "Ecossistema multiproduto requer rastreabilidade de integrações e controles de segurança.",
   },
   {
     platform: "WhatsApp",
     extra_categories: ["security_incidents", "user_rights"],
-    note: "Mensageria exige enfase em seguranca, transparencia e direitos sobre metadados.",
+    note: "Mensageria exige ênfase em segurança, transparência e direitos sobre metadados.",
   },
   {
     platform: "Instagram",
     extra_categories: ["purpose_use", "sharing_third_parties"],
-    note: "Plataforma orientada a conteudo e anuncios reforca finalidade de uso e compartilhamento.",
+    note: "Plataforma orientada a conteúdo e anúncios reforça finalidade de uso e compartilhamento.",
   },
   {
     platform: "Facebook",
     extra_categories: ["sharing_third_parties", "retention_storage"],
-    note: "Historico e amplitude de dados elevam relevancia de retencao e terceiros.",
+    note: "Histórico e amplitude de dados elevam relevância de retenção e terceiros.",
   },
 ];
 
 export const PROCESS_SEMIOTIC_STEPS: ProcessStepDefinition[] = [
   {
     id: "P1_INGEST",
-    title: "Ingestao",
+    title: "Ingestão",
     objective: "Registrar o texto de origem e metadados do documento.",
     input: "Texto bruto + documento selecionado",
-    output: "Sessao de processamento inicial",
+    output: "Sessão de processamento inicial",
     evidence: "doc_id, plataforma, tipo, timestamp",
   },
   {
     id: "P2_SEGMENT",
-    title: "Segmentacao",
-    objective: "Quebrar o texto em clausulas auditaveis.",
+    title: "Segmentação",
+    objective: "Quebrar o texto em cláusulas auditáveis.",
     input: "Texto bruto",
-    output: "Lista de clausulas com clause_id",
-    evidence: "regra de split + evidencia de segmentacao",
+    output: "Lista de cláusulas com clause_id",
+    evidence: "regra de split + evidência de segmentação",
   },
   {
     id: "P3_CLASSIFY",
-    title: "Classificacao",
-    objective: "Atribuir categoria e impacto por heuristicas explicitas.",
-    input: "Clausula normalizada",
+    title: "Classificação",
+    objective: "Atribuir categoria e impacto por heurísticas explícitas.",
+    input: "Cláusula normalizada",
     output: "Categoria, impacto e score por regra",
     evidence: "rules_fired, keywords, score",
   },
   {
     id: "P4_LEXICON",
-    title: "Lexico",
-    objective: "Detectar termos juridicos e origem do match.",
-    input: "Texto da clausula",
+    title: "Léxico",
+    objective: "Detectar termos jurídicos e origem do match.",
+    input: "Texto da cláusula",
     output: "Highlights com offsets",
     evidence: "term_id, start/end, lookup provenance",
   },
   {
     id: "P5_SEMIOTIC",
-    title: "Semiotica",
-    objective: "Mapear categoria e impacto para signos visuais justificaveis.",
+    title: "Semiótica",
+    objective: "Mapear categoria e impacto para signos visuais justificáveis.",
     input: "Categoria e impacto",
-    output: "Icone, badge e justificativa",
-    evidence: "regra categoria->icone e impacto->interpretacao",
+    output: "Ícone, badge e justificativa",
+    evidence: "regra categoria->ícone e impacto->interpretação",
   },
   {
     id: "P6_VISUAL_CARD",
     title: "Card Visual Law",
-    objective: "Apresentar explicacao completa e acao orientada ao usuario.",
-    input: "Termo identificado + lexico",
-    output: "Card academico com FAQ",
+    objective: "Apresentar explicação completa e ação orientada ao usuário.",
+    input: "Termo identificado + léxico",
+    output: "Card acadêmico com FAQ",
     evidence: "meaning, why, action, FAQ",
   },
   {
     id: "P7_AUDIT_REPORT",
-    title: "Auditoria e Relatorio",
-    objective: "Consolidar rastreabilidade em evidencias exportaveis.",
-    input: "Pipeline + clausulas + termos",
-    output: "Relatorio printavel/PDF",
-    evidence: "timeline da sessao + apendice semiotico",
+    title: "Auditoria e relatório",
+    objective: "Consolidar rastreabilidade em evidências exportáveis.",
+    input: "Pipeline + cláusulas + termos",
+    output: "Relatório em PDF",
+    evidence: "timeline da sessão + apêndice semiótico",
   },
 ];
 

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import type { Category, Impact } from "@/lib/types";
 import { CATEGORY_LABELS } from "@/lib/types";
@@ -30,11 +30,11 @@ export default function Badge({ type, value }: BadgeProps) {
     );
   }
 
-  const imp = value as Impact;
+  const impact = value as Impact;
   return (
-    <span className={`badge-ios badge-impact-${imp}`}>
-      <i className={`bi ${IMPACT_ICONS[imp]}`}></i>
-      {IMPACT_LABELS[imp] ?? imp}
+    <span className={`badge-ios badge-impact-${impact}`}>
+      <i className={`bi ${IMPACT_ICONS[impact]}`}></i>
+      {IMPACT_LABELS[impact] ?? impact}
     </span>
   );
 }

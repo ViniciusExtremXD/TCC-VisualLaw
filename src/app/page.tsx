@@ -1,7 +1,12 @@
 ﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import DocumentManager from "@/components/DocumentManager";
+import ProcessMap from "@/components/ProcessMap";
+import Accordion from "@/components/Accordion";
+import { strings } from "@/i18n/ptBR";
 import { useSession } from "@/store/SessionContext";
 import {
   processText,
@@ -19,8 +24,24 @@ import {
   toggleDocumentStatus,
   upsertDocument,
 } from "@/lib/docRegistry";
-import DocumentManager from "@/components/DocumentManager";
-import ProcessMap from "@/components/ProcessMap";
+
+const FLOW_CARDS = [
+  {
+    icon: "bi-scissors",
+    title: strings.home.segmentation,
+    description: strings.home.segmentationDesc,
+  },
+  {
+    icon: "bi-search",
+    title: strings.home.highlight,
+    description: strings.home.highlightDesc,
+  },
+  {
+    icon: "bi-eye",
+    title: strings.home.visualLaw,
+    description: strings.home.visualLawDesc,
+  },
+];
 
 export default function HomePage() {
   const [text, setText] = useState("");
@@ -30,38 +51,14 @@ export default function HomePage() {
   const { setResults } = useSession();
 
   useEffect(() => {
-    const loaded = loadDocRegistry();
-    setDocuments(loaded);
+    setDocuments(loadDocRegistry());
   }, []);
 
-  const activeDocument = useMemo(
-    () => getActiveDocument(documents),
-    [documents]
-  );
+  const activeDocument = useMemo(() => getActiveDocument(documents), [documents]);
 
   const persistDocuments = (next: DocumentRecord[]) => {
     setDocuments(next);
     saveDocRegistry(next);
-  };
-
-  const handleSaveDocument = (document: DocumentRecord) => {
-    const next = upsertDocument(documents, document);
-    persistDocuments(next);
-  };
-
-  const handleRemoveDocument = (docId: string) => {
-    const next = removeDocument(documents, docId);
-    persistDocuments(next);
-  };
-
-  const handleActivateDocument = (docId: string) => {
-    const next = activateDocument(documents, docId);
-    persistDocuments(next);
-  };
-
-  const handleToggleStatus = (docId: string) => {
-    const next = toggleDocumentStatus(documents, docId);
-    persistDocuments(next);
   };
 
   const handleProcess = () => {
@@ -70,7 +67,6 @@ export default function HomePage() {
     }
 
     setLoading(true);
-
     setTimeout(() => {
       try {
         const result = processText(text.trim(), activeDocument.doc_id);
@@ -80,13 +76,10 @@ export default function HomePage() {
           selectedDocument: activeDocument,
         });
         router.push("/reader");
-      } catch (error) {
-        console.error("Erro ao processar texto:", error);
-        alert("Falha no processamento. Revise o texto e tente novamente.");
       } finally {
         setLoading(false);
       }
-    }, 60);
+    }, 80);
   };
 
   const handleDemo = () => {
@@ -104,12 +97,10 @@ export default function HomePage() {
           selectedDocument: activeDocument,
         });
         router.push("/reader");
-      } catch (error) {
-        console.error("Erro ao carregar demo:", error);
       } finally {
         setLoading(false);
       }
-    }, 60);
+    }, 80);
   };
 
   return (
@@ -119,56 +110,46 @@ export default function HomePage() {
           <i className="bi bi-mortarboard text-ios-accent"></i>
         </div>
         <h1 className="fw-bold mb-2" style={{ fontSize: "1.8rem" }}>
-          Analise Academica de Termos e Politicas
+          {strings.home.heroTitle}
         </h1>
-        <p className="text-ios-secondary mx-auto" style={{ maxWidth: 640, fontSize: "0.92rem", lineHeight: 1.5 }}>
-          Ambiente unico em modo academico: processamento explicavel, rastreabilidade por etapa,
-          mapeamento semiotico explicito e relatorio final em PDF.
+        <p
+          className="text-ios-secondary mx-auto"
+          style={{ maxWidth: 640, fontSize: "0.92rem", lineHeight: 1.5 }}
+        >
+          {strings.home.heroText}
         </p>
       </section>
 
-      <DocumentManager
-        documents={documents}
-        onSave={handleSaveDocument}
-        onRemove={handleRemoveDocument}
-        onActivate={handleActivateDocument}
-        onToggleStatus={handleToggleStatus}
-      />
+      {/* (1) Entrada */}
+      <section className="ios-card p-4 d-flex flex-column gap-3" data-testid="home-entry-block">
+        <h2 className="fw-bold mb-0" style={{ fontSize: "1.1rem" }}>
+          {strings.home.entryTitle}
+        </h2>
 
-      <ProcessMap />
-
-      <section className="ios-card p-4 d-flex flex-column gap-3">
-        <div>
-          <div className="fw-semibold" style={{ fontSize: "0.9rem" }}>
-            Documento ativo para a sessao
-          </div>
-          {activeDocument ? (
-            <div className="text-ios-secondary" style={{ fontSize: "0.84rem" }} data-testid="active-document-label">
-              {activeDocument.name} | {activeDocument.platform} | {activeDocument.type} | {activeDocument.language}
-            </div>
-          ) : (
-            <div className="text-danger" style={{ fontSize: "0.84rem" }}>
-              Nenhum documento ativo. Ative um documento no gerenciador acima.
-            </div>
-          )}
-        </div>
+        <DocumentManager
+          documents={documents}
+          onSave={(document) => persistDocuments(upsertDocument(documents, document))}
+          onRemove={(docId) => persistDocuments(removeDocument(documents, docId))}
+          onActivate={(docId) => persistDocuments(activateDocument(documents, docId))}
+          onToggleStatus={(docId) => persistDocuments(toggleDocumentStatus(documents, docId))}
+        />
 
         <div>
           <label htmlFor="text-input" className="form-label fw-semibold" style={{ fontSize: "0.88rem" }}>
-            Texto de entrada (sem PDF)
+            {strings.home.textInputLabel}
           </label>
           <textarea
             id="text-input"
             className="form-control form-control-ios"
             rows={11}
-            placeholder="Cole o texto integral para gerar segmentacao, classificacao, lexico, semiotica e auditoria."
+            placeholder={strings.home.textInputPlaceholder}
             value={text}
             onChange={(event) => setText(event.target.value)}
           ></textarea>
           <div className="text-ios-secondary mt-1" style={{ fontSize: "0.8rem" }}>
             {text.length > 0
-              ? `${text.length} caracteres | minimo recomendado: 20`
-              : "Minimo 20 caracteres para processar"}
+              ? `${text.length} caracteres`
+              : strings.home.minChars}
           </div>
         </div>
 
@@ -182,12 +163,12 @@ export default function HomePage() {
             {loading ? (
               <>
                 <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                Processando trilha academica...
+                {strings.home.processing}
               </>
             ) : (
               <>
                 <i className="bi bi-lightning-charge-fill me-1"></i>
-                Processar texto
+                {strings.home.process}
               </>
             )}
           </button>
@@ -199,7 +180,7 @@ export default function HomePage() {
             disabled={loading}
           >
             <i className="bi bi-clipboard me-1"></i>
-            Colar exemplo
+            {strings.home.pasteExample}
           </button>
 
           <button
@@ -209,10 +190,48 @@ export default function HomePage() {
             disabled={loading || !activeDocument}
           >
             <i className="bi bi-play-circle me-1"></i>
-            Demo academica
+            {strings.home.demo}
           </button>
         </div>
+
+        <Accordion
+          title={strings.home.contractTitle}
+          summary={strings.home.contractSummary}
+          testId="swagger-accordion"
+        >
+          <div className="text-ios-secondary mb-2" style={{ fontSize: "0.84rem" }}>
+            MVP front-end only (static export), sem backend publicado.
+          </div>
+          <Link
+            href="/swagger/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-ios btn-ios-tertiary"
+            data-testid="swagger-link"
+          >
+            <i className="bi bi-box-arrow-up-right me-1"></i>
+            {strings.home.contractLink}
+          </Link>
+        </Accordion>
       </section>
+
+      {/* (2) Cards centrais */}
+      <section className="row g-3" data-testid="home-flow-cards">
+        {FLOW_CARDS.map((card) => (
+          <div key={card.title} className="col-12 col-sm-4">
+            <article className="ios-card p-3 text-center h-100">
+              <i className={`bi ${card.icon} text-ios-accent d-block mb-2`} style={{ fontSize: "1.7rem" }}></i>
+              <h3 className="fw-semibold mb-1" style={{ fontSize: "0.95rem" }}>{card.title}</h3>
+              <p className="text-ios-secondary mb-0" style={{ fontSize: "0.82rem" }}>{card.description}</p>
+            </article>
+          </div>
+        ))}
+      </section>
+
+      {/* (3) Mapa do processo */}
+      <div data-testid="home-process-block">
+        <ProcessMap />
+      </div>
     </div>
   );
 }

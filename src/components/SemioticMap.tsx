@@ -35,7 +35,7 @@ export default function SemioticMap() {
                   </div>
                   <div style={{ fontSize: "0.83rem" }}>
                     <div>
-                      <span className="fw-semibold text-ios-accent">Significante:</span> icone
+                      <span className="fw-semibold text-ios-accent">Significante:</span> ícone
                       "{entry.icon_label}" + cor {entry.color}
                     </div>
                     <div>
@@ -54,7 +54,7 @@ export default function SemioticMap() {
 
       <div>
         <h2 className="fw-semibold mb-3" style={{ fontSize: "1.05rem" }}>
-          Mapeamento impacto para interpretacao
+          Mapeamento impacto para interpretação
         </h2>
         <div className="ios-card overflow-hidden">
           <table className="table table-borderless mb-0" style={{ fontSize: "0.85rem" }}>
@@ -62,7 +62,7 @@ export default function SemioticMap() {
               <tr style={{ borderBottom: "1px solid var(--vl-border)" }}>
                 <th className="py-2 px-3">Impacto</th>
                 <th className="py-2 px-3">Signo</th>
-                <th className="py-2 px-3">Interpretacao</th>
+                <th className="py-2 px-3">Interpretação</th>
               </tr>
             </thead>
             <tbody>

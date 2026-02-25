@@ -13,7 +13,7 @@ interface TermCardProps {
 
 const IMPACT_LABELS = {
   high: "Alto",
-  medium: "Medio",
+  medium: "Médio",
   low: "Baixo",
 } as const;
 
@@ -40,7 +40,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
             </div>
             <div className="d-flex gap-2 flex-wrap">
               <span className={`badge-ios badge-${entry.category}`}>{CATEGORY_LABELS[entry.category]}</span>
-              <span className={`badge-ios badge-impact-${entry.impact}`}>Impacto {IMPACT_LABELS[entry.impact]}</span>
+              <span className={`badge-ios badge-impact-${entry.impact}`}>{IMPACT_LABELS[entry.impact]}</span>
             </div>
           </div>
         </header>
@@ -61,21 +61,21 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
 
         <section className="p-4" style={{ borderTop: "0.5px solid var(--vl-border)", background: "rgba(16,185,129,0.06)" }}>
           <h3 className="fw-semibold mb-1" style={{ fontSize: "0.9rem", color: "#0f766e" }}>
-            O que voce pode fazer
+            O que você pode fazer
           </h3>
           <p className="mb-0" style={{ fontSize: "0.92rem", lineHeight: 1.6 }}>{entry.what_you_can_do}</p>
         </section>
 
         <section className="p-4" style={{ borderTop: "0.5px solid var(--vl-border)", background: "rgba(99,102,241,0.05)" }}>
           <h3 className="fw-semibold mb-2" style={{ fontSize: "0.9rem", color: "#4338ca" }}>
-            Camada Semiotica
+            Camada semiótica
           </h3>
           <div style={{ fontSize: "0.85rem", lineHeight: 1.6 }}>
             <div>
-              <span className="fw-semibold">Significante:</span> icone <code>{semio?.icon_id ?? entry.icon_id}</code> + badge de categoria/impacto.
+              <span className="fw-semibold">Significante:</span> ícone <code>{semio?.icon_id ?? entry.icon_id}</code> + badge de categoria/impacto.
             </div>
             <div>
-              <span className="fw-semibold">Significado:</span> {semio?.significance ?? "Mapeamento semiotico padrao."}
+              <span className="fw-semibold">Significado:</span> {semio?.significance ?? "Mapeamento semiótico padrão."}
             </div>
             <div>
               <span className="fw-semibold">Regra:</span> categoria {CATEGORY_LABELS[entry.category]} mapeia para
@@ -86,7 +86,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
 
         <section className="p-4" style={{ borderTop: "0.5px solid var(--vl-border)" }}>
           <h3 className="fw-semibold mb-2" style={{ fontSize: "0.9rem" }}>
-            Evidencia / Auditoria do Termo
+            Evidência / auditoria do termo
           </h3>
           {evidence ? (
             <div className="ios-card-inset p-3" style={{ fontSize: "0.84rem" }}>
@@ -95,21 +95,21 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
               <div>match: "{evidence.match}"</div>
               <div>start/end: [{evidence.start}, {evidence.end}]</div>
               <div>contexto: {evidence.context}</div>
-              <div>campo lexico usado: {evidence.lexicon_field_used}</div>
+              <div>campo léxico usado: {evidence.lexicon_field_used}</div>
               <div>variante batida: {evidence.matched_variant}</div>
-              <div>refs LGPD: {evidence.lgpd_refs.length > 0 ? evidence.lgpd_refs.join(", ") : "-"}</div>
-              <div>regra semiotica: {evidence.semiotic_rule}</div>
+              <div>Referências LGPD: {evidence.lgpd_refs.length > 0 ? evidence.lgpd_refs.join(", ") : "-"}</div>
+              <div>regra semiótica: {evidence.semiotic_rule}</div>
             </div>
           ) : (
             <div className="ios-card-inset p-3 text-ios-secondary" style={{ fontSize: "0.84rem" }}>
-              Evidencia pontual indisponivel nesta visualizacao. Abra o termo a partir do Reader para ver offsets e provenance.
+              Evidência pontual indisponível nesta visualização. Abra o termo a partir do Reader para ver offsets e provenance.
             </div>
           )}
         </section>
 
         <section className="p-4" style={{ borderTop: "0.5px solid var(--vl-border)" }}>
           <h3 className="fw-semibold mb-2" style={{ fontSize: "0.9rem" }}>
-            Principais duvidas (FAQ)
+            Principais dúvidas (FAQ)
           </h3>
           {mode === "report" ? (
             <ol className="mb-0" style={{ fontSize: "0.84rem" }}>
@@ -140,7 +140,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
 
         <section className="p-4" style={{ borderTop: "0.5px solid var(--vl-border)" }}>
           <h3 className="fw-semibold mb-2" style={{ fontSize: "0.9rem" }}>
-            Mini-tabela academica
+            Mini-tabela acadêmica
           </h3>
           <div className="ios-card-inset overflow-hidden">
             <table className="table table-borderless mb-0" style={{ fontSize: "0.85rem" }}>
@@ -154,7 +154,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
                   <td className="px-3 py-2">{IMPACT_LABELS[entry.impact]}</td>
                 </tr>
                 <tr>
-                  <td className="px-3 py-2 fw-semibold">LGPD refs</td>
+                  <td className="px-3 py-2 fw-semibold">Referências LGPD</td>
                   <td className="px-3 py-2">{entry.lgpd_refs.length > 0 ? entry.lgpd_refs.join(", ") : "-"}</td>
                 </tr>
               </tbody>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 interface ProgressBarProps {
   current: number;
@@ -6,7 +6,7 @@ interface ProgressBarProps {
 }
 
 export default function ProgressBar({ current, total }: ProgressBarProps) {
-  const pct = total > 0 ? Math.round((current / total) * 100) : 0;
+  const progress = total > 0 ? Math.round((current / total) * 100) : 0;
 
   return (
     <div>
@@ -15,11 +15,11 @@ export default function ProgressBar({ current, total }: ProgressBarProps) {
           Cláusula {current} de {total}
         </span>
         <span className="fw-semibold text-ios-accent" style={{ fontSize: "0.875rem" }}>
-          {pct}%
+          {progress}%
         </span>
       </div>
       <div className="progress-ios">
-        <div className="progress-bar" style={{ width: `${pct}%` }} />
+        <div className="progress-bar" style={{ width: `${progress}%` }} />
       </div>
     </div>
   );
