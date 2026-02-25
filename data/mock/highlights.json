@@ -1,0 +1,26 @@
+{
+  "_nota": "Este arquivo é um exemplo estrutural. Os highlights são computados em tempo real pelo pipeline (highlighter.ts) para garantir offsets corretos.",
+  "MOCK_C001": [
+    { "term_id": "TERM_001", "match": "dados pessoais", "start": 16, "end": 30 },
+    { "term_id": "TERM_012", "match": "titular", "start": 137, "end": 144 }
+  ],
+  "MOCK_C003": [
+    { "term_id": "TERM_008", "match": "finalidade", "start": 2, "end": 12 },
+    { "term_id": "TERM_004", "match": "tratamento de dados", "start": 16, "end": 35 }
+  ],
+  "MOCK_C004": [
+    { "term_id": "TERM_006", "match": "compartilhamento", "start": 22, "end": 38 },
+    { "term_id": "TERM_001", "match": "dados pessoais", "start": 47, "end": 61 },
+    { "term_id": "TERM_007", "match": "terceiros", "start": 66, "end": 75 }
+  ],
+  "MOCK_C007": [
+    { "term_id": "TERM_012", "match": "titular", "start": 5, "end": 12 },
+    { "term_id": "TERM_001", "match": "dados pessoais", "start": 80, "end": 94 },
+    { "term_id": "TERM_002", "match": "consentimento", "start": 98, "end": 111 }
+  ],
+  "MOCK_C009": [
+    { "term_id": "TERM_001", "match": "dados pessoais", "start": 64, "end": 78 },
+    { "term_id": "TERM_011", "match": "incidente de segurança", "start": 89, "end": 111 },
+    { "term_id": "TERM_012", "match": "titular", "start": 145, "end": 152 }
+  ]
+}

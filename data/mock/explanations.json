@@ -1,0 +1,48 @@
+{
+  "_nota": "Este arquivo é um exemplo estrutural. As explanations são geradas pelo pipeline (explainer.ts) a partir do léxico.",
+  "TERM_001": {
+    "meaning": "Qualquer informação que identifique ou possa identificar uma pessoa, como nome, e-mail, CPF, endereço IP ou localização.",
+    "why_it_matters": "Plataformas coletam esses dados para personalizar serviços, direcionar anúncios e compartilhar com parceiros. Saber quais dados são coletados é o primeiro passo para proteger sua privacidade.",
+    "what_you_can_do": "Você pode solicitar ao controlador a lista completa dos seus dados pessoais tratados (Art. 18, II LGPD). Também pode pedir a correção ou exclusão.",
+    "category": "data_collection",
+    "icon_id": "user-circle",
+    "impact": "high",
+    "lgpd_refs": ["Art. 5°, I", "Art. 18, II"]
+  },
+  "TERM_002": {
+    "meaning": "Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.",
+    "why_it_matters": "Sem consentimento válido, o tratamento de dados pode ser ilegal. Muitas plataformas utilizam o 'aceite' nos termos como forma de obter esse consentimento de forma ampla.",
+    "what_you_can_do": "Você pode revogar seu consentimento a qualquer momento, de forma gratuita e facilitada (Art. 8°, §5° LGPD).",
+    "category": "user_rights",
+    "icon_id": "check-circle",
+    "impact": "high",
+    "lgpd_refs": ["Art. 5°, XII", "Art. 7°, I", "Art. 8°"]
+  },
+  "TERM_004": {
+    "meaning": "Toda operação realizada com dados pessoais: coleta, armazenamento, uso, compartilhamento, exclusão e qualquer outra forma de manipulação.",
+    "why_it_matters": "O termo é amplo de propósito. Qualquer coisa que a plataforma faça com seus dados é 'tratamento'. Por isso, os termos de serviço devem detalhar cada tipo de operação.",
+    "what_you_can_do": "Você tem direito a saber exatamente quais tratamentos são realizados com seus dados e para quais finalidades (Art. 9° LGPD).",
+    "category": "purpose_use",
+    "icon_id": "settings",
+    "impact": "high",
+    "lgpd_refs": ["Art. 5°, X", "Art. 9°"]
+  },
+  "TERM_006": {
+    "meaning": "Comunicação, transferência ou disponibilização de dados pessoais a terceiros, como parceiros comerciais, anunciantes ou autoridades.",
+    "why_it_matters": "Quando seus dados são compartilhados, eles saem do controle direto da plataforma original. Você pode não saber quem tem acesso nem como serão usados.",
+    "what_you_can_do": "Você pode solicitar informações sobre com quem seus dados são compartilhados (Art. 18, VII LGPD).",
+    "category": "sharing_third_parties",
+    "icon_id": "share-2",
+    "impact": "high",
+    "lgpd_refs": ["Art. 5°, XVI", "Art. 18, VII"]
+  },
+  "TERM_012": {
+    "meaning": "A pessoa natural a quem os dados pessoais se referem. Se você usa a plataforma, você é o titular dos dados que ela coleta.",
+    "why_it_matters": "A LGPD confere ao titular uma série de direitos (Art. 18), como acesso, correção, exclusão e portabilidade. Saber que você é o titular é o ponto de partida para exercê-los.",
+    "what_you_can_do": "Exerça seus direitos: solicite acesso, correção, exclusão ou portabilidade dos seus dados diretamente à plataforma (Art. 18 LGPD).",
+    "category": "user_rights",
+    "icon_id": "user",
+    "impact": "high",
+    "lgpd_refs": ["Art. 5°, V", "Art. 17", "Art. 18"]
+  }
+}

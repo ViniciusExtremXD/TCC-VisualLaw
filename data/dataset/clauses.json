@@ -1,0 +1,74 @@
+[
+  {
+    "clause_id": "X_PRIVACY_C001",
+    "doc_id": "X_PRIVACY",
+    "title": "Dados que Coletamos",
+    "text": "Coletamos dados pessoais que você nos fornece diretamente, como seu nome, e-mail, número de telefone e data de nascimento ao criar uma conta. Também coletamos dados sobre seu uso da plataforma, incluindo conteúdo publicado, interações e dados de localização.",
+    "category": "data_collection",
+    "lgpd_refs": ["Art. 7°, I", "Art. 9°"],
+    "impact": "high"
+  },
+  {
+    "clause_id": "X_PRIVACY_C002",
+    "doc_id": "X_PRIVACY",
+    "title": "Uso de Cookies e Rastreadores",
+    "text": "Utilizamos cookies e tecnologias semelhantes para coletar informações sobre sua atividade de navegação, personalizar conteúdo, medir o desempenho de anúncios e fornecer uma experiência mais relevante. Terceiros parceiros também podem instalar cookies em nossos serviços.",
+    "category": "data_collection",
+    "lgpd_refs": ["Art. 7°, I", "Art. 8°"],
+    "impact": "medium"
+  },
+  {
+    "clause_id": "X_PRIVACY_C003",
+    "doc_id": "X_PRIVACY",
+    "title": "Finalidade do Tratamento",
+    "text": "Utilizamos os dados coletados para fornecer, manter e melhorar nossos serviços, personalizar sua experiência, desenvolver novos recursos, e para fins de segurança e prevenção de fraudes. Também usamos seus dados para exibir publicidade relevante.",
+    "category": "purpose_use",
+    "lgpd_refs": ["Art. 6°, I", "Art. 9°"],
+    "impact": "high"
+  },
+  {
+    "clause_id": "META_PRIVACY_C001",
+    "doc_id": "META_PRIVACY",
+    "title": "Compartilhamento com Terceiros",
+    "text": "Compartilhamos dados pessoais com terceiros que nos ajudam a operar e melhorar nossos serviços, incluindo parceiros de publicidade, provedores de análise e parceiros comerciais. Também podemos compartilhar dados com autoridades quando exigido por lei.",
+    "category": "sharing_third_parties",
+    "lgpd_refs": ["Art. 18, VII"],
+    "impact": "high"
+  },
+  {
+    "clause_id": "META_PRIVACY_C002",
+    "doc_id": "META_PRIVACY",
+    "title": "Retenção de Dados",
+    "text": "Retemos seus dados pessoais pelo tempo necessário para cumprir as finalidades descritas nesta política, salvo quando um período de retenção mais longo for exigido ou permitido por lei. Quando você exclui sua conta, iniciamos um processo de exclusão que pode levar até 90 dias.",
+    "category": "retention_storage",
+    "lgpd_refs": ["Art. 15", "Art. 16"],
+    "impact": "medium"
+  },
+  {
+    "clause_id": "META_PRIVACY_C003",
+    "doc_id": "META_PRIVACY",
+    "title": "Seus Direitos como Titular",
+    "text": "Você tem o direito de acessar, corrigir e solicitar a exclusão dos seus dados pessoais. Também pode solicitar a portabilidade dos dados para outro fornecedor de serviço. Para exercer esses direitos, acesse as Configurações da sua conta ou entre em contato com nosso Encarregado de Proteção de Dados.",
+    "category": "user_rights",
+    "lgpd_refs": ["Art. 17", "Art. 18"],
+    "impact": "high"
+  },
+  {
+    "clause_id": "WA_PRIVACY_C001",
+    "doc_id": "WA_PRIVACY",
+    "title": "Segurança e Incidentes",
+    "text": "Adotamos medidas técnicas e organizacionais para proteger seus dados pessoais contra acessos não autorizados, destruição, perda ou alteração. Em caso de incidente de segurança que possa acarretar risco relevante, comunicaremos à autoridade nacional e aos titulares afetados.",
+    "category": "security_incidents",
+    "lgpd_refs": ["Art. 46", "Art. 48"],
+    "impact": "high"
+  },
+  {
+    "clause_id": "WA_PRIVACY_C002",
+    "doc_id": "WA_PRIVACY",
+    "title": "Consentimento e Revogação",
+    "text": "Ao utilizar nossos serviços, você consente com o tratamento de seus dados conforme descrito nesta política. Você pode revogar seu consentimento a qualquer momento por meio das configurações de privacidade, sendo que tal revogação não afetará a legalidade do tratamento realizado anteriormente.",
+    "category": "user_rights",
+    "lgpd_refs": ["Art. 8°", "Art. 8°, §5°"],
+    "impact": "high"
+  }
+]

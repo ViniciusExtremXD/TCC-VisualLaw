@@ -1,0 +1,354 @@
+@import "tailwindcss";
+
+/* Bootstrap CSS é importado via JS no layout.tsx (mais confiável em Next.js 15) */
+
+/* ══════════════════════════════════════════════════════
+   iOS-inspired Visual Law Theme
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --vl-bg: #f2f2f7;          /* iOS system grouped bg */
+  --vl-card: #ffffff;
+  --vl-border: rgba(60, 60, 67, 0.12);
+  --vl-text: #1c1c1e;
+  --vl-text-secondary: #8e8e93;
+  --vl-accent: #007aff;      /* iOS blue */
+  --vl-accent-hover: #0066d6;
+  --vl-green: #34c759;
+  --vl-red: #ff3b30;
+  --vl-orange: #ff9500;
+  --vl-yellow: #ffcc00;
+  --vl-purple: #af52de;
+  --vl-radius: 14px;
+  --vl-radius-sm: 10px;
+  --vl-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --vl-shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+}
+
+/* ── Base ───────────────────────────────────────────── */
+html, body {
+  background-color: var(--vl-bg) !important;
+  color: var(--vl-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", "Segoe UI", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* ── iOS Card ───────────────────────────────────────── */
+.ios-card {
+  background: var(--vl-card);
+  border-radius: var(--vl-radius);
+  box-shadow: var(--vl-shadow);
+  border: none;
+  overflow: hidden;
+}
+
+.ios-card-inset {
+  background: var(--vl-card);
+  border-radius: var(--vl-radius-sm);
+  border: 1px solid var(--vl-border);
+}
+
+/* ── iOS Buttons ────────────────────────────────────── */
+.btn-ios {
+  border-radius: var(--vl-radius-sm);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+
+.btn-ios-primary {
+  background: var(--vl-accent);
+  color: #fff;
+}
+.btn-ios-primary:hover {
+  background: var(--vl-accent-hover);
+  color: #fff;
+  transform: scale(0.98);
+}
+.btn-ios-primary:disabled {
+  background: #c7c7cc;
+  color: #fff;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ios-secondary {
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--vl-accent);
+}
+.btn-ios-secondary:hover {
+  background: rgba(0, 122, 255, 0.18);
+  color: var(--vl-accent);
+}
+
+.btn-ios-tertiary {
+  background: rgba(142, 142, 147, 0.12);
+  color: var(--vl-text);
+}
+.btn-ios-tertiary:hover {
+  background: rgba(142, 142, 147, 0.2);
+  color: var(--vl-text);
+}
+
+/* ── iOS Form controls ─────────────────────────────── */
+.form-control-ios,
+.form-select-ios {
+  background: var(--vl-card);
+  border: 1px solid var(--vl-border);
+  border-radius: var(--vl-radius-sm);
+  font-size: 0.9375rem;
+  padding: 0.75rem 1rem;
+  color: var(--vl-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.form-control-ios:focus,
+.form-select-ios:focus {
+  border-color: var(--vl-accent);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+}
+.form-control-ios::placeholder {
+  color: #c7c7cc;
+}
+
+textarea.form-control-ios {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ── iOS Navbar / Header ───────────────────────────── */
+.ios-navbar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid var(--vl-border);
+}
+
+/* ── Term highlight ────────────────────────────────── */
+mark.term-highlight {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  padding: 2px 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+  color: inherit;
+}
+mark.term-highlight:hover {
+  background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+  box-shadow: 0 1px 4px rgba(253, 203, 110, 0.4);
+}
+
+/* ── Category badges ───────────────────────────────── */
+.badge-ios {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3em 0.75em;
+  border-radius: 20px;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.badge-data_collection       { background: #d1e7ff; color: #0055cc; }
+.badge-purpose_use           { background: #cce5ff; color: #0066b8; }
+.badge-sharing_third_parties { background: #ffd6d6; color: #cc0000; }
+.badge-retention_storage     { background: #e8e8ed; color: #48484a; }
+.badge-user_rights           { background: #d4f5de; color: #1a7a32; }
+.badge-security_incidents    { background: #ffe0e0; color: #cc0000; }
+
+.badge-impact-high   { background: #ffd6d6; color: #cc0000; }
+.badge-impact-medium { background: #fff4cc; color: #997a00; }
+.badge-impact-low    { background: #d4f5de; color: #1a7a32; }
+
+/* ── Progress bar iOS ──────────────────────────────── */
+.progress-ios {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--vl-border);
+  overflow: hidden;
+}
+.progress-ios .progress-bar {
+  background: var(--vl-accent);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ── Modal overlay ─────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1050;
+  animation: fadeIn 0.2s ease;
+}
+
+.ios-modal {
+  background: var(--vl-card);
+  border-radius: 20px;
+  box-shadow: var(--vl-shadow-lg);
+  max-width: 480px;
+  width: calc(100% - 2rem);
+  animation: slideUp 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.97) }
+  to   { opacity: 1; transform: translateY(0) scale(1) }
+}
+
+/* ── Sections (ios-style grouped cells) ──────────── */
+.ios-section-header {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--vl-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
+}
+
+.ios-list-group .list-group-item {
+  border: none;
+  border-bottom: 0.5px solid var(--vl-border);
+  padding: 0.875rem 1rem;
+  font-size: 0.9375rem;
+}
+.ios-list-group .list-group-item:last-child {
+  border-bottom: none;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+footer {
+  color: var(--vl-text-secondary);
+  font-size: 0.8125rem;
+}
+
+/* ── Utility ───────────────────────────────────────── */
+.text-ios-secondary { color: var(--vl-text-secondary) !important; }
+.text-ios-accent    { color: var(--vl-accent) !important; }
+.gap-ios            { gap: 0.75rem; }
+
+/* ── Academic Mode Toggle ──────────────────────────── */
+.academic-toggle-active {
+  background: rgba(175, 82, 222, 0.15);
+  color: #8944ab;
+  border: none;
+  border-radius: var(--vl-radius-sm);
+}
+.academic-toggle-active:hover {
+  background: rgba(175, 82, 222, 0.22);
+  color: #8944ab;
+}
+
+/* ── Audit Drawer ──────────────────────────────────── */
+.audit-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1050;
+  animation: fadeIn 0.2s ease;
+}
+
+.audit-drawer {
+  background: var(--vl-card);
+  width: min(480px, 90vw);
+  height: 100vh;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  animation: slideInRight 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Audit Tabs ────────────────────────────────────── */
+.audit-tab-active {
+  background: rgba(175, 82, 222, 0.12) !important;
+  color: #8944ab !important;
+  border: none;
+  border-radius: var(--vl-radius-sm);
+  font-weight: 600;
+}
+
+/* ── Stepper ───────────────────────────────────────── */
+.stepper-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 122, 255, 0.1);
+  color: var(--vl-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stepper-line {
+  width: 2px;
+  flex: 1;
+  background: var(--vl-border);
+  margin: 4px 0;
+}
+
+/* ── Audit evidence blocks ─────────────────────────── */
+.audit-evidence {
+  background: rgba(0, 0, 0, 0.025);
+  border-radius: var(--vl-radius-sm);
+  padding: 0.625rem 0.75rem;
+  font-size: 0.8125rem;
+  border: 1px solid var(--vl-border);
+}
+
+.audit-label {
+  font-weight: 600;
+  color: var(--vl-text-secondary);
+  font-size: 0.75rem;
+}
+
+.audit-section-title {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--vl-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.audit-keyword-badge {
+  display: inline-block;
+  background: rgba(0, 122, 255, 0.08);
+  color: var(--vl-accent);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.15em 0.5em;
+  border-radius: 6px;
+}
+
+

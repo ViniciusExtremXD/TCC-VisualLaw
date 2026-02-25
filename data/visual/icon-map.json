@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "description": "Mapeamento de icon_id para ícones visuais. Usa nomes do pacote Lucide React.",
+    "library": "lucide-react",
+    "version": "0.468+"
+  },
+  "icons": {
+    "user-circle": {
+      "label": "Dados Pessoais",
+      "lucide_name": "CircleUser",
+      "color": "#3B82F6",
+      "category_hint": "data_collection"
+    },
+    "check-circle": {
+      "label": "Consentimento",
+      "lucide_name": "CircleCheck",
+      "color": "#22C55E",
+      "category_hint": "user_rights"
+    },
+    "cookie": {
+      "label": "Cookies / Rastreadores",
+      "lucide_name": "Cookie",
+      "color": "#F59E0B",
+      "category_hint": "data_collection"
+    },
+    "settings": {
+      "label": "Tratamento de Dados",
+      "lucide_name": "Settings",
+      "color": "#6366F1",
+      "category_hint": "purpose_use"
+    },
+    "building": {
+      "label": "Controlador",
+      "lucide_name": "Building",
+      "color": "#8B5CF6",
+      "category_hint": "user_rights"
+    },
+    "share-2": {
+      "label": "Compartilhamento",
+      "lucide_name": "Share2",
+      "color": "#EF4444",
+      "category_hint": "sharing_third_parties"
+    },
+    "users": {
+      "label": "Terceiros",
+      "lucide_name": "Users",
+      "color": "#F97316",
+      "category_hint": "sharing_third_parties"
+    },
+    "target": {
+      "label": "Finalidade",
+      "lucide_name": "Target",
+      "color": "#0EA5E9",
+      "category_hint": "purpose_use"
+    },
+    "clock": {
+      "label": "Retenção / Armazenamento",
+      "lucide_name": "Clock",
+      "color": "#64748B",
+      "category_hint": "retention_storage"
+    },
+    "eye-off": {
+      "label": "Anonimização",
+      "lucide_name": "EyeOff",
+      "color": "#A855F7",
+      "category_hint": "retention_storage"
+    },
+    "alert-triangle": {
+      "label": "Incidente de Segurança",
+      "lucide_name": "AlertTriangle",
+      "color": "#DC2626",
+      "category_hint": "security_incidents"
+    },
+    "user": {
+      "label": "Titular",
+      "lucide_name": "User",
+      "color": "#14B8A6",
+      "category_hint": "user_rights"
+    },
+    "shield": {
+      "label": "Segurança",
+      "lucide_name": "Shield",
+      "color": "#059669",
+      "category_hint": "security_incidents"
+    },
+    "file-text": {
+      "label": "Documento / Termos",
+      "lucide_name": "FileText",
+      "color": "#78716C",
+      "category_hint": "general"
+    }
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "clause_id": "MOCK_C001",
+    "doc_id": "MOCK_DOC",
+    "title": "Coleta de Dados Pessoais",
+    "text": "Coletamos seus dados pessoais quando você cria uma conta, incluindo nome, endereço de e-mail, número de telefone e data de nascimento. O titular dos dados pode atualizar essas informações a qualquer momento nas configurações da conta.",
+    "category": "data_collection",
+    "impact": "high",
+    "lgpd_refs": ["Art. 7°, I", "Art. 9°"]
+  },
+  {
+    "clause_id": "MOCK_C002",
+    "doc_id": "MOCK_DOC",
+    "title": "Uso de Cookies",
+    "text": "Utilizamos cookies e tecnologias semelhantes para coletar informações sobre sua navegação, preferências e comportamento online. Esses rastreadores nos ajudam a personalizar o conteúdo e os anúncios exibidos na plataforma.",
+    "category": "data_collection",
+    "impact": "medium",
+    "lgpd_refs": ["Art. 7°, I", "Art. 8°"]
+  },
+  {
+    "clause_id": "MOCK_C003",
+    "doc_id": "MOCK_DOC",
+    "title": "Finalidade do Tratamento",
+    "text": "A finalidade do tratamento de dados é fornecer, manter e melhorar nossos serviços, personalizar sua experiência e exibir publicidade relevante aos nossos usuários.",
+    "category": "purpose_use",
+    "impact": "high",
+    "lgpd_refs": ["Art. 6°, I", "Art. 9°"]
+  },
+  {
+    "clause_id": "MOCK_C004",
+    "doc_id": "MOCK_DOC",
+    "title": "Compartilhamento com Terceiros",
+    "text": "Podemos realizar o compartilhamento de seus dados pessoais com terceiros, incluindo parceiros de publicidade, provedores de análise de dados e empresas do grupo corporativo.",
+    "category": "sharing_third_parties",
+    "impact": "high",
+    "lgpd_refs": ["Art. 18, VII"]
+  },
+  {
+    "clause_id": "MOCK_C005",
+    "doc_id": "MOCK_DOC",
+    "title": "Parceiros Comerciais",
+    "text": "Nossos parceiros comerciais e terceiros podem acessar informações necessárias para a prestação de serviços, como processamento de pagamentos e análise de desempenho de anúncios.",
+    "category": "sharing_third_parties",
+    "impact": "medium",
+    "lgpd_refs": ["Art. 18, VII"]
+  },
+  {
+    "clause_id": "MOCK_C006",
+    "doc_id": "MOCK_DOC",
+    "title": "Retenção de Dados",
+    "text": "A retenção dos seus dados pessoais ocorre pelo tempo necessário para cumprir as finalidades descritas nesta política. Após esse período, os dados podem passar por anonimização ou serem eliminados de nossos sistemas.",
+    "category": "retention_storage",
+    "impact": "medium",
+    "lgpd_refs": ["Art. 15", "Art. 16"]
+  },
+  {
+    "clause_id": "MOCK_C007",
+    "doc_id": "MOCK_DOC",
+    "title": "Seus Direitos",
+    "text": "Como titular, você possui o direito de acessar, corrigir e solicitar a exclusão dos seus dados pessoais. O consentimento pode ser revogado a qualquer momento através das configurações de privacidade.",
+    "category": "user_rights",
+    "impact": "high",
+    "lgpd_refs": ["Art. 17", "Art. 18"]
+  },
+  {
+    "clause_id": "MOCK_C008",
+    "doc_id": "MOCK_DOC",
+    "title": "Portabilidade",
+    "text": "Você pode solicitar a portabilidade dos seus dados pessoais para outro provedor de serviço. O controlador deve atender essa solicitação em prazo razoável, conforme estabelecido pela LGPD.",
+    "category": "user_rights",
+    "impact": "high",
+    "lgpd_refs": ["Art. 17", "Art. 18"]
+  },
+  {
+    "clause_id": "MOCK_C009",
+    "doc_id": "MOCK_DOC",
+    "title": "Segurança",
+    "text": "Adotamos medidas técnicas e organizacionais para proteger seus dados pessoais. Em caso de incidente de segurança que possa acarretar risco relevante ao titular, comunicaremos à ANPD e aos titulares afetados conforme exigido pela legislação.",
+    "category": "security_incidents",
+    "impact": "high",
+    "lgpd_refs": ["Art. 46", "Art. 48"]
+  },
+  {
+    "clause_id": "MOCK_C010",
+    "doc_id": "MOCK_DOC",
+    "title": "Pesquisa e Desenvolvimento",
+    "text": "Utilizamos seus dados para fins de pesquisa e desenvolvimento de novos recursos, sempre respeitando a finalidade original do tratamento de dados e os princípios estabelecidos pela LGPD.",
+    "category": "purpose_use",
+    "impact": "medium",
+    "lgpd_refs": ["Art. 6°, I", "Art. 9°"]
+  }
+]

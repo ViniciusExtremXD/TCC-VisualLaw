@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*.local
+.DS_Store
+*.swp
+tmp/
+artifacts/
+out.zip
