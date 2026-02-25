@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/prepare-gh-pages-out.mjs",
-    "start": "http-server out -p 3000 -c-1",
+    "start": "serve out -l 3000",
     "lint": "next lint",
     "test:e2e": "playwright test",
     "export": "npm run build",
-    "preview": "http-server out -p 3000 -c-1"
+    "preview": "serve out -l 3000"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
@@ -26,8 +26,8 @@
     "@types/node": "^22.10.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "http-server": "^14.1.1",
     "postcss": "^8.5.6",
+    "serve": "^14.2.5",
     "tailwindcss": "^4.2.1",
     "typescript": "^5.7.0"
   }
