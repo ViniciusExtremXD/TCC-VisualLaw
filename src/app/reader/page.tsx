@@ -17,6 +17,7 @@ import { CATEGORY_LABELS, type TermEvidence } from "@/lib/types";
 import { useSession } from "@/store/SessionContext";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
+import Icon from "@/ui/components/Icon";
 import NavigationBar from "@/ui/components/NavigationBar";
 import Sheet from "@/ui/components/Sheet";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
@@ -54,7 +55,7 @@ export default function ReaderPage() {
   if (!isProcessed || clauses.length === 0) {
     return (
       <div className="d-flex flex-column align-items-center justify-content-center py-5 text-center">
-        <i className="bi bi-inbox text-ios-secondary mb-3" style={{ fontSize: "3.5rem" }}></i>
+        <Icon name="inbox" size={54} className="text-ios-secondary mb-3" />
         <h2 className="fw-semibold mb-2" style={{ fontSize: "1.25rem" }}>
           {strings.reader.noSessionTitle}
         </h2>
@@ -143,7 +144,7 @@ export default function ReaderPage() {
               disabled={generatingPdf}
               data-testid="generate-pdf-button"
             >
-              <i className="bi bi-filetype-pdf"></i>
+              <Icon name="file-text" size={16} />
               {generatingPdf ? strings.reader.generatingPdf : strings.reader.generatePdf}
             </Button>
 
@@ -151,17 +152,17 @@ export default function ReaderPage() {
               href="/report"
               className="cupertino-btn cupertino-btn-secondary cupertino-btn-sm"
             >
-              <i className="bi bi-journal-text"></i>
+              <Icon name="file-text" size={16} />
               {strings.reader.reportPreview}
             </Link>
 
             <Button variant="ghost" size="sm" onClick={() => setShowSemioticMap(true)}>
-              <i className="bi bi-palette"></i>
+              <Icon name="palette" size={16} />
               {strings.reader.mapButton}
             </Button>
 
             <Button variant="ghost" size="sm" onClick={handleNewDocument}>
-              <i className="bi bi-plus-circle"></i>
+              <Icon name="plus-circle" size={16} />
               {strings.reader.newDoc}
             </Button>
           </>
@@ -182,7 +183,7 @@ export default function ReaderPage() {
           }}
         >
           <Card as="article" interactive>
-            <header className="p-3 px-4" style={{ borderBottom: "1px solid var(--cu-separator)", background: "rgba(255,255,255,0.65)" }}>
+            <header className="p-3 px-4" style={{ borderBottom: "1px solid var(--cu-separator)", background: "#ffffff" }}>
               <div className="d-flex align-items-start justify-content-between flex-wrap gap-2">
                 <div>
                   <h2 className="fw-semibold mb-0" style={{ fontSize: "1.02rem" }}>
@@ -202,7 +203,7 @@ export default function ReaderPage() {
 
               {clause.lgpd_refs.length > 0 && (
                 <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--cu-separator)", fontSize: "0.82rem" }}>
-                  <i className="bi bi-bookmark me-1"></i>
+                  <Icon name="bookmark" size={14} className="me-1" />
                   {strings.reader.referencesLgpd}: {clause.lgpd_refs.join(", ")}
                 </div>
               )}
@@ -216,7 +217,7 @@ export default function ReaderPage() {
                   className="w-100"
                   onClick={() => setAuditDrawerClauseId(clause.clause_id)}
                 >
-                  <i className="bi bi-clipboard-data"></i>
+                  <Icon name="clipboard-list" size={16} />
                   {strings.reader.openAudit}
                 </Button>
               </div>
@@ -241,7 +242,7 @@ export default function ReaderPage() {
           onClick={goPrev}
           disabled={currentIndex === 0}
         >
-          <i className="bi bi-chevron-left"></i>
+          <Icon name="chevron-left" size={16} />
           {strings.reader.prev}
         </Button>
 
@@ -256,7 +257,7 @@ export default function ReaderPage() {
           disabled={currentIndex === clauses.length - 1}
         >
           {strings.reader.next}
-          <i className="bi bi-chevron-right"></i>
+          <Icon name="chevron-right" size={16} />
         </Button>
       </div>
 

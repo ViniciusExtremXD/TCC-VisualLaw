@@ -35,13 +35,13 @@ export default function PremiumCard({
   return (
     <MotionElement
       className={`${
-        inset ? "cupertino-card-inset" : "cupertino-card glass elevated specular hairline"
+        inset ? "cupertino-card-inset" : "cupertino-card elevated hairline"
       } ${interactive ? "ios-card-hover" : ""} ${className}`.trim()}
       whileHover={
         interactive && !reducedMotion
           ? {
-              y: -2,
-              scale: 1.003,
+              y: -1.5,
+              scale: 1.002,
               transition: {
                 duration: uiTokens.motion.duration.normal,
                 ease: uiTokens.motion.easing.soft,

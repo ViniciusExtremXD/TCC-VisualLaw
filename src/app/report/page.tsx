@@ -16,6 +16,7 @@ import {
 import { loadDocRegistry } from "@/lib/docRegistry";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
+import Icon from "@/ui/components/Icon";
 import NavigationBar from "@/ui/components/NavigationBar";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
@@ -210,7 +211,7 @@ export default function ReportPage() {
         actions={
           <>
             <Button variant="primary" size="sm" onClick={handleDownloadPdf} disabled={downloadingPdf}>
-              <i className="bi bi-filetype-pdf"></i>
+              <Icon name="file-text" size={16} />
               {downloadingPdf ? "Gerando..." : "Baixar PDF"}
             </Button>
             <Link href="/reader" className="cupertino-btn cupertino-btn-ghost cupertino-btn-sm">
@@ -369,16 +370,16 @@ export default function ReportPage() {
         {downloadingPdf ? (
           <motion.div
             className="report-generating-overlay"
-            initial={reducedMotion ? { opacity: 0 } : { opacity: 0, backdropFilter: "blur(0px)" }}
-            animate={reducedMotion ? { opacity: 1 } : { opacity: 1, backdropFilter: "blur(10px)" }}
-            exit={reducedMotion ? { opacity: 0 } : { opacity: 0, backdropFilter: "blur(0px)" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{
               duration: reducedMotion ? 0.1 : uiTokens.motion.duration.medium,
               ease: uiTokens.motion.easing.soft,
             }}
           >
             <motion.div
-              className="report-generating-sheet glass elevated specular"
+              className="report-generating-sheet elevated"
               initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}
               animate={reducedMotion ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
               exit={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 12, scale: 0.98 }}

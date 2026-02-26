@@ -6,6 +6,7 @@ import type { Category, Impact } from "@/lib/types";
 import { CATEGORY_LABELS } from "@/lib/types";
 import { uiTokens } from "@/ui/tokens";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import Icon, { type IconName } from "@/ui/components/Icon";
 
 const IMPACT_LABELS: Record<Impact, string> = {
   high: "Alto",
@@ -13,10 +14,10 @@ const IMPACT_LABELS: Record<Impact, string> = {
   low: "Baixo",
 };
 
-const IMPACT_ICONS: Record<Impact, string> = {
-  high: "bi-exclamation-triangle-fill",
-  medium: "bi-dash-circle-fill",
-  low: "bi-check-circle-fill",
+const IMPACT_ICONS: Record<Impact, IconName> = {
+  high: "alert-triangle",
+  medium: "minus-circle",
+  low: "check-circle",
 };
 
 interface PremiumBadgeProps {
@@ -48,7 +49,7 @@ export default function PremiumBadge({ type, value, children }: PremiumBadgeProp
   const impact = value as Impact;
   return (
     <motion.span
-      className={`badge-ios badge-impact-${impact} ${impact === "high" ? "badge-glow-high" : ""}`}
+      className={`badge-ios badge-impact-${impact}`}
       initial={reducedMotion ? undefined : { scale: 0.92, opacity: 0 }}
       animate={reducedMotion ? undefined : { scale: 1, opacity: 1 }}
       transition={{
@@ -56,7 +57,7 @@ export default function PremiumBadge({ type, value, children }: PremiumBadgeProp
         ease: uiTokens.motion.easing.soft,
       }}
     >
-      <i className={`bi ${IMPACT_ICONS[impact]}`}></i>
+      <Icon name={IMPACT_ICONS[impact]} size={14} />
       {children ?? IMPACT_LABELS[impact] ?? impact}
     </motion.span>
   );

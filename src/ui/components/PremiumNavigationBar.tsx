@@ -37,7 +37,7 @@ export default function PremiumNavigationBar({
 
   return (
     <motion.header
-      className="cupertino-nav glass elevated specular hairline"
+      className="cupertino-nav elevated hairline"
       data-testid={testId}
       animate={{
         paddingTop: compact ? "0.65rem" : "0.85rem",

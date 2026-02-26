@@ -1,15 +1,15 @@
 export const uiTokens = {
   radii: {
     sm: 14,
-    md: 18,
-    lg: 22,
+    md: 16,
+    lg: 20,
     xl: 28,
   },
   shadows: {
-    sm: "0 1px 1px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(15, 23, 42, 0.05)",
-    md: "0 1px 1px rgba(0, 0, 0, 0.05), 0 8px 22px rgba(15, 23, 42, 0.08), 0 2px 6px rgba(15, 23, 42, 0.05)",
-    lg: "0 1px 1px rgba(0, 0, 0, 0.05), 0 12px 30px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.06)",
-    xl: "0 1px 1px rgba(0, 0, 0, 0.05), 0 18px 45px rgba(15, 23, 42, 0.14), 0 8px 24px rgba(15, 23, 42, 0.08)",
+    sm: "0 1px 0 rgba(0, 0, 0, 0.06)",
+    md: "0 1px 1px rgba(0, 0, 0, 0.03), 0 8px 20px rgba(0, 0, 0, 0.06)",
+    lg: "0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 24px rgba(0, 0, 0, 0.08)",
+    xl: "0 -10px 30px rgba(0, 0, 0, 0.1)",
   },
   blur: {
     glass: 16,
@@ -67,11 +67,11 @@ export const uiTokens = {
   },
   colors: {
     systemGroupedBackground: "#f2f2f7",
-    card: "rgba(255, 255, 255, 0.74)",
+    card: "#ffffff",
     cardSolid: "#ffffff",
     separator: "rgba(60, 60, 67, 0.22)",
-    label: "#1c1c1e",
-    secondaryLabel: "#6b7280",
+    label: "#111827",
+    secondaryLabel: "#64748b",
     accent: "#0a84ff",
     accentStrong: "#0066d6",
   },

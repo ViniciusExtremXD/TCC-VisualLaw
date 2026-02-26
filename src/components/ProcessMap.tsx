@@ -13,7 +13,7 @@ export default function ProcessMap() {
   const reducedMotion = useReducedMotionPreference();
 
   return (
-    <section className="ios-card glass elevated specular p-4" data-testid="process-map-block">
+    <section className="ios-card elevated p-4" data-testid="process-map-block">
       <h2 className="fw-bold mb-1" style={{ fontSize: "1.1rem" }}>
         {strings.home.processMapTitle}
       </h2>
@@ -71,7 +71,7 @@ export default function ProcessMap() {
                 <div className="text-ios-secondary" style={{ fontSize: "0.8rem" }}>
                   {step.objective}
                 </div>
-                <div className="ios-card-inset glass p-2 mt-1" style={{ fontSize: "0.78rem" }}>
+                <div className="ios-card-inset p-2 mt-1" style={{ fontSize: "0.78rem" }}>
                   <div>
                     <span className="fw-semibold">Entrada:</span> {step.input}
                   </div>

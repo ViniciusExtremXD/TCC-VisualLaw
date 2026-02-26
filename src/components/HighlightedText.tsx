@@ -74,7 +74,6 @@ function HighlightedText({
   return (
     <p
       style={{ fontSize: "0.9375rem", lineHeight: 1.7, whiteSpace: "pre-wrap", color: "#3a3a3c" }}
-      className="premium-text-surface"
     >
       {segments}
     </p>

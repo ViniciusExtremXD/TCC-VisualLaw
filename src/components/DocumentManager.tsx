@@ -8,6 +8,7 @@ import { getDocumentSemanticProfile } from "@/data/visual/document-semiotic-map"
 import Accordion from "@/components/Accordion";
 import { strings } from "@/i18n/ptBR";
 import Button from "@/ui/components/Button";
+import Icon from "@/ui/components/Icon";
 import { InsetGroupedList, ListCell } from "@/ui/components/InsetGroupedList";
 import Sheet from "@/ui/components/Sheet";
 
@@ -131,7 +132,7 @@ export default function DocumentManager({
               onClick={openSheet}
               data-testid="doc-manager-open-button"
             >
-              <i className="bi bi-folder2-open"></i>
+              <Icon name="folder-open" size={16} />
               Gerenciar
             </Button>
           }
@@ -147,7 +148,7 @@ export default function DocumentManager({
       >
         <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
           <Button variant="secondary" size="sm" onClick={startCreate} data-testid="doc-add-button">
-            <i className="bi bi-plus-circle"></i>
+            <Icon name="plus-circle" size={16} />
             Adicionar
           </Button>
           <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>

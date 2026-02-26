@@ -22,6 +22,7 @@ import {
 } from "@/lib/docRegistry";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
+import Icon, { type IconName } from "@/ui/components/Icon";
 import NavigationBar from "@/ui/components/NavigationBar";
 import Sheet from "@/ui/components/Sheet";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
@@ -30,7 +31,7 @@ import { uiTokens } from "@/ui/tokens";
 const FLOW_CARDS = [
   {
     id: "segmentation",
-    icon: "bi-scissors",
+    icon: "scissors" as IconName,
     title: strings.home.segmentation,
     description: strings.home.segmentationDesc,
     accent: "#0a84ff",
@@ -44,7 +45,7 @@ const FLOW_CARDS = [
   },
   {
     id: "highlight",
-    icon: "bi-search",
+    icon: "search" as IconName,
     title: strings.home.highlight,
     description: strings.home.highlightDesc,
     accent: "#30b0c7",
@@ -58,7 +59,7 @@ const FLOW_CARDS = [
   },
   {
     id: "visual-law",
-    icon: "bi-eye",
+    icon: "eye" as IconName,
     title: strings.home.visualLaw,
     description: strings.home.visualLawDesc,
     accent: "#5856d6",
@@ -187,19 +188,19 @@ export default function HomePage() {
               </>
             ) : (
               <>
-                <i className="bi bi-lightning-charge-fill"></i>
+                <Icon name="zap" size={16} />
                 {strings.home.process}
               </>
             )}
           </Button>
 
           <Button variant="secondary" onClick={() => setText(SAMPLE_TEXT)} disabled={loading}>
-            <i className="bi bi-clipboard"></i>
+            <Icon name="clipboard-paste" size={16} />
             {strings.home.pasteExample}
           </Button>
 
           <Button variant="ghost" onClick={handleDemo} disabled={loading || !activeDocument}>
-            <i className="bi bi-play-circle"></i>
+            <Icon name="play-circle" size={16} />
             {strings.home.demo}
           </Button>
         </div>
@@ -219,7 +220,7 @@ export default function HomePage() {
             className="cupertino-btn cupertino-btn-ghost cupertino-btn-sm"
             data-testid="swagger-link"
           >
-            <i className="bi bi-box-arrow-up-right"></i>
+            <Icon name="external-link" size={16} />
             {strings.home.contractLink}
           </Link>
         </Accordion>
@@ -272,12 +273,8 @@ export default function HomePage() {
                   className="ios-feature-icon"
                   style={{ color: card.accent, background: `${card.accent}1f` }}
                 >
-                  <i className={`bi ${card.icon}`}></i>
+                  <Icon name={card.icon} size={20} />
                 </span>
-                <span
-                  className="ios-feature-ring"
-                  style={{ boxShadow: `0 0 0 1px ${card.accent}33 inset` }}
-                ></span>
                 <span className="fw-semibold mb-1" style={{ fontSize: "0.95rem" }}>
                   {card.title}
                 </span>

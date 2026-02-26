@@ -7,6 +7,7 @@ import { CATEGORY_LABELS, type LexiconEntry, type TermEvidence } from "@/lib/typ
 import { SEMIOTIC_MAP } from "@/lib/semiotic-data";
 import { resolveTermFaqs } from "@/lib/faq";
 import PremiumCard from "@/ui/components/PremiumCard";
+import Icon from "@/ui/components/Icon";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
 
@@ -36,14 +37,14 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
           className="text-ios-accent text-decoration-none fw-semibold"
           style={{ fontSize: "0.9rem" }}
         >
-          <i className="bi bi-chevron-left me-1"></i>
+          <Icon name="chevron-left" size={16} className="me-1" />
           Voltar para leitura guiada
         </Link>
       )}
 
       <PremiumCard as="article" className="overflow-hidden" interactive={mode !== "report"}>
         <motion.header
-          className="p-4 specular"
+          className="p-4"
           style={{
             background:
               "linear-gradient(132deg, rgba(0,122,255,0.08), rgba(99,102,241,0.12))",
@@ -124,7 +125,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
         ))}
 
         <motion.section
-          className="p-4 glass specular"
+          className="p-4"
           style={{ borderTop: "0.5px solid var(--vl-border)", background: "rgba(99,102,241,0.08)" }}
           initial={reducedMotion ? undefined : { opacity: 0, y: 8 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}

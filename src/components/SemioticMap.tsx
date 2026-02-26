@@ -2,6 +2,7 @@
 
 import { CATEGORY_LABELS } from "@/lib/types";
 import { IMPACT_SEMIOTIC_MAP, SEMIOTIC_MAP } from "@/lib/semiotic-data";
+import Icon from "@/ui/components/Icon";
 
 export default function SemioticMap() {
   return (
@@ -24,7 +25,7 @@ export default function SemioticMap() {
                     color: entry.color,
                   }}
                 >
-                  <i className="bi bi-circle-fill"></i>
+                  <Icon name="circle" size={16} />
                 </div>
                 <div className="flex-fill">
                   <div className="d-flex align-items-center gap-2 mb-1">
@@ -72,7 +73,17 @@ export default function SemioticMap() {
                     <span className={`badge-ios badge-impact-${row.impact}`}>{row.label}</span>
                   </td>
                   <td className="py-2 px-3">
-                    <i className={`bi ${row.icon}`} style={{ color: row.color }}></i>
+                    <Icon
+                      name={
+                        row.impact === "high"
+                          ? "alert-triangle"
+                          : row.impact === "medium"
+                            ? "minus-circle"
+                            : "check-circle"
+                      }
+                      size={16}
+                      style={{ color: row.color }}
+                    />
                   </td>
                   <td className="py-2 px-3">{row.interpretation}</td>
                 </tr>

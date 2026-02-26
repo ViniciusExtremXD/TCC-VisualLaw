@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { ClauseAudit, AuditSession } from "@/lib/types";
 import { CATEGORY_LABELS } from "@/lib/types";
+import Icon, { type IconName } from "@/ui/components/Icon";
 import Sheet from "@/ui/components/Sheet";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
@@ -14,12 +15,12 @@ interface AuditDrawerProps {
   onClose: () => void;
 }
 
-const STEP_ICONS = ["bi-scissors", "bi-type", "bi-tags", "bi-search", "bi-eye"];
+const STEP_ICONS: IconName[] = ["scissors", "type", "tag", "search", "eye"];
 const TABS = [
-  { key: "overview", label: "Visão geral", icon: "bi-list-check" },
-  { key: "classification", label: "Classificação", icon: "bi-tags" },
-  { key: "lexicon", label: "Léxico", icon: "bi-book" },
-  { key: "semiotic", label: "Semiótica", icon: "bi-palette" },
+  { key: "overview", label: "Visão geral", icon: "list-checks" as IconName },
+  { key: "classification", label: "Classificação", icon: "tag" as IconName },
+  { key: "lexicon", label: "Léxico", icon: "book-open" as IconName },
+  { key: "semiotic", label: "Semiótica", icon: "palette" as IconName },
 ] as const;
 
 type TabKey = (typeof TABS)[number]["key"];
@@ -55,7 +56,7 @@ export default function AuditDrawer({ clauseId, audit, onClose }: AuditDrawerPro
                   onClick={() => setActiveTab(tab.key)}
                   className={`audit-tab-btn ${selected ? "audit-tab-active" : ""}`}
                 >
-                  <i className={`bi ${tab.icon}`}></i>
+                  <Icon name={tab.icon} size={14} />
                   {tab.label}
                   {selected ? (
                     <motion.span
@@ -106,12 +107,12 @@ function OverviewTab({ audit, clauseAudit }: { audit: AuditSession; clauseAudit:
 
       {audit.pipeline.map((step, index) => (
         <div key={step.step_id} className="d-flex gap-3">
-          <div className="d-flex flex-column align-items-center" style={{ width: 28 }}>
-            <div className="stepper-dot">
-              <i className={`bi ${STEP_ICONS[index] ?? "bi-circle"}`} style={{ fontSize: "0.75rem" }}></i>
+            <div className="d-flex flex-column align-items-center" style={{ width: 28 }}>
+              <div className="stepper-dot">
+                <Icon name={STEP_ICONS[index] ?? "circle"} size={14} />
+              </div>
+              {index < audit.pipeline.length - 1 && <div className="stepper-line" />}
             </div>
-            {index < audit.pipeline.length - 1 && <div className="stepper-line" />}
-          </div>
 
           <div className="flex-fill pb-2">
             <div className="fw-semibold" style={{ fontSize: "0.875rem" }}>
@@ -306,7 +307,7 @@ function SemioticTab({ clauseAudit }: { clauseAudit: ClauseAudit }) {
         </div>
       </div>
       <div className="text-ios-secondary" style={{ fontSize: "0.8125rem" }}>
-        <i className="bi bi-info-circle me-1"></i>
+        <Icon name="info" size={14} className="me-1" />
         Para o mapa semiótico completo com justificativas, use o botão “Mapa semiótico”
         no cabeçalho do Reader.
       </div>

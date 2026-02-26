@@ -4,6 +4,7 @@ import { useEffect, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { uiTokens } from "@/ui/tokens";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import Icon from "@/ui/components/Icon";
 
 interface PremiumSheetProps {
   open: boolean;
@@ -54,16 +55,16 @@ export default function PremiumSheet({
           className="cupertino-sheet-overlay"
           onClick={onClose}
           data-testid={testId}
-          initial={reducedMotion ? { opacity: 0 } : { opacity: 0, backdropFilter: "blur(0px)" }}
-          animate={reducedMotion ? { opacity: 1 } : { opacity: 1, backdropFilter: "blur(10px)" }}
-          exit={reducedMotion ? { opacity: 0 } : { opacity: 0, backdropFilter: "blur(0px)" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{
             duration: reducedMotion ? 0.12 : uiTokens.motion.duration.medium,
             ease: uiTokens.motion.easing.soft,
           }}
         >
           <motion.div
-            className="cupertino-sheet glass elevated specular"
+            className="cupertino-sheet elevated"
             style={{ maxWidth }}
             onClick={(event) => event.stopPropagation()}
             role="dialog"
@@ -97,7 +98,7 @@ export default function PremiumSheet({
                   aria-label="Fechar"
                   onClick={onClose}
                 >
-                  <i className="bi bi-x-circle-fill"></i>
+                  <Icon name="x-circle" size={20} />
                 </button>
               </header>
             )}

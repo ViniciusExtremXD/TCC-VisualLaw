@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
+import Icon from "@/ui/components/Icon";
 import { SessionProvider } from "@/store/SessionContext";
 import { strings } from "@/i18n/ptBR";
 
@@ -27,8 +28,13 @@ export default function RootLayout({
         <SessionProvider>
           <nav className="navbar ios-navbar sticky-top">
             <div className="container" style={{ maxWidth: 720 }}>
-              <Link href="/" className="navbar-brand d-flex align-items-center gap-2 fw-bold text-ios-accent">
-                <i className="bi bi-shield-check fs-4"></i>
+              <Link
+                href="/"
+                className="navbar-brand d-flex align-items-center gap-2 fw-bold text-ios-accent"
+              >
+                <span className="ios-icon-surface">
+                  <Icon name="shield-check" size={19} />
+                </span>
                 {strings.app.title}
               </Link>
 

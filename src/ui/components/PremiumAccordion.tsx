@@ -4,6 +4,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { uiTokens } from "@/ui/tokens";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import Icon from "@/ui/components/Icon";
 
 interface PremiumAccordionProps {
   title: string;
@@ -40,8 +41,8 @@ export default function PremiumAccordion({
         onClick={() => setOpen((prev) => !prev)}
       >
         <span>{title}</span>
-        <motion.i
-          className="bi bi-chevron-down"
+        <motion.span
+          className="d-inline-flex align-items-center"
           animate={{ rotate: open ? 180 : 0 }}
           transition={
             reducedMotion
@@ -51,7 +52,9 @@ export default function PremiumAccordion({
                   ease: uiTokens.motion.easing.swift,
                 }
           }
-        ></motion.i>
+        >
+          <Icon name="chevron-down" size={16} />
+        </motion.span>
       </button>
 
       {summary ? <p className="cupertino-accordion-summary">{summary}</p> : null}
