@@ -2,8 +2,7 @@
   app: {
     title: "Visual Law TCC",
     subtitle: "TCC - IHC / Mackenzie",
-    footer:
-      "Visual Law TCC - Modo acadêmico - Entrada por texto - Dicionário léxico + auditoria",
+    footer: "Visual Law TCC - Entrada por texto - Dicionário léxico + auditoria",
     swaggerLabel: "Swagger",
   },
   common: {
@@ -51,9 +50,6 @@
   },
   reader: {
     title: "Leitura guiada acadêmica",
-    permanentMode: "Modo acadêmico permanente",
-    permanentModeText:
-      "Clique no highlight para abrir o card completo com evidência embutida.",
     noSessionTitle: "Nenhum documento processado",
     noSessionText:
       "Volte para a Home e execute o pipeline para gerar a trilha auditável.",

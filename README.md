@@ -1,4 +1,4 @@
-﻿# Visual Law TCC (Modo Acadêmico)
+﻿# Visual Law TCC
 
 MVP acadêmico para leitura guiada de Termos de Serviço e Políticas de Privacidade com rastreabilidade total.
 
@@ -16,7 +16,7 @@ MVP acadêmico para leitura guiada de Termos de Serviço e Políticas de Privaci
 3. Segmentação, classificação, destaque léxico e evidências
 4. Card completo por termo (sem modal intermediário)
 5. FAQ por termo (léxico + fallback heurístico)
-6. Geração automática de PDF real (`pdf-lib`) a partir do Reader
+6. Geração automática de PDF real (`@react-pdf/renderer`) a partir do Reader
 7. Rota `/report` como visualização acadêmica da sessão
 
 ## Scripts
@@ -61,7 +61,7 @@ A suíte valida:
 - CRUD de documentos com persistência
 - processamento para Reader
 - clique em highlight abre card completo direto
-- download de PDF válido (`%PDF-` e tamanho > 1KB)
+- download de PDF válido (`%PDF-` e tamanho > 20KB)
 - assets `_next/static` sem 404
 
 Comando:
@@ -75,7 +75,8 @@ NEXT_PUBLIC_REPO_NAME=TCC-VisualLaw npm run test:e2e
 - `src/app/page.tsx` - Home acadêmica
 - `src/app/reader/page.tsx` - leitura guiada + rastreamento + geração de PDF
 - `src/app/report/page.tsx` - relatório acadêmico visual
-- `src/lib/pdf/reportPdf.ts` - geração programática do PDF (`pdf-lib`)
+- `src/lib/pdf/ReportDocument.tsx` - layout completo do relatório PDF
+- `src/lib/pdf/generateReportPdf.tsx` - geração client-side do Blob PDF
 - `src/lib/docRegistry.ts` - CRUD localStorage de documentos
 - `src/data/visual/document-semiotic-map.ts` - mapeamento semântico de documentos e processo
 - `src/data/mock/lexicon.ts` - FAQ por termo
@@ -91,3 +92,4 @@ NEXT_PUBLIC_REPO_NAME=TCC-VisualLaw npm run test:e2e
 - `basePath` e `assetPrefix` por `NEXT_PUBLIC_REPO_NAME`
 
 Workflow: `.github/workflows/deploy.yml`.
+

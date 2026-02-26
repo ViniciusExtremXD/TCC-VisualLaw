@@ -8,7 +8,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Visual Law TCC - Modo acadêmico",
+  title: "Visual Law TCC",
   description:
     "Ambiente acadêmico para auditoria de Termos de Serviço e Políticas de Privacidade com semiótica explícita e rastreabilidade.",
 };

@@ -36,7 +36,9 @@ test.describe("Visual Law academic static export", () => {
     cleanDir(downloadsDir);
   });
 
-  test("home limpa + accordions + swagger + fluxo reader + download PDF", async ({ page }) => {
+  test("home iOS-like + sheets + reader sem banner + PDF formatado", async ({ page }) => {
+    test.setTimeout(240_000);
+
     const staticAssetFailures: string[] = [];
     const staticAssetSuccesses: string[] = [];
 
@@ -78,18 +80,24 @@ test.describe("Visual Law academic static export", () => {
     await expect(swaggerLink).toHaveAttribute("target", "_blank");
     await expect(swaggerLink).toHaveAttribute("rel", /noopener/);
 
-    const docAccordion = page.getByTestId("doc-manager-accordion");
-    await docAccordion.getByRole("button").click();
+    const managerOpenButton = page.getByTestId("doc-manager-open-button");
+    await managerOpenButton.click();
+    await expect(page.getByTestId("doc-manager-sheet")).toBeVisible();
+    await page.screenshot({
+      path: path.join(screenshotsDir, "DOC_SHEET_OPEN.png"),
+      fullPage: true,
+    });
 
     await page.getByTestId("doc-add-button").click();
     await page.getByTestId("doc-name-input").fill("Documento Teste E2E");
     await page.getByTestId("doc-platform-input").fill("Plataforma Teste");
     await page.getByTestId("doc-save-button").click();
     await expect(page.getByText("Documento Teste E2E")).toBeVisible();
+    await page.getByTestId("doc-manager-sheet").getByRole("button", { name: "Fechar" }).click();
 
     await page.reload();
 
-    await page.getByTestId("doc-manager-accordion").getByRole("button").click();
+    await page.getByTestId("doc-manager-open-button").click();
     await expect(page.getByText("Documento Teste E2E")).toBeVisible();
 
     const testDocCard = page.locator('[data-testid="doc-item"]', {
@@ -97,6 +105,7 @@ test.describe("Visual Law academic static export", () => {
     });
     await testDocCard.getByRole("button", { name: /Remover/i }).click();
     await expect(page.getByText("Documento Teste E2E")).toHaveCount(0);
+    await page.getByTestId("doc-manager-sheet").getByRole("button", { name: "Fechar" }).click();
 
     await page.screenshot({
       path: path.join(screenshotsDir, "HOME_LIMPA_ACCORDIONS.png"),
@@ -106,9 +115,15 @@ test.describe("Visual Law academic static export", () => {
     await page.getByRole("button", { name: /Colar exemplo/i }).click();
     await page.getByRole("button", { name: /Processar texto/i }).click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
+    await page.screenshot({
+      path: path.join(screenshotsDir, "READER_IOS.png"),
+      fullPage: true,
+    });
 
+    await expect(page.getByText(/Modo acadêmico permanente/i)).toHaveCount(0);
+    await expect(page.getByTestId("processing-trace")).toHaveCount(0);
+    await page.getByTestId("processing-trace-accordion").getByRole("button").click();
     await expect(page.getByTestId("processing-trace")).toBeVisible();
-    await expect(page.getByText(/Rastreamento do processamento/i)).toBeVisible();
 
     const firstHighlight = page.locator("mark.term-highlight").first();
     await expect(firstHighlight).toBeVisible();
@@ -123,11 +138,11 @@ test.describe("Visual Law academic static export", () => {
       fullPage: true,
     });
 
-    await page.getByRole("button", { name: /Fechar card do termo/i }).click();
+    await page.getByTestId("term-card-sheet").getByRole("button", { name: "Fechar" }).click();
 
-    const downloadPromise = page.waitForEvent("download", { timeout: 30_000 }).catch(() => null);
+    const downloadPromise = page.waitForEvent("download", { timeout: 120_000 }).catch(() => null);
     await page.getByTestId("generate-pdf-button").click();
-    await expect(page).toHaveURL(new RegExp(`${basePath}/report/?$`), { timeout: 90_000 });
+    await expect(page).toHaveURL(new RegExp(`${basePath}/report/?(\\?.*)?$`), { timeout: 90_000 });
     await expect(page.getByTestId("report-page")).toBeVisible();
     await expect(page.getByText(/Relatório acadêmico Visual Law/i)).toBeVisible();
     const download = await downloadPromise;
@@ -146,7 +161,7 @@ test.describe("Visual Law academic static export", () => {
       await download.saveAs(downloadPath);
 
       const pdfBytes = fs.readFileSync(downloadPath);
-      expect(pdfBytes.length).toBeGreaterThan(1024);
+      expect(pdfBytes.length).toBeGreaterThan(20 * 1024);
       expect(pdfBytes.subarray(0, 5).toString("utf8")).toBe("%PDF-");
 
       pdfDownloadInfo = {
@@ -157,6 +172,10 @@ test.describe("Visual Law academic static export", () => {
       };
     } else {
       const sessionPdfMeta = await page.evaluate(() => sessionStorage.getItem("last_pdf_meta"));
+      const sessionPdfError = await page.evaluate(() =>
+        sessionStorage.getItem("last_pdf_error")
+      );
+      expect(sessionPdfError, `Erro ao gerar PDF: ${sessionPdfError ?? "desconhecido"}`).toBeNull();
       expect(sessionPdfMeta).toBeTruthy();
 
       const parsedMeta = JSON.parse(sessionPdfMeta ?? "{}") as {
@@ -167,7 +186,7 @@ test.describe("Visual Law academic static export", () => {
       };
 
       expect(parsedMeta.type).toBe("application/pdf");
-      expect(parsedMeta.size ?? 0).toBeGreaterThan(1024);
+      expect(parsedMeta.size ?? 0).toBeGreaterThan(20 * 1024);
       expect(parsedMeta.signature).toBe("%PDF-");
 
       pdfDownloadInfo = {

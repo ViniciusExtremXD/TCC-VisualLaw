@@ -7,6 +7,9 @@ import { createDocumentId } from "@/lib/docRegistry";
 import { getDocumentSemanticProfile } from "@/data/visual/document-semiotic-map";
 import Accordion from "@/components/Accordion";
 import { strings } from "@/i18n/ptBR";
+import Button from "@/ui/components/Button";
+import { InsetGroupedList, ListCell } from "@/ui/components/InsetGroupedList";
+import Sheet from "@/ui/components/Sheet";
 
 interface DocumentManagerProps {
   documents: DocumentRecord[];
@@ -39,6 +42,7 @@ export default function DocumentManager({
   onActivate,
   onToggleStatus,
 }: DocumentManagerProps) {
+  const [sheetOpen, setSheetOpen] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [draft, setDraft] = useState(EMPTY_DRAFT);
 
@@ -46,6 +50,13 @@ export default function DocumentManager({
     () => documents.find((item) => item.status === "active") ?? null,
     [documents]
   );
+
+  const openSheet = () => setSheetOpen(true);
+  const closeSheet = () => {
+    setSheetOpen(false);
+    setEditingId(null);
+    setDraft(EMPTY_DRAFT);
+  };
 
   const startCreate = () => {
     setEditingId("__new__");
@@ -75,6 +86,7 @@ export default function DocumentManager({
     }
 
     const current = documents.find((item) => item.doc_id === editingId);
+
     onSave({
       doc_id:
         editingId && editingId !== "__new__"
@@ -93,48 +105,61 @@ export default function DocumentManager({
   };
 
   return (
-    <div className="d-flex flex-column gap-2">
-      <div className="ios-card-inset p-3" data-testid="active-document-card">
-        <div className="fw-semibold mb-1">{strings.home.activeDocument}</div>
-        {activeDocument ? (
-          <>
-            <div>{activeDocument.name}</div>
-            <div className="text-ios-secondary" style={{ fontSize: "0.82rem" }}>
-              {activeDocument.platform} | {activeDocument.type} | {activeDocument.language}
-            </div>
-          </>
-        ) : (
-          <div className="text-ios-secondary" style={{ fontSize: "0.82rem" }}>
-            {strings.home.noActiveDocument}
-          </div>
-        )}
-      </div>
+    <>
+      <InsetGroupedList>
+        <ListCell
+          testId="active-document-card"
+          title={activeDocument ? activeDocument.name : strings.home.noActiveDocument}
+          subtitle={
+            activeDocument
+              ? `${activeDocument.platform} • ${activeDocument.type} • ${activeDocument.language}`
+              : strings.home.activeDocument
+          }
+          meta={
+            activeDocument
+              ? `doc_id ${activeDocument.doc_id}${
+                  activeDocument.last_updated
+                    ? ` • atualização ${activeDocument.last_updated}`
+                    : ""
+                }`
+              : undefined
+          }
+          right={
+            <Button
+              variant="secondary"
+              size="sm"
+              onClick={openSheet}
+              data-testid="doc-manager-open-button"
+            >
+              <i className="bi bi-folder2-open"></i>
+              Gerenciar
+            </Button>
+          }
+        />
+      </InsetGroupedList>
 
-      <Accordion
-        title={strings.home.docManagerDetails}
-        summary={strings.home.docManagerSummary}
-        testId="doc-manager-accordion"
+      <Sheet
+        open={sheetOpen}
+        onClose={closeSheet}
+        title={strings.home.docManagerTitle}
+        subtitle="Cadastro local para rastreabilidade de plataforma, tipo documental e status."
+        testId="doc-manager-sheet"
       >
-        <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-2">
-          <h3 className="fw-semibold mb-0" style={{ fontSize: "1rem" }}>
-            {strings.home.docManagerTitle}
-          </h3>
-          <button
-            type="button"
-            className="btn btn-ios btn-ios-secondary"
-            onClick={startCreate}
-            data-testid="doc-add-button"
-          >
-            <i className="bi bi-plus-circle me-1"></i>
+        <div className="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+          <Button variant="secondary" size="sm" onClick={startCreate} data-testid="doc-add-button">
+            <i className="bi bi-plus-circle"></i>
             Adicionar
-          </button>
+          </Button>
+          <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>
+            Documento ativo: {activeDocument?.doc_id ?? "nenhum"}
+          </span>
         </div>
 
         {editingId && (
-          <div className="ios-card-inset p-3 d-flex flex-column gap-2 mb-2" data-testid="doc-editor">
+          <div className="cupertino-card-inset p-3 mb-3" data-testid="doc-editor">
             <div className="row g-2">
               <div className="col-12 col-md-6">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   Nome do documento
                 </label>
                 <input
@@ -146,8 +171,9 @@ export default function DocumentManager({
                   data-testid="doc-name-input"
                 />
               </div>
+
               <div className="col-12 col-md-3">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   Tipo
                 </label>
                 <select
@@ -167,8 +193,9 @@ export default function DocumentManager({
                   ))}
                 </select>
               </div>
+
               <div className="col-12 col-md-3">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   Idioma
                 </label>
                 <input
@@ -179,8 +206,9 @@ export default function DocumentManager({
                   }
                 />
               </div>
+
               <div className="col-12 col-md-6">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   Plataforma
                 </label>
                 <input
@@ -192,8 +220,9 @@ export default function DocumentManager({
                   data-testid="doc-platform-input"
                 />
               </div>
+
               <div className="col-12 col-md-6">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   URL oficial (opcional)
                 </label>
                 <input
@@ -204,8 +233,9 @@ export default function DocumentManager({
                   }
                 />
               </div>
+
               <div className="col-12 col-md-6">
-                <label className="form-label" style={{ fontSize: "0.8rem" }}>
+                <label className="form-label" style={{ fontSize: "0.78rem" }}>
                   Última atualização (opcional)
                 </label>
                 <input
@@ -219,22 +249,13 @@ export default function DocumentManager({
               </div>
             </div>
 
-            <div className="d-flex justify-content-end gap-2">
-              <button
-                type="button"
-                className="btn btn-ios btn-ios-tertiary"
-                onClick={cancelEdit}
-              >
+            <div className="d-flex justify-content-end gap-2 mt-3">
+              <Button variant="ghost" size="sm" onClick={cancelEdit}>
                 Cancelar
-              </button>
-              <button
-                type="button"
-                className="btn btn-ios btn-ios-primary"
-                onClick={saveDraft}
-                data-testid="doc-save-button"
-              >
+              </Button>
+              <Button variant="primary" size="sm" onClick={saveDraft} data-testid="doc-save-button">
                 Salvar documento
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -243,118 +264,78 @@ export default function DocumentManager({
           {documents.map((document) => {
             const semantic = getDocumentSemanticProfile(document);
             return (
-              <article key={document.doc_id} className="ios-card-inset p-3" data-testid="doc-item">
-                <div className="d-flex justify-content-between align-items-start flex-wrap gap-2">
+              <article key={document.doc_id} className="cupertino-card-inset p-3" data-testid="doc-item">
+                <div className="d-flex align-items-start justify-content-between gap-2 flex-wrap">
                   <div>
-                    <div className="d-flex align-items-center gap-2 flex-wrap mb-1">
+                    <div className="d-flex align-items-center gap-2 mb-1 flex-wrap">
                       <span className="fw-semibold">{document.name}</span>
                       <span
-                        className={`badge-ios ${document.status === "active" ? "badge-impact-low" : "badge-impact-medium"}`}
+                        className={`badge-ios ${
+                          document.status === "active" ? "badge-impact-low" : "badge-impact-medium"
+                        }`}
                       >
-                        {document.status === "active"
-                          ? strings.common.active
-                          : strings.common.inactive}
+                        {document.status === "active" ? strings.common.active : strings.common.inactive}
                       </span>
                     </div>
-                    <div className="text-ios-secondary" style={{ fontSize: "0.8rem" }}>
-                      doc_id: <code>{document.doc_id}</code> | plataforma: {document.platform} |
-                      tipo: {document.type}
+                    <div className="text-ios-secondary" style={{ fontSize: "0.78rem" }}>
+                      doc_id {document.doc_id} • plataforma {document.platform} • tipo {document.type}
                     </div>
-                    <div className="text-ios-secondary" style={{ fontSize: "0.8rem" }}>
-                      idioma: {document.language}
-                      {document.last_updated
-                        ? ` | última atualização: ${document.last_updated}`
-                        : ""}
+                    <div className="text-ios-secondary" style={{ fontSize: "0.78rem" }}>
+                      idioma {document.language}
+                      {document.last_updated ? ` • atualização ${document.last_updated}` : ""}
                     </div>
-                    {document.url && (
-                      <a
-                        href={document.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{ fontSize: "0.8rem" }}
-                      >
+                    {document.url ? (
+                      <a href={document.url} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.77rem" }}>
                         {document.url}
                       </a>
-                    )}
+                    ) : null}
                   </div>
 
                   <div className="d-flex gap-1 flex-wrap">
-                    <button
-                      type="button"
-                      className="btn btn-ios btn-ios-secondary"
-                      style={{ fontSize: "0.78rem", padding: "0.35rem 0.7rem" }}
-                      onClick={() => onActivate(document.doc_id)}
-                    >
+                    <Button variant="secondary" size="sm" onClick={() => onActivate(document.doc_id)}>
                       Ativar
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-ios btn-ios-tertiary"
-                      style={{ fontSize: "0.78rem", padding: "0.35rem 0.7rem" }}
-                      onClick={() => onToggleStatus(document.doc_id)}
-                    >
-                      {document.status === "active" ? "Desativar" : "Status"}
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-ios btn-ios-tertiary"
-                      style={{ fontSize: "0.78rem", padding: "0.35rem 0.7rem" }}
-                      onClick={() => startEdit(document)}
-                    >
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={() => onToggleStatus(document.doc_id)}>
+                      {document.status === "active" ? "Desativar" : "Alternar"}
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={() => startEdit(document)}>
                       Editar
-                    </button>
-                    <button
-                      type="button"
-                      className="btn btn-ios"
-                      style={{
-                        fontSize: "0.78rem",
-                        padding: "0.35rem 0.7rem",
-                        background: "rgba(220,38,38,0.12)",
-                        color: "#b91c1c",
-                      }}
-                      onClick={() => onRemove(document.doc_id)}
-                    >
+                    </Button>
+                    <Button variant="danger" size="sm" onClick={() => onRemove(document.doc_id)}>
                       Remover
-                    </button>
+                    </Button>
                   </div>
                 </div>
 
-                <div className="mt-2 p-2 rounded" style={{ background: "rgba(0,122,255,0.06)" }}>
-                  <div className="fw-semibold mb-1" style={{ fontSize: "0.82rem" }}>
-                    Mapeamento semântico do documento
-                  </div>
-                  <div style={{ fontSize: "0.8rem" }}>
-                    <div>
-                      <span className="fw-semibold">Regra principal:</span>{" "}
-                      {semantic.profile.rule_summary}
-                    </div>
-                    <div>
-                      <span className="fw-semibold">Ícone principal:</span>{" "}
-                      <code>{semantic.profile.primary_icon}</code>
-                    </div>
-                    <div>
-                      <span className="fw-semibold">Justificativa:</span>{" "}
-                      {semantic.profile.icon_justification}
-                    </div>
-                    <div>
-                      <span className="fw-semibold">Categorias-alvo:</span>{" "}
-                      {semantic.categories
-                        .map((category) => CATEGORY_LABELS[category])
-                        .join(", ")}
-                    </div>
-                    {semantic.platformNote && (
+                <div className="mt-2">
+                  <Accordion title="Mapeamento semântico do documento" summary="Regras e categorias associadas" >
+                    <div style={{ fontSize: "0.8rem" }}>
                       <div>
-                        <span className="fw-semibold">Ajuste por plataforma:</span>{" "}
-                        {semantic.platformNote}
+                        <span className="fw-semibold">Regra principal:</span> {semantic.profile.rule_summary}
                       </div>
-                    )}
-                  </div>
+                      <div>
+                        <span className="fw-semibold">Ícone principal:</span> <code>{semantic.profile.primary_icon}</code>
+                      </div>
+                      <div>
+                        <span className="fw-semibold">Justificativa:</span> {semantic.profile.icon_justification}
+                      </div>
+                      <div>
+                        <span className="fw-semibold">Categorias-alvo:</span>{" "}
+                        {semantic.categories.map((category) => CATEGORY_LABELS[category]).join(", ")}
+                      </div>
+                      {semantic.platformNote ? (
+                        <div>
+                          <span className="fw-semibold">Ajuste por plataforma:</span> {semantic.platformNote}
+                        </div>
+                      ) : null}
+                    </div>
+                  </Accordion>
                 </div>
               </article>
             );
           })}
         </div>
-      </Accordion>
-    </div>
+      </Sheet>
+    </>
   );
 }
