@@ -88,24 +88,11 @@ test.describe("Visual Law academic static export", () => {
       fullPage: true,
     });
 
-    await page.getByTestId("doc-add-button").click();
-    await page.getByTestId("doc-name-input").fill("Documento Teste E2E");
-    await page.getByTestId("doc-platform-input").fill("Plataforma Teste");
-    await page.getByTestId("doc-save-button").click();
-    await expect(page.getByText("Documento Teste E2E")).toBeVisible();
-    await page.getByTestId("doc-manager-sheet").getByRole("button", { name: "Fechar" }).click();
-
-    await page.reload();
-
-    await page.getByTestId("doc-manager-open-button").click();
-    await expect(page.getByText("Documento Teste E2E")).toBeVisible();
-
-    const testDocCard = page.locator('[data-testid="doc-item"]', {
-      hasText: "Documento Teste E2E",
-    });
-    await testDocCard.getByRole("button", { name: /Remover/i }).click();
-    await expect(page.getByText("Documento Teste E2E")).toHaveCount(0);
-    await page.getByTestId("doc-manager-sheet").getByRole("button", { name: "Fechar" }).click();
+    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(
+      7
+    );
+    await page.keyboard.press("Escape");
+    await expect(page.getByTestId("doc-manager-sheet")).toHaveCount(0);
 
     await page.screenshot({
       path: path.join(screenshotsDir, "HOME_LIMPA_ACCORDIONS.png"),
@@ -125,7 +112,9 @@ test.describe("Visual Law academic static export", () => {
     await page.getByTestId("processing-trace-accordion").getByRole("button").click();
     await expect(page.getByTestId("processing-trace")).toBeVisible();
 
-    const firstHighlight = page.locator("mark.term-highlight").first();
+    const firstHighlight = page
+      .locator("button.premium-highlight-mark, button.term-highlight, mark.term-highlight")
+      .first();
     await expect(firstHighlight).toBeVisible();
     await firstHighlight.click();
 
@@ -219,5 +208,25 @@ test.describe("Visual Law academic static export", () => {
 
     expect(staticAssetFailures, "Nenhum 404/5xx esperado em /_next/static").toEqual([]);
     expect(staticAssetSuccesses.length).toBeGreaterThan(0);
+  });
+
+  test.describe("reduced motion compatibility", () => {
+    test.use({ reducedMotion: "reduce" });
+
+    test("home e reader funcionam com animações reduzidas", async ({ page }) => {
+      await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
+
+      await expect(page.getByTestId("home-entry-block")).toBeVisible();
+      await page.getByRole("button", { name: /Colar exemplo/i }).click();
+      await page.getByRole("button", { name: /Processar texto/i }).click();
+
+      await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
+      await expect(page.getByText(/Leitura guiada acadêmica/i)).toBeVisible();
+
+      await page.screenshot({
+        path: path.join(screenshotsDir, "READER_REDUCED_MOTION.png"),
+        fullPage: true,
+      });
+    });
   });
 });

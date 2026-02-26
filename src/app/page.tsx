@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import DocumentManager from "@/components/DocumentManager";
@@ -23,6 +24,8 @@ import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import NavigationBar from "@/ui/components/NavigationBar";
 import Sheet from "@/ui/components/Sheet";
+import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import { uiTokens } from "@/ui/tokens";
 
 const FLOW_CARDS = [
   {
@@ -77,6 +80,7 @@ export default function HomePage() {
     useState<(typeof FLOW_CARDS)[number] | null>(null);
   const router = useRouter();
   const { setResults } = useSession();
+  const reducedMotion = useReducedMotionPreference();
 
   useEffect(() => {
     setDocuments(loadDocRegistry());
@@ -139,7 +143,7 @@ export default function HomePage() {
         caption={strings.home.heroText}
       />
 
-      <Card className="p-4 d-flex flex-column gap-3" data-testid="home-entry-block">
+      <Card className="p-4 d-flex flex-column gap-3" data-testid="home-entry-block" interactive>
         <h2 className="cupertino-title mb-0" style={{ fontSize: "1.1rem" }}>
           {strings.home.entryTitle}
         </h2>
@@ -221,14 +225,47 @@ export default function HomePage() {
         </Accordion>
       </Card>
 
-      <section className="row g-3" data-testid="home-flow-cards">
+      <motion.section
+        className="row g-3"
+        data-testid="home-flow-cards"
+        initial={reducedMotion ? undefined : "hidden"}
+        animate={reducedMotion ? undefined : "show"}
+        variants={
+          reducedMotion
+            ? undefined
+            : {
+                hidden: { opacity: 0 },
+                show: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.06, delayChildren: 0.08 },
+                },
+              }
+        }
+      >
         {FLOW_CARDS.map((card) => (
-          <div key={card.id} className="col-12 col-sm-4">
-            <button
+          <motion.div
+            key={card.id}
+            className="col-12 col-sm-4"
+            variants={
+              reducedMotion
+                ? undefined
+                : {
+                    hidden: { opacity: 0, y: 12 },
+                    show: { opacity: 1, y: 0 },
+                  }
+            }
+          >
+            <motion.button
               type="button"
               className="ios-feature-card h-100 w-100"
               onClick={() => setSelectedFlowCard(card)}
               aria-label={`Detalhes de ${card.title}`}
+              whileHover={reducedMotion ? undefined : { y: -3, scale: 1.005 }}
+              whileTap={reducedMotion ? undefined : { scale: 0.985 }}
+              transition={{
+                duration: uiTokens.motion.duration.normal,
+                ease: uiTokens.motion.easing.soft,
+              }}
             >
               <span className="ios-feature-card-inner">
                 <span
@@ -249,10 +286,10 @@ export default function HomePage() {
                 </span>
                 <span className="ios-feature-link">Toque para ver detalhes</span>
               </span>
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         ))}
-      </section>
+      </motion.section>
 
       <div data-testid="home-process-block">
         <ProcessMap />

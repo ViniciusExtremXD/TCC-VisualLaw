@@ -1,12 +1,19 @@
-﻿"use client";
+"use client";
 
+import { useState } from "react";
+import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
 import { PROCESS_SEMIOTIC_STEPS } from "@/data/visual/document-semiotic-map";
 import { strings } from "@/i18n/ptBR";
+import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import { uiTokens } from "@/ui/tokens";
 
 export default function ProcessMap() {
+  const [open, setOpen] = useState(false);
+  const reducedMotion = useReducedMotionPreference();
+
   return (
-    <section className="ios-card p-4" data-testid="process-map-block">
+    <section className="ios-card glass elevated specular p-4" data-testid="process-map-block">
       <h2 className="fw-bold mb-1" style={{ fontSize: "1.1rem" }}>
         {strings.home.processMapTitle}
       </h2>
@@ -18,14 +25,43 @@ export default function ProcessMap() {
         title={strings.home.processMapDetails}
         summary="Segmentação, classificação, léxico, semiótica e auditoria com evidências por etapa."
         testId="process-map-accordion"
+        onToggle={setOpen}
       >
-        <div className="d-flex flex-column gap-3" data-testid="process-map">
+        <motion.div
+          className="d-flex flex-column gap-3"
+          data-testid="process-map"
+          initial={false}
+          animate={{ opacity: 1 }}
+        >
           {PROCESS_SEMIOTIC_STEPS.map((step, index) => (
-            <article key={step.id} className="d-flex gap-3">
+            <motion.article
+              key={step.id}
+              className="d-flex gap-3"
+              initial={reducedMotion ? undefined : { opacity: 0, y: 8 }}
+              animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
+              transition={
+                reducedMotion
+                  ? undefined
+                  : {
+                      duration: uiTokens.motion.duration.medium,
+                      delay: index * 0.04,
+                      ease: uiTokens.motion.easing.soft,
+                    }
+              }
+            >
               <div className="d-flex flex-column align-items-center" style={{ width: 28 }}>
-                <div className="stepper-dot fw-semibold" style={{ fontSize: "0.76rem" }}>
+                <motion.div
+                  className={`stepper-dot fw-semibold ${open ? "stepper-dot-ping" : ""}`}
+                  style={{ fontSize: "0.76rem" }}
+                  animate={reducedMotion ? undefined : { scale: open ? [1, 1.08, 1] : 1 }}
+                  transition={{
+                    duration: uiTokens.motion.duration.slow,
+                    delay: index * 0.05,
+                    ease: uiTokens.motion.easing.soft,
+                  }}
+                >
                   {index + 1}
-                </div>
+                </motion.div>
                 {index < PROCESS_SEMIOTIC_STEPS.length - 1 && <div className="stepper-line"></div>}
               </div>
               <div className="flex-fill pb-2">
@@ -35,7 +71,7 @@ export default function ProcessMap() {
                 <div className="text-ios-secondary" style={{ fontSize: "0.8rem" }}>
                   {step.objective}
                 </div>
-                <div className="ios-card-inset p-2 mt-1" style={{ fontSize: "0.78rem" }}>
+                <div className="ios-card-inset glass p-2 mt-1" style={{ fontSize: "0.78rem" }}>
                   <div>
                     <span className="fw-semibold">Entrada:</span> {step.input}
                   </div>
@@ -47,9 +83,9 @@ export default function ProcessMap() {
                   </div>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
       </Accordion>
     </section>
   );

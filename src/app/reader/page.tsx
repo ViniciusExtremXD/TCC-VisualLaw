@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Badge from "@/components/Badge";
@@ -18,6 +19,8 @@ import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import NavigationBar from "@/ui/components/NavigationBar";
 import Sheet from "@/ui/components/Sheet";
+import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
+import { uiTokens } from "@/ui/tokens";
 
 function buildContext(text: string, start: number, end: number): string {
   const contextStart = Math.max(0, start - 40);
@@ -45,6 +48,8 @@ export default function ReaderPage() {
   const [showSemioticMap, setShowSemioticMap] = useState(false);
   const [selectedTermEvidence, setSelectedTermEvidence] = useState<TermEvidence | null>(null);
   const [generatingPdf, setGeneratingPdf] = useState(false);
+  const [navDirection, setNavDirection] = useState<1 | -1>(1);
+  const reducedMotion = useReducedMotionPreference();
 
   if (!isProcessed || clauses.length === 0) {
     return (
@@ -69,12 +74,14 @@ export default function ReaderPage() {
 
   const goNext = () => {
     if (currentIndex < clauses.length - 1) {
+      setNavDirection(1);
       setCurrentIndex(currentIndex + 1);
     }
   };
 
   const goPrev = () => {
     if (currentIndex > 0) {
+      setNavDirection(-1);
       setCurrentIndex(currentIndex - 1);
     }
   };
@@ -163,47 +170,60 @@ export default function ReaderPage() {
 
       <ProgressBar current={currentIndex + 1} total={clauses.length} />
 
-      <Card as="article">
-        <header className="p-3 px-4" style={{ borderBottom: "1px solid var(--cu-separator)", background: "rgba(255,255,255,0.65)" }}>
-          <div className="d-flex align-items-start justify-content-between flex-wrap gap-2">
-            <div>
-              <h2 className="fw-semibold mb-0" style={{ fontSize: "1.02rem" }}>
-                {clause.title || `Cláusula ${currentIndex + 1}`}
-              </h2>
-              <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>{clause.clause_id}</span>
-            </div>
-            <div className="d-flex gap-2">
-              <Badge type="category" value={clause.category} />
-              <Badge type="impact" value={clause.impact} />
-            </div>
-          </div>
-        </header>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={clause.clause_id}
+          initial={reducedMotion ? { opacity: 0 } : { opacity: 0, x: navDirection * 22 }}
+          animate={reducedMotion ? { opacity: 1 } : { opacity: 1, x: 0 }}
+          exit={reducedMotion ? { opacity: 0 } : { opacity: 0, x: navDirection * -18 }}
+          transition={{
+            duration: reducedMotion ? 0.12 : uiTokens.motion.duration.medium,
+            ease: uiTokens.motion.easing.ios,
+          }}
+        >
+          <Card as="article" interactive>
+            <header className="p-3 px-4" style={{ borderBottom: "1px solid var(--cu-separator)", background: "rgba(255,255,255,0.65)" }}>
+              <div className="d-flex align-items-start justify-content-between flex-wrap gap-2">
+                <div>
+                  <h2 className="fw-semibold mb-0" style={{ fontSize: "1.02rem" }}>
+                    {clause.title || `Cláusula ${currentIndex + 1}`}
+                  </h2>
+                  <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>{clause.clause_id}</span>
+                </div>
+                <div className="d-flex gap-2">
+                  <Badge type="category" value={clause.category} />
+                  <Badge type="impact" value={clause.impact} />
+                </div>
+              </div>
+            </header>
 
-        <div className="p-4">
-          <HighlightedText text={clause.text} highlights={clauseHighlights} onTermClick={handleTermClick} />
+            <div className="p-4">
+              <HighlightedText text={clause.text} highlights={clauseHighlights} onTermClick={handleTermClick} />
 
-          {clause.lgpd_refs.length > 0 && (
-            <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--cu-separator)", fontSize: "0.82rem" }}>
-              <i className="bi bi-bookmark me-1"></i>
-              {strings.reader.referencesLgpd}: {clause.lgpd_refs.join(", ")}
+              {clause.lgpd_refs.length > 0 && (
+                <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--cu-separator)", fontSize: "0.82rem" }}>
+                  <i className="bi bi-bookmark me-1"></i>
+                  {strings.reader.referencesLgpd}: {clause.lgpd_refs.join(", ")}
+                </div>
+              )}
             </div>
-          )}
-        </div>
 
-        {audit ? (
-          <div className="px-4 pb-3">
-            <Button
-              variant="secondary"
-              size="sm"
-              className="w-100"
-              onClick={() => setAuditDrawerClauseId(clause.clause_id)}
-            >
-              <i className="bi bi-clipboard-data"></i>
-              {strings.reader.openAudit}
-            </Button>
-          </div>
-        ) : null}
-      </Card>
+            {audit ? (
+              <div className="px-4 pb-3">
+                <Button
+                  variant="secondary"
+                  size="sm"
+                  className="w-100"
+                  onClick={() => setAuditDrawerClauseId(clause.clause_id)}
+                >
+                  <i className="bi bi-clipboard-data"></i>
+                  {strings.reader.openAudit}
+                </Button>
+              </div>
+            ) : null}
+          </Card>
+        </motion.div>
+      </AnimatePresence>
 
       <Accordion
         title="Rastreamento do processamento"
