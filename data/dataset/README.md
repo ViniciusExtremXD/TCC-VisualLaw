@@ -1,24 +1,41 @@
-# Clause-Level Dataset
+# Clause-level dataset
 
-This dataset is derived from the frozen source packages in `data/corpus/*/`.
+Este diretorio contem o dataset clause-level consumido pelo MVP e pelos testes de regressao. Ele deve ser sempre derivado de pacotes congelados em `data/corpus/`, nunca de texto inventado ou de fonte secundaria.
 
-## Source basis
+## Base oficial atual
 
-- X Privacy Policy: `data/corpus/x-privacy`
-- Meta/Facebook Privacy Policy: `data/corpus/meta-privacy`
-- Instagram Terms of Use: `data/corpus/instagram-terms`
-- LGPD relevant legal excerpts: `data/corpus/lgpd-excerpts`
+O corpus canonico congelavel esta em:
 
-## Derivation flow
+- `data/corpus/x-terms`
+- `data/corpus/x-privacy`
+- `data/corpus/meta-terms`
+- `data/corpus/meta-privacy`
+- `data/corpus/instagram-terms`
+- `data/corpus/lgpd-excerpts`
 
-1. Official primary URLs were accessed with Playwright.
-2. Each source package received metadata, selected raw excerpts, capture notes, and a screenshot.
-3. Selected excerpts were segmented into clause-level units.
-4. Automatic project categories were applied first using the six-category taxonomy.
-5. Manual academic review normalized ambiguous boundaries and assigned final impact.
-6. Traceability was preserved through `source_package`, `source_excerpt_id`, and `official_url`.
+`data/corpus/instagram-privacy` e pacote auxiliar de referencia, pois a politica de privacidade do Instagram e tratada pela politica compartilhada da Meta.
 
-## Categories
+## Estado do dataset
+
+`clauses.json` e `clauses.csv` preservam compatibilidade com o MVP atual. A versao anterior foi derivada de excertos oficiais selecionados. Depois da captura integral do corpus oficial, o proximo passo metodologico e rederivar as clausulas a partir de `source.txt` validado, com revisao manual academica.
+
+Enquanto essa rederivacao nao for concluida, qualquer uso em banca deve declarar que:
+
+- os pacotes de fonte oficial sao o artefato primario;
+- o dataset atual e uma camada derivada de transicao;
+- novas clausulas so devem entrar com `doc_id`, `source_package`, `source_section`, `official_url` e status de revisao.
+
+## Fluxo de derivacao
+
+1. Capturar fonte oficial bruta em `data/corpus`.
+2. Validar estrutura, hashes e ausencia de bloqueio/login.
+3. Extrair `source.txt` sem resumo ou reescrita semantica.
+4. Segmentar em unidades clause-level.
+5. Classificar automaticamente nas seis categorias do projeto.
+6. Revisar manualmente fronteiras ambiguas e impacto.
+7. Atualizar `clauses.json`, `clauses.csv`, goldens e instrumentos de validacao.
+
+## Categorias
 
 - `data_collection`
 - `purpose_use`
@@ -27,11 +44,7 @@ This dataset is derived from the frozen source packages in `data/corpus/*/`.
 - `user_rights`
 - `security_incidents`
 
-## Boundary decisions
+## Arquivos
 
-The platform documents are long and proprietary. The dataset intentionally uses selected official excerpts, not full policy copies. Clause boundaries were chosen when an excerpt contained a single analyzable legal/privacy action: collection, purpose, sharing, retention, rights, or security.
-
-## Files
-
-- `clauses.json`: app-compatible academic records.
-- `clauses.csv`: tabular contract for review and validation.
+- `clauses.json`: registros academicos compativeis com o app.
+- `clauses.csv`: contrato tabular para revisao, validacao e banca.

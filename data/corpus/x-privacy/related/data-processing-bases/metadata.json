@@ -1,0 +1,53 @@
+{
+  "doc_id": "data-processing-bases",
+  "title": "X Legal Bases for Data Processing",
+  "platform": "X",
+  "type": "privacy_reference",
+  "language": "pt-BR",
+  "official_url": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases",
+  "resolved_url": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "76613d678d007d586f93ac524b810bef8f8cbae3e9a487598e40a225877c34e6",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "privacy",
+  "objective": "Documento relacionado ao pacote x-privacy.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 403,
+    "resolved_url": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases",
+    "content_type": "text/html; charset=UTF-8",
+    "body_length": 5806,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 37171,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

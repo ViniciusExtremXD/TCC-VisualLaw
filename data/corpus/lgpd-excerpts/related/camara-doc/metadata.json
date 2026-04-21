@@ -1,0 +1,18 @@
+{
+  "doc_id": "camara-doc",
+  "title": "LGPD - Camara DOC Atualizado",
+  "platform": "related",
+  "type": "law_reference",
+  "language": "pt-BR",
+  "official_url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.doc",
+  "resolved_url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.doc",
+  "captured_at": "2026-04-21T20:40:25.913Z",
+  "capture_method": "raw-http-download",
+  "capture_status": "captured",
+  "content_hash_sha256": "459690270ceec649303f4ac412507377f3cd5957658214a8591086b82fc9832e",
+  "source_files": [
+    "source.doc"
+  ],
+  "related_urls": {},
+  "notes": "Documento relacionado baixado diretamente de fonte oficial."
+}

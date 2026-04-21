@@ -1,0 +1,56 @@
+{
+  "doc_id": "META_TERMS",
+  "title": "Meta/Facebook Terms of Service",
+  "platform": "Meta/Facebook",
+  "type": "terms_of_service",
+  "language": "pt-BR",
+  "official_url": "https://www.facebook.com/terms/?locale=pt_BR",
+  "resolved_url": "https://www.facebook.com/terms/?locale=pt_BR",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "c83856c481350bd7af3ad512051842b07ac818fade871564f54b03e70e4b9159",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "privacy_policy": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "cookies": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR"
+  },
+  "source_kind": "frozen_official_primary_source",
+  "app_type": "terms",
+  "objective": "Preservar os termos do Facebook/Meta para analise clause-level de uso da plataforma, conteudo, suspensao e licencas.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 400,
+    "resolved_url": "https://www.facebook.com/terms/?locale=pt_BR",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 1542,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 36938,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

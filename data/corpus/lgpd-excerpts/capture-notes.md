@@ -1,14 +1,27 @@
-# Capture notes - Lei Geral de Protecao de Dados Pessoais - trechos relevantes
+# Lei Geral de Protecao de Dados Pessoais - LGPD
 
-- What was captured: selected official excerpts used for clause-level analysis, plus metadata and screenshot evidence.
-- Official source: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
-- Resolved URL during capture: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
-- Capture timestamp: 2026-04-21T02:12:01.073Z
-- Effective/version label: Lei no 13.709, de 14 de agosto de 2018 - texto compilado
-- Access limitations: Official Planalto page was accessible during capture. The repository stores only study-relevant excerpts.
-- Normalization decisions: Selected legal excerpts preserve wording from the official compiled law text; repeated historical versions inside the page were not duplicated.
-- Observed body text SHA-256: ffca5363a92b83cab472cdce10799ee30c168bf1f3b60a8a345089c564c91fab
+- doc_id: LGPD_EXCERPTS
+- official_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm
+- resolved_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm
+- captured_at: 2026-04-21T20:40:25.913Z
+- locale: pt-BR
+- user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+- browser_mode: Playwright Chromium headless
+- raw_http_probe_worked: true
+- raw_http_status: 200
+- raw_http_resolved_url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm
+- authentication_required: false during scripted capture unless flagged below
+- rate_limit_observed: false
+- blocking_observed: false
+- auth_or_login_interstitial_observed: false
+- fallback_to_browser_rendering: true
+- visual_verification: pending_manual_review
+- saved_files: source.html, source.txt, source.pdf, source-screenshot.png, metadata.json, capture-notes.md, SHA256SUMS
+- remaining_caveat: revisar manualmente o screenshot antes de citar o pacote como evidencia visual em banca
 
-## Copyright and scope note
+## Normalizacao
 
-The repository stores selected excerpts required for academic analysis and reproducibility. It does not store complete proprietary platform policies. For full review, use the official URL recorded in metadata.
+- `source.html` preserva o DOM renderizado pelo navegador.
+- `source.txt` preserva `document.body.innerText` com normalizacao apenas de espacos e quebras repetidas.
+- `source.pdf` e uma impressao textual derivada de `source.txt` para manter o corpus versionavel; a evidencia visual fica em `source-screenshot.png`.
+- Nenhum resumo ou reescrita semantica foi aplicado.

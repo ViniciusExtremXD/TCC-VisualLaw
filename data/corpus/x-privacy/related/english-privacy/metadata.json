@@ -1,0 +1,53 @@
+{
+  "doc_id": "english-privacy",
+  "title": "X Privacy Policy - English",
+  "platform": "X",
+  "type": "privacy_policy",
+  "language": "en",
+  "official_url": "https://x.com/en/privacy",
+  "resolved_url": "https://x.com/en/privacy",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "1cbc7a8b7cc1f84b272029ae79d37951a28187fb412dc878e52ad7011dcaecac",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "privacy",
+  "objective": "Documento relacionado ao pacote x-privacy.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://x.com/en/privacy",
+    "content_type": "text/html",
+    "body_length": 152674,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 33029,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

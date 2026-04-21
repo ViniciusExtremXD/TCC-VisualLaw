@@ -14,6 +14,11 @@
     "test:e2e": "playwright test",
     "harness": "tsx harness/scripts/run-harness.ts",
     "harness:update": "tsx harness/scripts/run-harness.ts --update",
+    "corpus:capture": "node scripts/capture-legal-page.mjs",
+    "corpus:capture:primary": "node scripts/capture-legal-page.mjs --primary-only",
+    "corpus:hash": "node scripts/hash-corpus-files.mjs --all",
+    "corpus:manifest": "node scripts/build-corpus-manifest.mjs",
+    "corpus:validate": "node scripts/validate-corpus-structure.mjs",
     "sync:research": "node scripts/sync-research-artifacts.mjs",
     "export": "npm run build",
     "preview": "serve out -l 3000"

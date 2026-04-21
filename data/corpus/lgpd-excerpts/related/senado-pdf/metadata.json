@@ -1,0 +1,18 @@
+{
+  "doc_id": "senado-pdf",
+  "title": "LGPD - Senado Edicao Tecnica",
+  "platform": "related",
+  "type": "law_reference",
+  "language": "pt-BR",
+  "official_url": "https://www2.senado.leg.br/bdsf/bitstream/handle/id/658231/Lei_geral_protecao_dados_pessoais_1ed.pdf",
+  "resolved_url": "https://www2.senado.leg.br/bdsf/bitstream/handle/id/658231/Lei_geral_protecao_dados_pessoais_1ed.pdf",
+  "captured_at": "2026-04-21T20:40:25.913Z",
+  "capture_method": "raw-http-download",
+  "capture_status": "captured",
+  "content_hash_sha256": "0d392a818fc8689867e1c04a511baa037617e9212b433255643885dc32ef62b9",
+  "source_files": [
+    "source.pdf"
+  ],
+  "related_urls": {},
+  "notes": "Documento relacionado baixado diretamente de fonte oficial."
+}

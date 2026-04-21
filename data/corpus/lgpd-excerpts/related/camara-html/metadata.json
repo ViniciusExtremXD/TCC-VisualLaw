@@ -1,0 +1,53 @@
+{
+  "doc_id": "camara-html",
+  "title": "LGPD - Camara HTML Atualizado",
+  "platform": "Planalto",
+  "type": "law_reference",
+  "language": "pt-BR",
+  "official_url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+  "resolved_url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+  "captured_at": "2026-04-21T20:40:25.913Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "5d51f3761ddf8264404851dc185f371509fc40c43b9973f7883e150f192d8114",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "other",
+  "objective": "Documento relacionado ao pacote lgpd-excerpts.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+    "content_type": "text/html; charset=UTF-8",
+    "body_length": 220827,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 81247,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

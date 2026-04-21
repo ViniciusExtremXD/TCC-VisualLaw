@@ -1,0 +1,53 @@
+{
+  "doc_id": "legacy-privacy",
+  "title": "Instagram Help Center - Privacy Policy",
+  "platform": "Instagram/Meta",
+  "type": "privacy_policy",
+  "language": "auto",
+  "official_url": "https://help.instagram.com/519522125107875",
+  "resolved_url": "https://privacycenter.instagram.com/policy/?entry_point=ig_help_center_data_policy_redirect",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "1897b1078a0c672f79c27d6cb99d4bf150d9962329e09f3f30fd8ce9f59e8e32",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "privacy",
+  "objective": "Documento relacionado ao pacote instagram-privacy.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 400,
+    "resolved_url": "https://help.instagram.com/519522125107875",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 1542,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 59238,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

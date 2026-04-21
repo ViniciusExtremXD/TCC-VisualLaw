@@ -1,17 +1,57 @@
 {
   "doc_id": "META_PRIVACY",
-  "title": "Politica de Privacidade da Meta",
+  "title": "Meta Privacy Policy",
   "platform": "Meta/Facebook",
-  "type": "privacy",
+  "type": "privacy_policy",
   "language": "pt-BR",
-  "official_url": "https://www.facebook.com/privacy/policy/",
-  "resolved_url": "https://www.facebook.com/privacy/policy/",
-  "captured_at": "2026-04-21T02:12:01.073Z",
-  "content_hash": "09288afe1707c6d8b48c3ccb082a356e8b8937255b5096f80be1cbb9b163e365",
-  "observed_body_text_hash": "f54da0e1de7bd80d6e5652fc4239e53c20695e23ec7a99db0eb6ef0da94536ab",
-  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-  "status": "frozen_selected_official_excerpts",
-  "effective_label": "Em vigor em 16 de dezembro de 2025",
-  "source_scope": "selected_official_excerpts",
-  "excerpt_count": 3
+  "official_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+  "resolved_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "1897b1078a0c672f79c27d6cb99d4bf150d9962329e09f3f30fd8ce9f59e8e32",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "versions": "https://www.facebook.com/privacy/policy/?locale=pt_BR&show_versions=1",
+    "terms": "https://www.facebook.com/terms/?locale=pt_BR",
+    "cookies": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR"
+  },
+  "source_kind": "frozen_official_primary_source",
+  "app_type": "privacy",
+  "objective": "Preservar a politica de privacidade da Meta que cobre Facebook, Instagram, Messenger e outros produtos Meta.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 400,
+    "resolved_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 1542,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 59238,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
 }

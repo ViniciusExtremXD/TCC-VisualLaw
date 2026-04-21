@@ -1,0 +1,53 @@
+{
+  "doc_id": "cookies",
+  "title": "Meta Cookies Policy",
+  "platform": "Meta/Facebook",
+  "type": "cookies_policy",
+  "language": "pt-BR",
+  "official_url": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR",
+  "resolved_url": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "1aa4844c6a8fd4ad82349be2a3909c0395df99adcb906589aa382aa2c5f95002",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "terms",
+  "objective": "Documento relacionado ao pacote meta-terms.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 400,
+    "resolved_url": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 1542,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 4331,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

@@ -1,14 +1,27 @@
-# Capture notes - X Privacy Policy
+# X Privacy Policy
 
-- What was captured: selected official excerpts used for clause-level analysis, plus metadata and screenshot evidence.
-- Official source: https://x.com/en/privacy
-- Resolved URL during capture: https://x.com/en/privacy
-- Capture timestamp: 2026-04-21T02:12:01.073Z
-- Effective/version label: Effective: January 15, 2026
-- Access limitations: Official page was accessible without login during capture. Full policy text is not stored in the repository because it is platform-owned content.
-- Normalization decisions: Whitespace was collapsed only for selected excerpts. Original language and wording were preserved for those excerpts.
-- Observed body text SHA-256: f5d3166ef50d2848528d3791c2bd6457bb7a5c08bc3f0f698fced0ce170007e7
+- doc_id: X_PRIVACY
+- official_url: https://x.com/pt/privacy
+- resolved_url: https://x.com/pt/privacy
+- captured_at: 2026-04-21T19:45:49.284Z
+- locale: pt-BR
+- user_agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36
+- browser_mode: Playwright Chromium headless
+- raw_http_probe_worked: true
+- raw_http_status: 200
+- raw_http_resolved_url: https://x.com/pt/privacy
+- authentication_required: false during scripted capture unless flagged below
+- rate_limit_observed: false
+- blocking_observed: false
+- auth_or_login_interstitial_observed: false
+- fallback_to_browser_rendering: true
+- visual_verification: pending_manual_review
+- saved_files: source.html, source.txt, source.pdf, source-screenshot.png, metadata.json, capture-notes.md, SHA256SUMS
+- remaining_caveat: revisar manualmente o screenshot antes de citar o pacote como evidencia visual em banca
 
-## Copyright and scope note
+## Normalizacao
 
-The repository stores selected excerpts required for academic analysis and reproducibility. It does not store complete proprietary platform policies. For full review, use the official URL recorded in metadata.
+- `source.html` preserva o DOM renderizado pelo navegador.
+- `source.txt` preserva `document.body.innerText` com normalizacao apenas de espacos e quebras repetidas.
+- `source.pdf` e uma impressao textual derivada de `source.txt` para manter o corpus versionavel; a evidencia visual fica em `source-screenshot.png`.
+- Nenhum resumo ou reescrita semantica foi aplicado.

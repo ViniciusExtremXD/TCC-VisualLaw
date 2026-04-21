@@ -2,16 +2,57 @@
   "doc_id": "X_PRIVACY",
   "title": "X Privacy Policy",
   "platform": "X",
-  "type": "privacy",
-  "language": "en",
-  "official_url": "https://x.com/en/privacy",
-  "resolved_url": "https://x.com/en/privacy",
-  "captured_at": "2026-04-21T02:12:01.073Z",
-  "content_hash": "b3de50a5a8b574185635e09c100bdab5fd76e9d66cf06c456b67517c1674088f",
-  "observed_body_text_hash": "f5d3166ef50d2848528d3791c2bd6457bb7a5c08bc3f0f698fced0ce170007e7",
-  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-  "status": "frozen_selected_official_excerpts",
-  "effective_label": "Effective: January 15, 2026",
-  "source_scope": "selected_official_excerpts",
-  "excerpt_count": 5
+  "type": "privacy_policy",
+  "language": "pt-BR",
+  "official_url": "https://x.com/pt/privacy",
+  "resolved_url": "https://x.com/pt/privacy",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "55124adf88024e96685e949158e54fc5bb70b37a5f0ddb347973923936777abb",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "english_privacy": "https://x.com/en/privacy",
+    "privacy_center": "https://privacy.x.com/pt",
+    "cookies": "https://help.x.com/pt/rules-and-policies/x-cookies",
+    "data_processing_bases": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases"
+  },
+  "source_kind": "frozen_official_primary_source",
+  "app_type": "privacy",
+  "objective": "Preservar a politica de privacidade do X para analise de coleta, finalidade, compartilhamento, retencao, direitos e seguranca.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://x.com/pt/privacy",
+    "content_type": "text/html",
+    "body_length": 157570,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 37595,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
 }

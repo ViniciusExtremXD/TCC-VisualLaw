@@ -1,62 +1,216 @@
 [
   {
+    "document_id": "X_TERMS",
+    "titulo": "X Terms of Service",
+    "plataforma": "X",
+    "tipo": "terms",
+    "idioma": "pt-BR",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_primary_source",
+    "objetivo_no_corpus": "Preservar os termos contratuais do X para analise clause-level de uso, licenca de conteudo, publicidade e enforcement.",
+    "official_url": "https://x.com/pt/tos",
+    "resolved_url": "https://x.com/pt/tos",
+    "source_package": "data/corpus/x-terms",
+    "content_hash": "02b3c0787ddaf11fbb98d7ca61697a52fc2517ae5e9b6bb2147cae559df62df1",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "english_terms": "https://x.com/en/tos",
+      "privacy_center": "https://privacy.x.com/pt",
+      "cookies": "https://help.x.com/pt/rules-and-policies/x-cookies",
+      "data_processing_bases": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases"
+    }
+  },
+  {
     "document_id": "X_PRIVACY",
     "titulo": "X Privacy Policy",
     "plataforma": "X",
     "tipo": "privacy",
-    "idioma": "en",
-    "coleta_referencia": "2026-04-21T02:12:01.073Z",
-    "natureza_fonte": "frozen_selected_official_excerpts",
-    "objetivo_no_corpus": "Fornecer trechos oficiais de documento digital para leitura assistida clause-level.",
-    "official_url": "https://x.com/en/privacy",
+    "idioma": "pt-BR",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_primary_source",
+    "objetivo_no_corpus": "Preservar a politica de privacidade do X para analise de coleta, finalidade, compartilhamento, retencao, direitos e seguranca.",
+    "official_url": "https://x.com/pt/privacy",
+    "resolved_url": "https://x.com/pt/privacy",
     "source_package": "data/corpus/x-privacy",
-    "content_hash": "b3de50a5a8b574185635e09c100bdab5fd76e9d66cf06c456b67517c1674088f",
-    "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-    "status": "frozen_selected_official_excerpts"
+    "content_hash": "55124adf88024e96685e949158e54fc5bb70b37a5f0ddb347973923936777abb",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "english_privacy": "https://x.com/en/privacy",
+      "privacy_center": "https://privacy.x.com/pt",
+      "cookies": "https://help.x.com/pt/rules-and-policies/x-cookies",
+      "data_processing_bases": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases"
+    }
+  },
+  {
+    "document_id": "META_TERMS",
+    "titulo": "Meta/Facebook Terms of Service",
+    "plataforma": "Meta/Facebook",
+    "tipo": "terms",
+    "idioma": "pt-BR",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_primary_source",
+    "objetivo_no_corpus": "Preservar os termos do Facebook/Meta para analise clause-level de uso da plataforma, conteudo, suspensao e licencas.",
+    "official_url": "https://www.facebook.com/terms/?locale=pt_BR",
+    "resolved_url": "https://www.facebook.com/terms/?locale=pt_BR",
+    "source_package": "data/corpus/meta-terms",
+    "content_hash": "c83856c481350bd7af3ad512051842b07ac818fade871564f54b03e70e4b9159",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "privacy_policy": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+      "cookies": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR"
+    }
   },
   {
     "document_id": "META_PRIVACY",
-    "titulo": "Politica de Privacidade da Meta",
+    "titulo": "Meta Privacy Policy",
     "plataforma": "Meta/Facebook",
     "tipo": "privacy",
     "idioma": "pt-BR",
-    "coleta_referencia": "2026-04-21T02:12:01.073Z",
-    "natureza_fonte": "frozen_selected_official_excerpts",
-    "objetivo_no_corpus": "Fornecer trechos oficiais de documento digital para leitura assistida clause-level.",
-    "official_url": "https://www.facebook.com/privacy/policy/",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_primary_source",
+    "objetivo_no_corpus": "Preservar a politica de privacidade da Meta que cobre Facebook, Instagram, Messenger e outros produtos Meta.",
+    "official_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "resolved_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
     "source_package": "data/corpus/meta-privacy",
-    "content_hash": "09288afe1707c6d8b48c3ccb082a356e8b8937255b5096f80be1cbb9b163e365",
-    "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-    "status": "frozen_selected_official_excerpts"
+    "content_hash": "1897b1078a0c672f79c27d6cb99d4bf150d9962329e09f3f30fd8ce9f59e8e32",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "versions": "https://www.facebook.com/privacy/policy/?locale=pt_BR&show_versions=1",
+      "terms": "https://www.facebook.com/terms/?locale=pt_BR",
+      "cookies": "https://www.facebook.com/privacy/policies/cookies/?locale=pt_BR"
+    }
   },
   {
     "document_id": "INSTAGRAM_TERMS",
     "titulo": "Instagram Terms of Use",
     "plataforma": "Instagram",
     "tipo": "terms",
-    "idioma": "en",
-    "coleta_referencia": "2026-04-21T02:12:01.073Z",
-    "natureza_fonte": "frozen_selected_official_excerpts",
-    "objetivo_no_corpus": "Fornecer trechos oficiais de documento digital para leitura assistida clause-level.",
-    "official_url": "https://www.instagram.com/legal/terms/",
+    "idioma": "pt-BR",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_primary_source",
+    "objetivo_no_corpus": "Preservar os termos de uso do Instagram para analise clause-level de uso, remocao de conteudo, conta e disputas.",
+    "official_url": "https://help.instagram.com/581066165581870/?locale=pt_BR",
+    "resolved_url": "https://help.instagram.com/581066165581870/?locale=pt_BR",
     "source_package": "data/corpus/instagram-terms",
-    "content_hash": "b98305b689f22de2ad16ff97de39ab62b1e4ebd7871c6edb3e054da9d0508da9",
-    "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-    "status": "frozen_selected_official_excerpts"
+    "content_hash": "0815d9017c4b55f5b9147b762272d9890560754dfdc6143da8dcf7817237be8e",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "default_terms": "https://help.instagram.com/581066165581870",
+      "termsofuse_alias": "https://help.instagram.com/termsofuse",
+      "privacy_center": "https://privacycenter.instagram.com/policy"
+    }
+  },
+  {
+    "document_id": "INSTAGRAM_PRIVACY",
+    "titulo": "Instagram Privacy Policy Reference",
+    "plataforma": "Instagram/Meta",
+    "tipo": "privacy",
+    "idioma": "auto",
+    "coleta_referencia": "2026-04-21T19:45:49.284Z",
+    "natureza_fonte": "frozen_official_related_reference",
+    "objetivo_no_corpus": "Preservar referencia oficial de privacidade do Instagram/Meta sem duplicar a politica Meta no dataset principal.",
+    "official_url": "https://privacycenter.instagram.com/policy",
+    "resolved_url": "https://privacycenter.instagram.com/policy",
+    "source_package": "data/corpus/instagram-privacy",
+    "content_hash": "1897b1078a0c672f79c27d6cb99d4bf150d9962329e09f3f30fd8ce9f59e8e32",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "cookies": "https://privacycenter.instagram.com/policies/cookies",
+      "legacy_privacy": "https://help.instagram.com/519522125107875",
+      "legacy_cookies": "https://help.instagram.com/1896641480634370",
+      "meta_privacy_pt_br": "https://www.facebook.com/privacy/policy/?locale=pt_BR"
+    }
   },
   {
     "document_id": "LGPD_EXCERPTS",
-    "titulo": "Lei Geral de Protecao de Dados Pessoais - trechos relevantes",
+    "titulo": "Lei Geral de Protecao de Dados Pessoais - LGPD",
     "plataforma": "Planalto",
     "tipo": "other",
     "idioma": "pt-BR",
-    "coleta_referencia": "2026-04-21T02:12:01.073Z",
-    "natureza_fonte": "frozen_relevant_legal_excerpts",
-    "objetivo_no_corpus": "Fornecer base normativa para categorias, direitos, impacto e referencias LGPD.",
-    "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+    "coleta_referencia": "2026-04-21T20:40:25.913Z",
+    "natureza_fonte": "frozen_official_legal_source",
+    "objetivo_no_corpus": "Preservar a fonte normativa oficial para categorias, direitos, retencao, compartilhamento, seguranca e incidentes.",
+    "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm",
+    "resolved_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm",
     "source_package": "data/corpus/lgpd-excerpts",
-    "content_hash": "e2bc33d83ba41bf4ee83d914e3bdc4f8a40525f13ac474a11d0926c3363c35be",
-    "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected legal excerpts used by the study.",
-    "status": "frozen_relevant_legal_excerpts"
+    "content_hash": "55c80899351574c04f03358197cd71325192ce88143227d13bcf2a0b5bbac55d",
+    "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+    "status": "captured",
+    "source_files": [
+      "source.html",
+      "source.txt",
+      "source.pdf",
+      "source-screenshot.png",
+      "metadata.json",
+      "capture-notes.md",
+      "SHA256SUMS"
+    ],
+    "related_urls": {
+      "camara_html": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+      "camara_pdf": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.pdf",
+      "camara_doc": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.doc",
+      "camara_docx": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.docx",
+      "senado_pdf": "https://www2.senado.leg.br/bdsf/bitstream/handle/id/658231/Lei_geral_protecao_dados_pessoais_1ed.pdf"
+    }
   }
 ]

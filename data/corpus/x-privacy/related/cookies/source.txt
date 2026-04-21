@@ -1,0 +1,1863 @@
+Skip to main content
+Central de Ajuda
+Como usar o X
+Gerenciar sua conta
+Segurança e proteção
+Regras e políticas
+Recursos
+Entrar
+Fale conosco
+Central de Ajuda
+Diretrizes de uso da plataforma
+Como os cookies são usados no X
+Como os cookies são usados no X
+
+Cookies e tecnologias similares, como pixels e armazenamento local, te fornecem uma experiência melhor, mais rápida e segura no X. Cookies também são usados para operar nossos serviços, o que inclui nossos sites, aplicativos, APIs, pixels, código de incorporação e comunicações de e-mail. O X usa essas tecnologias, especificamente, para:
+
+Manter você conectado no X.
+Entregar recursos e funcionalidades dos serviços do X.
+Salvar e atender as suas preferências.
+Personalizar o conteúdo que você vê.
+Proteger você contra spam e abusos.
+Mostrar anúncios mais relevantes para você.
+Fornecer recursos de assinatura e distribuir determinados conteúdos.
+Entender como você interage com nossos serviços e em que podemos melhorar.
+Medir a eficiência de nossa publicidade e marketing.
+Avaliar como nossos serviços funcionam e identificar erros, bugs e outras questões de qualidade.
+Reunir dados usados para operar nosso negócio - desde medir o tamanho do nosso público até a aplicação das regras do X.
+
+O que são cookies, pixels e armazenamento local?
+
+Por que nossos serviços usam essas tecnologias?
+
+Onde essas tecnologias são usadas?
+
+Quais são minhas opções de privacidade?
+
+Mais opções de privacidade
+
+O que são cookies, pixels e armazenamento local?
+
+Cookies são pequenos arquivos colocados em seu computador enquanto você navega na Web ou usa um aplicativo habilitado para Web. Nós usamos cookies para operar nossos serviços, descobrir como as pessoas usam nossos serviços, entender como aprimorá-los, entre outras funções. Veja acima mais exemplos de como usamos cookies.
+
+Pixels são pequenas partes de códigos colocadas em uma página da Web, em um aplicativo habilitado para a Web ou em um e-mail. Nós usamos pixels, alguns dos quais fornecemos a anunciantes para colocarem em suas propriedades de Web, para saber se você interagiu com conteúdo específico de Web ou e-mail — como muitos serviços fazem. Isso nos ajuda a medir e melhorar nossos serviços e personalizar sua experiência, incluindo os anúncios e conteúdo que você vê.
+
+Nós usamos armazenamento local para salvar dados em seu computador ou dispositivo móvel. Nós usamos dados de armazenamento local para ativar a navegação na Web, manter as preferências do reprodutor de vídeo, personalizar o que mostramos com base em suas interações passadas com nossos serviços, lembrar de suas preferências e medir a eficiência do anúncio. Também podemos usar o armazenamento local em outros sites, se necessário, para fornecer certos recursos e obter informações sobre suas visitas a esses sites.
+
+Por que nossos serviços usam essas tecnologias?
+
+Cookies, pixels e armazenamento local trabalham para operar e apoiar nosso negócio e para ajudar a fornecer a você uma experiência diferenciada Eles são usados nas seguintes categorias:
+
+Autenticação e segurança
+Funcionalidade
+Preferências do usuário
+Analytics
+Pesquisa e desenvolvimento
+Conteúdo personalizado
+Publicidade
+Marketing
+Personalização em todos os dispositivos
+
+Dentro de cada uma dessas categorias, cookies, pixels e armazenamento local nos ajudam a:
+
+Autenticação e segurança
+Autenticar seu acesso ao X para mostrar conteúdo relevante a você. Eles também ajudam a impedir que partes não autorizadas acessem a sua conta. Usamos essas tecnologias para:
+
+Fazer login no X e nos nossos serviços.
+Ajudar a proteger sua segurança e a segurança de nossos serviços.
+Deixar você visualizar conteúdo com distribuição limitada.
+Ajudar-nos a detectar e combater spam, abuso e outras atividades que quebrem as Regras do X.
+
+Funcionalidade
+Entregar mensagens de erro, permitir que você alterne entre contas, coordenar nosso serviço por meio de guias em um navegador e fornecer certos recursos em sites parceiros.
+
+Preferências do usuário
+Lembrar informações sobre seu navegador e suas preferências.
+
+Estatísticas
+
+Melhorar e entender como as pessoas usam nossos serviços, incluindo botões e widgets.
+Otimizar sua experiência por meio da compreensão de como você interage com nossos serviços, como, quando e quantas vezes você os usa e quais links você visita, e de onde. (Podemos usar Google Analytics para nos ajudar com isto.)
+Contar o número de pessoas que viram um post em particular, posts incorporados, botões ou timeline. Saiba mais.
+
+Pesquisa e desenvolvimento
+
+Reunir dados sobre como você usa nossos serviços, incluindo como nossos serviços funcionam. Isso nos ajuda a detectar problemas, entender em que podemos melhorar ou desenvolver novos produtos ou serviços.
+Testar atualizações para os serviços do X, bem como construir novos recursos, funcionalidades e serviços.
+
+Conteúdo personalizado
+Personalizar nossos serviços em áreas como trend, stories, anúncios e sugestões para as pessoas seguirem conteúdos mais relevantes. Nós também usamos:
+
+Armazenamento local para nos dizer quais partes de sua timeline do X você já viu para que possamos mostrar-lhe novos conteúdos.
+Cookies para sugerir quem você pode gostar de seguir com base em suas visitas a sites com serviços integrados do X.
+
+Publicidade
+Personalizar anúncios e medir o desempenho, como te mostrar anúncios e avaliar sua eficiência com base em suas visitas aos sites de nossos parceiros de anúncios. Isso ajuda os anunciantes a fornecerem a você anúncios de alta qualidade e conteúdo que podem ser mais interessantes para você. Nós também vamos:
+
+Entregar anúncios, medir seu desempenho e os tornar mais relevantes para você com base em critérios, como sua atividade no X e visitas aos sites de nossos parceiros de anúncios.
+Trabalhar com parceiros publicitários de terceiros, incluindo o Google, para comercializar nossos serviços.
+
+Marketing
+Entregar nossas campanhas de e-mail e marketing digital e para compreender a eficiência do nosso marketing.
+
+Personalização em todos os dispositivos
+Entender quais dispositivos você usou para que possamos personalizar sua experiência em todos os seus dispositivos.
+
+Tenha em mente, se você alguma vez entrar no X com seu dispositivo, que nós associamos e continuaremos a associar esse dispositivo à sua conta. Isso significa que se você estiver ou não conectado, receberemos informações sobre seu(s) dispositivo(s) se as informações forem compartilhadas por um parceiro, se você visitar o twitter.com ou websites de terceiros que integram serviços do X, ou se você visitar o website ou aplicativo móvel de um anunciante do X. Mais comumente, os endereços IP e o horário em que recebemos os dados são usados para vincular esse dispositivo específico a você.
+
+Para ver mais sobre os dispositivos e navegadores da Web associados à sua conta do X, dê uma olhada em Seus Dados do X quando você estiver conectado e quando você não estiver conectado em sua conta.
+
+Onde essas tecnologias são usadas?
+
+Nós (juntamente com terceiros) usamos essas tecnologias nos serviços do X, que incluem nossos sites, aplicativos e serviços e em outros sites, aplicativos e serviços que integram os serviços do X, incluindo propriedades de terceiros que incorporam nossa tecnologia de publicidade. Isso inclui os websites de nossos parceiros de publicidade e sites que usam nossas inserções, incluindo timelines inseridas. Terceiros também podem usar essas tecnologias, por exemplo, quando você clica nos links dos serviços do X, vê ou interage com conteúdo de terceiros nos serviços do X, ou visita sites de terceiros que incorporam nossa tecnologia de publicidade.
+
+Quais são minhas opções de privacidade?
+
+Somos comprometidos a oferecer opções de privacidade significativas para você controlar ou limitar como nós, nossos parceiros e outros terceiros usam cookies e dados relacionados a cookies:
+
+O X armazena informações sobre outros sites onde você viu conteúdo do X ou acessou nossos serviços. Para a maioria dos recursos do X, você pode ajustar isso indo para: Configurações e privacidade > Privacidade e segurança > Atividades fora do X > Permitir o uso de onde você vê o conteúdo do X em toda a Web. No entanto, para certos recursos pagos de assinatura, mesmo que você faça este ajuste ainda vamos armazenar certas informações onde isso for necessário para que esse recurso funcione. Falaremos sobre este armazenamento se você se inscrever nesses recursos.
+
+Se você tiver desligado isto, ou se você está na UE, Islândia, Liechtenstein, Noruega ou Suíça, nós não vamos armazenar ou usar visitas em páginas da Web para melhorar sua experiência no futuro. No entanto, se já armazenamos anteriormente seu histórico de navegação na Web, podemos continuar a personalizar sua experiência com base em informações que já aprendemos com esse histórico.
+
+Você sempre verá anúncios no X com base na sua atividade no X. Há uma variedade de maneiras de ajustar como o X usa seus dados para anúncios. Você pode usar as seguintes ferramentas:
+
+Configuração de anúncios personalizados no X
+Ajuste sua configuração para uso de dados fora do X, indo para Configurações e privacidade > Privacidade e segurança > Preferências de anúncios > Anúncios personalizados.
+Publicidade baseada em interesses para web
+Desative através do seu navegador atual por meio da ferramenta de escolha do consumidor da Digital Advertising Alliance em optout.aboutads.info.
+Limite o rastreamento de anúncios para versão 13 e anteriores do iOS
+Ative esta configuração por meio das configurações do seu dispositivo iOS (as instruções precisas variam de acordo com a versão).
+Personalização de anúncios para Android
+Opte por desativar por meio das configurações do dispositivo (as instruções precisas variam de acordo com a versão).
+Permitir que os aplicativos solicitem para rastrear durante versão 14 e posteriores do iOS
+Desligue a configuração por meio do seu dispositivo configurações (as instruções precisas variam de acordo com a versão).
+Personalizar com base na configuração de sua identidade inferida no X
+Ajustar a configuração, indo para Configurações e Privacidade > Privacidade e Segurança > Atividades fora do X > Personalizar com base em sua identidade inferida. Isto controla se vinculamos sua conta a navegadores ou dispositivos diferentes daqueles que você usa para acessar o X (ou se você estiver desconectado, se vinculamos o navegador ou dispositivo que você está usando atualmente a quaisquer outros navegadores ou dispositivos).
+Configurações de cookies por meio de navegadores da Web
+A maioria dos navegadores solicitaram sua permissão para usar cookies. Observe que se você desativar os cookies por completo, os serviços do X podem não funcionar corretamente ou você pode ter problemas para fazer login em twitter.com.
+
+Mais opções de privacidade
+
+Junto com optout.aboutads.info, você pode ler mais sobre a opção de sair de anúncios baseados em interesses em networkadvertising.org/choices. Por fim, você pode optar por desativar os anúncios baseados em interesse do Google usando Configurações de anúncios do Google.
+
+Importante: Para exibir ou alterar configurações da Web para sua conta do X, você precisará fazer login no navegador da Web. Alterar suas configurações do X no navegador da Web quando você estiver desconectado só afetará o comportamento nesse navegador enquanto você não estiver conectado ao X. Leia nosso artigo sobre como acessar a sua personalização e configurações de dados para saber mais.
+
+Nome
+
+Description
+
+Controller
+
+Learn More (Privacy Policy URL)
+
+Web Domain
+
+lscr
+
+Este cookie é para autenticação de administração para Scroll
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+.scroll.com
+app_shell_referrer
+
+Este cookie é para segurança e funcionalidade
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+__utma
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+zipbox_auth_token
+
+Este cookie é para solicitações legais
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+zipbox.twitter.biz
+__Host-3PLSID
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+1P_JAR
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/privacy
+
+.gstatic.com
+_ga_
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+csrftoken
+
+Este cookie é para autenticação MoPub (quando emitida pelo Twitter)
+
+Este cookie é para integração do Giphy e/ou estatísticas (quando emitido externamente)
+
+Giphy Inc.
+
+https://support.giphy.com/hc/en-us/articles/360032872931-GIPHY-Privacy-Policy
+
+.giphy.com
+_sl
+
+Este cookie é para autenticação e segurança da Web
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+shopify_app_session.sig
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify-staging.twitterintegration.com
+gscr
+
+Este cookie é para autenticação
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+.scroll.com
+test_cookie
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+doubleclick.net
+AMP_TOKEN
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+GED_PLAYLIST_ACTIVITY
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+x.com
+night_mode
+
+Este cookie é para a funcionalidade de modo noturno
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+daa
+
+Este cookie é para desativar o rastreamento de preferência do usuário (quando emitido externamente)
+
+Este cookie é para a funcionalidade de contas de negócios em ads.twitter.com (quando emitido pelo Twitter)
+
+Digital Advertising Alliance
+
+https://digitaladvertisingalliance.org/privacy-policy
+
+.x.com
+lv-uid
+
+Este cookie é para a funcionalidade de vídeo no iOS
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+didomi_token
+
+Este cookie é para integração do Giphy e/ou estatísticas
+
+Giphy Inc.
+
+https://support.giphy.com/hc/en-us/articles/360032872931-GIPHY-Privacy-Policy
+
+.giphy.com
+bouncer_reset_cookie
+
+Este cookie é para redefinição de senha e segurança da conta
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+cd_user_id
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+daa
+
+Este cookie é para desativar o rastreamento de preferência do usuário (quando emitido externamente)
+
+Este cookie é para a funcionalidade de contas de negócios em ads.twitter.com (quando emitido pelo Twitter)
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+twid
+
+Este cookie é para autenticação
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+fontsLoaded
+
+Este cookie é para a funcionalidade de fontes
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+kampyleUserSessionCount
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+email_read_only
+
+Este cookie é para a autenticação a partir de um e-mail do Twitter
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+x.com
+csrf_id
+
+Este cookie é para a funcionalidade web do Twitter
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+VISITOR_INFO1_LIVE__default
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+_ga
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+__Secure-3PSIDCC
+
+Este cookie é para o Google Analytics e segmentação de anúncios
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+_ep_sess
+
+Este cookie é para a funcionalidade de permanecer logado
+
+Twitter Inc.
+
+https://business.twitter.com/en/help/campaign-setup/quick-promote.htmlhttps://twitter.com/en/privacy
+
+.x.com
+shopify_app_session.sig
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify.twitterintegration.com
+kampyleInvitePresented
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+_gac_
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+csrf_same_site
+
+Este cookie é para segurança
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+guest_id
+
+Este cookie é para autenticação
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+gt
+
+Este cookie é para a funcionalidade e autorização de aplicativos externos
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+scroll1
+
+Este cookie é para funcionalidade de leitura em formato longo
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+Any Publisher Partner Domain
+language
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+__utmv
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+guest_id_marketing
+
+Este cookie é para publicidade quando o usuário estiver desconectado
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+scroll0
+
+Este cookie é para autenticação do website do publisher
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+Any Publisher Partner Domain
+sessionid
+
+Este cookie é para autenticação MoPub e informações da sessão
+
+Mopub
+
+https://www.applovin.com/privacy
+
+app.mopub.com
+__Secure-3PAPISID
+
+Este cookie é para o Google Analytics e segmentação de anúncios
+
+Google
+
+https://policies.google.com/privacy?hl=en
+
+google.com
+mobile_ads_stat_type
+
+Este cookie é usado para manter suas preferências
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+ads.x.com
+fm
+
+Este cookie é para funcionalidade de mensagens de erro ou sucesso
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+check
+
+Este cookie é para integração com o Adobe e/ou estatísticas
+
+Adobe
+
+https://experienceleaguecommunities.adobe.com/t5/adobe-target-questions/what-s-the-purpose-of-at-check-cookie/td-p/389344
+
+x.com
+__stripe_sid
+
+Este cookie serve para funcionalidade da transação e proteção contra fraudes
+
+Stripe
+
+https://stripe.com/cookies-policy/legal
+
+"
+
+.scroll.com
+__stripe_mid
+
+Este cookie serve para funcionalidade da transação e proteção contra fraudes
+
+Stripe
+
+https://stripe.com/cookies-policy/legal
+
+.scroll.com
+momentmaker.tos.accepted
+
+Este cookie é para autenticação para recursos MomentMaker Pro para parceiros da marca
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+kampyleUserPercentile
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+lv-pod-
+
+Este cookie é para anúncios em vídeo ao vivo
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.t.lv.twimg.com
+_gat
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+uuid
+
+Este cookie é para rastreamento de anúncios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+x.com
+backendDataInSessionFlag
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+muc
+
+Este cookie é para detecção de bots
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.t.co
+csrf_same_site_set
+
+Este cookie é para segurança
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+eu_cn
+
+Este cookie é para avisos de cookies
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+shopify_app_session.sig
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify-staging.twitterintegration.com
+kampyle_userid
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+ads_prefs
+
+Este cookie é para desativar o rastreamento de anúncios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+__Secure-3PSID
+
+Este cookie é para o Google Analytics e segmentação de anúncios
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+att
+
+Este cookie é para authenicação e redefinição de senha
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+twitter_ads_id
+
+Este cookie é para optar pela personalização de anúncios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+shopify_app_session
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify-staging.twitterintegration.com
+request_method
+
+Este cookie é para funcionalidade de navegação e velocidade
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+aem-lang-preference
+
+Este cookie é para a funcionalidade de idioma
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+x.com
+email_uid
+
+Este cookie é para a autenticação por SMS
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+x.com
+_opt_awkid
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+giphy_pbid
+
+Este cookie é para integração do Giphy e/ou estatísticas
+
+Giphy Inc.
+
+https://support.giphy.com/hc/en-us/articles/360032872931-GIPHY-Privacy-Policy
+
+.giphy.com
+shopify_app_session
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify-staging.twitterintegration.com
+VISITOR_INFO1_LIVE
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+SIDCC
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+google.com
+mbox
+
+Este cookie é para marketing em developer.twitter.com
+
+Adobe
+
+https://experienceleague.adobe.com/docs/target/using/implement-target/before-implement/privacy/cmp-privacy-and-general-data-protection-regulation.html
+
+.x.com
+id
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+doubleclick.net
+didomi_accept_cookie
+
+Este cookie é para integração do Giphy e/ou estatísticas
+
+Giphy Inc.
+
+https://support.giphy.com/hc/en-us/articles/360032872931-GIPHY-Privacy-Policy
+
+.giphy.com
+shopify_app_session
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify.twitterintegration.com
+at_check
+
+Este cookie é para integração com o Adobe e/ou estatísticas
+
+Adobe
+
+https://experienceleaguecommunities.adobe.com/t5/adobe-target-questions/what-s-the-purpose-of-at-check-cookie/td-p/389344
+
+.x.com
+mdLogger
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+ACLK_DATA
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+kampyleUserSessionsCount
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+client_token
+
+Este cookie é para autenticação da Web
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+mp_
+
+Este cookie analisa sua interação com o usuário no Twitter para pesquisa de produtos
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+DSID
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+.doubleclick.net
+aa_u
+
+Este cookie é para a funcionalidade do Teams
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+VISITOR_INFO1_LIVE__k
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+shopify_app_session.sig
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify.twitterintegration.com
+lv-ctx-
+
+Este cookie é para funcionalidade de vídeo para eventos ao vivo
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.t.lv.twimg.com
+_GRECAPTCHA
+
+Este cookie é para Recaptcha do Google e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+d_prefs
+
+Este cookie é para suas preferências de cookies
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+_dc_gtm_
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+auth_multi
+
+Este cookie é para autenticação, se você tiver várias contas
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+ct0
+
+Este cookie é para autenticação
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+_gaexp_rc
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+RUL
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+.doubleclick.net
+ui_metrics
+
+Este cookie é para autenticação e verificação de conta
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+csrftoken
+
+Este cookie é para autenticação MoPub (quando emitida pelo Twitter)
+
+Este cookie é para integração do Giphy e/ou estatísticas (quando emitido externamente)
+
+Mopub
+
+https://www.applovin.com/privacy https://twitter.com/privacy
+
+app.mopub.com
+md_isSurveySubmittedInSession
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+_opt_awcid
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+Authorization
+
+Este cookie é para funcionalidade de vídeo para eventos ao vivo
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.lv.twimg.com
+_s
+
+Este cookie é para estatísticas da Branch Metrics
+
+Branch Metrics
+
+https://branch.app.link/optout
+
+.app.link
+NID
+
+Este cookie é para Recaptcha do Google e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+FLC
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+.doubleclick.net
+connect.sid
+
+Este cookie é para funcionalidade e autenticação
+
+Mopub
+
+https://www.applovin.com/privacy
+
+ads.x.com
+lang-preference
+
+Este cookie é para a funcionalidade de idioma
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+kampyleSessionPageCounter
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+CONSENT
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+google.com
+pm_sess
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+doubleclick.net
+_gaexp
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+cms-csp-nonce
+
+Este cookie é para segurança
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+com.adobe.reactor.dataElementCookiesMigrated
+
+Este cookie é para marketing
+
+Adobe
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+syndication_guest_id
+
+Este cookie é para a funcionalidade de vídeo de Tweets fora do Twitter
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+kdt
+
+Este cookie é para autenticar um dispositivo conhecido
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+personalization_id
+
+Este cookie rastreia atividades dentro e fora do Twitter para uma experiência personalizada
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+__ncuid
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+x.com
+_gid
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+LAST_INVITATION_VIEW
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+timezone
+
+Este cookie é para a funcionalidade de fuso horário
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+__utmz
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+csrftoken
+
+Este cookie é para autenticação MoPub (quando emitida pelo Twitter)
+
+Este cookie é para integração do Giphy e/ou estatísticas (quando emitido externamente)
+
+Mopub
+
+https://www.applovin.com/privacy
+
+demand.mopub.com
+NEW_SUBSCRIPTION_ACCOUNT
+
+Este cookie nos permite saber se você é novo no Twitter
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+ads.x.com
+_support_session
+
+Este cookie é para apoio à conta
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+FPID
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+dnt
+
+Este cookie é para optar pela personalização de anúncios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+SUBMITTED_DATE
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+__utmt
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+m_session
+
+Este cookie é para a funcionalidade de vídeo para eventos ao vivo por geolocalização
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+PREF
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+_opt_utmc
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+IDE
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+.doubleclick.net
+form-lead-gen
+
+Este cookie é para a funcionalidade de contas de negócios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+business.x.com
+tooltip
+
+Este cookie é para funcionalidade
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+lv-ctx-zzz
+
+Este cookie é para funcionalidade de vídeo para eventos ao vivo
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.t.lv.twimg.com
+signup_ui_metrics
+
+Este cookie é para autenticação e verificação de conta
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+app_shell_visited
+
+Este cookie é para segurança e funcionalidade
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+_opt_awgid
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+tweetdeck_version
+
+Este cookie é para a funcionalidade TweetDeck
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+_opt_awmid
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+sessionid
+
+Este cookie é para autenticação MoPub e informações da sessão
+
+Mopub
+
+https://www.applovin.com/privacy
+
+demand.mopub.com
+lang
+
+Este cookie é para a funcionalidade de idioma
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+_ttc_session
+
+Este cookie é para traduções
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+translate.x.com
+__utmb
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+cookies_enabled
+
+Este cookie é para funcionalidade de vídeo para eventos ao vivo
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.lv.twimg.com
+ssa-calendar-signup
+
+Este cookie é para a funcionalidade de contas de negócios
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+business.x.com
+auth_token
+
+Este cookie é para login e autenticação da conta
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+mobile_ads_time_interval
+
+Este cookie é usado para manter suas preferências
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+ads.x.com
+GA_OPT_OUT
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+google-analytics.com
+studio_account
+
+Este cookie é para a autenticação para o Twitter Media Studio
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+DECLINED_DATE
+
+Este cookie é para a funcionalidade da central de ajuda em help.twitter.com
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+help.x.com
+messages
+
+Este cookie é para autenticação MoPub
+
+Mopub
+
+https://www.applovin.com/privacy
+
+Any MoPub Domain
+_mb_tk
+
+Este cookie é usado para autenticação na web móvel
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+mobile.x.com
+external_referer
+
+Este cookie é para análise
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+lastOwnerId
+
+Este cookie é para o acesso de várias contas ao Twitter Media Studio
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+studio.x.com
+zipbox_forms_auth_token
+
+Este cookie é usado para autenticação
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+legalrequests.x.com
+shopify_app_session
+
+Este cookie é usado para segurança e autenticação da conta, para garantir que um comerciante da Shopify que esteja tentando acessar o aplicativo do canal de vendas do Twitter esteja conectado à conta de administração relevante da Shopify e permitir que o comerciante da Shopify nos conceda acesso para instalar nosso aplicativo no website administrativo.
+
+Twitter Inc.
+
+https://twitter.com/en/privacy
+
+shopify.twitterintegration.com
+LSOLH
+
+Este cookie serve para autenticação com sua conta do Google
+
+Google
+
+https://policies.google.com/privacy
+
+google.com
+__utmc
+
+Este cookie é para o Google Analytics
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+.x.com
+_twitter_sess
+
+Este cookie é para sessões de usuário
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+YSC
+
+Este cookie é para integração do YouTube e/ou estatísticas
+
+Google
+
+https://policies.google.com/technologies/cookies
+
+youtube.com
+aboutads_sess
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+.doubleclick.net
+muc_ads
+
+Este cookie é para publicidade
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.t.co
+guest_id_ads
+
+Este cookie é para publicidade quando o usuário estiver desconectado
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+pm_sess_
+
+Este cookie é para integração com DoubleClick e/ou estatísticas
+
+Google
+
+https://policies.google.com/privacy
+
+doubleclick.net
+user_id
+
+Este cookie é para rastrear o número de ouvintes entre os ouvintes não conectados do Twitter Espaços.
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+proxsee.pscp.tv
+co
+
+Este cookie é para funcionalidade de teste
+
+Twitter Inc.
+
+https://twitter.com/privacy
+
+.x.com
+idp_user_ssf
+
+Este cookie é para autenticação.
+
+https://twitter.com/privacy
+
+Any Twitter Domain
+__cf_bm
+
+Este cookie é para o Cloudflare monitorar o tráfego
+
+https://www.cloudflare.com/privacypolicy
+
+Any Twitter Domain
+_shopify_y
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+cart_currency
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+_shopify_s
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+localization
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+secure_customer_sig
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+_dd_s
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.datadoghq.com/legal/privacy
+
+shop.x.com
+shopify_pay_redirect
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+_shopify_sa_t
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+_landing_page
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+_orig_referrer
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+_tracking_consent
+
+Este cookie é para preferências do usuário na Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+_shopify_sa_p
+
+Este cookie é para relatórios e análises da Shopify
+
+https://www.shopify.com/legal/privacy
+
+.x.com
+keep_alive
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+_gcl_au
+
+Este cookie é para o Google Analytics
+
+https://policies.google.com/privacy
+
+.x.com
+cf_chl_rc_m
+
+Este cookie é para o Cloudflare identificar problemas de produção em clientes
+
+https://www.cloudflare.com/privacypolicy
+
+help.x.com
+_shopify_essential
+
+Este cookie destina-se à funcionalidade da loja em shop.x.com
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+__cuid
+
+Este cookie é usado para rastreamento e análise
+
+https://x.com/privacy
+
+Any Twitter Domain
+mobile_dash_footer_enabled
+
+Indica se o usuário ignorou o rodapé da barra tracejada que solicitava o download do aplicativo.
+
+https://x.com/privacy
+
+.x.com
+cf_chl_rc_ni
+
+This cookie is for Cloudflare to identify production issues on clients
+
+https://www.cloudflare.com/privacypolicy
+
+help.x.com
+cf_clearance
+
+This cookie is for Cloudflare bot products
+
+https://www.cloudflare.com/privacypolicy
+
+.help.x.com
+_shopify_analytics
+
+This cookie is for Shopify reporting and analytics
+
+https://www.shopify.com/legal/privacy
+
+shop.x.com
+g_state
+
+This cookie is for Google authentication
+
+https://policies.google.com/privacy
+
+x.com
+x_studio_context
+
+Cookie is used to store context and state for users using X Studio, such that server side rendering can provide the correct data to render
+
+https://x.com/privacy
+
+studio.x.com
+Compartilhe este artigo
+Postar
+Plataforma do X
+X.com
+Status
+Acessibilidade
+Integre um post
+Central de Privacidade
+Central de Transparência
+Baixe o aplicativo do X
+X Corp.
+Sobre a empresa
+Notícia da empresa
+Kit de ferramentas da marca
+Empregos e estágios
+Investidores
+Ajuda
+Central de Ajuda
+Como usar o X
+X para criadores
+Central de Ajuda do Ads
+Gerenciar sua conta
+Central de Preferências de E-mail
+Regras e políticas
+Fale conosco
+Recursos do desenvolvedor
+Página do desenvolvedor
+Documentação
+Fóruns
+Comunidades
+Blog do desenvolvedor
+Blog de engenharia
+Termos do desenvolvedor
+Recursos para empresas
+Anunciar
+X para Empresas
+Recursos e guias
+X para profissionais do marketing
+Insights de marketing
+Inspiração da marca
+X Ads Academy
+© 2026 X Corp.
+Cookies
+Privacidade
+Termos e condições
+Português

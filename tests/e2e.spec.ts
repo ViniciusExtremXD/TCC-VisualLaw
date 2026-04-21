@@ -9,6 +9,9 @@ const artifactsRoot = path.resolve("artifacts");
 const screenshotsDir = path.join(artifactsRoot, "screenshots");
 const logsDir = path.join(artifactsRoot, "logs");
 const downloadsDir = path.join(artifactsRoot, "downloads");
+const corpusManifestPath = path.resolve("data", "corpus", "corpus-manifest.json");
+const expectedDocumentCount =
+  JSON.parse(fs.readFileSync(corpusManifestPath, "utf8")).length + 1; // inclui entrada manual
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
@@ -87,7 +90,9 @@ test.describe("Visual Law academic static export", () => {
     await expect(managerOpenButton).toBeVisible();
     await managerOpenButton.click();
     await expect(page.getByTestId("doc-manager-sheet")).toBeVisible();
-    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(5);
+    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(
+      expectedDocumentCount
+    );
     await page.keyboard.press("Escape");
     await expect(page.getByTestId("doc-manager-sheet")).toHaveCount(0);
 

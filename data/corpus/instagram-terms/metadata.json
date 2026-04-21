@@ -2,16 +2,56 @@
   "doc_id": "INSTAGRAM_TERMS",
   "title": "Instagram Terms of Use",
   "platform": "Instagram",
-  "type": "terms",
-  "language": "en",
-  "official_url": "https://www.instagram.com/legal/terms/",
-  "resolved_url": "https://help.instagram.com/581066165581870/",
-  "captured_at": "2026-04-21T02:12:01.073Z",
-  "content_hash": "b98305b689f22de2ad16ff97de39ab62b1e4ebd7871c6edb3e054da9d0508da9",
-  "observed_body_text_hash": "bba0bb68852795bd5f3e6a9740678c444c905956619e95a87d654d8e4514a864",
-  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
-  "status": "frozen_selected_official_excerpts",
-  "effective_label": "Official Instagram Help Center terms page captured at runtime",
-  "source_scope": "selected_official_excerpts",
-  "excerpt_count": 4
+  "type": "terms_of_use",
+  "language": "pt-BR",
+  "official_url": "https://help.instagram.com/581066165581870/?locale=pt_BR",
+  "resolved_url": "https://help.instagram.com/581066165581870/?locale=pt_BR",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "0815d9017c4b55f5b9147b762272d9890560754dfdc6143da8dcf7817237be8e",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "default_terms": "https://help.instagram.com/581066165581870",
+    "termsofuse_alias": "https://help.instagram.com/termsofuse",
+    "privacy_center": "https://privacycenter.instagram.com/policy"
+  },
+  "source_kind": "frozen_official_primary_source",
+  "app_type": "terms",
+  "objective": "Preservar os termos de uso do Instagram para analise clause-level de uso, remocao de conteudo, conta e disputas.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 400,
+    "resolved_url": "https://help.instagram.com/581066165581870/?locale=pt_BR",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 1542,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 24955,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
 }

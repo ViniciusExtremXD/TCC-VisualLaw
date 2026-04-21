@@ -1,0 +1,58 @@
+{
+  "doc_id": "X_TERMS",
+  "title": "X Terms of Service",
+  "platform": "X",
+  "type": "terms_of_service",
+  "language": "pt-BR",
+  "official_url": "https://x.com/pt/tos",
+  "resolved_url": "https://x.com/pt/tos",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "02b3c0787ddaf11fbb98d7ca61697a52fc2517ae5e9b6bb2147cae559df62df1",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "english_terms": "https://x.com/en/tos",
+    "privacy_center": "https://privacy.x.com/pt",
+    "cookies": "https://help.x.com/pt/rules-and-policies/x-cookies",
+    "data_processing_bases": "https://help.x.com/pt/rules-and-policies/data-processing-legal-bases"
+  },
+  "source_kind": "frozen_official_primary_source",
+  "app_type": "terms",
+  "objective": "Preservar os termos contratuais do X para analise clause-level de uso, licenca de conteudo, publicidade e enforcement.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://x.com/pt/tos",
+    "content_type": "text/html",
+    "body_length": 172474,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 63920,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

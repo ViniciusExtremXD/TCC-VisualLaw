@@ -1,17 +1,59 @@
 {
   "doc_id": "LGPD_EXCERPTS",
-  "title": "Lei Geral de Protecao de Dados Pessoais - trechos relevantes",
+  "title": "Lei Geral de Protecao de Dados Pessoais - LGPD",
   "platform": "Planalto",
-  "type": "other",
+  "type": "law_excerpt_set",
   "language": "pt-BR",
-  "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
-  "resolved_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
-  "captured_at": "2026-04-21T02:12:01.073Z",
-  "content_hash": "e2bc33d83ba41bf4ee83d914e3bdc4f8a40525f13ac474a11d0926c3363c35be",
-  "observed_body_text_hash": "ffca5363a92b83cab472cdce10799ee30c168bf1f3b60a8a345089c564c91fab",
-  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected legal excerpts used by the study.",
-  "status": "frozen_relevant_legal_excerpts",
-  "effective_label": "Lei no 13.709, de 14 de agosto de 2018 - texto compilado",
-  "source_scope": "selected_official_excerpts",
-  "excerpt_count": 6
+  "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm",
+  "resolved_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm",
+  "captured_at": "2026-04-21T20:40:25.913Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "55c80899351574c04f03358197cd71325192ce88143227d13bcf2a0b5bbac55d",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "camara_html": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html",
+    "camara_pdf": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.pdf",
+    "camara_doc": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.doc",
+    "camara_docx": "https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.docx",
+    "senado_pdf": "https://www2.senado.leg.br/bdsf/bitstream/handle/id/658231/Lei_geral_protecao_dados_pessoais_1ed.pdf"
+  },
+  "source_kind": "frozen_official_legal_source",
+  "app_type": "other",
+  "objective": "Preservar a fonte normativa oficial para categorias, direitos, retencao, compartilhamento, seguranca e incidentes.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/L13709compilado.htm",
+    "content_type": "text/html",
+    "body_length": 229354,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 79922,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
 }

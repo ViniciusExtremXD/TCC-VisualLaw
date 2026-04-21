@@ -1,0 +1,58 @@
+{
+  "doc_id": "INSTAGRAM_PRIVACY",
+  "title": "Instagram Privacy Policy Reference",
+  "platform": "Instagram/Meta",
+  "type": "privacy_policy",
+  "language": "auto",
+  "official_url": "https://privacycenter.instagram.com/policy",
+  "resolved_url": "https://privacycenter.instagram.com/policy",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "1897b1078a0c672f79c27d6cb99d4bf150d9962329e09f3f30fd8ce9f59e8e32",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {
+    "cookies": "https://privacycenter.instagram.com/policies/cookies",
+    "legacy_privacy": "https://help.instagram.com/519522125107875",
+    "legacy_cookies": "https://help.instagram.com/1896641480634370",
+    "meta_privacy_pt_br": "https://www.facebook.com/privacy/policy/?locale=pt_BR"
+  },
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "privacy",
+  "objective": "Preservar referencia oficial de privacidade do Instagram/Meta sem duplicar a politica Meta no dataset principal.",
+  "raw_http_probe": {
+    "ok": true,
+    "status": 200,
+    "resolved_url": "https://privacycenter.instagram.com/policy",
+    "content_type": "text/html; charset=\"utf-8\"",
+    "body_length": 209925,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 59238,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}

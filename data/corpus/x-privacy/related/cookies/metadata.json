@@ -1,0 +1,53 @@
+{
+  "doc_id": "cookies",
+  "title": "X Cookies Policy",
+  "platform": "X",
+  "type": "cookies_policy",
+  "language": "pt-BR",
+  "official_url": "https://help.x.com/pt/rules-and-policies/x-cookies",
+  "resolved_url": "https://help.x.com/pt/rules-and-policies/x-cookies",
+  "captured_at": "2026-04-21T19:45:49.284Z",
+  "capture_method": "raw-http-probe+playwright-chromium+source.html+source.txt+text-print-source.pdf+source-screenshot.png",
+  "capture_status": "captured",
+  "content_hash_sha256": "c399da011c46658775bba822d1ff999688b507a5869ba6e4c4f8599d0c958d77",
+  "source_files": [
+    "source.html",
+    "source.txt",
+    "source.pdf",
+    "source-screenshot.png",
+    "metadata.json",
+    "capture-notes.md",
+    "SHA256SUMS"
+  ],
+  "related_urls": {},
+  "source_kind": "frozen_official_related_reference",
+  "app_type": "privacy",
+  "objective": "Documento relacionado ao pacote x-privacy.",
+  "raw_http_probe": {
+    "ok": false,
+    "status": 403,
+    "resolved_url": "https://help.x.com/pt/rules-and-policies/x-cookies",
+    "content_type": "text/html; charset=UTF-8",
+    "body_length": 5731,
+    "limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    }
+  },
+  "browser_capture": {
+    "http_status": 200,
+    "text_length": 39864,
+    "access_limitations": {
+      "auth_required": false,
+      "rate_limited": false,
+      "blocked": false,
+      "empty_or_truncated": false,
+      "has_access_limitation": false
+    },
+    "visually_verified": false
+  },
+  "notes": "Captura publica sem autenticacao e sem crawler. Verificar manualmente source-screenshot.png antes de usar em banca."
+}
