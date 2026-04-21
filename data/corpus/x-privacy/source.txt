@@ -1,0 +1,21 @@
+# X Privacy Policy
+
+Official URL: https://x.com/en/privacy
+Captured at: 2026-04-21T02:12:01.073Z
+Scope: selected official excerpts for academic clause-level analysis; not a full reproduction of the document.
+
+## X_PRIVACY_E001 - 1.1 Information you provide us
+Personal accounts. If you create an account, you must provide us with some information so that we can provide our services to you. This includes a display name, a username, a password, an email address or phone number, a date of birth, your display language, and third-party single sign-in information.
+
+## X_PRIVACY_E002 - 2.1 Operate, improve, and personalize our services
+We use the information we collect to provide and operate X products and services. We also use the information we collect to improve and personalize our products and services.
+
+## X_PRIVACY_E003 - 3. Sharing Information
+You should know the ways we share your information, why we share it, and how you can control it. There are five general ways we share your information.
+
+## X_PRIVACY_E004 - 4. How Long We Keep Information
+We keep different types of information for different periods of time, depending on how long we need to retain it in order to provide you with our products and services, to comply with our legal requirements and for safety and security reasons.
+
+## X_PRIVACY_E005 - 5.1 Access, correction, and portability
+You can access, correct, or modify the information you provided to us by editing your profile and adjusting your account settings. You can download a copy of your information, such as your posts.
+

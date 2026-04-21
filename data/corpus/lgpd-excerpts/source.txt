@@ -1,0 +1,24 @@
+# Lei Geral de Protecao de Dados Pessoais - trechos relevantes
+
+Official URL: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm
+Captured at: 2026-04-21T02:12:01.073Z
+Scope: selected official excerpts for academic clause-level analysis; not a full reproduction of the document.
+
+## LGPD_E001 - Art. 5 definicoes
+Art. 5º Para os fins desta Lei, considera-se: I - dado pessoal: informação relacionada a pessoa natural identificada ou identificável; V - titular: pessoa natural a quem se referem os dados pessoais que são objeto de tratamento.
+
+## LGPD_E002 - Art. 6 finalidade e transparencia
+Art. 6º As atividades de tratamento de dados pessoais deverão observar a boa-fé e os seguintes princípios: I - finalidade; VI - transparência.
+
+## LGPD_E003 - Art. 15 e Art. 16 termino e eliminacao
+Art. 15. O término do tratamento de dados pessoais ocorrerá quando a finalidade for alcançada ou os dados deixarem de ser necessários. Art. 16. Os dados pessoais serão eliminados após o término de seu tratamento.
+
+## LGPD_E004 - Art. 18 direitos do titular
+Art. 18. O titular dos dados pessoais tem direito a obter do controlador confirmação da existência de tratamento, acesso aos dados, correção, anonimização, bloqueio ou eliminação, portabilidade e informação sobre compartilhamento.
+
+## LGPD_E005 - Art. 46 seguranca
+Art. 46. Os agentes de tratamento devem adotar medidas de segurança, técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados.
+
+## LGPD_E006 - Art. 48 incidente
+Art. 48. O controlador deverá comunicar à autoridade nacional e ao titular a ocorrência de incidente de segurança que possa acarretar risco ou dano relevante aos titulares.
+

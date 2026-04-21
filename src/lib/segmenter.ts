@@ -21,7 +21,10 @@ export interface SegmentEvidence {
 export function segmentText(
   rawText: string,
   docId: string = "DOC"
-): (Omit<Clause, "category" | "lgpd_refs" | "impact"> & { segmentEvidence: SegmentEvidence })[] {
+): (Omit<
+  Clause,
+  "category" | "lgpd_refs" | "impact" | "plain_language_summary" | "detected_terms"
+> & { segmentEvidence: SegmentEvidence })[] {
   // Normaliza quebras de linha
   const text = rawText.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
 

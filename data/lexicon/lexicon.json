@@ -1,235 +1,1333 @@
 [
   {
     "term_id": "TERM_001",
-    "term": "dados pessoais",
+    "termo_juridico": "dados pessoais",
+    "traducao_direta": "São suas informações pessoais — tudo que identifica ou pode identificar você",
+    "definicao_leiga": "Qualquer informação que identifique ou possa identificar uma pessoa, como nome, e-mail, CPF, endereço IP ou localização.",
+    "exemplo_pratico": "Seu nome e e-mail cadastrados num app são dados pessoais. Seu endereço IP, histórico de navegação e localização GPS também — mesmo que você não perceba que os forneceu.",
+    "categoria": "data_collection",
+    "icone_id": "user-circle",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, I",
+      "Art. 18, II"
+    ],
+    "palavras_chave_relacionadas": [
+      "dado pessoal",
+      "informações pessoais",
+      "informação pessoal",
+      "personal information",
+      "email address",
+      "phone number",
+      "date of birth"
+    ],
     "aliases": [
       "dado pessoal",
       "informações pessoais",
-      "informação pessoal"
+      "informação pessoal",
+      "personal information",
+      "email address",
+      "phone number",
+      "date of birth"
     ],
-    "category": "data_collection",
-    "meaning": "Qualquer informação que identifique ou possa identificar uma pessoa, como nome, e-mail, CPF, endereço IP ou localização.",
-    "why_it_matters": "Plataformas coletam esses dados para personalizar serviços, direcionar anúncios e compartilhar com parceiros. Saber quais dados são coletados é o primeiro passo para proteger sua privacidade.",
-    "what_you_can_do": "Você pode solicitar ao controlador a lista completa dos seus dados pessoais tratados (Art. 18, II LGPD). Também pode pedir a correção ou exclusão.",
-    "impact": "high",
-    "icon_id": "user-circle",
     "lgpd_refs": [
       "Art. 5º, I",
       "Art. 18, II"
-    ]
-  },
-  {
-    "term_id": "TERM_002",
-    "term": "consentimento",
-    "aliases": [
-      "autorização",
-      "concordância",
-      "aceite"
     ],
-    "category": "user_rights",
-    "meaning": "Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.",
-    "why_it_matters": "Sem consentimento válido, o tratamento de dados pode ser ilegal. Muitas plataformas utilizam o 'aceite' nos termos como forma de obter esse consentimento de forma ampla.",
-    "what_you_can_do": "Você pode revogar seu consentimento a qualquer momento, de forma gratuita e facilitada (Art. 8º, §5º LGPD).",
-    "impact": "high",
-    "icon_id": "check-circle",
-    "lgpd_refs": [
-      "Art. 5º, XII",
-      "Art. 7º, I",
-      "Art. 8º"
-    ]
+    "corpus_support": [
+      "X_PRIVACY_E001",
+      "META_PRIVACY_E001",
+      "LGPD_E001"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_003",
-    "term": "cookies",
+    "termo_juridico": "cookies",
+    "traducao_direta": "São arquivos que gravam o que você faz online — páginas visitadas, cliques e preferências",
+    "definicao_leiga": "Pequenos arquivos armazenados no seu dispositivo que registram informações sobre sua navegação, preferências e comportamento online.",
+    "exemplo_pratico": "Você pesquisa tênis num site e, no dia seguinte, vê anúncios de tênis em todo lugar. Isso acontece por cookies de rastreamento de terceiros.",
+    "categoria": "data_collection",
+    "icone_id": "cookie",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "palavras_chave_relacionadas": [
+      "cookie",
+      "rastreadores",
+      "trackers"
+    ],
     "aliases": [
       "cookie",
       "rastreadores",
       "trackers"
     ],
-    "category": "data_collection",
-    "meaning": "Pequenos arquivos armazenados no seu dispositivo que registram informações sobre sua navegação, preferências e comportamento online.",
-    "why_it_matters": "Cookies permitem rastrear seus hábitos em diferentes sites, criando perfis detalhados para publicidade direcionada, muitas vezes sem que você perceba.",
-    "what_you_can_do": "Você pode configurar seu navegador para bloquear cookies de terceiros e usar as ferramentas de gerência de cookies oferecidas pela plataforma.",
-    "impact": "medium",
-    "icon_id": "cookie",
     "lgpd_refs": [
       "Art. 7º, I",
       "Art. 8º"
-    ]
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_013",
+    "termo_juridico": "dado sensível",
+    "traducao_direta": "São informações íntimas especialmente protegidas por lei — saúde, religião, origem étnica, biometria",
+    "definicao_leiga": "Dados pessoais sobre origem racial ou étnica, convicção religiosa, saúde, vida sexual, dado genético ou biométrico — que recebem proteção reforçada na LGPD.",
+    "exemplo_pratico": "Um app de saúde que coleta histórico de doenças está tratando dados sensíveis. Precisa de consentimento separado e específico — não basta o aceite geral nos termos.",
+    "categoria": "data_collection",
+    "icone_id": "heart-pulse",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, II",
+      "Art. 11"
+    ],
+    "palavras_chave_relacionadas": [
+      "dados sensíveis",
+      "dado pessoal sensível",
+      "dados médicos",
+      "dado de saúde",
+      "dados biométricos"
+    ],
+    "aliases": [
+      "dados sensíveis",
+      "dado pessoal sensível",
+      "dados médicos",
+      "dado de saúde",
+      "dados biométricos"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, II",
+      "Art. 11"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_023c",
+    "termo_juridico": "dados de navegação",
+    "traducao_direta": "São registros de tudo que você faz online — páginas visitadas, cliques, tempo em cada conteúdo",
+    "definicao_leiga": "Informações geradas automaticamente durante o uso da internet: páginas acessadas, links clicados, tempo de permanência e interações com conteúdo.",
+    "exemplo_pratico": "Você pesquisa sobre uma doença no Google. Anúncios de planos de saúde aparecem horas depois. Seus dados de navegação foram usados para perfilamento.",
+    "categoria": "data_collection",
+    "icone_id": "mouse-pointer-click",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, I"
+    ],
+    "palavras_chave_relacionadas": [
+      "histórico de navegação",
+      "dados de acesso",
+      "log de navegação",
+      "metadados de acesso",
+      "comportamento online",
+      "registros de uso"
+    ],
+    "aliases": [
+      "histórico de navegação",
+      "dados de acesso",
+      "log de navegação",
+      "metadados de acesso",
+      "comportamento online",
+      "registros de uso"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, I"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_026",
+    "termo_juridico": "localização",
+    "traducao_direta": "É sua posição geográfica — onde você está ou esteve",
+    "definicao_leiga": "Informações sobre a posição física do dispositivo, coletadas via GPS, Wi-Fi, torres de celular ou IP, podendo revelar rotas, locais frequentados e padrões de vida.",
+    "exemplo_pratico": "Um app de clima que pede 'acesso à localização sempre' coleta onde você está 24h — muito além do necessário para mostrar a previsão do tempo.",
+    "categoria": "data_collection",
+    "icone_id": "map-pin",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, I",
+      "Art. 7º"
+    ],
+    "palavras_chave_relacionadas": [
+      "dados de localização",
+      "GPS",
+      "geolocalização",
+      "localização em tempo real",
+      "coordenadas GPS",
+      "localização geográfica"
+    ],
+    "aliases": [
+      "dados de localização",
+      "GPS",
+      "geolocalização",
+      "localização em tempo real",
+      "coordenadas GPS",
+      "localização geográfica"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, I",
+      "Art. 7º"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_027",
+    "termo_juridico": "coleta automática",
+    "traducao_direta": "É quando o serviço registra dados sobre você sem que você perceba ou faça nada",
+    "definicao_leiga": "Processo de coleta de dados disparado automaticamente ao usar o serviço, incluindo logs de acesso, metadados de dispositivo e comportamento de cliques.",
+    "exemplo_pratico": "Ao abrir um app, ele registra automaticamente seu IP, modelo de dispositivo, sistema operacional, horário de uso e tempo em cada tela.",
+    "categoria": "data_collection",
+    "icone_id": "wifi",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, I",
+      "Art. 9º"
+    ],
+    "palavras_chave_relacionadas": [
+      "coleta passiva",
+      "gravação automática",
+      "registros automáticos",
+      "logs automáticos",
+      "registros de log"
+    ],
+    "aliases": [
+      "coleta passiva",
+      "gravação automática",
+      "registros automáticos",
+      "logs automáticos",
+      "registros de log"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, I",
+      "Art. 9º"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_004",
-    "term": "tratamento de dados",
+    "termo_juridico": "tratamento de dados",
+    "traducao_direta": "É qualquer coisa que a empresa faz com seus dados: coletar, guardar, usar, compartilhar ou apagar",
+    "definicao_leiga": "Toda operação realizada com dados pessoais: coleta, armazenamento, uso, compartilhamento, exclusão e qualquer outra forma de manipulação.",
+    "exemplo_pratico": "Quando o app lê seu GPS, guarda num servidor e usa para recomendar restaurantes próximos, são três tratamentos separados — cada um com base legal necessária.",
+    "categoria": "purpose_use",
+    "icone_id": "settings",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, X",
+      "Art. 9º"
+    ],
+    "palavras_chave_relacionadas": [
+      "tratamento",
+      "processamento de dados",
+      "processar dados",
+      "tratar dados",
+      "treatment",
+      "data processing",
+      "processing"
+    ],
     "aliases": [
       "tratamento",
       "processamento de dados",
       "processar dados",
-      "tratar dados"
+      "tratar dados",
+      "treatment",
+      "data processing",
+      "processing"
     ],
-    "category": "purpose_use",
-    "meaning": "Toda operação realizada com dados pessoais: coleta, armazenamento, uso, compartilhamento, exclusão e qualquer outra forma de manipulação.",
-    "why_it_matters": "O termo é amplo de propósito. Qualquer coisa que a plataforma faça com seus dados é 'tratamento'. Por isso, os termos de serviço devem detalhar cada tipo de operação.",
-    "what_you_can_do": "Você tem direito a saber exatamente quais tratamentos são realizados com seus dados e para quais finalidades (Art. 9º LGPD).",
-    "impact": "high",
-    "icon_id": "settings",
     "lgpd_refs": [
       "Art. 5º, X",
       "Art. 9º"
-    ]
+    ],
+    "corpus_support": [
+      "META_PRIVACY_E002",
+      "LGPD_E001",
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
-    "term_id": "TERM_005",
-    "term": "controlador",
-    "aliases": [
-      "responsável pelo tratamento"
+    "term_id": "TERM_008",
+    "termo_juridico": "finalidade",
+    "traducao_direta": "É o motivo pelo qual a empresa coleta seus dados — deve ser específico e informado",
+    "definicao_leiga": "O motivo específico pelo qual seus dados são coletados e tratados. A LGPD exige que toda coleta tenha uma finalidade legítima, específica e informada ao titular.",
+    "exemplo_pratico": "Coletar e-mail para enviar boleto é uma finalidade. Usar esse mesmo e-mail para campanha de marketing é outra finalidade — e exige permissão separada.",
+    "categoria": "purpose_use",
+    "icone_id": "target",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 6º, I",
+      "Art. 9º"
     ],
-    "category": "user_rights",
-    "meaning": "A empresa ou pessoa que toma as decisões sobre o tratamento dos dados pessoais. No caso das redes sociais, é a própria plataforma (Meta, X Corp.).",
-    "why_it_matters": "É ao controlador que você deve dirigir solicitações de acesso, correção ou exclusão de dados. Saber quem é o controlador é essencial para exercer seus direitos.",
-    "what_you_can_do": "Você pode contatar o controlador (geralmente via DPO/Encarregado) para exercer qualquer direito previsto no Art. 18 da LGPD.",
-    "impact": "medium",
-    "icon_id": "building",
+    "palavras_chave_relacionadas": [
+      "propósito",
+      "objetivo do tratamento",
+      "para que",
+      "purpose",
+      "mission",
+      "finalidade"
+    ],
+    "aliases": [
+      "propósito",
+      "objetivo do tratamento",
+      "para que",
+      "purpose",
+      "mission",
+      "finalidade"
+    ],
     "lgpd_refs": [
-      "Art. 5º, VI",
-      "Art. 18"
-    ]
+      "Art. 6º, I",
+      "Art. 9º"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E002",
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_014",
+    "termo_juridico": "base legal",
+    "traducao_direta": "É o motivo jurídico que autoriza a empresa a usar seus dados sem ser ilegal",
+    "definicao_leiga": "Justificativa legal que habilita o tratamento de dados pessoais, como consentimento, execução de contrato, cumprimento de obrigação legal, ou legítimo interesse.",
+    "exemplo_pratico": "Uma empresa que envia e-mail marketing usando 'legítimo interesse' sem oferecer opt-out provavelmente está violando a LGPD.",
+    "categoria": "purpose_use",
+    "icone_id": "scale",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 7º",
+      "Art. 9º, II"
+    ],
+    "palavras_chave_relacionadas": [
+      "base jurídica",
+      "fundamento legal",
+      "hipótese de tratamento",
+      "base do tratamento",
+      "legal bases",
+      "legal reasons"
+    ],
+    "aliases": [
+      "base jurídica",
+      "fundamento legal",
+      "hipótese de tratamento",
+      "base do tratamento",
+      "legal bases",
+      "legal reasons"
+    ],
+    "lgpd_refs": [
+      "Art. 7º",
+      "Art. 9º, II"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E004",
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_020",
+    "termo_juridico": "legítimo interesse",
+    "traducao_direta": "É quando a empresa justifica o uso dos seus dados dizendo ser 'razoável' — sem pedir permissão",
+    "definicao_leiga": "Base legal que permite tratar dados sem consentimento, desde que haja necessidade real, proporcionalidade e que os interesses do controlador não superem os do titular.",
+    "exemplo_pratico": "Uma empresa analisa comportamento de navegação 'por legítimo interesse' para recomendar produtos. Você pode solicitar não ser incluído nesse perfilamento.",
+    "categoria": "purpose_use",
+    "icone_id": "scale",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 7º, IX",
+      "Art. 18, IX"
+    ],
+    "palavras_chave_relacionadas": [
+      "interesse legítimo",
+      "legítimo interesse do controlador",
+      "fundamento legítimo",
+      "interesse legítimo do controlador",
+      "legitimate interest"
+    ],
+    "aliases": [
+      "interesse legítimo",
+      "legítimo interesse do controlador",
+      "fundamento legítimo",
+      "interesse legítimo do controlador",
+      "legitimate interest"
+    ],
+    "lgpd_refs": [
+      "Art. 7º, IX",
+      "Art. 18, IX"
+    ],
+    "corpus_support": [
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_022",
+    "termo_juridico": "política de privacidade",
+    "traducao_direta": "É o documento que explica como o serviço coleta, usa e protege seus dados",
+    "definicao_leiga": "Documento obrigatório que descreve quais dados são coletados, com qual finalidade, como são tratados, com quem são compartilhados e quais os direitos do titular.",
+    "exemplo_pratico": "Antes de criar conta em qualquer serviço, a política de privacidade governa o uso dos seus dados — mesmo que você nunca a leia.",
+    "categoria": "purpose_use",
+    "icone_id": "file-lock",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 9º",
+      "Art. 23"
+    ],
+    "palavras_chave_relacionadas": [
+      "aviso de privacidade",
+      "declaração de privacidade",
+      "privacy policy",
+      "política de privacidade"
+    ],
+    "aliases": [
+      "aviso de privacidade",
+      "declaração de privacidade",
+      "privacy policy",
+      "política de privacidade"
+    ],
+    "lgpd_refs": [
+      "Art. 9º",
+      "Art. 23"
+    ],
+    "corpus_support": [
+      "META_PRIVACY_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_023b",
+    "termo_juridico": "termos de serviço",
+    "traducao_direta": "É o contrato que define as regras para você usar a plataforma",
+    "definicao_leiga": "Documento contratual que estabelece direitos e deveres entre usuário e plataforma, incluindo regras de conta, limitações de responsabilidade e formas de encerramento do serviço.",
+    "exemplo_pratico": "Um app pode encerrar sua conta por 'violação das diretrizes' com base em cláusula dos termos de serviço que você aceitou ao criar conta.",
+    "categoria": "purpose_use",
+    "icone_id": "scroll",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 6º",
+      "Art. 9º"
+    ],
+    "palavras_chave_relacionadas": [
+      "termos de uso",
+      "condições de uso",
+      "terms of service",
+      "tos",
+      "terms of use",
+      "terms",
+      "service"
+    ],
+    "aliases": [
+      "termos de uso",
+      "condições de uso",
+      "terms of service",
+      "tos",
+      "terms of use",
+      "terms",
+      "service"
+    ],
+    "lgpd_refs": [
+      "Art. 6º",
+      "Art. 9º"
+    ],
+    "corpus_support": [
+      "INSTAGRAM_TERMS_E001"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_024",
+    "termo_juridico": "perfilamento",
+    "traducao_direta": "É quando a empresa cria um 'dossiê' sobre você para prever seu comportamento",
+    "definicao_leiga": "Forma automatizada de tratamento que usa dados pessoais para analisar e prever características individuais como comportamento, preferências, situação financeira ou saúde.",
+    "exemplo_pratico": "Um banco nega crédito sem explicação. Provavelmente um modelo de IA analisou seu 'perfil de risco'. Você pode exigir revisão por pessoa humana.",
+    "categoria": "purpose_use",
+    "icone_id": "brain",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 20"
+    ],
+    "palavras_chave_relacionadas": [
+      "perfil comportamental",
+      "profiling",
+      "análise do perfil",
+      "criação de perfil",
+      "personalize",
+      "personalized",
+      "systems"
+    ],
+    "aliases": [
+      "perfil comportamental",
+      "profiling",
+      "análise do perfil",
+      "criação de perfil",
+      "personalize",
+      "personalized",
+      "systems"
+    ],
+    "lgpd_refs": [
+      "Art. 20"
+    ],
+    "corpus_support": [
+      "INSTAGRAM_TERMS_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_025",
+    "termo_juridico": "publicidade direcionada",
+    "traducao_direta": "São anúncios escolhidos para você com base no que você fez, disse ou pesquisou online",
+    "definicao_leiga": "Forma de propaganda que usa dados coletados sobre comportamento, interesses e características do usuário para exibir anúncios mais relevantes ao seu perfil.",
+    "exemplo_pratico": "Você comenta sobre um produto no app. Horas depois, anúncios daquele produto aparecem no seu feed. Dados de comportamento entre apps foram usados.",
+    "categoria": "purpose_use",
+    "icone_id": "megaphone",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "palavras_chave_relacionadas": [
+      "anúncios personalizados",
+      "marketing personalizado",
+      "publicidade comportamental",
+      "anúncio segmentado",
+      "ads",
+      "sponsored content",
+      "offers"
+    ],
+    "aliases": [
+      "anúncios personalizados",
+      "marketing personalizado",
+      "publicidade comportamental",
+      "anúncio segmentado",
+      "ads",
+      "sponsored content",
+      "offers"
+    ],
+    "lgpd_refs": [
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E002",
+      "INSTAGRAM_TERMS_E003"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_031",
+    "termo_juridico": "decisão automatizada",
+    "traducao_direta": "É quando um algoritmo — não uma pessoa — decide algo sobre você com base nos seus dados",
+    "definicao_leiga": "Processamento que usa dados pessoais para tomar ou recomendar decisões sobre o titular, sem intervenção humana no processo decisório final.",
+    "exemplo_pratico": "Um banco reprova pedido de cartão sem explicação. Pela LGPD Art. 20, você pode exigir que uma pessoa humana revise essa decisão.",
+    "categoria": "purpose_use",
+    "icone_id": "brain",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 20"
+    ],
+    "palavras_chave_relacionadas": [
+      "decisão automática",
+      "algoritmo de decisão",
+      "deliberação automatizada",
+      "decisão por algoritmo",
+      "automated decision",
+      "automated decisions"
+    ],
+    "aliases": [
+      "decisão automática",
+      "algoritmo de decisão",
+      "deliberação automatizada",
+      "decisão por algoritmo",
+      "automated decision",
+      "automated decisions"
+    ],
+    "lgpd_refs": [
+      "Art. 20"
+    ],
+    "corpus_support": [
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_006",
-    "term": "compartilhamento",
+    "termo_juridico": "compartilhamento",
+    "traducao_direta": "É quando a empresa passa seus dados para outras empresas ou pessoas",
+    "definicao_leiga": "Comunicação, transferência ou disponibilização de dados pessoais a terceiros, como parceiros comerciais, anunciantes ou autoridades.",
+    "exemplo_pratico": "Uma loja online pode compartilhar seu endereço com uma transportadora. Uma rede social pode compartilhar seu perfil comportamental com dezenas de anunciantes.",
+    "categoria": "sharing_third_parties",
+    "icone_id": "share-2",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, XVI",
+      "Art. 18, VII"
+    ],
+    "palavras_chave_relacionadas": [
+      "compartilhar",
+      "compartilhamento de dados",
+      "transferência de dados",
+      "ceder dados",
+      "repasse",
+      "share",
+      "sharing",
+      "share your information",
+      "shared",
+      "compartilhamos"
+    ],
     "aliases": [
       "compartilhar",
       "compartilhamento de dados",
       "transferência de dados",
       "ceder dados",
-      "repasse"
+      "repasse",
+      "share",
+      "sharing",
+      "share your information",
+      "shared",
+      "compartilhamos"
     ],
-    "category": "sharing_third_parties",
-    "meaning": "Comunicação, transferência ou disponibilização de dados pessoais a terceiros, como parceiros comerciais, anunciantes ou autoridades.",
-    "why_it_matters": "Quando seus dados são compartilhados, eles saem do controle direto da plataforma original. Você pode não saber quem tem acesso nem como serão usados.",
-    "what_you_can_do": "Você pode solicitar informações sobre com quem seus dados são compartilhados (Art. 18, VII LGPD).",
-    "impact": "high",
-    "icon_id": "share-2",
     "lgpd_refs": [
       "Art. 5º, XVI",
       "Art. 18, VII"
-    ]
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E003",
+      "META_PRIVACY_E001",
+      "META_PRIVACY_E002",
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_007",
-    "term": "terceiros",
+    "termo_juridico": "terceiros",
+    "traducao_direta": "São outras empresas que recebem acesso aos seus dados, fora da plataforma principal",
+    "definicao_leiga": "Empresas ou entidades externas à plataforma que podem receber ou acessar seus dados, como anunciantes, provedores de analytics ou parceiros de negócios.",
+    "exemplo_pratico": "'Parceiros e terceiros' em um termo de serviço pode significar dezenas de empresas de analytics, publicidade e tecnologia recebendo suas informações.",
+    "categoria": "sharing_third_parties",
+    "icone_id": "users",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 18, VII"
+    ],
+    "palavras_chave_relacionadas": [
+      "parceiros",
+      "parceiros comerciais",
+      "empresas parceiras",
+      "third parties",
+      "fornecedores",
+      "third party",
+      "terceiros"
+    ],
     "aliases": [
       "parceiros",
       "parceiros comerciais",
       "empresas parceiras",
-      "third parties"
+      "third parties",
+      "fornecedores",
+      "third party",
+      "terceiros"
     ],
-    "category": "sharing_third_parties",
-    "meaning": "Empresas ou entidades externas à plataforma que podem receber ou acessar seus dados, como anunciantes, provedores de analytics ou parceiros de negócios.",
-    "why_it_matters": "Os termos frequentemente listam categorias vagas de 'terceiros'. Entender quem são esses parceiros ajuda a avaliar o risco real à sua privacidade.",
-    "what_you_can_do": "Exija transparência: peça à plataforma a lista de terceiros com quem seus dados são compartilhados.",
-    "impact": "high",
-    "icon_id": "users",
     "lgpd_refs": [
       "Art. 18, VII"
-    ]
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E003",
+      "INSTAGRAM_TERMS_E003"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
-    "term_id": "TERM_008",
-    "term": "finalidade",
-    "aliases": [
-      "propósito",
-      "objetivo do tratamento",
-      "para que"
+    "term_id": "TERM_015",
+    "termo_juridico": "operador",
+    "traducao_direta": "É a empresa que processa seus dados a mando da empresa principal",
+    "definicao_leiga": "Pessoa natural ou jurídica que realiza o tratamento de dados em nome do controlador, seguindo suas instruções.",
+    "exemplo_pratico": "Uma startup usa o Google Cloud para armazenar seus dados. O Google atua como operador, seguindo instruções da startup (controladora).",
+    "categoria": "sharing_third_parties",
+    "icone_id": "cpu",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, VII",
+      "Art. 39"
     ],
-    "category": "purpose_use",
-    "meaning": "O motivo específico pelo qual seus dados são coletados e tratados. A LGPD exige que toda coleta tenha uma finalidade legítima, específica e informada ao titular.",
-    "why_it_matters": "Se a plataforma usa seus dados para um propósito diferente do informado, isso pode configurar violação da LGPD. Finalidades vagas como 'melhorar a experiência' são um sinal de alerta.",
-    "what_you_can_do": "Você pode questionar finalidades genéricas e solicitar detalhamento. Caso seus dados sejam usados para fim diferente do consentido, pode denunciar à ANPD.",
-    "impact": "high",
-    "icon_id": "target",
+    "palavras_chave_relacionadas": [
+      "processador",
+      "responsável pelo processamento",
+      "subprocessador",
+      "sub-processador",
+      "processor",
+      "operator"
+    ],
+    "aliases": [
+      "processador",
+      "responsável pelo processamento",
+      "subprocessador",
+      "sub-processador",
+      "processor",
+      "operator"
+    ],
     "lgpd_refs": [
-      "Art. 6º, I",
-      "Art. 9º"
-    ]
+      "Art. 5º, VII",
+      "Art. 39"
+    ],
+    "corpus_support": [
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_021",
+    "termo_juridico": "transferência internacional",
+    "traducao_direta": "É quando seus dados são enviados para servidores ou empresas em outros países",
+    "definicao_leiga": "Transferência de dados pessoais para países estrangeiros ou para organizações internacionais, sujeita a regras específicas de proteção.",
+    "exemplo_pratico": "Quando você usa serviços americanos como Google ou Netflix, seus dados são armazenados nos EUA. Isso configura transferência internacional.",
+    "categoria": "sharing_third_parties",
+    "icone_id": "globe",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 33",
+      "Art. 34"
+    ],
+    "palavras_chave_relacionadas": [
+      "transferência internacional de dados",
+      "envio para exterior",
+      "dados no exterior",
+      "servidor fora do país",
+      "transfer",
+      "transferimos",
+      "international transfer"
+    ],
+    "aliases": [
+      "transferência internacional de dados",
+      "envio para exterior",
+      "dados no exterior",
+      "servidor fora do país",
+      "transfer",
+      "transferimos",
+      "international transfer"
+    ],
+    "lgpd_refs": [
+      "Art. 33",
+      "Art. 34"
+    ],
+    "corpus_support": [
+      "META_PRIVACY_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_009",
-    "term": "retenção",
+    "termo_juridico": "retenção",
+    "traducao_direta": "É o tempo que a empresa guarda seus dados, mesmo depois que você para de usar o serviço",
+    "definicao_leiga": "O período pelo qual a plataforma mantém seus dados armazenados, mesmo após você parar de usar o serviço ou excluir a conta.",
+    "exemplo_pratico": "Você exclui sua conta num app. Seus dados podem continuar armazenados por até 5 anos 'por obrigação legal'. Isso é retenção — e é legal se justificado.",
+    "categoria": "retention_storage",
+    "icone_id": "clock",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 15",
+      "Art. 16"
+    ],
+    "palavras_chave_relacionadas": [
+      "armazenamento",
+      "prazo de armazenamento",
+      "guardar dados",
+      "manter dados",
+      "período de retenção",
+      "retain",
+      "retention",
+      "keep",
+      "periods of time",
+      "90 days",
+      "backups"
+    ],
     "aliases": [
       "armazenamento",
       "prazo de armazenamento",
       "guardar dados",
       "manter dados",
-      "período de retenção"
+      "período de retenção",
+      "retain",
+      "retention",
+      "keep",
+      "periods of time",
+      "90 days",
+      "backups"
     ],
-    "category": "retention_storage",
-    "meaning": "O período pelo qual a plataforma mantém seus dados armazenados, mesmo após você parar de usar o serviço.",
-    "why_it_matters": "Muitas plataformas retêm dados por anos, mesmo após exclusão da conta. Saber o prazo de retenção ajuda a entender por quanto tempo seus dados ficam expostos.",
-    "what_you_can_do": "Você pode solicitar a eliminação dos dados após o término do tratamento (Art. 16 LGPD), salvo obrigações legais de guarda.",
-    "impact": "medium",
-    "icon_id": "clock",
     "lgpd_refs": [
       "Art. 15",
       "Art. 16"
-    ]
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E004",
+      "INSTAGRAM_TERMS_E004",
+      "LGPD_E003"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_010",
-    "term": "anonimização",
+    "termo_juridico": "anonimização",
+    "traducao_direta": "É quando seus dados são modificados de forma irreversível para que você não seja mais identificável",
+    "definicao_leiga": "Processo técnico pelo qual um dado perde a possibilidade de ser associado a uma pessoa específica, de forma irreversível.",
+    "exemplo_pratico": "Um app diz usar 'dados anonimizados' para pesquisa. Se for possível combinar informações para te identificar, não é verdadeira anonimização.",
+    "categoria": "retention_storage",
+    "icone_id": "eye-off",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, III",
+      "Art. 12"
+    ],
+    "palavras_chave_relacionadas": [
+      "anonimizar",
+      "dados anonimizados",
+      "dados anônimos"
+    ],
     "aliases": [
       "anonimizar",
       "dados anonimizados",
       "dados anônimos"
     ],
-    "category": "retention_storage",
-    "meaning": "Processo técnico pelo qual um dado perde a possibilidade de ser associado a uma pessoa específica, de forma irreversível.",
-    "why_it_matters": "Dados verdadeiramente anonimizados não são considerados dados pessoais pela LGPD. Porém, muitas técnicas de 'anonimização' são reversíveis (pseudonimização), e a plataforma pode usar esse termo de forma imprecisa.",
-    "what_you_can_do": "Questione se o processo é realmente irreversível. Dados pseudonimizados ainda são dados pessoais e mantêm todos os seus direitos LGPD.",
-    "impact": "medium",
-    "icon_id": "eye-off",
     "lgpd_refs": [
       "Art. 5º, III",
       "Art. 12"
-    ]
+    ],
+    "corpus_support": [
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
-    "term_id": "TERM_011",
-    "term": "incidente de segurança",
-    "aliases": [
-      "vazamento",
-      "violação de dados",
-      "brecha de segurança",
-      "data breach"
+    "term_id": "TERM_019",
+    "termo_juridico": "pseudonimização",
+    "traducao_direta": "É quando seus dados são 'mascarados' com um código, mas podem ser identificados de volta com uma chave",
+    "definicao_leiga": "Técnica que substitui identificadores diretos por pseudônimos, mantendo a possibilidade de reverter com uma chave secreta.",
+    "exemplo_pratico": "Um banco substitui seu CPF por um token interno. Com a tabela de tokens, ainda é possível te identificar — são dados pessoais.",
+    "categoria": "retention_storage",
+    "icone_id": "fingerprint",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, III",
+      "Art. 13"
     ],
-    "category": "security_incidents",
-    "meaning": "Qualquer evento que comprometa a confidencialidade, integridade ou disponibilidade de dados pessoais, como vazamentos, acessos não autorizados ou perda de dados.",
-    "why_it_matters": "Incidentes podem expor dados sensíveis a criminosos. A LGPD obriga o controlador a comunicar incidentes graves à ANPD e aos titulares afetados.",
-    "what_you_can_do": "Caso saiba de um incidente envolvendo seus dados, cobre transparência da plataforma e monitore suas contas. Você pode denunciar à ANPD se a empresa não comunicar o incidente.",
-    "impact": "high",
-    "icon_id": "alert-triangle",
+    "palavras_chave_relacionadas": [
+      "pseudonimizar",
+      "dados pseudonimizados",
+      "pseudoanonimização"
+    ],
+    "aliases": [
+      "pseudonimizar",
+      "dados pseudonimizados",
+      "pseudoanonimização"
+    ],
     "lgpd_refs": [
-      "Art. 48"
-    ]
+      "Art. 5º, III",
+      "Art. 13"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_002",
+    "termo_juridico": "consentimento",
+    "traducao_direta": "É a sua permissão para a empresa usar seus dados — deve ser livre e informada",
+    "definicao_leiga": "Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.",
+    "exemplo_pratico": "Quando você clica em 'Aceitar' na política de privacidade, está dando consentimento. Esse consentimento pode ser revogado — mas a empresa precisa facilitar isso.",
+    "categoria": "user_rights",
+    "icone_id": "check-circle",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, XII",
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "palavras_chave_relacionadas": [
+      "autorização",
+      "concordância",
+      "aceite",
+      "permission",
+      "give us permission"
+    ],
+    "aliases": [
+      "autorização",
+      "concordância",
+      "aceite",
+      "permission",
+      "give us permission"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, XII",
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "corpus_support": [
+      "INSTAGRAM_TERMS_E003",
+      "LGPD_E002"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_005",
+    "termo_juridico": "controlador",
+    "traducao_direta": "É a empresa que decide como seus dados são usados — é a quem você deve reclamar",
+    "definicao_leiga": "A empresa ou pessoa que toma as decisões sobre o tratamento dos dados pessoais. No caso das redes sociais, é a própria plataforma.",
+    "exemplo_pratico": "Quando você usa o Instagram, a Meta é o controladora dos seus dados. É a ela que você deve pedir exclusão de dados.",
+    "categoria": "user_rights",
+    "icone_id": "building",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, VI",
+      "Art. 18"
+    ],
+    "palavras_chave_relacionadas": [
+      "responsável pelo tratamento",
+      "controller"
+    ],
+    "aliases": [
+      "responsável pelo tratamento",
+      "controller"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, VI",
+      "Art. 18"
+    ],
+    "corpus_support": [
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   },
   {
     "term_id": "TERM_012",
-    "term": "titular",
+    "termo_juridico": "titular",
+    "traducao_direta": "É você — a pessoa a quem os dados pertencem e que tem direitos pela LGPD",
+    "definicao_leiga": "A pessoa natural a quem os dados pessoais se referem. Se você usa a plataforma, você é o titular dos dados que ela coleta.",
+    "exemplo_pratico": "Se você cria conta num app, todos os dados coletados — nome, e-mail, comportamento de uso — têm você como titular. Você pode pedir cópia de tudo.",
+    "categoria": "user_rights",
+    "icone_id": "user",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, V",
+      "Art. 17",
+      "Art. 18"
+    ],
+    "palavras_chave_relacionadas": [
+      "titular dos dados",
+      "sujeito dos dados",
+      "data subject",
+      "titular"
+    ],
     "aliases": [
       "titular dos dados",
-      "usuário",
-      "sujeito dos dados"
+      "sujeito dos dados",
+      "data subject",
+      "titular"
     ],
-    "category": "user_rights",
-    "meaning": "A pessoa natural a quem os dados pessoais se referem. Se você usa a plataforma, você é o titular dos dados que ela coleta.",
-    "why_it_matters": "A LGPD confere ao titular uma série de direitos (Art. 18), como acesso, correção, exclusão e portabilidade. Saber que você é o titular é o ponto de partida para exercê-los.",
-    "what_you_can_do": "Exerça seus direitos: solicite acesso, correção, exclusão ou portabilidade dos seus dados diretamente à plataforma (Art. 18 LGPD).",
-    "impact": "high",
-    "icon_id": "user",
     "lgpd_refs": [
       "Art. 5º, V",
       "Art. 17",
       "Art. 18"
-    ]
+    ],
+    "corpus_support": [
+      "LGPD_E001",
+      "LGPD_E004",
+      "LGPD_E006"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_016",
+    "termo_juridico": "encarregado",
+    "traducao_direta": "É a pessoa na empresa responsável por garantir que seus direitos de privacidade sejam respeitados",
+    "definicao_leiga": "Profissional indicado pelo controlador para atuar como canal entre a empresa, os titulares e a ANPD — responsável por receber reclamações.",
+    "exemplo_pratico": "Para excluir dados de uma plataforma, encontre o e-mail do DPO na política de privacidade e formalize a solicitação de eliminação.",
+    "categoria": "user_rights",
+    "icone_id": "shield-user",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 5º, VIII",
+      "Art. 41"
+    ],
+    "palavras_chave_relacionadas": [
+      "DPO",
+      "data protection officer",
+      "encarregado de proteção",
+      "responsável pela proteção de dados"
+    ],
+    "aliases": [
+      "DPO",
+      "data protection officer",
+      "encarregado de proteção",
+      "responsável pela proteção de dados"
+    ],
+    "lgpd_refs": [
+      "Art. 5º, VIII",
+      "Art. 41"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_017",
+    "termo_juridico": "ANPD",
+    "traducao_direta": "É o órgão do governo que fiscaliza o uso dos seus dados pelas empresas e pode aplicar multas",
+    "definicao_leiga": "Autoridade Nacional de Proteção de Dados: entidade federal que regula, orienta e fiscaliza o cumprimento da LGPD no Brasil.",
+    "exemplo_pratico": "Uma empresa que não responde sua solicitação de exclusão no prazo pode ser denunciada à ANPD, que pode instaurar processo sancionador.",
+    "categoria": "user_rights",
+    "icone_id": "landmark",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 55-A"
+    ],
+    "palavras_chave_relacionadas": [
+      "Autoridade Nacional de Proteção de Dados",
+      "autoridade de proteção",
+      "autoridade reguladora de dados"
+    ],
+    "aliases": [
+      "Autoridade Nacional de Proteção de Dados",
+      "autoridade de proteção",
+      "autoridade reguladora de dados"
+    ],
+    "lgpd_refs": [
+      "Art. 55-A"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_018",
+    "termo_juridico": "portabilidade",
+    "traducao_direta": "É seu direito de pegar seus dados e levar para outra empresa ou plataforma",
+    "definicao_leiga": "Direito do titular de receber seus dados pessoais em formato estruturado e interoperável, podendo transferi-los para outro fornecedor.",
+    "exemplo_pratico": "Quer mudar de plataforma de fotos Pela portabilidade, você pode pedir que exportem seus álbuns para levar a outro serviço.",
+    "categoria": "user_rights",
+    "icone_id": "hard-drive-upload",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 18, V",
+      "Art. 9º"
+    ],
+    "palavras_chave_relacionadas": [
+      "portabilidade de dados",
+      "direito à portabilidade",
+      "transferência de dados pessoais",
+      "exportar meus dados",
+      "portability",
+      "download a copy"
+    ],
+    "aliases": [
+      "portabilidade de dados",
+      "direito à portabilidade",
+      "transferência de dados pessoais",
+      "exportar meus dados",
+      "portability",
+      "download a copy"
+    ],
+    "lgpd_refs": [
+      "Art. 18, V",
+      "Art. 9º"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E005",
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_028",
+    "termo_juridico": "opt-out",
+    "traducao_direta": "É sua opção de sair e não ter mais seus dados usados para um determinado fim",
+    "definicao_leiga": "Mecanismo que permite ao titular se opor ou retirar o consentimento para uso de dados em fins específicos, como marketing ou análise comportamental.",
+    "exemplo_pratico": "Desmarcar a opção de receber e-mails de marketing é um opt-out. Desativar o rastreamento de localização de um app também.",
+    "categoria": "user_rights",
+    "icone_id": "toggle-left",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 8º, §5º",
+      "Art. 18, IX"
+    ],
+    "palavras_chave_relacionadas": [
+      "cancelar inscrição",
+      "sair da lista",
+      "descadastro",
+      "retirar consentimento",
+      "desativar"
+    ],
+    "aliases": [
+      "cancelar inscrição",
+      "sair da lista",
+      "descadastro",
+      "retirar consentimento",
+      "desativar"
+    ],
+    "lgpd_refs": [
+      "Art. 8º, §5º",
+      "Art. 18, IX"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_029",
+    "termo_juridico": "opt-in",
+    "traducao_direta": "É quando você escolhe ativamente participar e autorizar um uso específico dos seus dados",
+    "definicao_leiga": "Modelo de consentimento em que o usuário precisa marcar ativamente uma opção para autorizar determinado tratamento de dados, em vez de vir habilitado por padrão.",
+    "exemplo_pratico": "Ao criar conta, a caixa 'Quero receber ofertas por e-mail' vem desmarcada e você decide marcar ou não. Isso é opt-in.",
+    "categoria": "user_rights",
+    "icone_id": "circle-dot",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "palavras_chave_relacionadas": [
+      "aceite explícito",
+      "consentimento prévio",
+      "autorização prévia",
+      "inclusão voluntária"
+    ],
+    "aliases": [
+      "aceite explícito",
+      "consentimento prévio",
+      "autorização prévia",
+      "inclusão voluntária"
+    ],
+    "lgpd_refs": [
+      "Art. 7º, I",
+      "Art. 8º"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_030",
+    "termo_juridico": "eliminação",
+    "traducao_direta": "É seu direito de pedir para a empresa apagar definitivamente seus dados",
+    "definicao_leiga": "Direito do titular de solicitar a exclusão permanente de dados pessoais tratados com consentimento ou de forma excessiva/desnecessária.",
+    "exemplo_pratico": "Você fecha sua conta num app de namoro. Os dados de perfil e histórico devem ser eliminados, exceto se houver obrigação legal específica.",
+    "categoria": "user_rights",
+    "icone_id": "trash-2",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 18, VI",
+      "Art. 16"
+    ],
+    "palavras_chave_relacionadas": [
+      "direito ao esquecimento",
+      "exclusão de dados",
+      "apagar dados",
+      "deletar dados",
+      "excluir minha conta",
+      "deletion",
+      "delete content",
+      "delete account",
+      "eliminated"
+    ],
+    "aliases": [
+      "direito ao esquecimento",
+      "exclusão de dados",
+      "apagar dados",
+      "deletar dados",
+      "excluir minha conta",
+      "deletion",
+      "delete content",
+      "delete account",
+      "eliminated"
+    ],
+    "lgpd_refs": [
+      "Art. 18, VI",
+      "Art. 16"
+    ],
+    "corpus_support": [
+      "INSTAGRAM_TERMS_E004",
+      "LGPD_E003",
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_032",
+    "termo_juridico": "direito de acesso",
+    "traducao_direta": "É seu direito de pedir para a empresa mostrar tudo que ela sabe sobre você",
+    "definicao_leiga": "Direito do titular de obter confirmação de existência de tratamento e acesso completo aos seus dados pessoais, incluindo categorias, finalidades e destinatários.",
+    "exemplo_pratico": "Ao solicitar acesso aos dados do Facebook, você recebe centenas de MB incluindo histórico de pesquisas, anúncios clicados e localizações.",
+    "categoria": "user_rights",
+    "icone_id": "eye",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 18, I e II",
+      "Art. 9º"
+    ],
+    "palavras_chave_relacionadas": [
+      "acesso aos dados",
+      "pedido de acesso",
+      "ver meus dados",
+      "quais dados vocês têm",
+      "solicitar acesso",
+      "access",
+      "access to data"
+    ],
+    "aliases": [
+      "acesso aos dados",
+      "pedido de acesso",
+      "ver meus dados",
+      "quais dados vocês têm",
+      "solicitar acesso",
+      "access",
+      "access to data"
+    ],
+    "lgpd_refs": [
+      "Art. 18, I e II",
+      "Art. 9º"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E005",
+      "LGPD_E004"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_033",
+    "termo_juridico": "revogação",
+    "traducao_direta": "É o ato de tirar a permissão que você deu para a empresa usar seus dados",
+    "definicao_leiga": "Direito do titular de retirar o consentimento dado anteriormente, de forma gratuita e facilitada, sem prejudicar a legalidade do tratamento anterior.",
+    "exemplo_pratico": "Você aceitou receber e-mails de marketing ao criar conta. Meses depois, decide revogar. A empresa deve parar os envios gratuitamente.",
+    "categoria": "user_rights",
+    "icone_id": "ban",
+    "nivel_impacto": "medium",
+    "direito_lgpd_relacionado": [
+      "Art. 8º, §5º",
+      "Art. 15, IV"
+    ],
+    "palavras_chave_relacionadas": [
+      "revogar consentimento",
+      "retirar consentimento",
+      "cancelar autorização",
+      "retirar permissão"
+    ],
+    "aliases": [
+      "revogar consentimento",
+      "retirar consentimento",
+      "cancelar autorização",
+      "retirar permissão"
+    ],
+    "lgpd_refs": [
+      "Art. 8º, §5º",
+      "Art. 15, IV"
+    ],
+    "corpus_support": [
+      "LGPD_ALIGNMENT"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_011",
+    "termo_juridico": "incidente de segurança",
+    "traducao_direta": "É quando seus dados são expostos sem querer — por vazamento, invasão ou falha técnica",
+    "definicao_leiga": "Qualquer evento que comprometa a confidencialidade, integridade ou disponibilidade de dados pessoais, como vazamentos ou acessos não autorizados.",
+    "exemplo_pratico": "Um hacker acessa o banco de dados de um app e publica CPFs dos usuários. Isso é um incidente de segurança — a empresa deve te avisar em prazo definido.",
+    "categoria": "security_incidents",
+    "icone_id": "alert-triangle",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 48"
+    ],
+    "palavras_chave_relacionadas": [
+      "vazamento",
+      "violação de dados",
+      "brecha de segurança",
+      "data breach",
+      "vazamento de dados",
+      "security incident",
+      "incidente de segurança"
+    ],
+    "aliases": [
+      "vazamento",
+      "violação de dados",
+      "brecha de segurança",
+      "data breach",
+      "vazamento de dados",
+      "security incident",
+      "incidente de segurança"
+    ],
+    "lgpd_refs": [
+      "Art. 48"
+    ],
+    "corpus_support": [
+      "LGPD_E006"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
+  },
+  {
+    "term_id": "TERM_034",
+    "termo_juridico": "segurança da informação",
+    "traducao_direta": "São as medidas que a empresa usa para proteger seus dados de acessos não autorizados",
+    "definicao_leiga": "Conjunto de controles técnicos (criptografia, controle de acesso, monitoramento) e organizacionais para proteger dados contra acesso, perda ou vazamento.",
+    "exemplo_pratico": "Uma plataforma que armazena senhas em texto simples não tem segurança adequada — em caso de vazamento, você estará completamente exposto.",
+    "categoria": "security_incidents",
+    "icone_id": "lock",
+    "nivel_impacto": "high",
+    "direito_lgpd_relacionado": [
+      "Art. 46",
+      "Art. 47"
+    ],
+    "palavras_chave_relacionadas": [
+      "medidas de segurança",
+      "proteção de dados",
+      "criptografia",
+      "proteção técnica",
+      "medidas técnicas",
+      "mecanismos de segurança",
+      "security measures",
+      "safety and security",
+      "unauthorized access",
+      "acessos não autorizados"
+    ],
+    "aliases": [
+      "medidas de segurança",
+      "proteção de dados",
+      "criptografia",
+      "proteção técnica",
+      "medidas técnicas",
+      "mecanismos de segurança",
+      "security measures",
+      "safety and security",
+      "unauthorized access",
+      "acessos não autorizados"
+    ],
+    "lgpd_refs": [
+      "Art. 46",
+      "Art. 47"
+    ],
+    "corpus_support": [
+      "X_PRIVACY_E004",
+      "LGPD_E005"
+    ],
+    "observacao_metodologica": "Entrada mantida por suporte no corpus oficial selecionado ou por alinhamento essencial com a LGPD."
   }
 ]

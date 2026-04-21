@@ -1,197 +1,101 @@
-﻿/* Dados do léxico em módulo TS dentro de src/ para evitar chunks quebrados */
-import type { LexiconEntry } from "./types";
-import { LEXICON_FAQ_BY_TERM } from "@/data/mock/lexicon";
+import academicLexicon from "../../data/lexicon/lexicon.json";
+import { LEXICON_FAQ_BY_TERM } from "../data/mock/lexicon";
+import type { AcademicLexiconRecord, Category, LexiconEntry } from "./types";
 
-const BASE_LEXICON: LexiconEntry[] = [
-  {
-    term_id: "TERM_001",
-    term: "dados pessoais",
-    aliases: ["dado pessoal", "informações pessoais", "informação pessoal"],
-    category: "data_collection",
-    meaning:
-      "Qualquer informação que identifique ou possa identificar uma pessoa, como nome, e-mail, CPF, endereço IP ou localização.",
-    why_it_matters:
-      "Plataformas coletam esses dados para personalizar serviços, direcionar anúncios e compartilhar com parceiros. Saber quais dados são coletados é o primeiro passo para proteger sua privacidade.",
-    what_you_can_do:
-      "Você pode solicitar ao controlador a lista completa dos seus dados pessoais tratados (Art. 18, II LGPD). Também pode pedir a correção ou exclusão.",
-    impact: "high",
-    icon_id: "user-circle",
-    lgpd_refs: ["Art. 5º, I", "Art. 18, II"],
-  },
-  {
-    term_id: "TERM_002",
-    term: "consentimento",
-    aliases: ["autorização", "concordância", "aceite"],
-    category: "user_rights",
-    meaning:
-      "Manifestação livre, informada e inequívoca pela qual o titular concorda com o tratamento de seus dados pessoais para uma finalidade determinada.",
-    why_it_matters:
-      "Sem consentimento válido, o tratamento de dados pode ser ilegal. Muitas plataformas utilizam o 'aceite' nos termos como forma de obter esse consentimento de forma ampla.",
-    what_you_can_do:
-      "Você pode revogar seu consentimento a qualquer momento, de forma gratuita e facilitada (Art. 8º, §5º LGPD).",
-    impact: "high",
-    icon_id: "check-circle",
-    lgpd_refs: ["Art. 5º, XII", "Art. 7º, I", "Art. 8º"],
-  },
-  {
-    term_id: "TERM_003",
-    term: "cookies",
-    aliases: ["cookie", "rastreadores", "trackers"],
-    category: "data_collection",
-    meaning:
-      "Pequenos arquivos armazenados no seu dispositivo que registram informações sobre sua navegação, preferências e comportamento online.",
-    why_it_matters:
-      "Cookies permitem rastrear seus hábitos em diferentes sites, criando perfis detalhados para publicidade direcionada, muitas vezes sem que você perceba.",
-    what_you_can_do:
-      "Você pode configurar seu navegador para bloquear cookies de terceiros e usar as ferramentas de gerência de cookies oferecidas pela plataforma.",
-    impact: "medium",
-    icon_id: "cookie",
-    lgpd_refs: ["Art. 7º, I", "Art. 8º"],
-  },
-  {
-    term_id: "TERM_004",
-    term: "tratamento de dados",
-    aliases: ["tratamento", "processamento de dados", "processar dados", "tratar dados"],
-    category: "purpose_use",
-    meaning:
-      "Toda operação realizada com dados pessoais: coleta, armazenamento, uso, compartilhamento, exclusão e qualquer outra forma de manipulação.",
-    why_it_matters:
-      "O termo é amplo de propósito. Qualquer coisa que a plataforma faça com seus dados é 'tratamento'. Por isso, os termos de serviço devem detalhar cada tipo de operação.",
-    what_you_can_do:
-      "Você tem direito a saber exatamente quais tratamentos são realizados com seus dados e para quais finalidades (Art. 9º LGPD).",
-    impact: "high",
-    icon_id: "settings",
-    lgpd_refs: ["Art. 5º, X", "Art. 9º"],
-  },
-  {
-    term_id: "TERM_005",
-    term: "controlador",
-    aliases: ["responsável pelo tratamento"],
-    category: "user_rights",
-    meaning:
-      "A empresa ou pessoa que toma as decisões sobre o tratamento dos dados pessoais. No caso das redes sociais, é a própria plataforma (Meta, X Corp.).",
-    why_it_matters:
-      "É ao controlador que você deve dirigir solicitações de acesso, correção ou exclusão de dados. Saber quem é o controlador é essencial para exercer seus direitos.",
-    what_you_can_do:
-      "Você pode contatar o controlador (geralmente via DPO/Encarregado) para exercer qualquer direito previsto no Art. 18 da LGPD.",
-    impact: "medium",
-    icon_id: "building",
-    lgpd_refs: ["Art. 5º, VI", "Art. 18"],
-  },
-  {
-    term_id: "TERM_006",
-    term: "compartilhamento",
-    aliases: [
-      "compartilhar",
-      "compartilhamento de dados",
-      "transferência de dados",
-      "ceder dados",
-      "repasse",
-    ],
-    category: "sharing_third_parties",
-    meaning:
-      "Comunicação, transferência ou disponibilização de dados pessoais a terceiros, como parceiros comerciais, anunciantes ou autoridades.",
-    why_it_matters:
-      "Quando seus dados são compartilhados, eles saem do controle direto da plataforma original. Você pode não saber quem tem acesso nem como serão usados.",
-    what_you_can_do:
-      "Você pode solicitar informações sobre com quem seus dados são compartilhados (Art. 18, VII LGPD).",
-    impact: "high",
-    icon_id: "share-2",
-    lgpd_refs: ["Art. 5º, XVI", "Art. 18, VII"],
-  },
-  {
-    term_id: "TERM_007",
-    term: "terceiros",
-    aliases: ["parceiros", "parceiros comerciais", "empresas parceiras", "third parties"],
-    category: "sharing_third_parties",
-    meaning:
-      "Empresas ou entidades externas à plataforma que podem receber ou acessar seus dados, como anunciantes, provedores de analytics ou parceiros de negócios.",
-    why_it_matters:
-      "Os termos frequentemente listam categorias vagas de 'terceiros'. Entender quem são esses parceiros ajuda a avaliar o risco real à sua privacidade.",
-    what_you_can_do:
-      "Exija transparência: peça à plataforma a lista de terceiros com quem seus dados são compartilhados.",
-    impact: "high",
-    icon_id: "users",
-    lgpd_refs: ["Art. 18, VII"],
-  },
-  {
-    term_id: "TERM_008",
-    term: "finalidade",
-    aliases: ["propósito", "objetivo do tratamento", "para que"],
-    category: "purpose_use",
-    meaning:
-      "O motivo específico pelo qual seus dados são coletados e tratados. A LGPD exige que toda coleta tenha uma finalidade legítima, específica e informada ao titular.",
-    why_it_matters:
-      "Se a plataforma usa seus dados para um propósito diferente do informado, isso pode configurar violação da LGPD. Finalidades vagas como 'melhorar a experiência' são um sinal de alerta.",
-    what_you_can_do:
-      "Você pode questionar finalidades genéricas e solicitar detalhamento. Caso seus dados sejam usados para fim diferente do consentido, pode denunciar à ANPD.",
-    impact: "high",
-    icon_id: "target",
-    lgpd_refs: ["Art. 6º, I", "Art. 9º"],
-  },
-  {
-    term_id: "TERM_009",
-    term: "retenção",
-    aliases: ["armazenamento", "prazo de armazenamento", "guardar dados", "manter dados", "período de retenção"],
-    category: "retention_storage",
-    meaning:
-      "O período pelo qual a plataforma mantém seus dados armazenados, mesmo após você parar de usar o serviço.",
-    why_it_matters:
-      "Muitas plataformas retêm dados por anos, mesmo após exclusão da conta. Saber o prazo de retenção ajuda a entender por quanto tempo seus dados ficam expostos.",
-    what_you_can_do:
-      "Você pode solicitar a eliminação dos dados após o término do tratamento (Art. 16 LGPD), salvo obrigações legais de guarda.",
-    impact: "medium",
-    icon_id: "clock",
-    lgpd_refs: ["Art. 15", "Art. 16"],
-  },
-  {
-    term_id: "TERM_010",
-    term: "anonimização",
-    aliases: ["anonimizar", "dados anonimizados", "dados anônimos"],
-    category: "retention_storage",
-    meaning:
-      "Processo técnico pelo qual um dado perde a possibilidade de ser associado a uma pessoa específica, de forma irreversível.",
-    why_it_matters:
-      "Dados verdadeiramente anonimizados não são considerados dados pessoais pela LGPD. Porém, muitas técnicas de 'anonimização' são reversíveis (pseudonimização), e a plataforma pode usar esse termo de forma imprecisa.",
-    what_you_can_do:
-      "Questione se o processo é realmente irreversível. Dados pseudonimizados ainda são dados pessoais e mantêm todos os seus direitos LGPD.",
-    impact: "medium",
-    icon_id: "eye-off",
-    lgpd_refs: ["Art. 5º, III", "Art. 12"],
-  },
-  {
-    term_id: "TERM_011",
-    term: "incidente de segurança",
-    aliases: ["vazamento", "violação de dados", "brecha de segurança", "data breach"],
-    category: "security_incidents",
-    meaning:
-      "Qualquer evento que comprometa a confidencialidade, integridade ou disponibilidade de dados pessoais, como vazamentos, acessos não autorizados ou perda de dados.",
-    why_it_matters:
-      "Incidentes podem expor dados sensíveis a criminosos. A LGPD obriga o controlador a comunicar incidentes graves à ANPD e aos titulares afetados.",
-    what_you_can_do:
-      "Caso saiba de um incidente envolvendo seus dados, cobre transparência da plataforma e monitore suas contas. Você pode denunciar à ANPD se a empresa não comunicar o incidente.",
-    impact: "high",
-    icon_id: "alert-triangle",
-    lgpd_refs: ["Art. 48"],
-  },
-  {
-    term_id: "TERM_012",
-    term: "titular",
-    aliases: ["titular dos dados", "usuário", "sujeito dos dados"],
-    category: "user_rights",
-    meaning:
-      "A pessoa natural a quem os dados pessoais se referem. Se você usa a plataforma, você é o titular dos dados que ela coleta.",
-    why_it_matters:
-      "A LGPD confere ao titular uma série de direitos (Art. 18), como acesso, correção, exclusão e portabilidade. Saber que você é o titular é o ponto de partida para exercê-los.",
-    what_you_can_do:
-      "Exerça seus direitos: solicite acesso, correção, exclusão ou portabilidade dos seus dados diretamente à plataforma (Art. 18 LGPD).",
-    impact: "high",
-    icon_id: "user",
-    lgpd_refs: ["Art. 5º, V", "Art. 17", "Art. 18"],
-  },
-];
+const ACADEMIC_LEXICON = academicLexicon as AcademicLexiconRecord[];
 
-export const LEXICON: LexiconEntry[] = BASE_LEXICON.map((entry) => ({
-  ...entry,
+const CATEGORY_WHY: Record<Category, string> = {
+  data_collection:
+    "A cláusula descreve quais dados entram no ecossistema da plataforma e, portanto, define a superfície inicial de exposição do titular.",
+  purpose_use:
+    "A cláusula esclarece para que os dados são usados e permite avaliar se a finalidade declarada é proporcional ao tratamento realizado.",
+  sharing_third_parties:
+    "A cláusula indica circulação de dados fora do controle direto do titular, o que amplia risco, assimetria informacional e dificuldade de oposição.",
+  retention_storage:
+    "A cláusula revela por quanto tempo os dados permanecem armazenados e se existe política de descarte minimamente verificável.",
+  user_rights:
+    "A cláusula informa se o titular tem meios concretos para exercer direitos previstos na LGPD e contestar usos indevidos.",
+  security_incidents:
+    "A cláusula mostra se a plataforma reconhece riscos de segurança, comunica incidentes e adota medidas mínimas de proteção.",
+};
+
+const CATEGORY_ACTION: Record<Category, string> = {
+  data_collection:
+    "Na leitura guiada, observe o volume de coleta, a necessidade do dado e se o participante consegue apontar o que está sendo obtido.",
+  purpose_use:
+    "Na validação, verifique se a tradução permite ao participante explicar a finalidade, a base declarada e eventual excesso de uso.",
+  sharing_third_parties:
+    "Na prova de conceito, o usuário deve conseguir identificar com quem os dados podem ser compartilhados e qual o impacto prático disso.",
+  retention_storage:
+    "Na avaliação, o participante deve conseguir localizar prazo de guarda, descarte ou ausência dessa informação.",
+  user_rights:
+    "O leitor deve sair da tela sabendo qual direito pode exercer, por qual canal e em que situação isso faz sentido.",
+  security_incidents:
+    "Use a cláusula para avaliar se o participante reconhece sinais de risco, resposta a incidente e ausência de medidas concretas.",
+};
+
+function decodeMojibake(value: string): string {
+  if (!/(Ã|Â|â|�)/.test(value)) {
+    return value;
+  }
+
+  try {
+    const bytes = Uint8Array.from(value, (char) => char.charCodeAt(0));
+    const decoded = new TextDecoder("utf-8").decode(bytes);
+    return decoded || value;
+  } catch {
+    return value;
+  }
+}
+
+function sanitizeText(value: string | undefined): string {
+  return decodeMojibake(String(value ?? ""))
+    .normalize("NFC")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function sanitizeList(values: string[] | undefined): string[] {
+  return [...new Set((values ?? []).map((value) => sanitizeText(value)).filter(Boolean))];
+}
+
+function buildWhyItMatters(entry: AcademicLexiconRecord): string {
+  const base = CATEGORY_WHY[entry.categoria];
+  const impactText =
+    entry.nivel_impacto === "high"
+      ? "O impacto metodológico deste termo é alto porque ele afeta compreensão de risco, direito ou compartilhamento."
+      : entry.nivel_impacto === "medium"
+        ? "O impacto metodológico deste termo é médio porque ele contextualiza governança e uso dos dados."
+        : "O impacto metodológico deste termo é baixo, mas ainda contribui para leitura guiada e transparência.";
+
+  return `${base} ${impactText}`;
+}
+
+function buildWhatYouCanDo(entry: AcademicLexiconRecord): string {
+  const refs = sanitizeList(entry.direito_lgpd_relacionado);
+  const rightsText =
+    refs.length > 0
+      ? `Use esta explicação para relacionar o termo aos dispositivos ${refs.join(", ")} da LGPD.`
+      : "Use esta explicação para discutir transparência, necessidade e possibilidade de oposição pelo titular.";
+
+  return `${CATEGORY_ACTION[entry.categoria]} ${rightsText}`;
+}
+
+export const LEXICON: LexiconEntry[] = ACADEMIC_LEXICON.map((entry) => ({
+  term_id: entry.term_id,
+  term: sanitizeText(entry.termo_juridico),
+  aliases: sanitizeList(entry.aliases ?? entry.palavras_chave_relacionadas),
+  category: entry.categoria,
+  traducao_direta: sanitizeText(entry.traducao_direta),
+  meaning: sanitizeText(entry.definicao_leiga),
+  why_it_matters: buildWhyItMatters(entry),
+  what_you_can_do: buildWhatYouCanDo(entry),
+  exemplo_pratico: sanitizeText(entry.exemplo_pratico),
+  impact: entry.nivel_impacto,
+  icon_id: sanitizeText(entry.icone_id),
+  lgpd_refs: sanitizeList(entry.lgpd_refs ?? entry.direito_lgpd_relacionado),
   faqs: LEXICON_FAQ_BY_TERM[entry.term_id],
+  observacao_metodologica: entry.observacao_metodologica
+    ? sanitizeText(entry.observacao_metodologica)
+    : undefined,
 }));

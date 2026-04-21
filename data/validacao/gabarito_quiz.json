@@ -1,0 +1,23 @@
+{
+  "descricao": "Estrutura-base para registrar respostas corretas do teste de compreensao por documento.",
+  "documentos": {
+    "X_PRIVACY": {
+      "q1": "coleta_de_dados",
+      "q2": "cookies_e_publicidade",
+      "q3": "finalidade_e_base_legal",
+      "q4": "compartilhamento_e_transferencia"
+    },
+    "IG_TERMS": {
+      "q1": "aceite_contratual",
+      "q2": "perfilamento_e_publicidade",
+      "q3": "retencao",
+      "q4": "direitos_e_revisao"
+    },
+    "WA_PRIVACY": {
+      "q1": "metadados",
+      "q2": "compartilhamento_operacional",
+      "q3": "direitos_do_titular",
+      "q4": "seguranca_e_incidente"
+    }
+  }
+}

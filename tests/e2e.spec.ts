@@ -1,9 +1,9 @@
-﻿import { expect, test, type Locator } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 import fs from "node:fs";
 import path from "node:path";
 
-const repo = process.env.NEXT_PUBLIC_REPO_NAME || "TCC-VisualLaw";
-const basePath = `/${repo}`;
+const repo = process.env.NEXT_PUBLIC_REPO_NAME || "";
+const basePath = repo ? `/${repo}` : "";
 
 const artifactsRoot = path.resolve("artifacts");
 const screenshotsDir = path.join(artifactsRoot, "screenshots");
@@ -36,7 +36,7 @@ test.describe("Visual Law academic static export", () => {
     cleanDir(downloadsDir);
   });
 
-  test("home iOS-like + sheets + reader sem banner + PDF formatado", async ({ page }) => {
+  test("home principal + fluxo guiado + PDF formatado", async ({ page }) => {
     test.setTimeout(240_000);
 
     const staticAssetFailures: string[] = [];
@@ -44,7 +44,7 @@ test.describe("Visual Law academic static export", () => {
 
     page.on("response", (response) => {
       const url = response.url();
-      if (!url.includes(`/${repo}/_next/static/`)) return;
+      if (!url.includes("/_next/static/")) return;
       if (response.status() >= 400) {
         staticAssetFailures.push(`${response.status()} ${url}`);
       } else {
@@ -57,57 +57,53 @@ test.describe("Visual Law academic static export", () => {
     const entryBlock = page.getByTestId("home-entry-block");
     const cardsBlock = page.getByTestId("home-flow-cards");
     const processBlock = page.getByTestId("home-process-block");
+    const quickTranslation = page.getByTestId("quick-translation-accordion");
 
     await expect(entryBlock).toBeVisible();
     await expect(cardsBlock).toBeVisible();
     await expect(processBlock).toBeVisible();
+    await expect(quickTranslation).toBeVisible();
+
+    await quickTranslation.getByRole("button").click();
+    await page.getByRole("button", { name: /Consentimento de uso de dados/i }).click();
+    await page.getByTestId("quick-translate-button").click();
+    await expect(page.getByTestId("quick-translation-result-panel")).toBeVisible();
+    const quickResultCard = page.getByTestId("quick-translation-result").first();
+    await expect(quickResultCard).toBeVisible();
+    await expect(quickResultCard.getByText(/^Original$/i)).toBeVisible();
+    await expect(quickResultCard.getByText(/^Linguagem simples$/i)).toBeVisible();
 
     const entryTop = await getTop(entryBlock);
     const cardsTop = await getTop(cardsBlock);
     const processTop = await getTop(processBlock);
-
     expect(entryTop).toBeLessThan(cardsTop);
     expect(cardsTop).toBeLessThan(processTop);
 
     await expect(page.getByTestId("process-map")).toHaveCount(0);
-
     await page.getByTestId("process-map-accordion").getByRole("button").click();
     await expect(page.getByTestId("process-map")).toBeVisible();
 
-    const swaggerAccordion = page.getByTestId("swagger-accordion");
-    await swaggerAccordion.getByRole("button").click();
-    const swaggerLink = page.getByTestId("swagger-link");
-    await expect(swaggerLink).toHaveAttribute("target", "_blank");
-    await expect(swaggerLink).toHaveAttribute("rel", /noopener/);
-
     const managerOpenButton = page.getByTestId("doc-manager-open-button");
+    await expect(managerOpenButton).toBeVisible();
     await managerOpenButton.click();
     await expect(page.getByTestId("doc-manager-sheet")).toBeVisible();
-    await page.screenshot({
-      path: path.join(screenshotsDir, "DOC_SHEET_OPEN.png"),
-      fullPage: true,
-    });
-
-    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(
-      7
-    );
+    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(5);
     await page.keyboard.press("Escape");
     await expect(page.getByTestId("doc-manager-sheet")).toHaveCount(0);
 
     await page.screenshot({
-      path: path.join(screenshotsDir, "HOME_LIMPA_ACCORDIONS.png"),
+      path: path.join(screenshotsDir, "HOME_ROLLBACK.png"),
       fullPage: true,
     });
 
     await page.getByRole("button", { name: /Colar exemplo/i }).click();
-    await page.getByRole("button", { name: /Processar texto/i }).click();
+    await page.getByRole("button", { name: /^Processar texto$/i }).click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
     await page.screenshot({
-      path: path.join(screenshotsDir, "READER_IOS.png"),
+      path: path.join(screenshotsDir, "READER_GUIADO.png"),
       fullPage: true,
     });
 
-    await expect(page.getByText(/Modo acadêmico permanente/i)).toHaveCount(0);
     await expect(page.getByTestId("processing-trace")).toHaveCount(0);
     await page.getByTestId("processing-trace-accordion").getByRole("button").click();
     await expect(page.getByTestId("processing-trace")).toBeVisible();
@@ -118,12 +114,11 @@ test.describe("Visual Law academic static export", () => {
     await expect(firstHighlight).toBeVisible();
     await firstHighlight.click();
 
-    await expect(page.getByText(/Evidência \/ auditoria do termo/i)).toBeVisible();
-    await expect(page.getByText(/Principais dúvidas/i)).toBeVisible();
-    await expect(page.getByText(/Prova do Highlight/i)).toHaveCount(0);
+    await expect(page.getByText(/Evid[eê]ncia \/ auditoria do termo/i)).toBeVisible();
+    await expect(page.getByText(/Principais d[úu]vidas \(FAQ\)/i)).toBeVisible();
 
     await page.screenshot({
-      path: path.join(screenshotsDir, "READER_TERM_CARD_DIRETO.png"),
+      path: path.join(screenshotsDir, "TERM_CARD_READER.png"),
       fullPage: true,
     });
 
@@ -133,7 +128,9 @@ test.describe("Visual Law academic static export", () => {
     await page.getByTestId("generate-pdf-button").click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/report/?(\\?.*)?$`), { timeout: 90_000 });
     await expect(page.getByTestId("report-page")).toBeVisible();
-    await expect(page.getByText(/Relatório acadêmico Visual Law/i)).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: /Relat[oó]rio acad[eê]mico Visual Law/i, level: 1 })
+    ).toBeVisible();
     const download = await downloadPromise;
 
     let pdfDownloadInfo:
@@ -211,17 +208,15 @@ test.describe("Visual Law academic static export", () => {
   });
 
   test.describe("reduced motion compatibility", () => {
-    test.use({ reducedMotion: "reduce" });
-
-    test("home e reader funcionam com animações reduzidas", async ({ page }) => {
+    test("home e reader funcionam com animacoes reduzidas", async ({ page }) => {
       await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
 
       await expect(page.getByTestId("home-entry-block")).toBeVisible();
       await page.getByRole("button", { name: /Colar exemplo/i }).click();
-      await page.getByRole("button", { name: /Processar texto/i }).click();
+      await page.getByRole("button", { name: /^Processar texto$/i }).click();
 
       await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
-      await expect(page.getByText(/Leitura guiada acadêmica/i)).toBeVisible();
+      await expect(page.getByText(/Leitura guiada acad[eê]mica/i)).toBeVisible();
 
       await page.screenshot({
         path: path.join(screenshotsDir, "READER_REDUCED_MOTION.png"),

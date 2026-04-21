@@ -1,67 +1,25 @@
-﻿import type { DocumentRecord } from "@/lib/types";
+import corpusManifest from "../../data/corpus/corpus-manifest.json";
+import type { CorpusManifestRecord, DocumentRecord } from "@/lib/types";
+
+const BASE_DOCUMENTS = (corpusManifest as CorpusManifestRecord[]).map<DocumentRecord>(
+  (document, index) => ({
+    doc_id: document.document_id,
+    name: document.titulo,
+    type: document.tipo,
+    platform: document.plataforma,
+    language: document.idioma,
+    last_updated: document.coleta_referencia,
+    status: index === 0 ? "active" : "inactive",
+  })
+);
 
 export const DEFAULT_DOCUMENTS: DocumentRecord[] = [
-  {
-    doc_id: "X_PRIVACY",
-    name: "X (Twitter) - Política de privacidade",
-    type: "privacy",
-    platform: "X",
-    language: "pt-BR",
-    url: "https://x.com/pt/privacy",
-    last_updated: "2025-01-01",
-    status: "active",
-  },
-  {
-    doc_id: "X_TERMS",
-    name: "X (Twitter) - Termos de serviço",
-    type: "terms",
-    platform: "X",
-    language: "pt-BR",
-    url: "https://x.com/pt/tos",
-    last_updated: "2025-01-01",
-    status: "inactive",
-  },
-  {
-    doc_id: "META_PRIVACY",
-    name: "Meta - Política de privacidade",
-    type: "privacy",
-    platform: "Meta",
-    language: "pt-BR",
-    url: "https://www.facebook.com/privacy/policy/",
-    status: "inactive",
-  },
-  {
-    doc_id: "WA_PRIVACY",
-    name: "WhatsApp - Política de privacidade",
-    type: "privacy",
-    platform: "WhatsApp",
-    language: "pt-BR",
-    url: "https://www.whatsapp.com/legal/privacy-policy",
-    status: "inactive",
-  },
-  {
-    doc_id: "IG_TERMS",
-    name: "Instagram - Termos de uso",
-    type: "terms",
-    platform: "Instagram",
-    language: "pt-BR",
-    url: "https://help.instagram.com/581066165581870",
-    status: "inactive",
-  },
-  {
-    doc_id: "FB_TERMS",
-    name: "Facebook - Termos de serviço",
-    type: "terms",
-    platform: "Facebook",
-    language: "pt-BR",
-    url: "https://www.facebook.com/legal/terms",
-    status: "inactive",
-  },
+  ...BASE_DOCUMENTS,
   {
     doc_id: "CUSTOM_DOC",
-    name: "Outro documento",
+    name: "Entrada livre do pesquisador",
     type: "other",
-    platform: "Outro",
+    platform: "Manual",
     language: "pt-BR",
     status: "inactive",
   },

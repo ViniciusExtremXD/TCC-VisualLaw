@@ -18,7 +18,8 @@ export default function PremiumHighlightMark({ id, text, onClick }: PremiumHighl
       key={id}
       type="button"
       className="term-highlight premium-highlight-mark ios-focus"
-      title={`Clique para ver: ${text}`}
+      title={`Termo jurídico identificado: ${text}. Clique para abrir a explicação.`}
+      aria-label={`Abrir explicação do termo jurídico ${text}`}
       onClick={onClick}
       whileHover={reducedMotion ? undefined : { scale: 1.02, y: -0.4 }}
       whileTap={reducedMotion ? undefined : { scale: 0.98 }}

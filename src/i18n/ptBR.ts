@@ -1,9 +1,8 @@
-﻿export const strings = {
+export const strings = {
   app: {
     title: "Visual Law TCC",
-    subtitle: "TCC - IHC / Mackenzie",
-    footer: "Visual Law TCC - Entrada por texto - Dicionário léxico + auditoria",
-    swaggerLabel: "Swagger",
+    subtitle: "TCC · IHC / Mackenzie",
+    footer: "Visual Law TCC · Entrada por texto · Dicionário léxico + auditoria",
   },
   common: {
     category: "Categoria",
@@ -15,15 +14,15 @@
   home: {
     heroTitle: "Análise acadêmica de termos e políticas",
     heroText:
-      "Ambiente em modo acadêmico com rastreabilidade por etapa, mapeamento semiótico explícito e relatório técnico em PDF.",
-    entryTitle: "Entrada",
+      "Ferramenta de apoio à compreensão jurídica com leitura guiada, Visual Law, rastreabilidade por etapa e relatório técnico em PDF.",
+    entryTitle: "Entrada principal",
     activeDocument: "Documento ativo para a sessão",
     noActiveDocument:
       "Nenhum documento ativo. Abra “Gerenciar documentos” e ative um documento.",
     textInputLabel: "Texto de entrada (sem PDF)",
     textInputPlaceholder:
       "Cole o texto integral para gerar segmentação, classificação, léxico, semiótica e auditoria.",
-    minChars: "Mínimo 20 caracteres para processar",
+    minChars: "Mínimo de 20 caracteres para processar",
     process: "Processar texto",
     processing: "Processando trilha acadêmica...",
     pasteExample: "Colar exemplo",
@@ -40,25 +39,49 @@
       "Trilha fixa do pipeline acadêmico com entradas, saídas e evidências.",
     processMapDetails: "Ver detalhes do processo",
     docManagerTitle: "Gerenciador de documentos",
-    docManagerSummary:
-      "Lista completa de documentos, status e mapeamento semântico.",
+    docManagerSummary: "Lista completa de documentos, status e mapeamento semântico.",
     docManagerDetails: "Gerenciar documentos",
-    contractTitle: "Contrato técnico (planejado)",
-    contractSummary:
-      "MVP front-end only (static export). Este contrato descreve a evolução futura.",
-    contractLink: "Abrir Swagger em nova guia",
+    quickTranslateTitle: "Tradução rápida (opcional)",
+    quickTranslateSummary:
+      "Atalho complementar para converter um trecho em linguagem simples sem substituir a leitura guiada.",
+    quickTranslateInputTitle: "Texto original",
+    quickTranslateOutputTitle: "Transcrição em linguagem simples",
+    quickTranslateShortcutTitle: "Atalhos de demonstração",
+    quickTranslateShortcutSummary: "Exemplos curtos para banca, aula e prova de conceito.",
+    quickTranslateLabel: "Trecho jurídico",
+    quickTranslatePlaceholder:
+      "Cole uma cláusula curta, um termo jurídico ou um trecho de política de privacidade.",
+    quickTranslateHelper:
+      "Recurso complementar para leitura rápida. Ele reutiliza o mesmo dicionário léxico e as mesmas regras do sistema.",
+    quickTranslateAction: "Gerar transcrição",
+    quickTranslateUseMain: "Usar texto principal",
+    quickTranslateResult: "Transcrição gerada",
+    quickTranslateEmpty:
+      "Escolha um atalho ou cole um trecho para visualizar a transformação em linguagem simples.",
+    quickTranslateEmptyTitle: "Nenhuma transcrição gerada ainda",
+    quickTranslateOpenReader: "Abrir na leitura guiada",
+    quickTranslateMoreClauses: "Há mais cláusulas disponíveis na leitura guiada.",
+    quickTranslateTermsTitle: "Termos jurídicos identificados",
+    quickTranslateNoTerms: "Nenhum termo do léxico foi identificado neste trecho.",
+    quickTranslateNoLgpd: "Nenhuma referência LGPD foi associada automaticamente.",
+    quickTranslateMetricsClauses: "Cláusulas",
+    quickTranslateMetricsTerms: "Termos detectados",
+    quickTranslateMetricsMode: "Modo",
+    quickTranslateMetricsModeValue: "Transcrição rápida",
+    quickTranslateSourceLabel: "Original",
+    quickTranslatePlainLabel: "Linguagem simples",
+    quickTranslateImpactLabel: "Impacto",
+    quickTranslateRightsLabel: "Direitos LGPD",
   },
   reader: {
     title: "Leitura guiada acadêmica",
     noSessionTitle: "Nenhum documento processado",
-    noSessionText:
-      "Volte para a Home e execute o pipeline para gerar a trilha auditável.",
+    noSessionText: "Volte para a Home e execute o pipeline para gerar a trilha auditável.",
     backHome: "Voltar para Home",
     mapButton: "Mapa semiótico",
     newDoc: "Novo documento",
     openAudit: "Abrir auditoria detalhada desta cláusula",
-    termHint:
-      "Clique em qualquer termo destacado para abrir diretamente o card completo.",
+    termHint: "Clique em qualquer termo destacado para abrir diretamente o card completo.",
     generatePdf: "Gerar PDF",
     generatingPdf: "Gerando PDF...",
     reportPreview: "Visualizar relatório",
@@ -69,10 +92,9 @@
   report: {
     pageTitle: "Relatório acadêmico Visual Law",
     unavailableTitle: "Relatório indisponível",
-    unavailableText:
-      "Execute o processamento no Reader antes de gerar o relatório.",
+    unavailableText: "Execute o processamento no Reader antes de gerar o relatório.",
     printButton: "Imprimir / Salvar PDF",
-    coverTitle: "Visual Law TCC - Relatório de auditoria",
+    coverTitle: "Visual Law TCC · Relatório de auditoria",
     generatedAt: "Data/hora",
     version: "Versão MVP",
     selectedDocument: "Documento selecionado",

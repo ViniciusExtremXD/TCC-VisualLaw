@@ -4,10 +4,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Accordion from "@/components/Accordion";
 import { CATEGORY_LABELS, type LexiconEntry, type TermEvidence } from "@/lib/types";
-import { SEMIOTIC_MAP } from "@/lib/semiotic-data";
 import { resolveTermFaqs } from "@/lib/faq";
-import PremiumCard from "@/ui/components/PremiumCard";
+import { SEMIOTIC_MAP } from "@/lib/semiotic-data";
 import Icon from "@/ui/components/Icon";
+import PremiumCard from "@/ui/components/PremiumCard";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
 
@@ -31,7 +31,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
 
   return (
     <div className="d-flex flex-column gap-3">
-      {showReaderLinks && (
+      {showReaderLinks ? (
         <Link
           href="/reader"
           className="text-ios-accent text-decoration-none fw-semibold"
@@ -40,7 +40,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
           <Icon name="chevron-left" size={16} className="me-1" />
           Voltar para leitura guiada
         </Link>
-      )}
+      ) : null}
 
       <PremiumCard as="article" className="overflow-hidden" interactive={mode !== "report"}>
         <motion.header
@@ -126,7 +126,10 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
 
         <motion.section
           className="p-4"
-          style={{ borderTop: "0.5px solid var(--vl-border)", background: "rgba(99,102,241,0.08)" }}
+          style={{
+            borderTop: "0.5px solid var(--vl-border)",
+            background: "rgba(99,102,241,0.08)",
+          }}
           initial={reducedMotion ? undefined : { opacity: 0, y: 8 }}
           animate={reducedMotion ? undefined : { opacity: 1, y: 0 }}
           transition={{
@@ -149,8 +152,7 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
             </div>
             <div>
               <span className="fw-semibold">Regra:</span> categoria{" "}
-              {CATEGORY_LABELS[entry.category]} mapeia para signo{" "}
-              {semio?.icon_label ?? entry.icon_id}.
+              {CATEGORY_LABELS[entry.category]} mapeia para signo {semio?.icon_label ?? entry.icon_id}.
             </div>
           </div>
         </motion.section>
@@ -161,21 +163,29 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
           </h3>
           {evidence ? (
             <div className="ios-card-inset glass p-3" style={{ fontSize: "0.84rem" }}>
-              <div>term_id: <code>{evidence.term_id}</code></div>
-              <div>clause_id: <code>{evidence.clause_id}</code></div>
+              <div>
+                term_id: <code>{evidence.term_id}</code>
+              </div>
+              <div>
+                clause_id: <code>{evidence.clause_id}</code>
+              </div>
               <div>match: "{evidence.match}"</div>
-              <div>start/end: [{evidence.start}, {evidence.end}]</div>
+              <div>
+                start/end: [{evidence.start}, {evidence.end}]
+              </div>
               <div>contexto: {evidence.context}</div>
               <div>campo léxico usado: {evidence.lexicon_field_used}</div>
               <div>variante batida: {evidence.matched_variant}</div>
               <div>
-                Referências LGPD:{" "}
-                {evidence.lgpd_refs.length > 0 ? evidence.lgpd_refs.join(", ") : "-"}
+                Referências LGPD: {evidence.lgpd_refs.length > 0 ? evidence.lgpd_refs.join(", ") : "-"}
               </div>
               <div>regra semiótica: {evidence.semiotic_rule}</div>
             </div>
           ) : (
-            <div className="ios-card-inset glass p-3 text-ios-secondary" style={{ fontSize: "0.84rem" }}>
+            <div
+              className="ios-card-inset glass p-3 text-ios-secondary"
+              style={{ fontSize: "0.84rem" }}
+            >
               Evidência pontual indisponível nesta visualização. Abra o termo a partir do Reader
               para ver offsets e provenance.
             </div>
@@ -243,13 +253,13 @@ export default function TermCard({ entry, evidence, mode = "page" }: TermCardPro
         </section>
       </PremiumCard>
 
-      {showReaderLinks && (
+      {showReaderLinks ? (
         <div className="text-center">
           <Link href="/reader" className="btn btn-ios btn-ios-primary ios-tap">
             Voltar para leitura guiada
           </Link>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

@@ -40,6 +40,11 @@ export function generateExplanations(
     if (!entry) continue;
 
     explanations[termId] = {
+      term_id: entry.term_id,
+      termo_juridico: entry.term,
+      direct_translation: entry.traducao_direta,
+      plain_definition: entry.meaning,
+      practical_example: entry.exemplo_pratico,
       meaning: entry.meaning,
       why_it_matters: entry.why_it_matters,
       what_you_can_do: entry.what_you_can_do,
@@ -47,6 +52,7 @@ export function generateExplanations(
       icon_id: entry.icon_id,
       impact: entry.impact,
       lgpd_refs: entry.lgpd_refs,
+      observacao_metodologica: entry.observacao_metodologica,
     };
   }
 

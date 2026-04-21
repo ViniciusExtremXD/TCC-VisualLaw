@@ -29,19 +29,18 @@ export function generateVariations(term: string): string[] {
   const variations = new Set<string>();
   variations.add(term);
 
-  // Plural → singular (remove 's' final de cada palavra)
-  const singular = term.replace(/(\w)s\b/g, "$1");
-  if (singular !== term) variations.add(singular);
+  const singular = term.replace(/([A-Za-zÀ-ÿ0-9_])s\b/g, "$1");
+  if (singular !== term) {
+    variations.add(singular);
+  }
 
-  // Singular → plural (adiciona 's' na última palavra)
   const words = term.split(/\s+/);
   const lastWord = words[words.length - 1];
   if (!lastWord.endsWith("s")) {
-    const plural = [...words.slice(0, -1), lastWord + "s"].join(" ");
+    const plural = [...words.slice(0, -1), `${lastWord}s`].join(" ");
     variations.add(plural);
   }
 
-  // "ões" ↔ "ão" (informações ↔ informação)
   if (term.endsWith("ões")) {
     variations.add(term.slice(0, -3) + "ão");
   } else if (term.endsWith("ão")) {

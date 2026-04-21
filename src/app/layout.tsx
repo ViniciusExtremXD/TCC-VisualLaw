@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-slate-100 text-slate-900 antialiased">
         <SessionProvider>
           <nav className="navbar ios-navbar sticky-top">
-            <div className="container" style={{ maxWidth: 720 }}>
+            <div className="container" style={{ maxWidth: 1040 }}>
               <Link
                 href="/"
                 className="navbar-brand d-flex align-items-center gap-2 fw-bold text-ios-accent"
@@ -44,7 +44,7 @@ export default function RootLayout({
             </div>
           </nav>
 
-          <main className="container mx-auto w-full max-w-3xl py-4" style={{ maxWidth: 720 }}>
+          <main className="container mx-auto w-full py-4" style={{ maxWidth: 1040 }}>
             {children}
           </main>
 

@@ -1,0 +1,17 @@
+{
+  "doc_id": "LGPD_EXCERPTS",
+  "title": "Lei Geral de Protecao de Dados Pessoais - trechos relevantes",
+  "platform": "Planalto",
+  "type": "other",
+  "language": "pt-BR",
+  "official_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+  "resolved_url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm",
+  "captured_at": "2026-04-21T02:12:01.073Z",
+  "content_hash": "e2bc33d83ba41bf4ee83d914e3bdc4f8a40525f13ac474a11d0926c3363c35be",
+  "observed_body_text_hash": "ffca5363a92b83cab472cdce10799ee30c168bf1f3b60a8a345089c564c91fab",
+  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected legal excerpts used by the study.",
+  "status": "frozen_relevant_legal_excerpts",
+  "effective_label": "Lei no 13.709, de 14 de agosto de 2018 - texto compilado",
+  "source_scope": "selected_official_excerpts",
+  "excerpt_count": 6
+}

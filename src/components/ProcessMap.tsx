@@ -62,7 +62,7 @@ export default function ProcessMap() {
                 >
                   {index + 1}
                 </motion.div>
-                {index < PROCESS_SEMIOTIC_STEPS.length - 1 && <div className="stepper-line"></div>}
+                {index < PROCESS_SEMIOTIC_STEPS.length - 1 ? <div className="stepper-line"></div> : null}
               </div>
               <div className="flex-fill pb-2">
                 <div className="fw-semibold" style={{ fontSize: "0.92rem" }}>

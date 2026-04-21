@@ -83,6 +83,126 @@
       "color": "#059669",
       "category_hint": "security_incidents"
     },
+    "heart-pulse": {
+      "label": "Dado Sensível",
+      "lucide_name": "HeartPulse",
+      "color": "#ef4444",
+      "category_hint": "data_collection"
+    },
+    "scale": {
+      "label": "Base Legal",
+      "lucide_name": "Scale",
+      "color": "#2563eb",
+      "category_hint": "purpose_use"
+    },
+    "mouse-pointer-click": {
+      "label": "Dados de Navegação",
+      "lucide_name": "MousePointerClick",
+      "color": "#0ea5e9",
+      "category_hint": "data_collection"
+    },
+    "map-pin": {
+      "label": "Localização",
+      "lucide_name": "MapPin",
+      "color": "#f97316",
+      "category_hint": "data_collection"
+    },
+    "wifi": {
+      "label": "Coleta Automática",
+      "lucide_name": "Wifi",
+      "color": "#22c55e",
+      "category_hint": "data_collection"
+    },
+    "megaphone": {
+      "label": "Publicidade Direcionada",
+      "lucide_name": "Megaphone",
+      "color": "#f59e0b",
+      "category_hint": "purpose_use"
+    },
+    "brain": {
+      "label": "Perfilamento",
+      "lucide_name": "Brain",
+      "color": "#7c3aed",
+      "category_hint": "purpose_use"
+    },
+    "file-lock": {
+      "label": "Política de Privacidade",
+      "lucide_name": "FileLock2",
+      "color": "#334155",
+      "category_hint": "purpose_use"
+    },
+    "scroll": {
+      "label": "Termos de Serviço",
+      "lucide_name": "ScrollText",
+      "color": "#475569",
+      "category_hint": "purpose_use"
+    },
+    "cpu": {
+      "label": "Operador",
+      "lucide_name": "Cpu",
+      "color": "#0891b2",
+      "category_hint": "sharing_third_parties"
+    },
+    "globe": {
+      "label": "Transferência Internacional",
+      "lucide_name": "Globe",
+      "color": "#0ea5e9",
+      "category_hint": "sharing_third_parties"
+    },
+    "hard-drive-upload": {
+      "label": "Portabilidade",
+      "lucide_name": "HardDriveUpload",
+      "color": "#14b8a6",
+      "category_hint": "user_rights"
+    },
+    "toggle-left": {
+      "label": "Opt-out",
+      "lucide_name": "ToggleLeft",
+      "color": "#64748b",
+      "category_hint": "user_rights"
+    },
+    "circle-dot": {
+      "label": "Opt-in",
+      "lucide_name": "CircleDot",
+      "color": "#22c55e",
+      "category_hint": "user_rights"
+    },
+    "trash-2": {
+      "label": "Eliminação",
+      "lucide_name": "Trash2",
+      "color": "#dc2626",
+      "category_hint": "user_rights"
+    },
+    "ban": {
+      "label": "Revogação",
+      "lucide_name": "Ban",
+      "color": "#ef4444",
+      "category_hint": "user_rights"
+    },
+    "landmark": {
+      "label": "ANPD",
+      "lucide_name": "Landmark",
+      "color": "#6366f1",
+      "category_hint": "user_rights"
+    },
+    "shield-user": {
+      "label": "Encarregado / DPO",
+      "lucide_name": "ShieldUser",
+      "color": "#0f766e",
+      "category_hint": "user_rights"
+    },
+    "fingerprint": {
+      "label": "Pseudonimização",
+      "lucide_name": "Fingerprint",
+      "color": "#8b5cf6",
+      "category_hint": "retention_storage"
+    },
+    "lock": {
+      "label": "Segurança da Informação",
+      "lucide_name": "Lock",
+      "color": "#059669",
+      "category_hint": "security_incidents"
+    },
     "file-text": {
       "label": "Documento / Termos",
       "lucide_name": "FileText",

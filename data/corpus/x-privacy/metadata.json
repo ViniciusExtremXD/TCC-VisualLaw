@@ -1,0 +1,17 @@
+{
+  "doc_id": "X_PRIVACY",
+  "title": "X Privacy Policy",
+  "platform": "X",
+  "type": "privacy",
+  "language": "en",
+  "official_url": "https://x.com/en/privacy",
+  "resolved_url": "https://x.com/en/privacy",
+  "captured_at": "2026-04-21T02:12:01.073Z",
+  "content_hash": "b3de50a5a8b574185635e09c100bdab5fd76e9d66cf06c456b67517c1674088f",
+  "observed_body_text_hash": "f5d3166ef50d2848528d3791c2bd6457bb7a5c08bc3f0f698fced0ce170007e7",
+  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
+  "status": "frozen_selected_official_excerpts",
+  "effective_label": "Effective: January 15, 2026",
+  "source_scope": "selected_official_excerpts",
+  "excerpt_count": 5
+}

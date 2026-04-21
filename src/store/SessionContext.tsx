@@ -15,6 +15,7 @@ import type {
   LexiconEntry,
   AuditSession,
   DocumentRecord,
+  TraceabilitySession,
 } from "@/lib/types";
 
 interface SessionState {
@@ -23,6 +24,7 @@ interface SessionState {
   explanations: ExplanationsMap;
   lexicon: LexiconEntry[];
   audit: AuditSession | null;
+  traceability: TraceabilitySession | null;
   selectedDocument: DocumentRecord | null;
   currentIndex: number;
   isProcessed: boolean;
@@ -35,6 +37,7 @@ interface SessionActions {
     explanations: ExplanationsMap;
     lexicon?: LexiconEntry[];
     audit?: AuditSession;
+    traceability?: TraceabilitySession;
     selectedDocument?: DocumentRecord | null;
   }) => void;
   setCurrentIndex: (index: number) => void;
@@ -51,6 +54,7 @@ const INITIAL: SessionState = {
   explanations: {},
   lexicon: [],
   audit: null,
+  traceability: null,
   selectedDocument: null,
   currentIndex: 0,
   isProcessed: false,
@@ -99,6 +103,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         explanations: saved.explanations ?? {},
         lexicon: saved.lexicon ?? [],
         audit: saved.audit ?? null,
+        traceability: saved.traceability ?? null,
         selectedDocument: saved.selectedDocument ?? null,
         currentIndex: typeof saved.currentIndex === "number" ? saved.currentIndex : 0,
         isProcessed: true,
@@ -123,6 +128,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       explanations: ExplanationsMap;
       lexicon?: LexiconEntry[];
       audit?: AuditSession;
+      traceability?: TraceabilitySession;
       selectedDocument?: DocumentRecord | null;
     }) => {
       setState((prev) => ({
@@ -132,6 +138,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         explanations: data.explanations,
         lexicon: data.lexicon ?? prev.lexicon,
         audit: data.audit ?? null,
+        traceability: data.traceability ?? null,
         selectedDocument: data.selectedDocument ?? prev.selectedDocument,
         currentIndex: 0,
         isProcessed: true,

@@ -19,6 +19,7 @@ import {
   FileText,
   FolderOpen,
   Info,
+  Languages,
   ListChecks,
   MinusCircle,
   Palette,
@@ -63,7 +64,8 @@ export type IconName =
   | "alert-triangle"
   | "minus-circle"
   | "check-circle"
-  | "briefcase";
+  | "briefcase"
+  | "languages";
 
 const ICONS = {
   "shield-check": ShieldCheck,
@@ -95,6 +97,7 @@ const ICONS = {
   "minus-circle": MinusCircle,
   "check-circle": CheckCircle2,
   briefcase: BriefcaseBusiness,
+  languages: Languages,
 } as const;
 
 interface IconProps {
@@ -120,7 +123,6 @@ export default function Icon({
       className={className}
       style={style}
       aria-hidden={ariaHidden}
-      focusable={false}
     />
   );
 }

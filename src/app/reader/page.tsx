@@ -1,17 +1,17 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Badge from "@/components/Badge";
-import ProgressBar from "@/components/ProgressBar";
-import HighlightedText from "@/components/HighlightedText";
-import AuditDrawer from "@/components/AuditDrawer";
-import SemioticMap from "@/components/SemioticMap";
-import ProcessingTracePanel from "@/components/ProcessingTracePanel";
-import TermCardModal from "@/components/TermCardModal";
 import Accordion from "@/components/Accordion";
+import AuditDrawer from "@/components/AuditDrawer";
+import Badge from "@/components/Badge";
+import HighlightedText from "@/components/HighlightedText";
+import ProcessingTracePanel from "@/components/ProcessingTracePanel";
+import ProgressBar from "@/components/ProgressBar";
+import SemioticMap from "@/components/SemioticMap";
+import TermCardModal from "@/components/TermCardModal";
 import { strings } from "@/i18n/ptBR";
 import { CATEGORY_LABELS, type TermEvidence } from "@/lib/types";
 import { useSession } from "@/store/SessionContext";
@@ -133,7 +133,11 @@ export default function ReaderPage() {
     <div className="d-flex flex-column gap-3">
       <NavigationBar
         title={strings.reader.title}
-        subtitle={selectedDocument ? `${selectedDocument.name} • ${selectedDocument.doc_id}` : strings.app.title}
+        subtitle={
+          selectedDocument
+            ? `${selectedDocument.name} • ${selectedDocument.doc_id}`
+            : strings.app.title
+        }
         caption={strings.reader.termHint}
         actions={
           <>
@@ -148,10 +152,7 @@ export default function ReaderPage() {
               {generatingPdf ? strings.reader.generatingPdf : strings.reader.generatePdf}
             </Button>
 
-            <Link
-              href="/report"
-              className="cupertino-btn cupertino-btn-secondary cupertino-btn-sm"
-            >
+            <Link href="/report" className="cupertino-btn cupertino-btn-secondary cupertino-btn-sm">
               <Icon name="file-text" size={16} />
               {strings.reader.reportPreview}
             </Link>
@@ -183,13 +184,21 @@ export default function ReaderPage() {
           }}
         >
           <Card as="article" interactive>
-            <header className="p-3 px-4" style={{ borderBottom: "1px solid var(--cu-separator)", background: "#ffffff" }}>
+            <header
+              className="p-3 px-4"
+              style={{
+                borderBottom: "1px solid var(--cu-separator)",
+                background: "#ffffff",
+              }}
+            >
               <div className="d-flex align-items-start justify-content-between flex-wrap gap-2">
                 <div>
                   <h2 className="fw-semibold mb-0" style={{ fontSize: "1.02rem" }}>
                     {clause.title || `Cláusula ${currentIndex + 1}`}
                   </h2>
-                  <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>{clause.clause_id}</span>
+                  <span className="text-ios-secondary" style={{ fontSize: "0.76rem" }}>
+                    {clause.clause_id}
+                  </span>
                 </div>
                 <div className="d-flex gap-2">
                   <Badge type="category" value={clause.category} />
@@ -199,14 +208,21 @@ export default function ReaderPage() {
             </header>
 
             <div className="p-4">
-              <HighlightedText text={clause.text} highlights={clauseHighlights} onTermClick={handleTermClick} />
+              <HighlightedText
+                text={clause.text}
+                highlights={clauseHighlights}
+                onTermClick={handleTermClick}
+              />
 
-              {clause.lgpd_refs.length > 0 && (
-                <div className="mt-3 pt-3" style={{ borderTop: "1px solid var(--cu-separator)", fontSize: "0.82rem" }}>
+              {clause.lgpd_refs.length > 0 ? (
+                <div
+                  className="mt-3 pt-3"
+                  style={{ borderTop: "1px solid var(--cu-separator)", fontSize: "0.82rem" }}
+                >
                   <Icon name="bookmark" size={14} className="me-1" />
                   {strings.reader.referencesLgpd}: {clause.lgpd_refs.join(", ")}
                 </div>
-              )}
+              ) : null}
             </div>
 
             {audit ? (
@@ -236,12 +252,7 @@ export default function ReaderPage() {
       </Accordion>
 
       <div className="d-flex align-items-center justify-content-between">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={goPrev}
-          disabled={currentIndex === 0}
-        >
+        <Button variant="ghost" size="sm" onClick={goPrev} disabled={currentIndex === 0}>
           <Icon name="chevron-left" size={16} />
           {strings.reader.prev}
         </Button>

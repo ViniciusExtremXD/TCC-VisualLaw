@@ -1,0 +1,17 @@
+{
+  "doc_id": "INSTAGRAM_TERMS",
+  "title": "Instagram Terms of Use",
+  "platform": "Instagram",
+  "type": "terms",
+  "language": "en",
+  "official_url": "https://www.instagram.com/legal/terms/",
+  "resolved_url": "https://help.instagram.com/581066165581870/",
+  "captured_at": "2026-04-21T02:12:01.073Z",
+  "content_hash": "b98305b689f22de2ad16ff97de39ab62b1e4ebd7871c6edb3e054da9d0508da9",
+  "observed_body_text_hash": "bba0bb68852795bd5f3e6a9740678c444c905956619e95a87d654d8e4514a864",
+  "capture_method": "Playwright chromium innerText capture + viewport screenshot; selected raw excerpts only.",
+  "status": "frozen_selected_official_excerpts",
+  "effective_label": "Official Instagram Help Center terms page captured at runtime",
+  "source_scope": "selected_official_excerpts",
+  "excerpt_count": 4
+}

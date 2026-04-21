@@ -1,23 +1,43 @@
 /* ========================================================
- * pipeline.ts — Orquestra o pipeline completo:
- * texto bruto → clauses + highlights + explanations + audit
+ * pipeline.ts - Orquestra o pipeline completo:
+ * texto bruto -> clauses + highlights + explanations + audit + traceability
  * ======================================================== */
 
 import type {
+  AuditSession,
   Clause,
-  HighlightsMap,
+  ClauseAudit,
   ExplanationsMap,
+  HighlightsMap,
   LexiconEntry,
   PipelineResult,
-  AuditSession,
-  ClauseAudit,
   PipelineStep,
+  Category,
+  Impact,
 } from "./types";
 import { segmentText } from "./segmenter";
 import { normalize } from "./normalizer";
 import { classifyClause, suggestLGPDRefs } from "./classifier";
 import { findTermsInText } from "./highlighter";
 import { generateExplanations } from "./explainer";
+import { summarizeClausePlainLanguage } from "./plain-language";
+import { buildTraceabilitySession } from "./traceability";
+
+interface ClauseSeed {
+  clause_id: string;
+  doc_id: string;
+  title: string;
+  text: string;
+  category?: Category;
+  impact?: Impact;
+  lgpd_refs?: string[];
+  plain_language_summary?: string;
+  detected_terms?: string[];
+  segmentEvidence?: {
+    rule: string;
+    evidence: string;
+  };
+}
 
 const PIPELINE_STEPS: PipelineStep[] = [
   {
@@ -55,66 +75,136 @@ const PIPELINE_STEPS: PipelineStep[] = [
     input_ref: "highlights",
     output_ref: "explanations",
   },
+  {
+    step_id: "S6_TRACE",
+    name: "Rastreabilidade",
+    description: "Encadeamento entre cláusula, termo detectado, regra aplicada e saída final exibida.",
+    input_ref: "explanations",
+    output_ref: "traceability",
+  },
 ];
 
-/**
- * Executa o pipeline completo sobre um texto bruto.
- */
-export function runPipeline(
-  rawText: string,
-  docId: string,
-  lexicon: LexiconEntry[]
+function uniqueStrings(values: string[]): string[] {
+  return [...new Set(values.filter(Boolean))];
+}
+
+export function buildPipelineResultFromClauses(
+  clauseSeeds: ClauseSeed[],
+  lexicon: LexiconEntry[],
+  sourceMode: string,
+  docHint: string
 ): PipelineResult {
   const clausesAudit: Record<string, ClauseAudit> = {};
+  const highlights: HighlightsMap = {};
+  const lexiconMap = new Map(lexicon.map((entry) => [entry.term_id, entry]));
 
-  // 1. Segmentação
-  const rawClauses = segmentText(rawText, docId);
+  const clauses: Clause[] = clauseSeeds.map((seed) => {
+    const { category, impact, audit: classAudit } = classifyClause(seed.text);
+    const finalCategory = seed.category ?? category;
+    const finalImpact = seed.impact ?? impact;
+    const lgpd_refs = seed.lgpd_refs?.length ? seed.lgpd_refs : suggestLGPDRefs(finalCategory);
+    const { matches, audits } = findTermsInText(seed.text, lexicon);
 
-  // 2+3. Normalização + Classificação + enrichment
-  const clauses: Clause[] = rawClauses.map((raw) => {
-    const { category, impact, audit: classAudit } = classifyClause(raw.text);
-    const lgpd_refs = suggestLGPDRefs(category);
+    if (matches.length > 0) {
+      highlights[seed.clause_id] = matches;
+    }
 
-    clausesAudit[raw.clause_id] = {
-      segment: raw.segmentEvidence,
-      normalized_preview: normalize(raw.text).slice(0, 120) + "...",
-      classification: classAudit,
-      highlights: [],
+    const matchedEntries = matches
+      .map((match) => lexiconMap.get(match.term_id))
+      .filter((entry): entry is LexiconEntry => Boolean(entry));
+
+    const detectedTerms = uniqueStrings(
+      seed.detected_terms?.length
+        ? seed.detected_terms
+        : matchedEntries.map((entry) => entry.term)
+    );
+
+    const plainLanguageSummary = summarizeClausePlainLanguage({
+      category: finalCategory,
+      impact: finalImpact,
+      lgpdRefs: lgpd_refs,
+      matchedEntries,
+      existingSummary: seed.plain_language_summary,
+    });
+
+    clausesAudit[seed.clause_id] = {
+      segment: seed.segmentEvidence ?? {
+        rule: sourceMode === "dataset_demo" ? "dataset_reference" : "split_paragraphs",
+        evidence: sourceMode === "dataset_demo" ? "origin=dataset" : "origin=pipeline",
+      },
+      normalized_preview: `${normalize(seed.text).slice(0, 120)}...`,
+      classification: {
+        ...classAudit,
+        category: finalCategory,
+        method:
+          seed.category && seed.category !== classAudit.category
+            ? "dataset_reference_with_heuristic_audit"
+            : classAudit.method,
+      },
+      highlights: audits,
+      output: {
+        plain_language_summary: plainLanguageSummary,
+        detected_terms: detectedTerms,
+        explanation_ids: uniqueStrings(matches.map((match) => match.term_id)),
+      },
+      source_annotation: seed.category
+        ? {
+            category: seed.category,
+            impact: seed.impact ?? finalImpact,
+            lgpd_refs,
+          }
+        : undefined,
     };
 
     return {
-      clause_id: raw.clause_id,
-      doc_id: raw.doc_id,
-      title: raw.title,
-      text: raw.text,
-      category,
-      impact,
+      clause_id: seed.clause_id,
+      doc_id: seed.doc_id,
+      title: seed.title,
+      text: seed.text,
+      category: finalCategory,
+      impact: finalImpact,
       lgpd_refs,
+      plain_language_summary: plainLanguageSummary,
+      detected_terms: detectedTerms,
     };
   });
 
-  // 4. Highlight
-  const highlights: HighlightsMap = {};
-  for (const clause of clauses) {
-    const { matches, audits } = findTermsInText(clause.text, lexicon);
-    if (matches.length > 0) {
-      highlights[clause.clause_id] = matches;
-    }
-    if (clausesAudit[clause.clause_id]) {
-      clausesAudit[clause.clause_id].highlights = audits;
-    }
-  }
-
-  // 5. Explanations
   const explanations: ExplanationsMap = generateExplanations(highlights, lexicon);
 
   const audit: AuditSession = {
     session_id: `SESSION_${Date.now()}`,
     created_at: new Date().toISOString(),
-    source: { mode: "pasted_text", doc_hint: docId },
+    source: { mode: sourceMode, doc_hint: docHint },
     pipeline: PIPELINE_STEPS,
     clauses_audit: clausesAudit,
   };
 
-  return { clauses, highlights, explanations, audit };
+  const traceability = buildTraceabilitySession({
+    clauses,
+    highlights,
+    explanations,
+    lexicon,
+    audit,
+    sourceMode,
+    docHint,
+  });
+
+  return { clauses, highlights, explanations, audit, traceability };
+}
+
+export function runPipeline(
+  rawText: string,
+  docId: string,
+  lexicon: LexiconEntry[]
+): PipelineResult {
+  const rawClauses = segmentText(rawText, docId);
+  const clauseSeeds: ClauseSeed[] = rawClauses.map((raw) => ({
+    clause_id: raw.clause_id,
+    doc_id: raw.doc_id,
+    title: raw.title,
+    text: raw.text,
+    segmentEvidence: raw.segmentEvidence,
+  }));
+
+  return buildPipelineResultFromClauses(clauseSeeds, lexicon, "pasted_text", docId);
 }

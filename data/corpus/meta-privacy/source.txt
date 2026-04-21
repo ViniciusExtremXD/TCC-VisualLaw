@@ -1,0 +1,15 @@
+# Politica de Privacidade da Meta
+
+Official URL: https://www.facebook.com/privacy/policy/
+Captured at: 2026-04-21T02:12:01.073Z
+Scope: selected official excerpts for academic clause-level analysis; not a full reproduction of the document.
+
+## META_PRIVACY_E001 - Destaques
+Nós, da Meta, queremos que você saiba quais informações coletamos e como as usamos e compartilhamos.
+
+## META_PRIVACY_E002 - Politica de Privacidade
+Na Política de Privacidade, explicamos como coletamos, usamos, compartilhamos, retemos e transferimos informações. Explicamos também quais são seus direitos.
+
+## META_PRIVACY_E003 - Controle de privacidade
+Para nós, é importante que você saiba como controlar sua privacidade. Por isso, também mostramos onde gerenciar suas informações nas configurações dos Produtos da Meta que você usa.
+

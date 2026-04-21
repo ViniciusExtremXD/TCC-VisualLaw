@@ -1,95 +1,90 @@
-﻿# Visual Law TCC
+# Visual Law TCC
 
-MVP acadêmico para leitura guiada de Termos de Serviço e Políticas de Privacidade com rastreabilidade total.
+Projeto de TCC orientado a pesquisa aplicada para leitura assistida clause-level de politicas de privacidade, termos de uso e clausulas digitais em portugues, com Visual Law, linguagem clara, dicionario lexico-juridico e auditoria do pipeline.
 
-## Visão geral
+## Problema
 
-- Next.js App Router + TypeScript + Tailwind v4
-- 100% client-side, sem backend, sem API routes, sem server actions
-- Estado em `localStorage`
-- Deploy estático no GitHub Pages
+Documentos digitais costumam combinar linguagem tecnico-juridica, baixa legibilidade e extensao excessiva. Isso reduz a compreensao do usuario comum e dificulta a identificacao de riscos, direitos e efeitos praticos.
 
-## Fluxo acadêmico implementado
+## Objetivo do MVP
 
-1. Gerenciador de documentos (CRUD + ativo/inativo)
-2. Mapa do processo semiótico e de auditoria (accordion)
-3. Segmentação, classificação, destaque léxico e evidências
-4. Card completo por termo (sem modal intermediário)
-5. FAQ por termo (léxico + fallback heurístico)
-6. Geração automática de PDF real (`@react-pdf/renderer`) a partir do Reader
-7. Rota `/report` como visualização acadêmica da sessão
+Demonstrar um artefato client-side e estatico que:
+
+- segmenta texto em clausulas;
+- categoriza o conteudo em temas recorrentes;
+- detecta termos juridicos por dicionario lexico;
+- apresenta linguagem simples e explicacao visual;
+- registra rastreabilidade entre entrada, regra aplicada e saida final;
+- exporta relatorio academico para revisao e banca.
+
+## Experiencia principal
+
+- leitura guiada de clausulas e termos;
+- destaque clicavel de termos juridicos;
+- card explicativo com Visual Law;
+- rastreamento do processamento por etapa;
+- relatorio tecnico em PDF.
+
+## Nao escopo
+
+- chatbot ou conversa livre;
+- backend, banco, API routes ou server actions;
+- parecer juridico automatizado;
+- IA generativa como nucleo da solucao.
+
+## Artefatos principais
+
+- `data/corpus`: pacotes congelados de fontes oficiais primarias;
+- `data/dataset`: dataset clause-level derivado do corpus real selecionado;
+- `data/lexicon`: dicionario lexico juridico calibrado contra corpus e LGPD;
+- `data/visual`: mapeamento semiotico e mapa de icones;
+- `data/validation`: instrumentos canonicos de validacao;
+- `data/output`: saidas de referencia exportaveis;
+- `data/validacao`: templates tabulares legados/auxiliares de coleta;
+- `docs/sdd`: contratos Spec Driven Development do escopo, dados, pipeline e harness;
+- `docs/metodologia`: problema, objetivos, criterios e escopo;
+- `docs/diagramas`: atividades, C4 simplificado e wireframe;
+- `docs/validacao`: protocolo e instrumentos de avaliacao;
+- `docs/evidencias`: auditoria da base, backlog e roteiro de banca;
+- `skills`: instrucoes operacionais para agentes/engenheiros;
+- `harness`: fixtures, goldens e scripts de regressao do core.
+- `scripts/freeze-official-corpus.mjs`: captura/regera os pacotes oficiais e o dataset derivado.
+
+## Fluxo do sistema
+
+1. Selecionar documento-base ou colar texto livre.
+2. Segmentar o texto em clausulas.
+3. Classificar cada clausula por categoria e impacto.
+4. Detectar termos juridicos do dicionario.
+5. Gerar resumo em linguagem simples.
+6. Exibir leitura guiada e cards de explicacao.
+7. Exportar `clauses.json`, `highlights.json`, `explanations.json` e `traceability.json`.
 
 ## Scripts
 
 ```bash
 npm run dev
+npm test
+npm run test:unit
+npm run test:contracts
+npm run harness
 npm run build
 npm run preview
+npm run sync:research
 npm run test:e2e
 ```
 
-## Build estático para GitHub Pages
+## Demonstracao academica
 
-```bash
-# limpeza recomendada
-rm -rf .next out
-npm ci
-NEXT_PUBLIC_REPO_NAME=TCC-VisualLaw npm run build
-npm run preview
-```
+- Home com entrada de texto e documentos-base;
+- Reader com comparacao entre texto original e linguagem simples;
+- highlights e cards acionados por termo;
+- rastreamento do processamento por clausula;
+- exportacao de evidencias em JSON;
+- relatorio visual para orientacao e banca.
 
-URLs locais após `npm run preview`:
+## Fundacao tecnica
 
-- `http://localhost:3000/TCC-VisualLaw/`
-- `http://localhost:3000/TCC-VisualLaw/reader/`
-- `http://localhost:3000/TCC-VisualLaw/report/`
+O core vive em `src/lib` e deve permanecer deterministico e auditavel. Mudancas em segmentacao, classificacao, highlights, explicacoes ou rastreabilidade devem ser justificadas nos SDDs e validadas por testes unitarios, contrato golden e harness.
 
-## Como gerar PDF
-
-1. Processar texto na Home e abrir o Reader.
-2. Clicar em `Gerar PDF`.
-3. O download do arquivo `.pdf` inicia automaticamente.
-4. A rota `/report` abre em seguida para visualização acadêmica.
-
-## Testes E2E (Playwright)
-
-A suíte valida:
-
-- ordem dos blocos da Home (Entrada -> Cards -> Mapa)
-- mapa do processo colapsado por padrão
-- Swagger em nova guia (`target="_blank"`)
-- CRUD de documentos com persistência
-- processamento para Reader
-- clique em highlight abre card completo direto
-- download de PDF válido (`%PDF-` e tamanho > 20KB)
-- assets `_next/static` sem 404
-
-Comando:
-
-```bash
-NEXT_PUBLIC_REPO_NAME=TCC-VisualLaw npm run test:e2e
-```
-
-## Estrutura principal
-
-- `src/app/page.tsx` - Home acadêmica
-- `src/app/reader/page.tsx` - leitura guiada + rastreamento + geração de PDF
-- `src/app/report/page.tsx` - relatório acadêmico visual
-- `src/lib/pdf/ReportDocument.tsx` - layout completo do relatório PDF
-- `src/lib/pdf/generateReportPdf.tsx` - geração client-side do Blob PDF
-- `src/lib/docRegistry.ts` - CRUD localStorage de documentos
-- `src/data/visual/document-semiotic-map.ts` - mapeamento semântico de documentos e processo
-- `src/data/mock/lexicon.ts` - FAQ por termo
-- `tests/e2e.spec.ts` - smoke/e2e acadêmico
-
-## GitHub Pages
-
-`next.config.ts` usa:
-
-- `output: 'export'`
-- `trailingSlash: true`
-- `images.unoptimized: true`
-- `basePath` e `assetPrefix` por `NEXT_PUBLIC_REPO_NAME`
-
-Workflow: `.github/workflows/deploy.yml`.
-
+O corpus oficial congelado registra apenas trechos selecionados e rastreaveis das politicas de plataforma, preservando URL oficial, hash, screenshot e notas de captura. O repositorio nao armazena copias integrais de documentos proprietarios.

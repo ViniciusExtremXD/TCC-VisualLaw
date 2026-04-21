@@ -1,0 +1,18 @@
+# Instagram Terms of Use
+
+Official URL: https://www.instagram.com/legal/terms/
+Captured at: 2026-04-21T02:12:01.073Z
+Scope: selected official excerpts for academic clause-level analysis; not a full reproduction of the document.
+
+## INSTAGRAM_TERMS_E001 - 1. The Instagram Service
+The Service includes all of the Instagram products, features, applications, services, technologies, and software that we provide to advance Instagram's mission.
+
+## INSTAGRAM_TERMS_E002 - Personalized opportunities
+We build systems that try to understand who and what you and others care about, and use that information to help you create, find, join and share in experiences that matter to you.
+
+## INSTAGRAM_TERMS_E003 - Permission for ads and sponsored content
+You give us permission to show your username, profile picture, and information about your actions or relationships next to or in connection with accounts, ads, offers, and other sponsored content.
+
+## INSTAGRAM_TERMS_E004 - Account and content deletion
+When you request to delete content or your account, the deletion process will automatically begin no more than 30 days after your request. It may take up to 90 days to delete content after the deletion process begins.
+

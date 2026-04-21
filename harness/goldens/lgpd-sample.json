@@ -1,0 +1,502 @@
+{
+  "clauses": [
+    {
+      "clause_id": "HARNESS_LGPD_C001",
+      "doc_id": "HARNESS_LGPD",
+      "title": "Coleta de dados pessoais",
+      "text": "Coletamos dados pessoais, numero de telefone e dados de navegacao para manter sua conta ativa.",
+      "category": "data_collection",
+      "impact": "medium",
+      "lgpd_refs": [
+        "Art. 7°, I",
+        "Art. 9°"
+      ],
+      "detected_terms": [
+        "dados pessoais",
+        "dados de navegação"
+      ]
+    },
+    {
+      "clause_id": "HARNESS_LGPD_C002",
+      "doc_id": "HARNESS_LGPD",
+      "title": "Compartilhamento e direitos",
+      "text": "Podemos realizar compartilhamento com terceiros e operadores. Voce pode exercer direito de acesso, portabilidade e eliminacao de dados.",
+      "category": "user_rights",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 17",
+        "Art. 18"
+      ],
+      "detected_terms": [
+        "compartilhamento",
+        "terceiros",
+        "direito de acesso",
+        "portabilidade",
+        "eliminação"
+      ]
+    }
+  ],
+  "highlights": {
+    "HARNESS_LGPD_C001": [
+      {
+        "term_id": "TERM_001",
+        "match": "dados pessoais",
+        "start": 10,
+        "end": 24
+      },
+      {
+        "term_id": "TERM_023c",
+        "match": "dados de navegacao",
+        "start": 47,
+        "end": 65
+      }
+    ],
+    "HARNESS_LGPD_C002": [
+      {
+        "term_id": "TERM_006",
+        "match": "compartilhamento",
+        "start": 17,
+        "end": 33
+      },
+      {
+        "term_id": "TERM_007",
+        "match": "terceiros",
+        "start": 38,
+        "end": 47
+      },
+      {
+        "term_id": "TERM_032",
+        "match": "direito de acesso",
+        "start": 80,
+        "end": 97
+      },
+      {
+        "term_id": "TERM_018",
+        "match": "portabilidade",
+        "start": 99,
+        "end": 112
+      },
+      {
+        "term_id": "TERM_030",
+        "match": "eliminacao",
+        "start": 115,
+        "end": 125
+      }
+    ]
+  },
+  "explanations": {
+    "TERM_001": {
+      "term_id": "TERM_001",
+      "termo_juridico": "dados pessoais",
+      "direct_translation": "São suas informações pessoais — tudo que identifica ou pode identificar você",
+      "plain_definition": "Qualquer informação que identifique ou possa identificar uma pessoa, como nome, e-mail, CPF, endereço IP ou localização.",
+      "practical_example": "Seu nome e e-mail cadastrados num app são dados pessoais. Seu endereço IP, histórico de navegação e localização GPS também — mesmo que você não perceba que os forneceu.",
+      "category": "data_collection",
+      "icon_id": "user-circle",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 5º, I",
+        "Art. 18, II"
+      ]
+    },
+    "TERM_006": {
+      "term_id": "TERM_006",
+      "termo_juridico": "compartilhamento",
+      "direct_translation": "É quando a empresa passa seus dados para outras empresas ou pessoas",
+      "plain_definition": "Comunicação, transferência ou disponibilização de dados pessoais a terceiros, como parceiros comerciais, anunciantes ou autoridades.",
+      "practical_example": "Uma loja online pode compartilhar seu endereço com uma transportadora. Uma rede social pode compartilhar seu perfil comportamental com dezenas de anunciantes.",
+      "category": "sharing_third_parties",
+      "icon_id": "share-2",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 5º, XVI",
+        "Art. 18, VII"
+      ]
+    },
+    "TERM_007": {
+      "term_id": "TERM_007",
+      "termo_juridico": "terceiros",
+      "direct_translation": "São outras empresas que recebem acesso aos seus dados, fora da plataforma principal",
+      "plain_definition": "Empresas ou entidades externas à plataforma que podem receber ou acessar seus dados, como anunciantes, provedores de analytics ou parceiros de negócios.",
+      "practical_example": "'Parceiros e terceiros' em um termo de serviço pode significar dezenas de empresas de analytics, publicidade e tecnologia recebendo suas informações.",
+      "category": "sharing_third_parties",
+      "icon_id": "users",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 18, VII"
+      ]
+    },
+    "TERM_018": {
+      "term_id": "TERM_018",
+      "termo_juridico": "portabilidade",
+      "direct_translation": "É seu direito de pegar seus dados e levar para outra empresa ou plataforma",
+      "plain_definition": "Direito do titular de receber seus dados pessoais em formato estruturado e interoperável, podendo transferi-los para outro fornecedor.",
+      "practical_example": "Quer mudar de plataforma de fotos Pela portabilidade, você pode pedir que exportem seus álbuns para levar a outro serviço.",
+      "category": "user_rights",
+      "icon_id": "hard-drive-upload",
+      "impact": "medium",
+      "lgpd_refs": [
+        "Art. 18, V",
+        "Art. 9º"
+      ]
+    },
+    "TERM_023c": {
+      "term_id": "TERM_023c",
+      "termo_juridico": "dados de navegação",
+      "direct_translation": "São registros de tudo que você faz online — páginas visitadas, cliques, tempo em cada conteúdo",
+      "plain_definition": "Informações geradas automaticamente durante o uso da internet: páginas acessadas, links clicados, tempo de permanência e interações com conteúdo.",
+      "practical_example": "Você pesquisa sobre uma doença no Google. Anúncios de planos de saúde aparecem horas depois. Seus dados de navegação foram usados para perfilamento.",
+      "category": "data_collection",
+      "icon_id": "mouse-pointer-click",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 5º, I"
+      ]
+    },
+    "TERM_030": {
+      "term_id": "TERM_030",
+      "termo_juridico": "eliminação",
+      "direct_translation": "É seu direito de pedir para a empresa apagar definitivamente seus dados",
+      "plain_definition": "Direito do titular de solicitar a exclusão permanente de dados pessoais tratados com consentimento ou de forma excessiva/desnecessária.",
+      "practical_example": "Você fecha sua conta num app de namoro. Os dados de perfil e histórico devem ser eliminados, exceto se houver obrigação legal específica.",
+      "category": "user_rights",
+      "icon_id": "trash-2",
+      "impact": "high",
+      "lgpd_refs": [
+        "Art. 18, VI",
+        "Art. 16"
+      ]
+    },
+    "TERM_032": {
+      "term_id": "TERM_032",
+      "termo_juridico": "direito de acesso",
+      "direct_translation": "É seu direito de pedir para a empresa mostrar tudo que ela sabe sobre você",
+      "plain_definition": "Direito do titular de obter confirmação de existência de tratamento e acesso completo aos seus dados pessoais, incluindo categorias, finalidades e destinatários.",
+      "practical_example": "Ao solicitar acesso aos dados do Facebook, você recebe centenas de MB incluindo histórico de pesquisas, anúncios clicados e localizações.",
+      "category": "user_rights",
+      "icon_id": "eye",
+      "impact": "medium",
+      "lgpd_refs": [
+        "Art. 18, I e II",
+        "Art. 9º"
+      ]
+    }
+  },
+  "audit": {
+    "source": {
+      "mode": "pasted_text",
+      "doc_hint": "HARNESS_LGPD"
+    },
+    "pipeline": [
+      "S1_SEGMENT",
+      "S2_NORMALIZE",
+      "S3_CLASSIFY",
+      "S4_HIGHLIGHT",
+      "S5_EXPLAIN",
+      "S6_TRACE"
+    ],
+    "clauses_audit": {
+      "HARNESS_LGPD_C001": {
+        "segment": {
+          "rule": "heading_merge",
+          "evidence": "paragraph_index=0,merged_with=1"
+        },
+        "classification": {
+          "category": "data_collection",
+          "method": "heuristic_keywords",
+          "scores": {
+            "data_collection": 5,
+            "purpose_use": 1,
+            "sharing_third_parties": 0,
+            "retention_storage": 0,
+            "user_rights": 0,
+            "security_incidents": 0
+          },
+          "rules_fired": [
+            {
+              "rule_id": "RULE_CAT_COLLECT_01",
+              "keywords": [
+                "coleta",
+                "coletamos",
+                "dados pessoais",
+                "navegacao",
+                "numero de telefone"
+              ]
+            },
+            {
+              "rule_id": "RULE_CAT_PURPOSE_01",
+              "keywords": [
+                "manter"
+              ]
+            }
+          ]
+        },
+        "highlights": [
+          {
+            "term_id": "TERM_001",
+            "match": "dados pessoais",
+            "start": 10,
+            "end": 24,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "dados pessoais",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          },
+          {
+            "term_id": "TERM_023c",
+            "match": "dados de navegacao",
+            "start": 47,
+            "end": 65,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "dados de navegação",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          }
+        ],
+        "output": {
+          "plain_language_summary": "Em linguagem simples, a cláusula informa quais dados a plataforma coleta e em que momento isso acontece. O impacto foi classificado como médio porque a cláusula afeta privacidade ou uso da plataforma, mas com efeito menos imediato. Termos-chave: dados pessoais: São suas informações pessoais — tudo que identifica ou pode identificar você; dados de navegação: São registros de tudo que você faz online — páginas visitadas, cliques, tempo em cada conteúdo. Direitos LGPD relacionados: Art. 7°, I, Art. 9°.",
+          "detected_terms": [
+            "dados pessoais",
+            "dados de navegação"
+          ],
+          "explanation_ids": [
+            "TERM_001",
+            "TERM_023c"
+          ]
+        }
+      },
+      "HARNESS_LGPD_C002": {
+        "segment": {
+          "rule": "heading_merge",
+          "evidence": "paragraph_index=2,merged_with=3"
+        },
+        "classification": {
+          "category": "user_rights",
+          "method": "heuristic_keywords",
+          "scores": {
+            "data_collection": 0,
+            "purpose_use": 0,
+            "sharing_third_parties": 2,
+            "retention_storage": 1,
+            "user_rights": 3,
+            "security_incidents": 0
+          },
+          "rules_fired": [
+            {
+              "rule_id": "RULE_CAT_SHARE_01",
+              "keywords": [
+                "compartilhamento",
+                "terceiros"
+              ]
+            },
+            {
+              "rule_id": "RULE_CAT_RETAIN_01",
+              "keywords": [
+                "eliminacao"
+              ]
+            },
+            {
+              "rule_id": "RULE_CAT_RIGHTS_01",
+              "keywords": [
+                "direito",
+                "portabilidade",
+                "acesso"
+              ]
+            }
+          ]
+        },
+        "highlights": [
+          {
+            "term_id": "TERM_006",
+            "match": "compartilhamento",
+            "start": 17,
+            "end": 33,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "compartilhamento",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          },
+          {
+            "term_id": "TERM_007",
+            "match": "terceiros",
+            "start": 38,
+            "end": 47,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "terceiros",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          },
+          {
+            "term_id": "TERM_032",
+            "match": "direito de acesso",
+            "start": 80,
+            "end": 97,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "direito de acesso",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          },
+          {
+            "term_id": "TERM_018",
+            "match": "portabilidade",
+            "start": 99,
+            "end": 112,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "portabilidade",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          },
+          {
+            "term_id": "TERM_030",
+            "match": "eliminacao",
+            "start": 115,
+            "end": 125,
+            "lookup": {
+              "lexicon_field_used": "term",
+              "matched_variant": "eliminação",
+              "matching_rule_id": "LEXICON_PRIMARY_TERM"
+            }
+          }
+        ],
+        "output": {
+          "plain_language_summary": "Em linguagem simples, a cláusula apresenta direitos do titular e como o usuário pode agir diante da plataforma. O impacto foi classificado como alto porque a cláusula pode alterar privacidade, controle sobre dados ou exposição a risco. Termos-chave: compartilhamento: É quando a empresa passa seus dados para outras empresas ou pessoas; terceiros: São outras empresas que recebem acesso aos seus dados, fora da plataforma principal; direito de acesso: É seu direito de pedir para a empresa mostrar tudo que ela sabe sobre você. Direitos LGPD relacionados: Art. 17, Art. 18.",
+          "detected_terms": [
+            "compartilhamento",
+            "terceiros",
+            "direito de acesso",
+            "portabilidade",
+            "eliminação"
+          ],
+          "explanation_ids": [
+            "TERM_006",
+            "TERM_007",
+            "TERM_032",
+            "TERM_018",
+            "TERM_030"
+          ]
+        }
+      }
+    }
+  },
+  "traceability": {
+    "source": {
+      "mode": "pasted_text",
+      "doc_hint": "HARNESS_LGPD"
+    },
+    "records": [
+      {
+        "trace_id": "TRACE_HARNESS_LGPD_C001",
+        "document_id": "HARNESS_LGPD",
+        "clause_id": "HARNESS_LGPD_C001",
+        "classificacao_atribuida": {
+          "categoria": "data_collection",
+          "impacto": "medium",
+          "metodo": "heuristic_keywords",
+          "regras_disparadas": [
+            "RULE_CAT_COLLECT_01",
+            "RULE_CAT_PURPOSE_01"
+          ]
+        },
+        "termos_detectados": [
+          {
+            "term_id": "TERM_001",
+            "termo_detectado": "dados pessoais",
+            "start": 10,
+            "end": 24,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_001"
+          },
+          {
+            "term_id": "TERM_023c",
+            "termo_detectado": "dados de navegacao",
+            "start": 47,
+            "end": 65,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_023c"
+          }
+        ],
+        "explicacoes_vinculadas": [
+          "TERM_001",
+          "TERM_023c"
+        ]
+      },
+      {
+        "trace_id": "TRACE_HARNESS_LGPD_C002",
+        "document_id": "HARNESS_LGPD",
+        "clause_id": "HARNESS_LGPD_C002",
+        "classificacao_atribuida": {
+          "categoria": "user_rights",
+          "impacto": "high",
+          "metodo": "heuristic_keywords",
+          "regras_disparadas": [
+            "RULE_CAT_SHARE_01",
+            "RULE_CAT_RETAIN_01",
+            "RULE_CAT_RIGHTS_01"
+          ]
+        },
+        "termos_detectados": [
+          {
+            "term_id": "TERM_006",
+            "termo_detectado": "compartilhamento",
+            "start": 17,
+            "end": 33,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_006"
+          },
+          {
+            "term_id": "TERM_007",
+            "termo_detectado": "terceiros",
+            "start": 38,
+            "end": 47,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_007"
+          },
+          {
+            "term_id": "TERM_032",
+            "termo_detectado": "direito de acesso",
+            "start": 80,
+            "end": 97,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_032"
+          },
+          {
+            "term_id": "TERM_018",
+            "termo_detectado": "portabilidade",
+            "start": 99,
+            "end": 112,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_018"
+          },
+          {
+            "term_id": "TERM_030",
+            "termo_detectado": "eliminacao",
+            "start": 115,
+            "end": 125,
+            "regra_matching": "LEXICON_PRIMARY_TERM",
+            "campo_lexico": "term",
+            "explicacao_id": "TERM_030"
+          }
+        ],
+        "explicacoes_vinculadas": [
+          "TERM_006",
+          "TERM_007",
+          "TERM_032",
+          "TERM_018",
+          "TERM_030"
+        ]
+      }
+    ]
+  }
+}

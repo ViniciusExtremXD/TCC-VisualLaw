@@ -71,6 +71,12 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
           <div className="audit-evidence mb-2">
             categoria: {CATEGORY_LABELS[clause.category]} | impacto: {impactLabel}
           </div>
+          {audit?.source_annotation ? (
+            <div className="audit-evidence mb-2">
+              anotação de referência: {CATEGORY_LABELS[audit.source_annotation.category]} | impacto{" "}
+              {audit.source_annotation.impact}
+            </div>
+          ) : null}
           {sortedScores.length > 0 && (
             <div className="ios-card-inset p-2">
               {sortedScores.map(([category, score]) => (
@@ -84,7 +90,7 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
             <div className="d-flex flex-column gap-1 mt-2">
               {audit.classification.rules_fired.map((rule) => (
                 <div key={rule.rule_id} className="audit-evidence" style={{ fontSize: "0.78rem" }}>
-                  <code>{rule.rule_id}</code> | keywords: {rule.keywords.join(", ")} | score: {rule.weight}
+                  <code>{rule.rule_id}</code> | palavras-chave: {rule.keywords.join(", ")} | score: {rule.weight}
                 </div>
               ))}
             </div>
@@ -105,6 +111,22 @@ export default function ProcessingTracePanel({ clause, audit, highlights }: Proc
           ) : (
             <div className="audit-evidence">Nenhum termo do léxico encontrado nesta cláusula.</div>
           )}
+        </div>
+
+        <div>
+          <div className="audit-section-title">Saída final exibida</div>
+          <div className="audit-evidence">
+            <div className="fw-semibold mb-1" style={{ fontSize: "0.8rem" }}>
+              Linguagem simples
+            </div>
+            <div>{audit?.output.plain_language_summary ?? clause.plain_language_summary}</div>
+            <div className="mt-2" style={{ fontSize: "0.77rem" }}>
+              termos associados:{" "}
+              {(audit?.output.detected_terms ?? clause.detected_terms).length > 0
+                ? (audit?.output.detected_terms ?? clause.detected_terms).join(", ")
+                : "nenhum"}
+            </div>
+          </div>
         </div>
 
         <div>

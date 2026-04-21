@@ -110,9 +110,6 @@ export default function ReportPage() {
     return map;
   }, [audit, clauses, highlights, lexicon]);
 
-  const getImpactLabel = (impact: "high" | "medium" | "low") =>
-    impact === "high" ? "Alto" : impact === "medium" ? "Médio" : "Baixo";
-
   const handleDownloadPdf = useCallback(async () => {
     if (!isProcessed || clauses.length === 0) {
       return;
@@ -150,7 +147,7 @@ export default function ReportPage() {
       document.body.appendChild(anchor);
       anchor.click();
       document.body.removeChild(anchor);
-      window.setTimeout(() => URL.revokeObjectURL(url), 2_000);
+      window.setTimeout(() => URL.revokeObjectURL(url), 2000);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       sessionStorage.setItem("last_pdf_error", message);
@@ -163,7 +160,9 @@ export default function ReportPage() {
   }, [audit, clauses, highlights, isProcessed, lexicon, selectedDocument]);
 
   useEffect(() => {
-    if (!downloadingPdf) return;
+    if (!downloadingPdf) {
+      return;
+    }
     const timer = window.setInterval(() => {
       setPreparingProgress((prev) => (prev >= 90 ? prev : prev + 8));
     }, 180);
@@ -226,20 +225,24 @@ export default function ReportPage() {
           {strings.report.coverTitle}
         </h2>
         <div style={{ fontSize: "0.9rem" }}>
-          <div><strong>{strings.report.generatedAt}:</strong> {generatedAt}</div>
-          <div><strong>{strings.report.version}:</strong> 0.3.0</div>
+          <div>
+            <strong>{strings.report.generatedAt}:</strong> {generatedAt}
+          </div>
+          <div>
+            <strong>{strings.report.version}:</strong> 0.3.0
+          </div>
           <div>
             <strong>{strings.report.selectedDocument}:</strong>{" "}
             {selectedDocument
               ? `${selectedDocument.name} (${selectedDocument.doc_id})`
               : strings.report.noData}
           </div>
-          {selectedDocument && (
+          {selectedDocument ? (
             <div>
               <strong>{strings.report.metadata}:</strong> tipo {selectedDocument.type}, plataforma{" "}
               {selectedDocument.platform}, idioma {selectedDocument.language}
             </div>
-          )}
+          ) : null}
         </div>
       </Card>
 
@@ -266,18 +269,34 @@ export default function ReportPage() {
                 </h3>
 
                 <div className="cupertino-card-inset p-2 mb-2" style={{ fontSize: "0.82rem" }}>
-                  <div><strong>{strings.common.category}:</strong> {CATEGORY_LABELS[clause.category]}</div>
-                  <div><strong>{strings.common.impact}:</strong> {getImpactLabel(clause.impact)}</div>
-                  <div><strong>{strings.common.lgpdRefs}:</strong> {clause.lgpd_refs.length > 0 ? clause.lgpd_refs.join(", ") : "-"}</div>
+                  <div>
+                    <strong>{strings.common.category}:</strong> {CATEGORY_LABELS[clause.category]}
+                  </div>
+                  <div>
+                    <strong>{strings.common.impact}:</strong>{" "}
+                    {clause.impact === "high"
+                      ? "Alto"
+                      : clause.impact === "medium"
+                        ? "Médio"
+                        : "Baixo"}
+                  </div>
+                  <div>
+                    <strong>{strings.common.lgpdRefs}:</strong>{" "}
+                    {clause.lgpd_refs.length > 0 ? clause.lgpd_refs.join(", ") : "-"}
+                  </div>
                   <div>
                     <strong>Termos detectados:</strong>{" "}
-                    {clauseHighlights.length > 0 ? clauseHighlights.map((item) => item.match).join(", ") : "nenhum"}
+                    {clauseHighlights.length > 0
+                      ? clauseHighlights.map((item) => item.match).join(", ")
+                      : "nenhum"}
                   </div>
                 </div>
 
                 <div className="mb-2" style={{ fontSize: "0.88rem" }}>
                   <strong>{strings.report.clauseText}:</strong>
-                  <p className="mb-0 mt-1" style={{ whiteSpace: "pre-wrap" }}>{clause.text}</p>
+                  <p className="mb-0 mt-1" style={{ whiteSpace: "pre-wrap" }}>
+                    {clause.text}
+                  </p>
                 </div>
 
                 <div className="mb-2" style={{ fontSize: "0.84rem", lineHeight: 1.6 }}>
@@ -289,8 +308,15 @@ export default function ReportPage() {
                   <strong>{strings.report.classificationEvidence}:</strong>
                   <div>regra de segmentação: {clauseAudit?.segment.rule ?? "n/a"}</div>
                   <div>evidência de segmentação: {clauseAudit?.segment.evidence ?? "n/a"}</div>
-                  <div>rules_fired: {clauseAudit?.classification.rules_fired.map((rule) => rule.rule_id).join(", ") || "nenhuma"}</div>
-                  <div>scores: {clauseAudit ? JSON.stringify(clauseAudit.classification.scores) : "n/a"}</div>
+                  <div>
+                    rules_fired:{" "}
+                    {clauseAudit?.classification.rules_fired.map((rule) => rule.rule_id).join(", ") ||
+                      "nenhuma"}
+                  </div>
+                  <div>
+                    scores:{" "}
+                    {clauseAudit ? JSON.stringify(clauseAudit.classification.scores) : "n/a"}
+                  </div>
                 </div>
               </Card>
             );
@@ -303,7 +329,9 @@ export default function ReportPage() {
           {[...termEvidenceMap.keys()].map((termId) => {
             const entry = lexicon.find((item) => item.term_id === termId);
             const evidence = termEvidenceMap.get(termId) ?? null;
-            if (!entry) return null;
+            if (!entry) {
+              return null;
+            }
             return (
               <article key={termId} className="report-block">
                 <TermCard entry={entry} evidence={evidence} mode="report" />
@@ -321,7 +349,8 @@ export default function ReportPage() {
           <ul className="mb-0">
             {SEMIOTIC_MAP.map((item) => (
               <li key={item.category}>
-                <strong>{CATEGORY_LABELS[item.category]}</strong> | ícone {item.icon_id} | {item.significance}
+                <strong>{CATEGORY_LABELS[item.category]}</strong> | ícone {item.icon_id} |{" "}
+                {item.significance}
               </li>
             ))}
           </ul>
@@ -333,7 +362,9 @@ export default function ReportPage() {
           </h3>
           <ul className="mb-0">
             {IMPACT_SEMIOTIC_MAP.map((item) => (
-              <li key={item.impact}><strong>{item.label}</strong> ({item.icon}) - {item.interpretation}</li>
+              <li key={item.impact}>
+                <strong>{item.label}</strong> ({item.icon}) - {item.interpretation}
+              </li>
             ))}
           </ul>
         </div>
@@ -344,12 +375,27 @@ export default function ReportPage() {
           </h3>
           {semioForDoc ? (
             <div className="cupertino-card-inset p-2" style={{ fontSize: "0.83rem" }}>
-              <div><strong>Tipo:</strong> {semioForDoc.profile.label}</div>
-              <div><strong>Ícone principal:</strong> {semioForDoc.profile.primary_icon}</div>
-              <div><strong>Categorias-alvo:</strong> {semioForDoc.categories.map((category) => CATEGORY_LABELS[category]).join(", ")}</div>
-              <div><strong>Regra:</strong> {semioForDoc.profile.rule_summary}</div>
-              <div><strong>Justificativa:</strong> {semioForDoc.profile.icon_justification}</div>
-              {semioForDoc.platformNote ? <div><strong>Ajuste por plataforma:</strong> {semioForDoc.platformNote}</div> : null}
+              <div>
+                <strong>Tipo:</strong> {semioForDoc.profile.label}
+              </div>
+              <div>
+                <strong>Ícone principal:</strong> {semioForDoc.profile.primary_icon}
+              </div>
+              <div>
+                <strong>Categorias-alvo:</strong>{" "}
+                {semioForDoc.categories.map((category) => CATEGORY_LABELS[category]).join(", ")}
+              </div>
+              <div>
+                <strong>Regra:</strong> {semioForDoc.profile.rule_summary}
+              </div>
+              <div>
+                <strong>Justificativa:</strong> {semioForDoc.profile.icon_justification}
+              </div>
+              {semioForDoc.platformNote ? (
+                <div>
+                  <strong>Ajuste por plataforma:</strong> {semioForDoc.platformNote}
+                </div>
+              ) : null}
             </div>
           ) : (
             <div className="text-ios-secondary">Documento sem mapeamento selecionado.</div>
@@ -359,7 +405,10 @@ export default function ReportPage() {
             <summary className="fw-semibold" style={{ cursor: "pointer", fontSize: "0.83rem" }}>
               {strings.report.viewRawMap}
             </summary>
-            <pre className="mt-2 p-2" style={{ background: "#f3f4f6", fontSize: "0.72rem", whiteSpace: "pre-wrap" }}>
+            <pre
+              className="mt-2 p-2"
+              style={{ background: "#f3f4f6", fontSize: "0.72rem", whiteSpace: "pre-wrap" }}
+            >
               {JSON.stringify(DOCUMENT_SEMIOTIC_MAP.doc_type_semantics, null, 2)}
             </pre>
           </details>
@@ -390,10 +439,10 @@ export default function ReportPage() {
             >
               <div className="d-flex align-items-center gap-2 mb-2">
                 <div className="ios-spinner"></div>
-                <strong>Gerando relatório</strong>
+                <strong>Gerando relatorio</strong>
               </div>
               <div className="text-ios-secondary mb-2" style={{ fontSize: "0.82rem" }}>
-                Preparando conteúdo acadêmico para PDF...
+                Preparando conteudo academico para PDF...
               </div>
               <div className="progress-ios premium-progress-track">
                 <motion.div

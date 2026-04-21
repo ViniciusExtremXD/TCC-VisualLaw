@@ -8,7 +8,7 @@ import { normalize, generateVariations } from "./normalizer";
 
 /**
  * Busca todos os termos do léxico dentro de um texto de cláusula.
- * Retorna matches com offsets (start/end) no texto ORIGINAL
+ * Retorna matches com offsets (start/end) no texto original
  * e auditoria de provenance para cada match.
  */
 export function findTermsInText(
@@ -21,28 +21,30 @@ export function findTermsInText(
   const charMap = buildCharMap(text);
 
   for (const entry of lexicon) {
-    // Todas as formas possíveis do termo
     const allForms = new Set<string>();
     allForms.add(entry.term);
     for (const alias of entry.aliases) {
       allForms.add(alias);
     }
-    // Gera variações de cada forma
-    const expandedForms = new Map<string, string>(); // normalizedForm → originalForm
+
+    const expandedForms = new Map<string, string>();
     for (const form of allForms) {
-      for (const v of generateVariations(form)) {
-        expandedForms.set(normalize(v), form);
+      for (const variation of generateVariations(form)) {
+        expandedForms.set(normalize(variation), form);
       }
     }
 
-    // Busca cada forma no texto normalizado
     for (const [normalizedForm, originalForm] of expandedForms) {
-      if (normalizedForm.length < 2) continue;
+      if (normalizedForm.length < 2) {
+        continue;
+      }
 
       let searchFrom = 0;
       while (true) {
         const idx = normalizedText.indexOf(normalizedForm, searchFrom);
-        if (idx === -1) break;
+        if (idx === -1) {
+          break;
+        }
 
         const charBefore = idx > 0 ? normalizedText[idx - 1] : " ";
         const charAfter =
@@ -55,10 +57,10 @@ export function findTermsInText(
           const origEnd = charMap[idx + normalizedForm.length - 1] + 1;
 
           const overlapping = matches.some(
-            (m) =>
-              m.term_id === entry.term_id &&
-              m.start < origEnd &&
-              m.end > origStart
+            (match) =>
+              match.term_id === entry.term_id &&
+              match.start < origEnd &&
+              match.end > origStart
           );
 
           if (!overlapping) {
@@ -70,7 +72,6 @@ export function findTermsInText(
               end: origEnd,
             });
 
-            // Determina qual campo do léxico foi usado
             const fieldUsed = originalForm === entry.term ? "term" : "aliases";
             audits.push({
               term_id: entry.term_id,
@@ -80,6 +81,8 @@ export function findTermsInText(
               lookup: {
                 lexicon_field_used: fieldUsed,
                 matched_variant: originalForm,
+                matching_rule_id:
+                  fieldUsed === "term" ? "LEXICON_PRIMARY_TERM" : "LEXICON_ALIAS_VARIANT",
               },
             });
           }
@@ -96,57 +99,36 @@ export function findTermsInText(
   return { matches, audits };
 }
 
-// ── Helpers ─────────────────────────────────────────────
-
-/**
- * Constrói um mapa de posições: índice no texto normalizado → índice no texto original.
- * Isso é necessário porque removeAccents (NFD) pode mudar o comprimento do texto.
- */
 function buildCharMap(original: string): number[] {
-  const map: number[] = [];
   const lower = original.toLowerCase();
-
-  // NFD decompõe acentos em char base + combining mark
   const nfd = lower.normalize("NFD");
-  let origIdx = 0;
-  let nfdIdx = 0;
-
-  // Constrói mapa NFD → original
   const nfdToOrig: number[] = [];
-  const origChars = [...lower]; // handles surrogate pairs
-  const nfdChars = [...nfd];
 
-  // Simples: percorre char-by-char mantendo alinhamento
-  let oi = 0;
-  let ni = 0;
-  const origStr = lower;
-  const nfdStr = nfd;
+  let originalIndex = 0;
+  let nfdIndex = 0;
 
-  while (oi < origStr.length && ni < nfdStr.length) {
-    nfdToOrig[ni] = oi;
-    const origCode = origStr.codePointAt(oi)!;
-    const nfdCode = nfdStr.codePointAt(ni)!;
+  while (originalIndex < lower.length && nfdIndex < nfd.length) {
+    nfdToOrig[nfdIndex] = originalIndex;
+    const originalCode = lower.codePointAt(originalIndex)!;
+    const nfdCode = nfd.codePointAt(nfdIndex)!;
 
-    if (origCode === nfdCode) {
-      oi++;
-      ni++;
-    } else {
-      // char original foi decomposto em NFD
-      ni++;
-      // combining marks apontam para o mesmo char original
-      while (ni < nfdStr.length && isCombiningMark(nfdStr.codePointAt(ni)!)) {
-        nfdToOrig[ni] = oi;
-        ni++;
-      }
-      oi++;
+    if (originalCode === nfdCode) {
+      originalIndex++;
+      nfdIndex++;
+      continue;
     }
+
+    nfdIndex++;
+    while (nfdIndex < nfd.length && isCombiningMark(nfd.codePointAt(nfdIndex)!)) {
+      nfdToOrig[nfdIndex] = originalIndex;
+      nfdIndex++;
+    }
+    originalIndex++;
   }
 
-  // Agora o normalize() completo é: NFD → strip combining → resultado
-  // O texto normalizado pula combining marks
   const stripped: number[] = [];
-  for (let i = 0; i < nfdStr.length; i++) {
-    if (!isCombiningMark(nfdStr.codePointAt(i)!)) {
+  for (let i = 0; i < nfd.length; i++) {
+    if (!isCombiningMark(nfd.codePointAt(i)!)) {
       stripped.push(nfdToOrig[i]);
     }
   }
@@ -159,5 +141,5 @@ function isCombiningMark(code: number): boolean {
 }
 
 function isWordBoundary(char: string): boolean {
-  return /[\s.,;:!?()[\]{}"'\/\-–—]/.test(char) || char === " ";
+  return /[\s.,;:!?()[\]{}"'/\\\-–—]/.test(char) || char === " ";
 }
