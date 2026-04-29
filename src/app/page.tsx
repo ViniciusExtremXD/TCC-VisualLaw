@@ -1,27 +1,19 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
-import DocumentManager from "@/components/DocumentManager";
+import DocumentWorkspace from "@/document_engine/DocumentWorkspace";
+import { useDocumentEngine } from "@/document_engine/DocumentEngineProvider";
 import HighlightedText from "@/components/HighlightedText";
 import ProcessMap from "@/components/ProcessMap";
 import TermCardModal from "@/components/TermCardModal";
 import { strings } from "@/i18n/ptBR";
 import { getLexicon, loadMockSession, processText, SAMPLE_TEXT } from "@/lib/processor";
-import {
-  activateDocument,
-  getActiveDocument,
-  loadDocRegistry,
-  removeDocument,
-  saveDocRegistry,
-  toggleDocumentStatus,
-  upsertDocument,
-} from "@/lib/docRegistry";
 import { useSession } from "@/store/SessionContext";
-import type { DocumentRecord, PipelineResult, TermEvidence } from "@/lib/types";
+import type { PipelineResult, TermEvidence } from "@/lib/types";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import Icon, { type IconName } from "@/ui/components/Icon";
@@ -113,7 +105,6 @@ function buildContext(text: string, start: number, end: number): string {
 export default function HomePage() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [documents, setDocuments] = useState<DocumentRecord[]>([]);
   const [selectedFlowCard, setSelectedFlowCard] =
     useState<(typeof FLOW_CARDS)[number] | null>(null);
   const [quickText, setQuickText] = useState("");
@@ -127,31 +118,21 @@ export default function HomePage() {
   const { setResults } = useSession();
   const reducedMotion = useReducedMotionPreference();
   const lexicon = useMemo(() => getLexicon(), []);
-
-  useEffect(() => {
-    setDocuments(loadDocRegistry());
-  }, []);
-
-  const activeDocument = useMemo(() => getActiveDocument(documents), [documents]);
-
-  const persistDocuments = (next: DocumentRecord[]) => {
-    setDocuments(next);
-    saveDocRegistry(next);
-  };
+  const { sessionDocument } = useDocumentEngine();
 
   const handleProcess = () => {
-    if (text.trim().length < 20 || !activeDocument) {
+    if (text.trim().length < 20 || !sessionDocument) {
       return;
     }
 
     setLoading(true);
     window.setTimeout(() => {
       try {
-        const result = processText(text.trim(), activeDocument.doc_id);
+        const result = processText(text.trim(), sessionDocument.doc_id);
         setResults({
           ...result,
           lexicon,
-          selectedDocument: activeDocument,
+          selectedDocument: sessionDocument,
         });
         router.push("/reader");
       } finally {
@@ -161,18 +142,18 @@ export default function HomePage() {
   };
 
   const handleDemo = () => {
-    if (!activeDocument) {
+    if (!sessionDocument) {
       return;
     }
 
     setLoading(true);
     window.setTimeout(() => {
       try {
-        const result = loadMockSession(activeDocument.doc_id);
+        const result = loadMockSession(sessionDocument.doc_id);
         setResults({
           ...result,
           lexicon,
-          selectedDocument: activeDocument,
+          selectedDocument: sessionDocument,
         });
         router.push("/reader");
       } finally {
@@ -198,7 +179,7 @@ export default function HomePage() {
     setQuickLoading(true);
     window.setTimeout(() => {
       try {
-        setQuickResult(processText(quickText.trim(), activeDocument?.doc_id ?? "QUICK_TRANSLATION"));
+        setQuickResult(processText(quickText.trim(), sessionDocument?.doc_id ?? "QUICK_TRANSLATION"));
       } finally {
         setQuickLoading(false);
       }
@@ -213,7 +194,7 @@ export default function HomePage() {
     setResults({
       ...quickResult,
       lexicon,
-      selectedDocument: activeDocument ?? null,
+      selectedDocument: sessionDocument ?? null,
     });
     router.push("/reader");
   };
@@ -268,7 +249,7 @@ export default function HomePage() {
     <div className="d-flex flex-column gap-4">
       <NavigationBar
         title={strings.home.heroTitle}
-        subtitle={strings.app.title}
+        subtitle={strings.app.subtitle}
         caption={strings.home.heroText}
       />
 
@@ -277,41 +258,18 @@ export default function HomePage() {
           {strings.home.entryTitle}
         </h2>
 
-        <DocumentManager
-          documents={documents}
-          onSave={(document) => persistDocuments(upsertDocument(documents, document))}
-          onRemove={(docId) => persistDocuments(removeDocument(documents, docId))}
-          onActivate={(docId) => persistDocuments(activateDocument(documents, docId))}
-          onToggleStatus={(docId) => persistDocuments(toggleDocumentStatus(documents, docId))}
+        <DocumentWorkspace
+          value={text}
+          onValueChange={setText}
+          disabled={loading}
         />
-
-        <div>
-          <label
-            htmlFor="text-input"
-            className="form-label fw-semibold"
-            style={{ fontSize: "0.88rem" }}
-          >
-            {strings.home.textInputLabel}
-          </label>
-          <textarea
-            id="text-input"
-            className="form-control form-control-ios"
-            rows={10}
-            placeholder={strings.home.textInputPlaceholder}
-            value={text}
-            onChange={(event) => setText(event.target.value)}
-          ></textarea>
-          <div className="text-ios-secondary mt-1" style={{ fontSize: "0.8rem" }}>
-            {text.length > 0 ? `${text.length} caracteres` : strings.home.minChars}
-          </div>
-        </div>
 
         <div className="d-flex flex-column flex-sm-row gap-2">
           <Button
             variant="primary"
             className="flex-fill"
             onClick={handleProcess}
-            disabled={loading || !activeDocument || text.trim().length < 20}
+            disabled={loading || !sessionDocument || text.trim().length < 20}
           >
             {loading ? (
               <>
@@ -335,7 +293,7 @@ export default function HomePage() {
             {strings.home.pasteExample}
           </Button>
 
-          <Button variant="ghost" onClick={handleDemo} disabled={loading || !activeDocument}>
+          <Button variant="ghost" onClick={handleDemo} disabled={loading || !sessionDocument}>
             <Icon name="play-circle" size={16} />
             {strings.home.demo}
           </Button>

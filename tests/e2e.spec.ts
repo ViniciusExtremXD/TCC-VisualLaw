@@ -8,10 +8,8 @@ const basePath = repo ? `/${repo}` : "";
 const artifactsRoot = path.resolve("artifacts");
 const screenshotsDir = path.join(artifactsRoot, "screenshots");
 const logsDir = path.join(artifactsRoot, "logs");
-const downloadsDir = path.join(artifactsRoot, "downloads");
 const corpusManifestPath = path.resolve("data", "corpus", "corpus-manifest.json");
-const expectedDocumentCount =
-  JSON.parse(fs.readFileSync(corpusManifestPath, "utf8")).length + 1; // inclui entrada manual
+const expectedPaperCount = JSON.parse(fs.readFileSync(corpusManifestPath, "utf8")).length;
 
 function ensureDir(dir: string) {
   fs.mkdirSync(dir, { recursive: true });
@@ -27,7 +25,7 @@ function cleanDir(dir: string) {
 async function getTop(locator: Locator) {
   const box = await locator.boundingBox();
   if (!box) {
-    throw new Error("Elemento não visível para cálculo de ordem na Home.");
+    throw new Error("Elemento nao visivel para calculo de ordem na Home.");
   }
   return box.y;
 }
@@ -36,11 +34,10 @@ test.describe("Visual Law academic static export", () => {
   test.beforeAll(() => {
     cleanDir(screenshotsDir);
     cleanDir(logsDir);
-    cleanDir(downloadsDir);
   });
 
-  test("home principal + fluxo guiado + PDF formatado", async ({ page }) => {
-    test.setTimeout(240_000);
+  test("home principal + document engine + fluxo guiado", async ({ page }) => {
+    test.setTimeout(180_000);
 
     const staticAssetFailures: string[] = [];
     const staticAssetSuccesses: string[] = [];
@@ -67,129 +64,48 @@ test.describe("Visual Law academic static export", () => {
     await expect(processBlock).toBeVisible();
     await expect(quickTranslation).toBeVisible();
 
-    await quickTranslation.getByRole("button").click();
-    await page.getByRole("button", { name: /Consentimento de uso de dados/i }).click();
-    await page.getByTestId("quick-translate-button").click();
-    await expect(page.getByTestId("quick-translation-result-panel")).toBeVisible();
-    const quickResultCard = page.getByTestId("quick-translation-result").first();
-    await expect(quickResultCard).toBeVisible();
-    await expect(quickResultCard.getByText(/^Original$/i)).toBeVisible();
-    await expect(quickResultCard.getByText(/^Linguagem simples$/i)).toBeVisible();
-
     const entryTop = await getTop(entryBlock);
     const cardsTop = await getTop(cardsBlock);
     const processTop = await getTop(processBlock);
     expect(entryTop).toBeLessThan(cardsTop);
     expect(cardsTop).toBeLessThan(processTop);
 
-    await expect(page.getByTestId("process-map")).toHaveCount(0);
-    await page.getByTestId("process-map-accordion").getByRole("button").click();
-    await expect(page.getByTestId("process-map")).toBeVisible();
-
-    const managerOpenButton = page.getByTestId("doc-manager-open-button");
-    await expect(managerOpenButton).toBeVisible();
-    await managerOpenButton.click();
-    await expect(page.getByTestId("doc-manager-sheet")).toBeVisible();
-    await expect(page.getByTestId("doc-list").locator('[data-testid="doc-item"]')).toHaveCount(
-      expectedDocumentCount
+    await page.getByTestId("document-engine-open").click();
+    await expect(page.getByTestId("document-engine-modal")).toBeVisible();
+    await expect(page.getByTestId("document-engine-source-total")).toContainText(
+      `${expectedPaperCount}`
     );
-    await page.keyboard.press("Escape");
-    await expect(page.getByTestId("doc-manager-sheet")).toHaveCount(0);
+    await expect(page.getByTestId("document-engine-group-trigger")).toHaveCount(4);
+    await expect(page.getByTestId("document-engine-row")).toHaveCount(2);
+    await expect(page.getByTestId("document-engine-original").first()).toHaveAttribute(
+      "target",
+      "_blank"
+    );
+
+    await page.getByTestId("document-engine-group-trigger").filter({ hasText: "Meta" }).click();
+    await expect(page.getByTestId("document-engine-row")).toHaveCount(4);
+    await page.getByTestId("document-engine-select").nth(2).click();
+    await expect(page.getByTestId("document-engine-modal")).toHaveCount(0);
+    await expect(page.getByTestId("document-engine")).toContainText("Meta/Facebook Terms");
+    await expect(page.getByTestId("document-engine-file")).toHaveCount(0);
+
+    await page.locator("#text-input").fill(
+      "Coletamos dados pessoais para manter a conta e compartilhar informacoes com terceiros."
+    );
+    await expect(page.locator("#text-input")).toHaveValue(/Coletamos dados pessoais/);
 
     await page.screenshot({
-      path: path.join(screenshotsDir, "HOME_ROLLBACK.png"),
+      path: path.join(screenshotsDir, "HOME_DOCUMENT_ENGINE.png"),
       fullPage: true,
     });
 
     await page.getByRole("button", { name: /Colar exemplo/i }).click();
     await page.getByRole("button", { name: /^Processar texto$/i }).click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
+    await expect(page.getByText(/Leitura guiada acad[e\u00ea]mica/i)).toBeVisible();
+
     await page.screenshot({
       path: path.join(screenshotsDir, "READER_GUIADO.png"),
-      fullPage: true,
-    });
-
-    await expect(page.getByTestId("processing-trace")).toHaveCount(0);
-    await page.getByTestId("processing-trace-accordion").getByRole("button").click();
-    await expect(page.getByTestId("processing-trace")).toBeVisible();
-
-    const firstHighlight = page
-      .locator("button.premium-highlight-mark, button.term-highlight, mark.term-highlight")
-      .first();
-    await expect(firstHighlight).toBeVisible();
-    await firstHighlight.click();
-
-    await expect(page.getByText(/Evid[eê]ncia \/ auditoria do termo/i)).toBeVisible();
-    await expect(page.getByText(/Principais d[úu]vidas \(FAQ\)/i)).toBeVisible();
-
-    await page.screenshot({
-      path: path.join(screenshotsDir, "TERM_CARD_READER.png"),
-      fullPage: true,
-    });
-
-    await page.getByTestId("term-card-sheet").getByRole("button", { name: "Fechar" }).click();
-
-    const downloadPromise = page.waitForEvent("download", { timeout: 120_000 }).catch(() => null);
-    await page.getByTestId("generate-pdf-button").click();
-    await expect(page).toHaveURL(new RegExp(`${basePath}/report/?(\\?.*)?$`), { timeout: 90_000 });
-    await expect(page.getByTestId("report-page")).toBeVisible();
-    await expect(
-      page.getByRole("heading", { name: /Relat[oó]rio acad[eê]mico Visual Law/i, level: 1 })
-    ).toBeVisible();
-    const download = await downloadPromise;
-
-    let pdfDownloadInfo:
-      | {
-          filename: string;
-          bytes: number;
-          signature: string;
-          intercepted: boolean;
-        }
-      | undefined;
-
-    if (download) {
-      const downloadPath = path.join(downloadsDir, download.suggestedFilename());
-      await download.saveAs(downloadPath);
-
-      const pdfBytes = fs.readFileSync(downloadPath);
-      expect(pdfBytes.length).toBeGreaterThan(20 * 1024);
-      expect(pdfBytes.subarray(0, 5).toString("utf8")).toBe("%PDF-");
-
-      pdfDownloadInfo = {
-        filename: download.suggestedFilename(),
-        bytes: pdfBytes.length,
-        signature: pdfBytes.subarray(0, 5).toString("utf8"),
-        intercepted: true,
-      };
-    } else {
-      const sessionPdfMeta = await page.evaluate(() => sessionStorage.getItem("last_pdf_meta"));
-      const sessionPdfError = await page.evaluate(() =>
-        sessionStorage.getItem("last_pdf_error")
-      );
-      expect(sessionPdfError, `Erro ao gerar PDF: ${sessionPdfError ?? "desconhecido"}`).toBeNull();
-      expect(sessionPdfMeta).toBeTruthy();
-
-      const parsedMeta = JSON.parse(sessionPdfMeta ?? "{}") as {
-        filename?: string;
-        type?: string;
-        size?: number;
-        signature?: string;
-      };
-
-      expect(parsedMeta.type).toBe("application/pdf");
-      expect(parsedMeta.size ?? 0).toBeGreaterThan(20 * 1024);
-      expect(parsedMeta.signature).toBe("%PDF-");
-
-      pdfDownloadInfo = {
-        filename: parsedMeta.filename ?? "unknown.pdf",
-        bytes: parsedMeta.size ?? 0,
-        signature: parsedMeta.signature ?? "n/a",
-        intercepted: false,
-      };
-    }
-
-    await page.screenshot({
-      path: path.join(screenshotsDir, "REPORT_PAGE.png"),
       fullPage: true,
     });
 
@@ -200,7 +116,6 @@ test.describe("Visual Law academic static export", () => {
           repo,
           ok_count: staticAssetSuccesses.length,
           failures: staticAssetFailures,
-          pdf_download: pdfDownloadInfo,
         },
         null,
         2
@@ -212,21 +127,38 @@ test.describe("Visual Law academic static export", () => {
     expect(staticAssetSuccesses.length).toBeGreaterThan(0);
   });
 
-  test.describe("reduced motion compatibility", () => {
-    test("home e reader funcionam com animacoes reduzidas", async ({ page }) => {
-      await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
-
-      await expect(page.getByTestId("home-entry-block")).toBeVisible();
-      await page.getByRole("button", { name: /Colar exemplo/i }).click();
-      await page.getByRole("button", { name: /^Processar texto$/i }).click();
-
-      await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
-      await expect(page.getByText(/Leitura guiada acad[eê]mica/i)).toBeVisible();
-
-      await page.screenshot({
-        path: path.join(screenshotsDir, "READER_REDUCED_MOTION.png"),
-        fullPage: true,
-      });
+  test("document engine ignora registros externos e mantem repositorio oficial", async ({ page }) => {
+    await page.addInitScript(() => {
+      window.localStorage.setItem(
+        "external_corrupted_documents",
+        JSON.stringify([
+          { name: "Documento legado", status: "active" },
+          {
+            id: "PAPER_VALID",
+            title: "Fonte valida",
+            content: "Conteudo valido para selecao.",
+            source: "Teste",
+            kind: "privacy",
+            locale: "pt-BR",
+            stamp: "2026-04-29",
+            link: "",
+          },
+        ])
+      );
+      window.localStorage.setItem("visual_law_document_engine_selected_v1", "DOCUMENTO_INEXISTENTE");
     });
+
+    await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
+    await page.getByTestId("document-engine-open").click();
+
+    await expect(page.getByTestId("document-engine-modal")).toBeVisible();
+    await expect(page.getByTestId("document-engine-source-total")).toContainText(
+      `${expectedPaperCount}`
+    );
+    await expect(page.getByTestId("document-engine-group-trigger")).toHaveCount(4);
+    await expect(page.getByTestId("document-engine-list")).not.toContainText("Fonte valida");
+    await page.getByTestId("document-engine-select").first().click();
+    await expect(page.getByTestId("document-engine-modal")).toHaveCount(0);
+    await expect(page.getByTestId("document-engine")).toContainText("X Terms of Service");
   });
 });

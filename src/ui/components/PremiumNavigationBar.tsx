@@ -62,7 +62,7 @@ export default function PremiumNavigationBar({
           className="cupertino-large-title mb-0"
           animate={{
             letterSpacing: compact ? "-0.01em" : "-0.02em",
-            fontSize: compact ? "clamp(1.48rem, 3.2vw, 1.82rem)" : "clamp(1.7rem, 4vw, 2.15rem)",
+            fontSize: compact ? "clamp(1.28rem, 3vw, 1.6rem)" : "clamp(1.46rem, 3.5vw, 1.86rem)",
           }}
           transition={
             reducedMotion

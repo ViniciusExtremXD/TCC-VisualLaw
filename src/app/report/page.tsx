@@ -13,7 +13,7 @@ import {
   DOCUMENT_SEMIOTIC_MAP,
   getDocumentSemanticProfile,
 } from "@/data/visual/document-semiotic-map";
-import { loadDocRegistry } from "@/lib/docRegistry";
+import { readArchiveForReport } from "@/document_engine/vault";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import Icon from "@/ui/components/Icon";
@@ -124,7 +124,7 @@ export default function ReportPage() {
         generatedAt: new Date().toLocaleString("pt-BR"),
         version: "0.3.0",
         selectedDocument,
-        docRegistry: loadDocRegistry(),
+        documentArchive: readArchiveForReport(),
         clauses,
         highlights,
         lexicon,

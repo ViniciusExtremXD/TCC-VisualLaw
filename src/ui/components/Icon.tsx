@@ -22,9 +22,11 @@ import {
   Languages,
   ListChecks,
   MinusCircle,
+  Network,
   Palette,
   PlayCircle,
   PlusCircle,
+  Scale,
   Scissors,
   Search,
   ShieldCheck,
@@ -65,7 +67,9 @@ export type IconName =
   | "minus-circle"
   | "check-circle"
   | "briefcase"
-  | "languages";
+  | "languages"
+  | "network"
+  | "scale";
 
 const ICONS = {
   "shield-check": ShieldCheck,
@@ -98,6 +102,8 @@ const ICONS = {
   "check-circle": CheckCircle2,
   briefcase: BriefcaseBusiness,
   languages: Languages,
+  network: Network,
+  scale: Scale,
 } as const;
 
 interface IconProps {

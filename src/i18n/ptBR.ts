@@ -1,8 +1,8 @@
 export const strings = {
   app: {
-    title: "Visual Law TCC",
-    subtitle: "TCC · IHC / Mackenzie",
-    footer: "Visual Law TCC · Entrada por texto · Dicionário léxico + auditoria",
+    title: "Visual Law para Termos Digitais",
+    subtitle: "Leitura assistida de termos de uso e políticas de privacidade",
+    footer: "Leitura guiada de cláusulas com apoio visual explícito e rastreável.",
   },
   common: {
     category: "Categoria",
@@ -12,14 +12,14 @@ export const strings = {
     inactive: "Inativo",
   },
   home: {
-    heroTitle: "Análise acadêmica de termos e políticas",
+    heroTitle: "Visual Law para Termos Digitais",
     heroText:
-      "Ferramenta de apoio à compreensão jurídica com leitura guiada, Visual Law, rastreabilidade por etapa e relatório técnico em PDF.",
-    entryTitle: "Entrada principal",
+      "Ferramenta de leitura assistida de políticas de privacidade e termos de uso. Avalie condições jurídicas com base acadêmica, semiótica e rastreabilidade por cláusula.",
+    entryTitle: "Configuração da sessão",
     activeDocument: "Documento ativo para a sessão",
     noActiveDocument:
       "Nenhum documento ativo. Abra “Gerenciar documentos” e ative um documento.",
-    textInputLabel: "Texto de entrada (sem PDF)",
+    textInputLabel: "Texto de entrada ou arquivo",
     textInputPlaceholder:
       "Cole o texto integral para gerar segmentação, classificação, léxico, semiótica e auditoria.",
     minChars: "Mínimo de 20 caracteres para processar",

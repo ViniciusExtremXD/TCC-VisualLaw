@@ -250,7 +250,8 @@ export interface DocumentRecord {
   platform: string;
   language: string;
   url?: string;
-  last_updated?: string;
+  last_updated: string;
+  content: string;
   status: DocumentStatus;
 }
 

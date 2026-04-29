@@ -21,7 +21,7 @@ export interface ReportPdfInput {
   generatedAt: string;
   version: string;
   selectedDocument: DocumentRecord | null;
-  docRegistry: DocumentRecord[];
+  documentArchive: DocumentRecord[];
   clauses: Clause[];
   highlights: HighlightsMap;
   lexicon: LexiconEntry[];
@@ -188,7 +188,7 @@ export default function ReportDocument({ input }: { input: ReportPdfInput }) {
               ? `${input.selectedDocument.name} (${input.selectedDocument.doc_id})`
               : "Não informado"}
           </Text>
-          <Text style={styles.line}>Registro local: {input.docRegistry.length} documento(s)</Text>
+          <Text style={styles.line}>Registro local: {input.documentArchive.length} documento(s)</Text>
         </View>
 
         <View style={styles.card}>

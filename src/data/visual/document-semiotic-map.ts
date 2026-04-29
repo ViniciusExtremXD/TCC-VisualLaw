@@ -164,11 +164,14 @@ export const PROCESS_SEMIOTIC_STEPS: ProcessStepDefinition[] = [
 ];
 
 export function getDocumentSemanticProfile(
-  document: Pick<DocumentRecord, "type" | "platform">
+  document: Partial<Pick<DocumentRecord, "type" | "platform">> | null | undefined
 ): { profile: DocumentSemanticProfile; platformNote?: string; categories: Category[] } {
-  const profile = DOC_TYPE_SEMANTICS[document.type] ?? DOC_TYPE_SEMANTICS.other;
+  const docType =
+    document?.type && document.type in DOC_TYPE_SEMANTICS ? document.type : "other";
+  const platform = typeof document?.platform === "string" ? document.platform : "";
+  const profile = DOC_TYPE_SEMANTICS[docType] ?? DOC_TYPE_SEMANTICS.other;
   const rule = PLATFORM_RULES.find(
-    (entry) => entry.platform.toLowerCase() === document.platform.toLowerCase()
+    (entry) => entry.platform.toLowerCase() === platform.toLowerCase()
   );
 
   const categories = new Set<Category>(profile.target_categories);
