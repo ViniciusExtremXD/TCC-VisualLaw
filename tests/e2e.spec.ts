@@ -69,6 +69,10 @@ test.describe("Visual Law academic static export", () => {
     await expect(projectHeader).toContainText("Universidade Presbiteriana Mackenzie");
     await expect(entryBlock).toBeVisible();
     await expect(cardsBlock).toBeVisible();
+    await expect(page.getByTestId("home-flow-card")).toHaveCount(3);
+    await expect(cardsBlock).toContainText("Segmentação");
+    await expect(cardsBlock).toContainText("Destaque");
+    await expect(cardsBlock).toContainText("Visual Law");
     await expect(processBlock).toBeVisible();
     await expect(validationCard).toBeVisible();
     await expect(validationCard).toContainText("Validação exploratória");

@@ -1126,6 +1126,9 @@ textarea.form-control-ios {
   box-shadow: var(--cu-shadow-sm);
   text-align: center;
   cursor: default;
+  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .ios-feature-card-inner {

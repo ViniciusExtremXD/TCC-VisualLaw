@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Accordion from "@/components/Accordion";
 import Badge from "@/components/Badge";
@@ -18,8 +17,6 @@ import type { PipelineResult, TermEvidence } from "@/lib/types";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import Icon, { type IconName } from "@/ui/components/Icon";
-import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
-import { uiTokens } from "@/ui/tokens";
 
 const FLOW_CARDS = [
   {
@@ -113,7 +110,6 @@ export default function HomePage() {
   );
   const router = useRouter();
   const { setResults } = useSession();
-  const reducedMotion = useReducedMotionPreference();
   const lexicon = useMemo(() => getLexicon(), []);
   const { sessionDocument } = useDocumentEngine();
 
@@ -298,22 +294,9 @@ export default function HomePage() {
 
       </Card>
 
-      <motion.section
+      <section
         className="home-flow-grid"
         data-testid="home-flow-cards"
-        initial={reducedMotion ? undefined : "hidden"}
-        animate={reducedMotion ? undefined : "show"}
-        variants={
-          reducedMotion
-            ? undefined
-            : {
-                hidden: { opacity: 0 },
-                show: {
-                  opacity: 1,
-                  transition: { staggerChildren: 0.06, delayChildren: 0.08 },
-                },
-              }
-        }
       >
         <div className="home-flow-heading">
           <div>
@@ -323,24 +306,9 @@ export default function HomePage() {
         </div>
 
         {FLOW_CARDS.map((card) => (
-          <motion.div
-            key={card.id}
-            variants={
-              reducedMotion
-                ? undefined
-                : {
-                    hidden: { opacity: 0, y: 12 },
-                    show: { opacity: 1, y: 0 },
-                  }
-            }
-          >
-            <motion.article
+          <div key={card.id} data-testid="home-flow-card">
+            <article
               className="ios-feature-card h-100 w-100"
-              whileHover={reducedMotion ? undefined : { y: -3, scale: 1.005 }}
-              transition={{
-                duration: uiTokens.motion.duration.normal,
-                ease: uiTokens.motion.easing.soft,
-              }}
             >
               <span className="ios-feature-card-inner">
                 <span
@@ -359,10 +327,10 @@ export default function HomePage() {
                   <strong>Saída:</strong> {card.output}
                 </span>
               </span>
-            </motion.article>
-          </motion.div>
+            </article>
+          </div>
         ))}
-      </motion.section>
+      </section>
 
       <div data-testid="home-process-block">
         <ProcessMap />
