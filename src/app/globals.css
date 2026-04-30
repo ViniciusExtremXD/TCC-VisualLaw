@@ -394,6 +394,33 @@ a {
 
 .home-flow-grid {
   margin-top: 0.1rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.home-flow-heading {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: -0.1rem;
+}
+
+.home-flow-heading h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.home-flow-heading p {
+  margin: 0.2rem 0 0;
+  color: #475569;
+  font-size: 0.8rem;
+  line-height: 1.45;
 }
 
 .home-quick-accordion {
@@ -1098,6 +1125,7 @@ textarea.form-control-ios {
   background: #fffdfa;
   box-shadow: var(--cu-shadow-sm);
   text-align: center;
+  cursor: default;
 }
 
 .ios-feature-card-inner {
@@ -1107,8 +1135,8 @@ textarea.form-control-ios {
   align-items: center;
   justify-content: center;
   min-height: 118px;
-  gap: 0.2rem;
-  padding: 0.72rem 0.7rem;
+  gap: 0.24rem;
+  padding: 0.84rem 0.78rem;
   border-radius: var(--cu-radius-22);
 }
 
@@ -1133,6 +1161,13 @@ textarea.form-control-ios {
   font-size: 0.73rem;
   color: var(--cu-tint);
   font-weight: 600;
+}
+
+.ios-feature-evidence {
+  margin-top: 0.18rem;
+  color: #475569;
+  font-size: 0.74rem;
+  line-height: 1.35;
 }
 
 /* Highlights and badges */
@@ -2100,6 +2135,10 @@ footer {
   .project-header {
     grid-template-columns: 1fr;
   }
+
+  .home-flow-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2136,6 +2175,16 @@ footer {
 
   .validation-form-card-hero {
     margin-top: 0.8rem;
+  }
+
+  .home-flow-heading {
+    align-items: flex-start;
+  }
+
+  .ios-feature-card-inner {
+    align-items: flex-start;
+    min-height: 0;
+    text-align: left;
   }
 
   .term-card-header,

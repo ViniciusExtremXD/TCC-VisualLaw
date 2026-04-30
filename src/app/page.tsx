@@ -18,7 +18,6 @@ import type { PipelineResult, TermEvidence } from "@/lib/types";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import Icon, { type IconName } from "@/ui/components/Icon";
-import Sheet from "@/ui/components/Sheet";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
 
@@ -105,8 +104,6 @@ function buildContext(text: string, start: number, end: number): string {
 export default function HomePage() {
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
-  const [selectedFlowCard, setSelectedFlowCard] =
-    useState<(typeof FLOW_CARDS)[number] | null>(null);
   const [quickText, setQuickText] = useState("");
   const [quickLoading, setQuickLoading] = useState(false);
   const [quickResult, setQuickResult] = useState<PipelineResult | null>(null);
@@ -302,7 +299,7 @@ export default function HomePage() {
       </Card>
 
       <motion.section
-        className="home-flow-grid row g-3"
+        className="home-flow-grid"
         data-testid="home-flow-cards"
         initial={reducedMotion ? undefined : "hidden"}
         animate={reducedMotion ? undefined : "show"}
@@ -318,10 +315,16 @@ export default function HomePage() {
               }
         }
       >
+        <div className="home-flow-heading">
+          <div>
+            <h2>Camadas da leitura assistida</h2>
+            <p>Resumo das etapas que estruturam a análise antes da leitura guiada.</p>
+          </div>
+        </div>
+
         {FLOW_CARDS.map((card) => (
           <motion.div
             key={card.id}
-            className="col-12 col-sm-4"
             variants={
               reducedMotion
                 ? undefined
@@ -331,13 +334,9 @@ export default function HomePage() {
                   }
             }
           >
-            <motion.button
-              type="button"
+            <motion.article
               className="ios-feature-card h-100 w-100"
-              onClick={() => setSelectedFlowCard(card)}
-              aria-label={`Detalhes de ${card.title}`}
               whileHover={reducedMotion ? undefined : { y: -3, scale: 1.005 }}
-              whileTap={reducedMotion ? undefined : { scale: 0.985 }}
               transition={{
                 duration: uiTokens.motion.duration.normal,
                 ease: uiTokens.motion.easing.soft,
@@ -356,9 +355,11 @@ export default function HomePage() {
                 <span className="text-ios-secondary" style={{ fontSize: "0.82rem" }}>
                   {card.description}
                 </span>
-                <span className="ios-feature-link">Toque para ver detalhes</span>
+                <span className="ios-feature-evidence">
+                  <strong>Saída:</strong> {card.output}
+                </span>
               </span>
-            </motion.button>
+            </motion.article>
           </motion.div>
         ))}
       </motion.section>
@@ -650,38 +651,6 @@ export default function HomePage() {
           </div>
         </div>
       </Accordion>
-
-      <Sheet
-        open={Boolean(selectedFlowCard)}
-        onClose={() => setSelectedFlowCard(null)}
-        title={selectedFlowCard?.title}
-        subtitle={selectedFlowCard?.description}
-        testId="flow-detail-sheet"
-        maxWidth={620}
-      >
-        {selectedFlowCard ? (
-          <div
-            className="cupertino-card-inset p-3 d-flex flex-column gap-2"
-            style={{ fontSize: "0.88rem" }}
-          >
-            <div>
-              <span className="fw-semibold">Objetivo:</span> {selectedFlowCard.objective}
-            </div>
-            <div>
-              <span className="fw-semibold">Entrada:</span> {selectedFlowCard.input}
-            </div>
-            <div>
-              <span className="fw-semibold">Saída:</span> {selectedFlowCard.output}
-            </div>
-            <div>
-              <span className="fw-semibold">Evidência gerada:</span> {selectedFlowCard.evidence}
-            </div>
-            <div>
-              <span className="fw-semibold">Valor acadêmico:</span> {selectedFlowCard.value}
-            </div>
-          </div>
-        ) : null}
-      </Sheet>
 
       {quickSelectedEntry && selectedQuickTermEvidence ? (
         <TermCardModal
