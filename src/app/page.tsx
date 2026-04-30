@@ -9,6 +9,7 @@ import DocumentWorkspace from "@/document_engine/DocumentWorkspace";
 import { useDocumentEngine } from "@/document_engine/DocumentEngineProvider";
 import HighlightedText from "@/components/HighlightedText";
 import ProcessMap from "@/components/ProcessMap";
+import ProjectHeader from "@/components/ProjectHeader";
 import TermCardModal from "@/components/TermCardModal";
 import { strings } from "@/i18n/ptBR";
 import { getLexicon, loadMockSession, processText, SAMPLE_TEXT } from "@/lib/processor";
@@ -17,7 +18,6 @@ import type { PipelineResult, TermEvidence } from "@/lib/types";
 import Button from "@/ui/components/Button";
 import Card from "@/ui/components/Card";
 import Icon, { type IconName } from "@/ui/components/Icon";
-import NavigationBar from "@/ui/components/NavigationBar";
 import Sheet from "@/ui/components/Sheet";
 import { useReducedMotionPreference } from "@/ui/hooks/useReducedMotionPreference";
 import { uiTokens } from "@/ui/tokens";
@@ -246,14 +246,14 @@ export default function HomePage() {
     : 0;
 
   return (
-    <div className="d-flex flex-column gap-4">
-      <NavigationBar
-        title={strings.home.heroTitle}
-        subtitle={strings.app.subtitle}
-        caption={strings.home.heroText}
-      />
+    <div className="home-page-shell d-flex flex-column">
+      <ProjectHeader />
 
-      <Card className="p-4 d-flex flex-column gap-3" data-testid="home-entry-block" interactive>
+      <Card
+        className="home-entry-card p-4 d-flex flex-column gap-3"
+        data-testid="home-entry-block"
+        interactive
+      >
         <h2 className="cupertino-title mb-0" style={{ fontSize: "1.1rem" }}>
           {strings.home.entryTitle}
         </h2>
@@ -302,7 +302,7 @@ export default function HomePage() {
       </Card>
 
       <motion.section
-        className="row g-3"
+        className="home-flow-grid row g-3"
         data-testid="home-flow-cards"
         initial={reducedMotion ? undefined : "hidden"}
         animate={reducedMotion ? undefined : "show"}
@@ -368,16 +368,17 @@ export default function HomePage() {
       </div>
 
       <Accordion
-        title={strings.home.quickTranslateTitle}
-        summary={strings.home.quickTranslateSummary}
+        title="Tradução rápida de termo específico"
+        summary="Use como apoio pontual sem substituir a leitura guiada."
         testId="quick-translation-accordion"
+        className="home-quick-accordion"
       >
         <div className="quick-translate-shell">
           <div className="quick-translate-headline">
             <div>
-              <div className="audit-section-title mb-2">{strings.home.quickTranslateTitle}</div>
+              <div className="audit-section-title mb-2">Tradução rápida de termo específico</div>
               <div className="text-ios-secondary quick-translate-headline-text">
-                {strings.home.quickTranslateHelper}
+                Use como apoio pontual sem substituir a leitura guiada.
               </div>
             </div>
           </div>

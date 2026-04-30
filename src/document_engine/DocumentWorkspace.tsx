@@ -198,8 +198,12 @@ export default function DocumentWorkspace({
                   onClick={() => toggleGroup(group.id)}
                   data-testid="document-engine-group-trigger"
                 >
-                  <span className="document-engine-group-marker" aria-hidden="true">
-                    {group.label.slice(0, 1)}
+                  <span
+                    className="document-engine-group-marker"
+                    aria-label={group.brandLabel}
+                    title={group.brandLabel}
+                  >
+                    {group.brandMark}
                   </span>
                   <span className="document-engine-group-copy">
                     <strong>{group.label}</strong>
@@ -309,7 +313,6 @@ export default function DocumentWorkspace({
 
       <div className="document-engine-input-head">
         <label htmlFor="text-input">Texto de entrada</label>
-        <span className="document-engine-closed-note">Repositorio oficial fechado</span>
       </div>
 
       <textarea

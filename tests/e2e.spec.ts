@@ -54,21 +54,49 @@ test.describe("Visual Law academic static export", () => {
 
     await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
 
+    const projectHeader = page.getByTestId("project-header");
     const entryBlock = page.getByTestId("home-entry-block");
     const cardsBlock = page.getByTestId("home-flow-cards");
     const processBlock = page.getByTestId("home-process-block");
+    const validationCard = page.getByTestId("validation-form-card");
     const quickTranslation = page.getByTestId("quick-translation-accordion");
 
+    await expect(projectHeader).toBeVisible();
+    await expect(projectHeader).toContainText(
+      "Democratização do Acesso e Compreensão da Informação Jurídica no Brasil"
+    );
+    await expect(projectHeader).toContainText("Vinícius Magno Alves Pimentel");
+    await expect(projectHeader).toContainText("Universidade Presbiteriana Mackenzie");
     await expect(entryBlock).toBeVisible();
     await expect(cardsBlock).toBeVisible();
     await expect(processBlock).toBeVisible();
+    await expect(validationCard).toBeVisible();
+    await expect(validationCard).toContainText("Validação exploratória");
+    await expect(page.getByTestId("validation-form-link")).toHaveAttribute(
+      "href",
+      "https://docs.google.com/forms/d/e/1FAIpQLSfsWd-CDZaNxTxNX93jgIc_TEvPaS7TwglP2kU_g64u2aIBeQ/viewform?usp=publish-editor"
+    );
+    await expect(page.getByTestId("validation-form-link")).toHaveAttribute("target", "_blank");
     await expect(quickTranslation).toBeVisible();
 
+    const headerTop = await getTop(projectHeader);
     const entryTop = await getTop(entryBlock);
     const cardsTop = await getTop(cardsBlock);
     const processTop = await getTop(processBlock);
+    const validationTop = await getTop(validationCard);
+    expect(headerTop).toBeLessThan(entryTop);
+    expect(headerTop).toBeLessThan(validationTop);
+    expect(validationTop).toBeLessThan(entryTop);
     expect(entryTop).toBeLessThan(cardsTop);
     expect(cardsTop).toBeLessThan(processTop);
+    expect(processTop).toBeLessThan(await getTop(quickTranslation));
+    await expect(page.locator("nav.ios-navbar")).toHaveCount(0);
+    await expect(projectHeader).not.toContainText("MVP acadêmico client-side");
+    await expect(projectHeader).not.toContainText("rastreabilidade por");
+
+    await expect(page.getByTestId("document-engine")).not.toContainText(
+      "Repositorio oficial fechado"
+    );
 
     await page.getByTestId("document-engine-open").click();
     await expect(page.getByTestId("document-engine-modal")).toBeVisible();
@@ -76,6 +104,7 @@ test.describe("Visual Law academic static export", () => {
       `${expectedPaperCount}`
     );
     await expect(page.getByTestId("document-engine-group-trigger")).toHaveCount(4);
+    await expect(page.getByTestId("document-engine-group-trigger").first()).toContainText("X");
     await expect(page.getByTestId("document-engine-row")).toHaveCount(2);
     await expect(page.getByTestId("document-engine-original").first()).toHaveAttribute(
       "target",
@@ -103,6 +132,16 @@ test.describe("Visual Law academic static export", () => {
     await page.getByRole("button", { name: /^Processar texto$/i }).click();
     await expect(page).toHaveURL(new RegExp(`${basePath}/reader/?$`));
     await expect(page.getByText(/Leitura guiada acad[e\u00ea]mica/i)).toBeVisible();
+    await expect(page.locator(".term-highlight").first()).toBeVisible();
+    await page.locator(".term-highlight").first().click();
+    await expect(page.getByTestId("term-card-sheet")).toBeVisible();
+    await expect(page.getByTestId("term-card-sheet")).toContainText(
+      "Entenda em linguagem clara"
+    );
+    await expect(page.getByTestId("term-card-sheet")).toContainText(
+      "Ver detalhes técnicos e acadêmicos"
+    );
+    await expect(page.getByTestId("term-card-sheet")).not.toContainText("start/end");
 
     await page.screenshot({
       path: path.join(screenshotsDir, "READER_GUIADO.png"),
@@ -160,5 +199,57 @@ test.describe("Visual Law academic static export", () => {
     await page.getByTestId("document-engine-select").first().click();
     await expect(page.getByTestId("document-engine-modal")).toHaveCount(0);
     await expect(page.getByTestId("document-engine")).toContainText("X Terms of Service");
+  });
+
+  test("document engine mantem as caixas completas no scroll do modal", async ({ page }) => {
+    await page.goto(`${basePath}/`, { waitUntil: "domcontentloaded" });
+    await page.getByTestId("document-engine-open").click();
+    await expect(page.getByTestId("document-engine-modal")).toBeVisible();
+
+    await page.evaluate(() => {
+      document.querySelectorAll<HTMLButtonElement>('[data-testid="document-engine-group-trigger"]')
+        .forEach((button) => {
+          if (button.getAttribute("aria-expanded") !== "true") {
+            button.click();
+          }
+        });
+    });
+
+    await expect(page.getByTestId("document-engine-row")).toHaveCount(expectedPaperCount);
+
+    const scrollState = await page.evaluate(() => {
+      const repo = document.querySelector<HTMLElement>(".document-engine-repository");
+      if (!repo) {
+        return null;
+      }
+
+      repo.scrollTop = repo.scrollHeight;
+      const repoRect = repo.getBoundingClientRect();
+      const groups = document.querySelectorAll<HTMLElement>(".document-engine-group");
+      const rows = document.querySelectorAll<HTMLElement>('[data-testid="document-engine-row"]');
+      const lastGroupRect = groups[groups.length - 1]?.getBoundingClientRect();
+      const lastRowRect = rows[rows.length - 1]?.getBoundingClientRect();
+      const style = getComputedStyle(repo);
+
+      return {
+        paddingBottom: style.paddingBottom,
+        overscrollBehavior: style.overscrollBehavior,
+        scrollbarGutter: style.scrollbarGutter,
+        lastGroupVisible:
+          Boolean(lastGroupRect) &&
+          lastGroupRect.bottom <= repoRect.bottom - 8 &&
+          lastGroupRect.top >= repoRect.top - 8,
+        lastRowVisible:
+          Boolean(lastRowRect) &&
+          lastRowRect.bottom <= repoRect.bottom - 8 &&
+          lastRowRect.top >= repoRect.top - 8,
+      };
+    });
+
+    expect(scrollState).not.toBeNull();
+    expect(scrollState?.paddingBottom).toBe("32px");
+    expect(scrollState?.overscrollBehavior).toBe("contain");
+    expect(scrollState?.lastGroupVisible).toBe(true);
+    expect(scrollState?.lastRowVisible).toBe(true);
   });
 });

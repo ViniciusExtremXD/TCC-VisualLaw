@@ -18,6 +18,8 @@ export interface PaperGroup {
   label: string;
   hint: string;
   accent: string;
+  brandMark: string;
+  brandLabel: string;
   documents: PaperItem[];
 }
 

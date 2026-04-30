@@ -12,6 +12,7 @@ import ProcessingTracePanel from "@/components/ProcessingTracePanel";
 import ProgressBar from "@/components/ProgressBar";
 import SemioticMap from "@/components/SemioticMap";
 import TermCardModal from "@/components/TermCardModal";
+import ValidationFormCard from "@/components/ValidationFormCard";
 import { strings } from "@/i18n/ptBR";
 import { CATEGORY_LABELS, type TermEvidence } from "@/lib/types";
 import { useSession } from "@/store/SessionContext";
@@ -271,6 +272,8 @@ export default function ReaderPage() {
           <Icon name="chevron-right" size={16} />
         </Button>
       </div>
+
+      <ValidationFormCard compact />
 
       {selectedEntry && selectedTermEvidence ? (
         <TermCardModal

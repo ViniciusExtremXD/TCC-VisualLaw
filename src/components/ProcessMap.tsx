@@ -13,7 +13,7 @@ export default function ProcessMap() {
   const reducedMotion = useReducedMotionPreference();
 
   return (
-    <section className="ios-card elevated p-4" data-testid="process-map-block">
+    <section className="process-map-shell ios-card elevated p-3" data-testid="process-map-block">
       <h2 className="fw-bold mb-1" style={{ fontSize: "1.1rem" }}>
         {strings.home.processMapTitle}
       </h2>

@@ -6,6 +6,8 @@ export const DOCUMENT_REPOSITORY: PaperGroup[] = [
     label: "X / Twitter",
     hint: "Termos e privacidade da plataforma X.",
     accent: "#1d4ed8",
+    brandMark: "X",
+    brandLabel: "Marca textual X",
     documents: [
       {
         id: "X_TERMS",
@@ -38,6 +40,8 @@ export const DOCUMENT_REPOSITORY: PaperGroup[] = [
     label: "Meta / Facebook",
     hint: "Fontes oficiais da Meta para Facebook.",
     accent: "#2563eb",
+    brandMark: "Meta",
+    brandLabel: "Marca textual Meta",
     documents: [
       {
         id: "META_TERMS",
@@ -70,6 +74,8 @@ export const DOCUMENT_REPOSITORY: PaperGroup[] = [
     label: "Instagram",
     hint: "Termos e privacidade do ecossistema Instagram.",
     accent: "#c026d3",
+    brandMark: "IG",
+    brandLabel: "Marca textual Instagram",
     documents: [
       {
         id: "INSTAGRAM_TERMS",
@@ -102,6 +108,8 @@ export const DOCUMENT_REPOSITORY: PaperGroup[] = [
     label: "Governo / Planalto",
     hint: "Fonte normativa brasileira para comparacao juridica.",
     accent: "#15803d",
+    brandMark: "GOV",
+    brandLabel: "Marca textual Governo Federal",
     documents: [
       {
         id: "LGPD_EXCERPTS",
